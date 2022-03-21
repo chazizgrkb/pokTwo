@@ -3,3 +3,4 @@ composer.lock
 conf/config.php
 assets/css/
 media/
+thumbs/

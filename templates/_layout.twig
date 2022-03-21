@@ -50,6 +50,7 @@
 	</tr>
 </tbody></table>
 
+{% if smallHeader %}
 <div class="tableLinkBar">
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 	<tbody><tr>
@@ -70,6 +71,50 @@
 
 		
 </tbody></table></div>
+{% else %}
+<div class="tableLinkBar">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tbody><tr valign="top">
+	
+				<td width="130" rowspan="2"><a href="index.php"><img src="img/logo_sm.gif" width="120" height="48" alt="YouTube" border="0" hspace="5" vspace="8"></a></td>
+			
+		<td width="100%" align="right">
+		<table align="right" cellpadding="2" cellspacing="0" border="0">
+			<tbody><tr>
+							<td><a href="signup.php" class="bold">Sign Up</a></td>
+				<td>&nbsp;|&nbsp;</td>
+				<td><a href="login.php">Log In</a></td>
+				<td>&nbsp;|&nbsp;</td>
+				<td><a href="help.php">Help</a>&nbsp;</td>
+						</tr>
+		</tbody></table>
+		</td>
+	</tr>
+
+		<tr>
+		<td width="100%">
+		<table cellpadding="2" cellspacing="0" border="0">
+			<tbody><tr>
+				<form method="GET" action="results.php"></form>
+				<td>
+					<input type="text" value="" name="search" size="30" maxlength="128" style="color:#ff3333; font-size: 16px; padding: 3px;">
+				</td>
+				<td>
+					<input type="submit" value="Search Videos">
+				</td>
+
+				<td width="100%">
+				<div style="font-size: 13px; font-weight: bold; text-align: right; margin-right: 5px;"><a href="my_videos_upload.php">Upload Videos</a></div>
+				</td>
+
+				
+			</tr>
+		</tbody></table>
+		</td>
+	</tr>
+		
+</tbody></table></div>
+{% endif %}
 		{% block content %}{% endblock %}
 		
 <br><table bgcolor="#FFFFFF" align="center" cellpadding="10" border="0">
