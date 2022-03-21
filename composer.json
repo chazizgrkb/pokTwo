@@ -1,0 +1,6 @@
+{
+	"require": {
+		"twig/twig": "^3.0",
+		"erusev/parsedown": "9999999-dev"
+	}
+}

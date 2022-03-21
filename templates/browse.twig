@@ -1,0 +1,14 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Browse{% endblock %}
+
+	{% block content %}
+<h1>Browse (placeholder lmao)</h1>
+<div class="center">
+	<div class="card">
+		{% for shit in allShit %}
+			<a href="post.php?id={{ shit.id }}">{{ shit.title }}</a><br>
+		{% endfor %}
+	</div>
+</div>
+	{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "_layout.twig" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+	{% block content %}
+<h2>{{ post.title }}</h2>
+
+<p>{{ post.description}}</p>
+
+<img src="media/{{ post.id }}" style="max-width: 100%;">
+	{% endblock %}
