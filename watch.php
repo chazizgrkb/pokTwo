@@ -33,6 +33,13 @@ if (fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$vid
 		[$videoData['video_id'],crypt($ip, "salt, used to encrypt stuff is very important.")]);
 }
 
+if (isset($_GET['flash']) ? $_GET['flash'] : null)
+{
+	$isFlash = true;
+} else {
+	$isFlash = false;
+}
+
 $commentCount = fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$videoData['video_id']])['COUNT(id)'];
 $viewCount = fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']])['COUNT(video_id)'];
 
@@ -41,8 +48,6 @@ query("UPDATE videos SET views = views + '1' WHERE video_id = ?", [$id]);
 
 $previousRecentView = result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
 $currentTime = time();
-
-$isFlash = false;
 
 query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime,$id]); 
 
