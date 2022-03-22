@@ -8,6 +8,7 @@ if (isset($_GET['id'])) {
 }
 
 $latestVideo = fetch("SELECT $userfields v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, v.videolength, v.tags, v.category_id, v.author FROM videos v JOIN users u ON v.author = u.id WHERE author = ? ORDER BY v.id DESC LIMIT 1", [$userpagedata['id']]);
+$allVideos = result("SELECT COUNT(id) FROM videos WHERE author=?", [$userpagedata['id']]);
 
 if (!isset($userpagedata) || !$userpagedata) {
 	error('404', "No user specified.");
@@ -28,6 +29,7 @@ echo $twig->render('user.twig', [
 	'id' => $userpagedata['id'],
 	'name' => $userpagedata['name'],
 	'latestVideo' => $latestVideo,
+	'allVideos' => $allVideos,
 	'userpagedata' => $userpagedata,
 	'forceuser' => $forceuser,
 	'page' => $page,
