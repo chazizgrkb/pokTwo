@@ -1,5 +1,8 @@
 <?php
 require('lib/common.php');
+ini_set('display_errors', 1); 
+ini_set('display_startup_errors', 1); 
+error_reporting(E_ALL);
 
 // quick and dirty redirect for not logged in users
 if (!$log) redirect('/');
@@ -20,16 +23,32 @@ if (isset($_FILES['fileToUpload'])) {
 	$target_file = "preload/".$new."/".$new.".".$vextension;
 	$preload_folder = "preload/".$new;
 	$upload_file = "media/".$new.".".$vextension;
+	$target_thumb = "thumbs/".$new.".jpg";
 	
 	$title = (isset($_POST['title']) ? $_POST['title'] : '');
 	$description = (isset($_POST['desc']) ? $_POST['desc'] : '');
 	$tags = (isset($_POST['tags']) ? $_POST['tags'] : '');
 	
+	//$thumbcmd = "$ffmpegPath -i $target_file -vf \"thumbnail\" -frames:v 1 -s 120x90 $target_thumb";
+	
+	if($vextension != "mp4" && $vextension != "mkv" && $vextension != "wmv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp") {
+		echo "<center><h1>Your video is an incompatible format.<br>To continue uploading this video, convert it to a supported format.</h1></center>";
+		die();
+	}
+						
 	if (!file_exists($preload_folder)) {
 		mkdir($preload_folder);
 	}
 
 	if(move_uploaded_file($temp_name, $target_file)){
+		//$framecount = exec("$ffprobePath -v error -select_streams v:0 -count_frames -show_entries stream=nb_read_frames -print_format default=nokey=1:noprint_wrappers=1 -of csv=p=0 ".$target_file);
+		$thumbcmd1 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss 3 -frames:v 1 thumbs/".$new.".1.jpg ";
+		$thumbcmd2 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss 6 -frames:v 1 thumbs/".$new.".2.jpg ";
+		$thumbcmd3 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss 9 -frames:v 1 thumbs/".$new.".3.jpg ";
+
+		exec($thumbcmd1);
+		exec($thumbcmd2);
+		exec($thumbcmd3);
 		exec("$ffmpegPath  -i ".$target_file." -vf scale=320x240 -c:v libx264 -b:a 56k  -c:a mp3 -ar 22050 media/".$new.".mp4");
 		exec("$ffmpegPath  -i ".$target_file." -vf scale=320x240 -c:v flv1 -b:a 80k  -c:a mp3 -ar 22050 media/".$new.".flv");
 

@@ -48,8 +48,9 @@ function CommentHandler()
 	return true;
 }
 </script>
-
+{% if isFlash %}
 <script type="text/javascript" src="/img/flashobject.js"></script>
+{% endif %}
 	{% endblock %}
 	{% block content %}
 <table width="795" align="center" cellpadding="0" cellspacing="0" border="0">
@@ -105,7 +106,7 @@ function CommentHandler()
 		<table width="425" cellpadding="0" cellspacing="0" border="0" align="center">
 			<tbody><tr>
 				<td>
-					<div class="watchDescription">An aerobatic Sukhoi being flown INVERTED under a river bridge.					<div class="watchAdded" style="margin-top: 5px;">
+					<div class="watchDescription">{{ video.description }}<div class="watchAdded" style="margin-top: 5px;">
 										</div>
 					</div>
 					<div class="watchTags">Tags // <a href="results.php?search=aerobatic">aerobatic</a> : <a href="results.php?search=sukhoi">sukhoi</a> : <a href="results.php?search=airplane">airplane</a> : <a href="results.php?search=stunt">stunt</a> : <a href="results.php?search=trick">trick</a> : 					</div>
