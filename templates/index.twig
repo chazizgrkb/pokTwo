@@ -206,7 +206,7 @@
 						<td width="20%" align="center"><a href="watch.php?v={{ video.video_id }}"><img src="get_still.php?still_id=2&amp;video_id={{ video.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
 						<div class="moduleFeaturedTitle"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
 						<div class="moduleFeaturedDetails">Added: {{ video.time|date("F j, Y") }}	<br>by <a href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a><!-- (<a href="profile.php?user={{ video.u_name }}">10</a>) --></div>
-						<div class="moduleFeaturedDetails">Views: {{ video.views }} | Comments: 0</div></td>
+						<div class="moduleFeaturedDetails">Views: {{ video.views }} | Comments: {{ video.comments }}</div></td>
 					{% else %}
 					<p>There are no videos.</p>
 					{% endfor %}				

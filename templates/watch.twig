@@ -1,5 +1,56 @@
 {% extends "_layout.twig" %}
+	{% block script %}
+<script>
+function CheckLogin()
+{
+	{% if log %}
+	return true;
+	{% else %}
+	alert("You must be logged in to to perform this action!");
+	return false;
+	{% endif %}
+}
 
+function FavoritesHandler()
+{
+	if (CheckLogin() == false)
+		return false;
+
+	alert("Video has been added to Favorites!");
+	return true;
+}
+
+function CommentHandler()
+{
+	if (CheckLogin() == false)
+		return false;
+
+	var comment = document.comment_form.comment;
+	var comment_button = document.comment_form.comment_button;
+
+	if (comment.value.length == 0 || comment.value == null)
+	{
+		alert("You must enter a comment!");
+		comment.focus();
+		return false;
+	}
+
+	if (comment.value.length > 500)
+	{
+		alert("Your comment must be shorter than 500 characters!");
+		comment.focus();
+		return false;
+	}
+
+	comment_button.disabled='true';
+	comment_button.value='Thanks for your comment!';
+
+	return true;
+}
+</script>
+
+<script type="text/javascript" src="/img/flashobject.js"></script>
+	{% endblock %}
 	{% block content %}
 <table width="795" align="center" cellpadding="0" cellspacing="0" border="0">
 	<tbody><tr valign="top">
@@ -7,10 +58,10 @@
 		
 		<div class="tableSubTitle">{{ video.title }}</div>
 		<div style="font-size: 13px; font-weight: bold; text-align:center;">
-		<a href="mailto:?subject={{ video.title }}&amp;body=http://www.youtube.com/?v=vy8evhya_9E">Share</a>
+		<a href="mailto:?subject={{ video.title }}&amp;body=http://www.youtube.com/?v={{ video.video_id }}">Share</a>
 		// <a href="#comment">Comment</a>
-		// <a href="add_favorites.php?video_id=vy8evhya_9E" target="invisible" onclick="return FavoritesHandler();">Add to Favorites</a>
-		// <a href="outbox.php?user=jawed&amp;subject=Re: Under+the+Bridge%21">Contact Me</a>
+		// <a href="add_favorites.php?video_id={{ video.video_id }}" target="invisible" onclick="return FavoritesHandler();">Add to Favorites</a>
+		// <a href="outbox.php?user={{ video.u_name }}&amp;subject=Re: {{ video.name }}%21">Contact Me</a>
 		</div>
 		
 		<div style="text-align: center; padding-bottom: 10px;">
@@ -107,7 +158,7 @@
 		<div style="padding-bottom: 5px; font-weight: bold; color: #444;">Comment on this video:</div>
 
 		<form name="comment_form" id="comment_form" method="post" action="add_comment.php" target="invisible" onsubmit="return CommentHandler();">
-		<input type="hidden" name="video_id" value="vy8evhya_9E">
+		<input type="hidden" name="video_id" value="{{ video.video_id }}">
 
 		<textarea name="comment" cols="55" rows="3"></textarea>
 		<br>
@@ -117,18 +168,10 @@
 		</form>
 		<br>
 
-		<div class="commentsTitle">Comments (8):</div>
-		
-		<div class="commentsEntry">"nice shot"<br>
- - (9 days, 15 hours, 34 minutes ago)</div><div class="commentsEntry">"By he way, Vilnius is Lithuania's Capital. Riga is Latvia's capital is Riga. I'km living in Lthuania, so ... :)   And This was performed by Jurgis Kairys.Not Paksas !!!"<br>
- - (29 days, 20 hours, 52 minutes ago)</div><div class="commentsEntry">"This was done by Jurgis Kairys in Kaunas, Lithuania in 2001."<br>
- - (31 days, 2 hours, 33 minutes ago)</div><div class="commentsEntry">"yeah yeah nice shot man ..."<br>
- - (33 days, 14 hours, 31 minutes ago)</div><div class="commentsEntry">"This was performed by  Jurgis Kairys.<br>
-Not Paksas"<br>
- - (33 days, 18 hours, 59 minutes ago)</div><div class="commentsEntry">"Vilnius/LITHUANIA you mean ;)"<br>
- - (34 days, 2 hours, 38 minutes ago)</div><div class="commentsEntry">"This trick was done in Vilnius/Latvia in Eastern Europe (old USSR baltiv republic) by Mr Paksas formerly known as later president of this country...deleted by impeachment ;))"<br>
- - (40 days, 19 hours, 44 minutes ago)</div><div class="commentsEntry">"awsome!"<br>
- - <a href="profile.php?user=larfus">larfus</a> // <a href="profile_videos.php?user=larfus">Videos</a> (41) | <a href="profile_favorites.php?user=larfus">Favorites</a> (6) | <a href="profile_friends.php?user=larfus">Friends</a> (0) - (41 days, 13 hours, 53 minutes ago)</div>		
+		<div class="commentsTitle">Comments ({{ comCount }}):</div>
+		{% for comment in comments %}
+		<div class="commentsEntry">"{{ comment.comment }}"<br> - <a href="profile.php?user={{ comment.u_name }}">{{ comment.u_name }}</a> // <a href="profile_videos.php?user={{ comment.u_name }}">Videos</a> (41) | <a href="profile_favorites.php?user={{ comment.u_name }}">Favorites</a> (6)  - ({{ comment.date | relative_time }})</div>		
+		{% endfor %}
 		</td>
 		<td width="280">
 		

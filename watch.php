@@ -45,7 +45,6 @@ $viewCount = fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$video
 
 query("UPDATE videos SET views = views + '1' WHERE video_id = ?", [$id]);
 
-
 $previousRecentView = result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
 $currentTime = time();
 

@@ -32,7 +32,7 @@
                            <div class="moduleFeaturedTitle"><a href="watch.php?v={{ latestVideo.video_id }}">{{ latestVideo.title }}</a></div>
                            <div class="moduleFeaturedDetails">Added: {{ latestVideo.time|date("F j, Y") }}<br>by <a href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a></div>
                            <div class="moduleFeaturedDetails">Views: {{ latestVideo.views }}</div>
-                           <div class="moduleFeaturedDetails">Comments: 1</div>
+                           <div class="moduleFeaturedDetails">Comments: {{ latestVideo.comments }}</div>
                            <br>
                            <!-- <form method="post" action="outbox.php?user={{ userpagedata.name }}">
                               <input type="submit" value="Contact Me!">
