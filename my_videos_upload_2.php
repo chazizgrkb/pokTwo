@@ -41,10 +41,15 @@ if (isset($_FILES['fileToUpload'])) {
 	}
 
 	if(move_uploaded_file($temp_name, $target_file)){
-		//$framecount = exec("$ffprobePath -v error -select_streams v:0 -count_frames -show_entries stream=nb_read_frames -print_format default=nokey=1:noprint_wrappers=1 -of csv=p=0 ".$target_file);
-		$thumbcmd1 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss 3 -frames:v 1 thumbs/".$new.".1.jpg ";
-		$thumbcmd2 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss 6 -frames:v 1 thumbs/".$new.".2.jpg ";
-		$thumbcmd3 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss 9 -frames:v 1 thumbs/".$new.".3.jpg ";
+		$seccount = exec("$ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ".$target_file);
+		$seccount = round($seccount);
+		$seccount = $seccount / 3;
+		$seccount = round($seccount);
+		$thumbcmd1 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss " . $seccount . " -frames:v 1 thumbs/".$new.".1.jpg ";
+		$seccount2 = $seccount + $seccount;
+		$thumbcmd2 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss " . $seccount2 . " -frames:v 1 thumbs/".$new.".2.jpg ";
+		$seccount3 = $seccount2 + $seccount - 3;
+		$thumbcmd3 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss " . $seccount3 . " -frames:v 1 thumbs/".$new.".3.jpg ";
 
 		exec($thumbcmd1);
 		exec($thumbcmd2);
@@ -75,8 +80,8 @@ if (isset($_FILES['fileToUpload'])) {
 		//}
 
 		if (!$error) {
-		query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, tags, videofile) VALUES (?,?,?,?,?,?,?,?)",
-			[$new, $title, $description, $userdata['id'], time(), time(), $tags, $upload_file]);
+		query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, tags, videofile, videolength) VALUES (?,?,?,?,?,?,?,?,?)",
+			[$new, $title, $description, $userdata['id'], time(), time(), $tags, $upload_file, $seccount]);
 
 		delete_directory($preload_folder);
 		redirect('/watch.php?v='.$new);
