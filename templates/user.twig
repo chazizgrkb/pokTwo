@@ -1,124 +1,91 @@
 {% extends "_layout.twig" %}
-
 {% block title %}{{ name }}{% endblock %}
-
-	{% block content %}
+{% block content %}
+<div class="pageTitle">Profile // <span style="text-transform: capitalize;">{{ userpagedata.name }}</span></div>
+<div style="text-align:center; margin-bottom: 5px;">
+   <a href="profile.php?user={{ userpagedata.name }}" class="bold">Profile</a>
+   <span style="padding-right: 5px; padding-left: 5px;">|</span>
+   <a href="profile_videos.php?user={{ userpagedata.name }}">Videos</a> (1)
+   <span style="padding-right: 5px; padding-left: 5px;">|</span>
+   <a href="profile_favorites.php?user={{ userpagedata.name }}">Favorites</a> (0)
+</div>
 {% if markread %}
-	<div class="header_message">Marked all notifications as read.</div>
+<div class="success">Marked all notifications as read.</div>
 {% elseif edited %}
-	<div class="header_message">Settings successfully saved!</div>
+<div class="success">Settings successfully saved!</div>
 {% elseif justbanned == "ban" %}
-	<div class="header_message">Successfully banned this user.</div>
+<div class="success">Successfully banned this user.</div>
 {% elseif justbanned == "unban" %}
-	<div class="header_message">Successfully unbanned this user.</div>
+<div class="success">Successfully unbanned this user.</div>
 {% endif %}
-
-{% if userdata.id == id and not forceuser %}
-<h2>{{ name }}</h2>
-
-{% if userdata.powerlevel == 0 %}
-<div class="banner b-red userban">
-	Your account has been banned.
-	{% if userdata.banreason %}
-		<br><br>Reason: {{ userdata.banreason }}
-	{% else %}
-		<br><br>No reason was provided.
-	{% endif %}
-</div>
-{% endif %}
-
-<p>Welcome to your personal user page. Here, you can see and manage your uploaded levels, customize your profile, and edit your settings.</p>
-
-<p><a href="/settings.php">Edit my settings</a>
-{% if glob_forum %}
-	&bull; <a href="/forum/private.php">View my private messages</a>
-{% endif %}
-&bull; <a href="/user.php?id={{ id }}&forceuser">View user page as viewer</a>
-&bull; <a href="javascript:document.logout.submit()">Log out</a></p>
-
-{% if userdata.powerlevel > 2 %}
-<p><a href="/admin.php">Admin panel</a></p>
-{% endif %}
-
-<form action="/login.php" method="post" name="logout">
-	<input type="hidden" name="logout" value="yes">
-</form>
-
-<h3>Links</h3>
-
-<ul>
-	<li><a href="/download.php">Download principia-web mods</a></li>
-	<li><a href="/level-archive.php">Browse the Community Level Archive</a></li>
-	{% if discord_invite %}
-		<li><a href="{{ discord_invite }}">Unofficial Principia Discord Server</a></li>
-	{% endif %}
-</ul>
-
-<h3>Notifications</h3>
-<ul>
-	{% for notif in notifs %}
-		<li>{{ notif | raw }}</li>
-	{% else %}
-		<li>No new notifications!</li>
-	{% endfor %}
-	{% if notifs %}
-		<br><li><a href="/user.php?id={{ id }}&markread">Mark all as read</a></li>
-	{% endif %}
-</ul>
-{% else %}
-<div class="user_stats">
-	<div class="topthing"><b>General information</b></div>
-	{% if glob_forum %}
-		<div class="row">
-			<b>Forum Threads</b>: {{ userpagedata.threads }}
-			<span class="pad"><b>Forum Posts</b>: {{ userpagedata.posts }}</span>
-		</div>
-	{% endif %}
-	<div class="row">
-		<b>Registered on</b>: {{ userpagedata.joined | date('Y-m-d H:i:s') }}
-	</div>
-	<div class="row">
-		<b>Last view</b>: {{ userpagedata.lastview | relative_time }}
-	</div>
-</div>
-<h2>{{ name }}
-	{% if userpagedata.powerlevel > 1 %}<img class="sdsd" src="/assets/icons/shield.svg" height="16" title="User is a moderator.">{% endif %}
-	{% if userpagedata.powerlevel < 1 %}<img class="sdsd" src="/assets/icons/gavel.svg" height="16" title="User has been banned.">{% endif %}</h2>
-
-<div class="user_about">
-	<h3>About this user</h3>
-	{{ userpagedata.about | raw }}
-</div>
-
-<p class="clear_right">
-	{% if glob_forum %}
-		<a href="/forum/forum.php?user={{ id }}">View threads</a>
-		&bull; <a href="/forum/thread.php?user={{ id }}">Show posts</a>
-		{% if log %}
-			{% if userdata.id != id %}
-				&bull; <a href="/forum/sendprivate.php?uid={{ id }}">Send private message</a>
-			{% endif %}
-			{% if userdata.powerlevel > 2 %}
-				&bull; <a href="/resetpassword.php?grf={{ id }}">Generate password reset for user</a>
-				&bull; <a href="/forum/editperms.php?uid={{ id }}">Edit forum permissions</a>
-			{% endif %}
-			{% if userdata.powerlevel > 1 %}
-				&bull; <a href="/_ban_user.php?id={{ id }}">{% if userpagedata.powerlevel < 1 %}Unb{% else %}B{% endif %}an user</a>
-			{% endif %}
-		{% endif %}
-	{% endif %}
-</p>
-
-{% if userdata.id == id %}
-	{% set forceuser = "&forceuser" %}
-{% else %}
-	{% set forceuser = "" %}
-{% endif %}
-{% set le_url = '/user.php?id=' ~ id ~ '&page=%s' ~ forceuser %}
-{{ pagination(level_count, glob_lpp, le_url, page) }}
-
-<h2>Comments</h2>
-{{ comments(comments, 'user', id) }}
-<br>
-{% endif %}
-	{% endblock %}
+<table width="80%" align="center" cellpadding="5" cellspacing="0" border="0">
+   <tbody>
+      <tr valign="top">
+         <td width="200">
+            <div style="background-color: #D5E5F5; padding: 10px; padding-top: 5px; border: 6px double #FFFFFF;">
+               <table width="100%" bgcolor="#D5E5F5" cellpadding="5" cellspacing="0" border="0">
+                  <tbody>
+                     <tr>
+                        <td align="center">
+                           <div class="highlight">Last Video Added</div>
+                           <a href="watch.php?v={{ latestVideo.video_id }}"><img src="get_still.php?video_id={{ latestVideo.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
+                           <div class="moduleFeaturedTitle"><a href="watch.php?v={{ latestVideo.video_id }}">{{ latestVideo.title }}</a></div>
+                           <div class="moduleFeaturedDetails">Added: {{ latestVideo.time|date("F j, Y") }}<br>by <a href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a></div>
+                           <div class="moduleFeaturedDetails">Views: {{ latestVideo.views }}</div>
+                           <div class="moduleFeaturedDetails">Comments: 1</div>
+                           <br>
+                           <!-- <form method="post" action="outbox.php?user={{ userpagedata.name }}">
+                              <input type="submit" value="Contact Me!">
+                           </form>
+                           <span style="font-size: 11px; margin-right: 3px;">Like my videos?<br>
+                           <a href="http://www.youtube.com/rss/user/lukechu/my_videos.rss">Subscribe to my RSS Feed.</a></span> -->
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </td>
+         <td>
+            <div class="tableSubTitle">User Details:</div>
+            <table width="100%" cellpadding="5" cellspacing="0" border="0">
+               <tbody>
+                  <tr>
+                     <td width="150" align="right"><span class="label">User Name:</span></td>
+                     <td>lukechu</td>
+                  </tr>
+                  <!-- Personal Information: -->
+                  <tr>
+                     <td align="right"><span class="label">Name:</span></td>
+                     <td>Luke Chu</td>
+                  </tr>
+                  <tr>
+                     <td align="right"><span class="label">Age:</span></td>
+                     <td>31 years old</td>
+                  </tr>
+                  <tr>
+                     <td align="right"><span class="label">Gender:</span></td>
+                     <td>Male</td>
+                  </tr>
+                  <tr>
+                     <td align="right"><span class="label">Relationship Status:</span></td>
+                     <td>Taken</td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">&nbsp;</td>
+                  </tr>
+                  <!-- Location Information -->
+                  <tr>
+                     <td colspan="2">&nbsp;</td>
+                  </tr>
+                  <!-- Random Information -->
+                  <tr>
+                     <td align="right"><span class="label">Last Login:</span></td>
+                     <td>{{ userpagedata.lastview | relative_time }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+{% endblock %}

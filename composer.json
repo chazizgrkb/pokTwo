@@ -1,6 +1,7 @@
 {
 	"require": {
 		"twig/twig": "^3.0",
-		"erusev/parsedown": "9999999-dev"
+		"erusev/parsedown": "9999999-dev",
+		"mpratt/relativetime": "~1.0"
 	}
 }

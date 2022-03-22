@@ -19,7 +19,7 @@ if (isset($_POST['magic'])) {
 	query("UPDATE users SET title = ?, customcolor = ?, about = ?, location = ?, timezone = ?, signature = ? WHERE id = ?",
 		[$title, $customcolor, $about, $location, $timezone, $signature, $userdata['id']]);
 
-	redirect(sprintf("/user.php?id=%s&edited", $userdata['id']));
+	redirect(sprintf("/profile.php?user=%s&edited", $userdata['name']));
 }
 
 $timezones = [];
