@@ -19,7 +19,7 @@ if (isset($_POST['action'])) {
 	if (!preg_match('/[a-zA-Z0-9_]+$/', $name)) $error .= "Username contains invalid characters (Only alphanumeric and underscore allowed). ";
 	if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) $error .= "Email isn't valid. ";
 	if (result("SELECT COUNT(*) FROM users WHERE email = ?", [$mail])) $error .= "You've already registered an account using this email address. ";
-	if (result("SELECT COUNT(*) FROM users WHERE ip = ?", [$_SERVER['REMOTE_ADDR']])) $error .= "Creating multiple accounts (alts) aren't allowed. ";
+	//if (result("SELECT COUNT(*) FROM users WHERE ip = ?", [$_SERVER['REMOTE_ADDR']])) $error .= "Creating multiple accounts (alts) aren't allowed. ";
 
 	if ($error == '') {
 		$token = register($name, $pass, $mail);
