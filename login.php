@@ -12,9 +12,9 @@ $error = '';
 
 if (isset($_GET['resetted'])) $error .= 'Password successfully reset! Please login with your new password.';
 
-if (isset($_POST['action'])) {
-	$name = (isset($_POST['name']) ? $_POST['name'] : null);
-	$pass = (isset($_POST['pass']) ? $_POST['pass'] : null);
+if (isset($_POST['field_command'])) {
+	$name = (isset($_POST['field_login_username']) ? $_POST['field_login_username'] : null);
+	$pass = (isset($_POST['field_login_password']) ? $_POST['field_login_password'] : null);
 
 	$logindata = fetch("SELECT id,password,token FROM users WHERE name = ?", [$name]);
 
