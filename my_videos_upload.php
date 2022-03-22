@@ -5,7 +5,7 @@ require('lib/common.php');
 if (!$log) redirect('/');
 
 // Supported file types (MIME-type with image/ stripped)
-$supportedTypes = ['png', 'jpeg', 'jpg', 'gif'];
+$supportedTypes = ['mp4', 'avi', 'wmv', 'mov'];
 
 $error = '';
 
