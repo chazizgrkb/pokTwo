@@ -61,12 +61,12 @@
 			
 								
 					<div class="watchAdded">
-					Added: June 11, 2005 by <a href="profile.php?user=jawed">jawed</a> //
-					<a href="profile_videos.php?user=jawed">Videos</a> (64) | <a href="profile_favorites.php?user=jawed">Favorites</a> (123) | <a href="profile_friends.php?user=jawed">Friends</a> (16)
+					Added: {{ video.time|date("F j, Y") }} by <a href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a> //
+					<a href="profile_videos.php?user={{ video.u_name }}">Videos</a> ({{ allVideos }}) | <a href="profile_favorites.php?user={{ video.u_name }}">Favorites</a> (123)
 					</div>
 			
 					<div class="watchDetails">
-					Views: 27965 | <a href="#comment">Comments</a>: 8					</div>
+					Views: {{ viewCount }} | <a href="#comment">Comments</a>: {{ comCount }} </div>
 
 				</td>
 			</tr>

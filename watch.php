@@ -5,7 +5,7 @@ $ip = (isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 
-if (!$videoData) error('404', __("The video you were looking for cannot be found."));
+if (!$videoData) error('404', "The video you were looking for cannot be found.");
 
 $query = '';
 $count = 0;
