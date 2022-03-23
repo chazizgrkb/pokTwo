@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 04:08 PM
+-- Generation Time: Mar 23, 2022 at 02:00 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -50,6 +50,17 @@ CREATE TABLE `channel_comments` (
   `date` bigint(20) NOT NULL COMMENT 'UNIX timestamp when the comment was posted.',
   `deleted` tinyint(4) NOT NULL COMMENT 'States that the comment is deleted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `channel_settings`
+--
+
+CREATE TABLE `channel_settings` (
+  `user` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -194,6 +205,12 @@ CREATE TABLE `views` (
 --
 ALTER TABLE `channel_comments`
   ADD PRIMARY KEY (`comment_id`);
+
+--
+-- Indexes for table `channel_settings`
+--
+ALTER TABLE `channel_settings`
+  ADD PRIMARY KEY (`user`);
 
 --
 -- Indexes for table `comments`

@@ -36,3 +36,10 @@ function userfields() {
 }
 
 }
+
+function makeProfileData($cums) {
+	query("INSERT INTO `channel_settings` 
+	(`user`, `name`) 
+	VALUES (?, 'Unknown')",[$cums]);
+	return true;
+}

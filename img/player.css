@@ -1,11 +1,11 @@
 figure {
 	width: 100%;
-    height: 100%;
-    margin: 0;
+	height: 100%;
+	margin: 0;
 }
 video {
-	width:100%;
-	background: #000;
+	height: 320px;
+	width: 100%;
 }
 
 .controls, .controls > * {
@@ -15,26 +15,25 @@ video {
 .controls {
 	overflow:hidden;
 	background:transparent;
-	width:99%;
+	width: 421px;
 	position:relative;
 	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y0ZThlOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-    background: -moz-linear-gradient(top,#f4e8e8 0,#fff 65%,#fff 65%);
-    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#f4e8e8),color-stop(65%,#fff),color-stop(65%,#fff));
-    background: -webkit-linear-gradient(top,#f4e8e8 0,#fff 65%,#fff 65%);
-    background: -o-linear-gradient(top,#f4e8e8 0,#fff 65%,#fff 65%);
-    background: -ms-linear-gradient(top,#f4e8e8 0,#fff 65%,#fff 65%);
-    background: linear-gradient(to bottom,#f4e8e8 0,#fff 65%,#fff 65%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4e8e8', endColorstr='#ffffff', GradientType=0 );
-    -webkit-box-shadow: 0 0.5px 5px 0.2px rgb(0 0 0);
-    -moz-box-shadow: 0 .5px 5px .2px rgba(0,0,0,1);
-    box-shadow: 0 0.5px 5px 0.2px rgb(0 0 0);
-    overflow: hidden;
+	-moz-border-radius: 5px;
+	/* border-radius: 5px; */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y0ZThlOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(top,#f4e8e8 0,#fff 65%,#fff 65%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#f4e8e8),color-stop(65%,#fff),color-stop(65%,#fff));
+	background: -webkit-linear-gradient(top,#f4e8e8 0,#fff 65%,#fff 65%);
+	background: -o-linear-gradient(top,#f4e8e8 0,#fff 65%,#fff 65%);
+	background: -ms-linear-gradient(top,#f4e8e8 0,#fff 65%,#fff 65%);
+	background: linear-gradient(to bottom,#f4e8e8 0,#fff 65%,#fff 65%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4e8e8', endColorstr='#ffffff', GradientType=0 );
+	-webkit-box-shadow: 0 0.5px 5px 0.2px rgb(0 0 0);
+	-moz-box-shadow: 0 .5px 5px .2px rgba(0,0,0,1);
+	box-shadow: 0 0.5px 5px 0.2px rgb(0 0 0);
+	overflow: hidden;
 	margin-top: 6px;
 	padding: 2px;
-	
 }
 .controls[data-state=hidden] {
 	display:none;
@@ -101,7 +100,7 @@ video {
 	-moz-border-radius:2px;
 	-webkit-border-radius:2px;
 	border-radius:2px;
-	color:#0030dd;
+	color:#333;
 	height: 6px;
 }
 .controls progress[data-state="fake"] {
@@ -111,12 +110,12 @@ video {
 	width:0%;
 	height:100%;
 	display:inline-block;
-	background-color:#0030dd;	
+	background-color:#333;	
 }
 
 .controls progress::-moz-progress-bar {
-	background-color:#0030dd;
+	background-color:#333;
 }
 .controls progress::-webkit-progress-value {
-	background-color:#0030dd;
+	background-color:#333;
 }
