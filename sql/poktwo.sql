@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2022 at 02:00 AM
+-- Generation Time: Mar 25, 2022 at 02:21 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -87,6 +87,20 @@ CREATE TABLE `comments` (
 CREATE TABLE `ipbans` (
   `ip` varchar(16) NOT NULL DEFAULT '0.0.0.0',
   `reason` varchar(255) NOT NULL DEFAULT '<em>No reason specified</em>'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `sender` bigint(20) NOT NULL,
+  `reciever` bigint(20) NOT NULL,
+  `text` text NOT NULL,
+  `date` bigint(20) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -219,6 +233,12 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `news`
 --
 ALTER TABLE `news`
@@ -263,6 +283,12 @@ ALTER TABLE `channel_comments`
 --
 ALTER TABLE `comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `news`

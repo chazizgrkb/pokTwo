@@ -41,8 +41,7 @@ if (isset($_FILES['fileToUpload'])) {
 	}
 
 	if(move_uploaded_file($temp_name, $target_file)){
-		$seccount = exec("$ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ".$target_file);
-		$seccount = round($seccount);
+		$seccount = round(exec("$ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ".$target_file));
 		$seccount = $seccount / 3;
 		$seccount = round($seccount);
 		$thumbcmd1 = $ffmpegPath . " -i ".$target_file." -vframes 1 -an -s 120x90 -ss " . $seccount . " -frames:v 1 thumbs/".$new.".1.jpg ";
