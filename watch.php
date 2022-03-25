@@ -1,6 +1,7 @@
 <?php
 require('lib/common.php');
 $id = (isset($_GET['v']) ? $_GET['v'] : null);
+$searchShit = (isset($_GET['search']) ? $_GET['search'] : null);
 $ip = (isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']));
 
 $videoData = fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);

@@ -25,7 +25,7 @@ if (isset($_POST['field_command'])) {
 		$token = register($name, $pass, $mail);
 
 		setcookie($cookieName, $token, 2147483647);
-		makeProfileData($userdata['id']);
+		//makeProfileData($userdata['id']);
 
 		redirect('./?rd');
 	}

@@ -4,8 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1); 
 error_reporting(E_ALL);
 
-// quick and dirty redirect for not logged in users
-if (!$log) redirect('/');
+if (!$log) redirect('login.php');
 
 // Supported file types (MIME-type with image/ stripped)
 $supportedTypes = ['mp4', 'avi', 'wmv', 'mov'];
