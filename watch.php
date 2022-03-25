@@ -9,15 +9,6 @@ if (!$videoData) error('404', "The video you were looking for cannot be found.")
 
 $query = '';
 $count = 0;
-if ($videoData['tags']) {
-	$count = count(json_decode($videoData['tags']));
-	foreach(json_decode($videoData['tags']) as $key=>$value) {
-		if ($key >= 1) {
-			$query .= "OR";
-		}
-		$query .= " tags LIKE '%" . addslashes($value) . "%' ";
-	}
-}
 $commentData = query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);
 
 if ($count == 0) {
@@ -43,6 +34,8 @@ if (isset($_GET['flash']) ? $_GET['flash'] : null)
 $commentCount = fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$videoData['video_id']])['COUNT(id)'];
 $viewCount = fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']])['COUNT(video_id)'];
 
+$tags = query("SELECT * FROM tag_index WHERE video_id = ?", [$videoData['id']]);
+
 query("UPDATE videos SET views = views + '1' WHERE video_id = ?", [$id]);
 
 $previousRecentView = result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
@@ -60,4 +53,5 @@ echo $twig->render('watch.twig', [
 	'recentView' => $previousRecentView,
 	'allVideos' => $allVideos,
 	'isFlash' => $isFlash,
+	'tags' => $tags,
 ]);

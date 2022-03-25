@@ -109,7 +109,13 @@ function CommentHandler()
 					<div class="watchDescription">{{ video.description }}<div class="watchAdded" style="margin-top: 5px;">
 										</div>
 					</div>
-					<div class="watchTags">Tags // <a href="results.php?search=aerobatic">aerobatic</a> : <a href="results.php?search=sukhoi">sukhoi</a> : <a href="results.php?search=airplane">airplane</a> : <a href="results.php?search=stunt">stunt</a> : <a href="results.php?search=trick">trick</a> : 					</div>
+					<div class="watchTags">Tags //
+					{% for tag in tags %}
+					<a href="results.php?search={{ tag.tag_id }}">{{ tag.tag_id }}</a> :
+					{% else %}
+					This video has no tags.
+					{% endfor %}
+					</div>
 			
 								
 					<div class="watchAdded">
