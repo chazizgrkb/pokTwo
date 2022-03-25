@@ -1,0 +1,146 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Browse{% endblock %}
+
+	{% block content %}
+<div class="pageTitle">Videos</div>
+<div class="pageTable">
+
+<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+	<tbody><tr>
+		<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+		<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+		<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+	</tr>
+	<tr>
+		<td><img src="img/pixel.gif" width="5" height="1"></td>
+		<td>
+		<div class="moduleTitleBar">
+		<div class="moduleTitle">Latest Videos</div>
+		</div>
+				
+		<div class="moduleFeatured"> 
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tbody><tr valign="top">
+					{% for video in videos %}
+						<td width="20%" align="center"><a href="watch.php?v={{ video.video_id }}"><img src="get_still.php?still_id=2&amp;video_id={{ video.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
+						<div class="moduleFeaturedTitle"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
+						<div class="moduleFeaturedDetails">Added: {{ video.time|date("F j, Y") }}	<br>by <a href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a><!-- (<a href="profile.php?user={{ video.u_name }}">10</a>) --></div>
+						<div class="moduleFeaturedDetails">Views: {{ video.views }} | Comments: {{ video.comments }}</div></td>
+					{% else %}
+					<p>There are no videos.</p>
+					{% endfor %}						</tbody></table>
+		</div>
+		
+		</td>
+		<td><img src="img/pixel.gif" width="5" height="1"></td>
+	</tr>
+	<tr>
+		<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+		<td><img src="img/pixel.gif" width="1" height="5"></td>
+		<td><img src="img/box_login_br.gif" width="5" height="5"></td>
+	</tr>
+</tbody></table>
+
+<br><br>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+	<tbody><tr>
+		<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+		<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+		<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+	</tr>
+	<tr>
+		<td><img src="img/pixel.gif" width="5" height="1"></td>
+		<td>
+		<div class="moduleTitleBar">
+		<div class="moduleTitle">Most Popular Videos</div>
+		</div>
+				
+		<div class="moduleFeatured"> 
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tbody><tr valign="top">
+					{% for video in mostViewed %}
+						<td width="20%" align="center"><a href="watch.php?v={{ video.video_id }}"><img src="get_still.php?still_id=2&amp;video_id={{ video.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
+						<div class="moduleFeaturedTitle"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
+						<div class="moduleFeaturedDetails">Added: {{ video.time|date("F j, Y") }}	<br>by <a href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a><!-- (<a href="profile.php?user={{ video.u_name }}">10</a>) --></div>
+						<div class="moduleFeaturedDetails">Views: {{ video.views }} | Comments: {{ video.comments }}</div></td>
+					{% else %}
+					<p>There are no videos.</p>
+					{% endfor %}			</tbody></table>
+		</div>
+		
+		</td>
+		<td><img src="img/pixel.gif" width="5" height="1"></td>
+	</tr>
+	<tr>
+		<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+		<td><img src="img/pixel.gif" width="1" height="5"></td>
+		<td><img src="img/box_login_br.gif" width="5" height="5"></td>
+	</tr>
+</tbody></table>
+
+<br><br>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+	<tbody><tr>
+		<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+		<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+		<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+	</tr>
+	<tr>
+		<td><img src="img/pixel.gif" width="5" height="1"></td>
+		<td>
+		<div class="moduleTitleBar">
+		<div class="moduleTitle">Most Discussed Videos</div>
+		</div>
+				
+		<div class="moduleFeatured"> 
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tbody><tr valign="top">
+<td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=vKeahCKBvr8"><img src="get_still.php?video_id=vKeahCKBvr8" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=vKeahCKBvr8">My take off</a></div><div class="moduleFeaturedDetails">Added: June 26, 2005<br>by <a href="profile.php?user=relate2">relate2</a></div><div class="moduleFeaturedDetails">Views: 46 | Comments: 12</div></td><td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=vy8evhya_9E"><img src="get_still.php?video_id=vy8evhya_9E" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=vy8evhya_9E">Under the Bridge!</a></div><div class="moduleFeaturedDetails">Added: June 11, 2005<br>by <a href="profile.php?user=jawed">jawed</a></div><div class="moduleFeaturedDetails">Views: 24838 | Comments: 7</div></td><td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=3jzB0deKlYg"><img src="get_still.php?video_id=3jzB0deKlYg" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=3jzB0deKlYg">Chinese Kungfu Funny</a></div><div class="moduleFeaturedDetails">Added: June 27, 2005<br>by <a href="profile.php?user=kesterjuztin">kesterjuztin</a></div><div class="moduleFeaturedDetails">Views: 69 | Comments: 7</div></td><td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=XX_9Krs9T_Y"><img src="get_still.php?video_id=XX_9Krs9T_Y" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=XX_9Krs9T_Y">Asian BSB</a></div><div class="moduleFeaturedDetails">Added: June 14, 2005<br>by <a href="profile.php?user=esparta">esparta</a></div><div class="moduleFeaturedDetails">Views: 160 | Comments: 7</div></td><td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=_jQ0IuDOz2w"><img src="get_still.php?video_id=_jQ0IuDOz2w" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=_jQ0IuDOz2w">A B-52 loss of control during air show practice at Fairchild</a></div><div class="moduleFeaturedDetails">Added: June 11, 2005<br>by <a href="profile.php?user=jawed">jawed</a></div><div class="moduleFeaturedDetails">Views: 2139 | Comments: 6</div></td>				</tr>
+			</tbody></table>
+		</div>
+		
+		</td>
+		<td><img src="img/pixel.gif" width="5" height="1"></td>
+	</tr>
+	<tr>
+		<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+		<td><img src="img/pixel.gif" width="1" height="5"></td>
+		<td><img src="img/box_login_br.gif" width="5" height="5"></td>
+	</tr>
+</tbody></table>
+
+<br><br>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+	<tbody><tr>
+		<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+		<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+		<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+	</tr>
+	<tr>
+		<td><img src="img/pixel.gif" width="5" height="1"></td>
+		<td>
+		<div class="moduleTitleBar">
+		<div class="moduleTitle">Most Added to Favorites Videos</div>
+		</div>
+				
+		<div class="moduleFeatured"> 
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tbody><tr valign="top">
+<td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=hX-GTqFbE5Q"><img src="get_still.php?video_id=hX-GTqFbE5Q" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=hX-GTqFbE5Q">extreme 747 landing</a></div><div class="moduleFeaturedDetails">Added: June 11, 2005<br>by <a href="profile.php?user=jawed">jawed</a></div><div class="moduleFeaturedDetails">Views: 2264 | Comments: 5</div></td><td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=hmicbxY99I8"><img src="get_still.php?video_id=hmicbxY99I8" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=hmicbxY99I8">Flambe Disaster</a></div><div class="moduleFeaturedDetails">Added: April 24, 2005<br>by <a href="profile.php?user=tunafat">tunafat</a></div><div class="moduleFeaturedDetails">Views: 1443 | Comments: 3</div></td><td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=vy8evhya_9E"><img src="get_still.php?video_id=vy8evhya_9E" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=vy8evhya_9E">Under the Bridge!</a></div><div class="moduleFeaturedDetails">Added: June 11, 2005<br>by <a href="profile.php?user=jawed">jawed</a></div><div class="moduleFeaturedDetails">Views: 24838 | Comments: 7</div></td><td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=mE3tqDLjSLA"><img src="get_still.php?video_id=mE3tqDLjSLA" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=mE3tqDLjSLA">robot dance</a></div><div class="moduleFeaturedDetails">Added: June 14, 2005<br>by <a href="profile.php?user=swingcheese">swingcheese</a></div><div class="moduleFeaturedDetails">Views: 272 | Comments: 2</div></td><td width="20%" align="center"><a href="http://www.youtube.com/watch.php?v=Tbr-gz3f3rs"><img src="get_still.php?video_id=Tbr-gz3f3rs" width="120" height="90" class="moduleFeaturedThumb"></a><div class="moduleFeaturedTitle"><a href="http://www.youtube.com/watch.php?v=Tbr-gz3f3rs">Chuck's Mom</a></div><div class="moduleFeaturedDetails">Added: June 13, 2005<br>by <a href="profile.php?user=Chuckumentary">Chuckumentary</a></div><div class="moduleFeaturedDetails">Views: 167 | Comments: 2</div></td>				</tr>
+			</tbody></table>
+		</div>
+		
+		</td>
+		<td><img src="img/pixel.gif" width="5" height="1"></td>
+	</tr>
+	<tr>
+		<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+		<td><img src="img/pixel.gif" width="1" height="5"></td>
+		<td><img src="img/box_login_br.gif" width="5" height="5"></td>
+	</tr>
+</tbody></table>
+
+
+</div>
+	{% endblock %}
