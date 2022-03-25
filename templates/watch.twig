@@ -111,7 +111,7 @@ function CommentHandler()
 					</div>
 					<div class="watchTags">Tags //
 					{% for tag in tags %}
-					<a href="results.php?search={{ tag.tag_id }}">{{ tag.tag_id }}</a> :
+					<a href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
 					{% else %}
 					This video has no tags.
 					{% endfor %}
