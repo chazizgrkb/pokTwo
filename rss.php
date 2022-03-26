@@ -17,16 +17,21 @@ $videoData = query("SELECT $userfields v.video_id, v.title, v.description, v.tim
    $id=$row["video_id"];
    $description=$row["description"];
    $username=$row["u_name"];
+   $date=date(DATE_RFC2822, $row["time"]);
  
    echo "<item>
     <author>rss@poktwo.com ($username)</author>
     <title>$title</title>
     <link>$domain/?v=$id</link>
     <description>
-        <![CDATA[                 <img src='$domain/get_still.php?video_id=$id' align='right' border='0' width='120' height='90' vspace='4' hspace='4' /><p>                 Action Race with Ms Kitty Doing What She Has To To Win                 </p><p>                     Author: <a href='http://www.youtube.com/profile.php?user=allenh'>allenh</a><br/>                     Keywords: <a href='http://www.youtube.com/results.php?search=kitty'>kitty</a><a href='http://www.youtube.com/results.php?search=action'>action</a><a href='http://www.youtube.com/results.php?search=race'>race</a><br/>                     Added: August 19, 2005<br/></p> ]]>
+        <![CDATA[
+		<img src='$domain/get_still.php?video_id=$id' align='right' border='0' width='120' height='90' vspace='4' hspace='4' /><p>
+		$description</p>
+		<p>Author: <a href='$domain/profile.php?user=$username'>allenh$username</a><br/>
+		Keywords: <a href='http://www.youtube.com/results.php?search=kitty'>kitty</a><a href='http://www.youtube.com/results.php?search=action'>action</a><a href='http://www.youtube.com/results.php?search=race'>race</a><br/>                     Added: August 19, 2005<br/></p> ]]>
     </description>
     <guid isPermaLink='true'>$domain/?v=$id</guid>
-    <pubDate>Fri, 19 Aug 2005 05:29:51 -0700</pubDate>
+    <pubDate>$date</pubDate>
     <media:player url='$domain/?v=o$id' />
     <media:thumbnail url='$domain/get_still.php?video_id=$id' width='120' height='90' />
     <media:title>$title</media:title>
