@@ -1,1 +1,6 @@
-AddHandler application/x-httpd-php .rss
+# AddHandler application/x-httpd-php .rss
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^rss/global/recently_added\.rss$ /rss.php?&%{QUERY_STRING}
