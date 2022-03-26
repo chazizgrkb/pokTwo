@@ -16,7 +16,11 @@
    	if (CheckLogin() == false)
    		return false;
    
+   {% if isFavorited %}
+   	alert("Video has been removed from Favorites!");
+   {% else %}
    	alert("Video has been added to Favorites!");
+   {% endif %}
    	return true;
    }
    
@@ -61,7 +65,7 @@
             <div style="font-size: 13px; font-weight: bold; text-align:center;">
                <a href="mailto:?subject={{ video.title }}&amp;body=http://www.youtube.com/?v={{ video.video_id }}">Share</a>
                // <a href="#comment">Comment</a>
-               // <a href="add_favorites.php?video_id={{ video.video_id }}" target="invisible" onclick="return FavoritesHandler();">Add to Favorites</a>
+               // {% if isFavorited %}<a href="remove_favorites.php?video_id={{ video.video_id }}" target="invisible" onclick="return FavoritesHandler();">Remove from Favorites</a>{% else %}<a href="add_favorites.php?video_id={{ video.video_id }}" target="invisible" onclick="return FavoritesHandler();">Add to Favorites</a>{% endif %}
                // <a href="outbox.php?user={{ video.u_name }}&amp;subject=Re: {{ video.title }}">Contact Me</a>
             </div>
             <div style="text-align: center; padding-bottom: 10px;">
@@ -117,7 +121,7 @@
                         </div>
                         <div class="watchAdded">
                            Added: {{ video.time|date("F j, Y") }} by <a href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a> //
-                           <a href="profile_videos.php?user={{ video.u_name }}">Videos</a> ({{ allVideos }}) | <a href="profile_favorites.php?user={{ video.u_name }}">Favorites</a> (123)
+                           <a href="profile_videos.php?user={{ video.u_name }}">Videos</a> ({{ allVideos }}) | <a href="profile_favorites.php?user={{ video.u_name }}">Favorites</a> ({{ favorites }})
                         </div>
                         <div class="watchDetails">
                            Views: {{ viewCount }} | <a href="#comment">Comments</a>: {{ comCount }} 
