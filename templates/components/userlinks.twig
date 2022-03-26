@@ -4,6 +4,10 @@
 	<td><a href="/logout.php">Logout</a></td>
 	<td style="padding: 0px 5px 0px 5px;">|</td>
 	<td><a href="/help.php">Help</a></td>
+	{% if userdata.powerlevel > 3 %}
+	<td style="padding: 0px 5px 0px 5px;">|</td>
+	<td><a href="/admin.php" style="color: red;">Admin</a></td>
+	{% endif %}
 {% else %}
 	<td><a href="signup.php" class="bold">Sign Up</a></td>
 	<td>&nbsp;|&nbsp;</td>

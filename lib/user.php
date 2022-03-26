@@ -8,12 +8,13 @@
  * @return string Userlink HTML code.
  */
 function userlink($user, $pre = '') {
+	$usernameShit = $user[$pre.'name'];
 	if ($user[$pre.'customcolor']) {
 		$user[$pre.'name'] = sprintf('<span style="color:#%s">%s</span>', $user[$pre.'customcolor'], $user[$pre.'name']);
 	}
 
 	return <<<HTML
-		<a class="user" href="/user.php?id={$user[$pre.'id']}"><span class="t_user">{$user[$pre.'name']}</span></a>
+		<a class="user" href="/profile.php?user={$usernameShit}"><span class="t_user">{$user[$pre.'name']}</span></a>
 HTML;
 }
 
