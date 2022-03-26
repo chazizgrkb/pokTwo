@@ -30,6 +30,9 @@ if (isset($_FILES['fileToUpload']))
     $tags = (isset($_POST['tags']) ? $_POST['tags'] : '');
     $tags2 = preg_split('/\s+/', $tags);
     $tagsIDbullshit = array();
+	if (count($tagsIDbullshit) < 3) {
+		die("Less than 3 tags!");
+	}
     foreach ($tags2 as $tag)
     {
         if (!result("SELECT name from tag_meta WHERE name = ?", [$tag]))
