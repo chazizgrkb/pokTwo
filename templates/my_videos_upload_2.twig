@@ -13,7 +13,7 @@
 	<form name="uploadForm" id="uploadForm" method="post" action="/my_videos_upload_2.php" enctype="multipart/form-data">
 	<input type="text" name="title" style="display:none;" value="{{ title }}" hidden>
 	<textarea name="desc" maxlength="500" form="uploadForm" style="width:295px;overflow:hidden;resize:none;display:none;" rows="3" hidden>{{ desc }}</textarea>
-	
+	<input type="text" name="tags" style="display:none;" value="{{ tags }}" hidden>
 	<center><table class="dataEntryTableSmall">
 		<tbody><tr>
                 <td width="125px" valign="top" align="right"><span style="font-size: 14px;font-weight:bold;">File:</span></td>

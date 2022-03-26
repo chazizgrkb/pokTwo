@@ -27,7 +27,16 @@ if (isset($_FILES['fileToUpload'])) {
 	$title = (isset($_POST['title']) ? $_POST['title'] : '');
 	$description = (isset($_POST['desc']) ? $_POST['desc'] : '');
 	$tags = (isset($_POST['tags']) ? $_POST['tags'] : '');
-	
+	$tags2 = preg_split('/\s+/', $tags);
+	$tagsIDbullshit = array();
+	foreach ($tags2 as $tag) {
+		if(!result("SELECT name from tag_meta WHERE name = ?", [$tag])) {
+		query("INSERT INTO tag_meta (name) VALUES (?)",
+			[$tag]);
+		}
+		$number = result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
+		$tagsIDbullshit[] = $number;
+	}
 	//$thumbcmd = "$ffmpegPath -i $target_file -vf \"thumbnail\" -frames:v 1 -s 120x90 $target_thumb";
 	
 	if($vextension != "mp4" && $vextension != "mkv" && $vextension != "wmv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp") {
@@ -80,6 +89,15 @@ if (isset($_FILES['fileToUpload'])) {
 		if (!$error) {
 		query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, tags, videofile, videolength) VALUES (?,?,?,?,?,?,?,?,?)",
 			[$new, $title, $description, $userdata['id'], time(), time(), $tags, $upload_file, $seccount]);
+			
+		$numID = result("SELECT id from videos WHERE video_id = ?", [$new]);
+
+		foreach ($tagsIDbullshit as $tagID) {
+			if(!result("SELECT tag_id from tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $numID])) {
+			query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)",
+				[$numID,$tagID]);
+			}
+		}
 
 		delete_directory($preload_folder);
 		redirect('/watch.php?v='.$new);
@@ -92,4 +110,5 @@ echo $twig->render('my_videos_upload_2.twig', [
 	'error' => $error,
 	'title' =>  $_POST["title"],
 	'desc' =>  $_POST["desc"],
+	'tags' =>  $_POST["tags"],
 ]);
