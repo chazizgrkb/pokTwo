@@ -19,8 +19,14 @@ if (isset($_POST['magic'])) {
 	
 	$dob = $year . "-" . $month . "-" . $day;
 	
+	// this is in case one of those numberblock bfdi kids has enough knowledge in inspect element -grkb 3/26/2022
 	if ($year > $coppaYearBS) {
 		die("Nice try, child.");
+	}
+	
+	// extremely long, i know.  -grkb 3/26/2022
+	if (!preg_match("/^((((19|[2-9]\d)\d{2})\-(0[13578]|1[02])\-(0[1-9]|[12]\d|3[01]))|(((19|[2-9]\d)\d{2})\-(0[13456789]|1[012])\-(0[1-9]|[12]\d|30))|(((19|[2-9]\d)\d{2})\-02\-(0[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))\-02\-29))$/", $dob)) {
+		die("Invalid date.");
 	}
 
 	query("UPDATE users SET title = ?, customcolor = ?, about = ?, location = ?, timezone = ?, signature = ?, birthday = ? WHERE id = ?",
