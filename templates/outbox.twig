@@ -1,0 +1,27 @@
+{% extends "_layout.twig" %}
+
+{% block title %}Send message to {{ user }}{% endblock %}
+
+	{% block content %}
+	<div class="formTitle">Send message to {{ user }}</div>
+	<form name="messageForm" id="messageForm" method="post" action="outbox.php" enctype="multipart/form-data">
+	<input type="text" name="user" style="display:none;" value="{{ user }}" hidden>
+	<center><table class="dataEntryTableSmall">
+		<tbody><tr>
+                <td width="125px" align="right"><span style="font-size: 14px;font-weight:bold;">Title:</span></td>
+                <td><input type="text" name="title" maxlength="100" value="{{ subject }}" style="width:295px"></td>
+            </tr>
+            <tr>
+                <td valign="top" align="right"><span style="font-size: 14px;font-weight:bold;">Message:</span></td>
+                <td><textarea name="message" maxlength="500" form="messageForm" style="width:295px;overflow:hidden;resize:none" rows="7"></textarea></td>
+            </tr>
+<tr>
+                <td width="" align="right" style="white-space: nowrap;"></td>
+                <td>
+        <br>
+<input type="submit" id="send" name="send" value="Send">
+        </td>
+            </tr>   
+    </tbody></table></center>
+	</form>
+	{% endblock %}

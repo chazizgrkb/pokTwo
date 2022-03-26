@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2022 at 04:59 AM
+-- Generation Time: Mar 26, 2022 at 05:19 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -88,8 +88,9 @@ CREATE TABLE `messages` (
   `id` int(11) NOT NULL,
   `sender` bigint(20) NOT NULL,
   `reciever` bigint(20) NOT NULL,
+  `title` text NOT NULL,
   `text` text NOT NULL,
-  `time` bigint(20) NOT NULL DEFAULT current_timestamp()
+  `time` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
