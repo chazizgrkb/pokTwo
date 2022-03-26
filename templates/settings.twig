@@ -5,13 +5,13 @@
 <div class="formTitle">My profile</div>
 <table class="dataEntryTableSmall">
    <tr>
-      <td valign="top" align="right">
+      <td valign="middle" align="right">
          <span style="font-size: 14px;font-weight:bold;">Name</span>
       </td>
       <td class="b"><input type="text" name="title" size="45" maxlength="256" style="width:295px" value="{{ userdata.title }}"></td>
    </tr>
    <tr>
-      <td valign="top" align="right">
+      <td valign="middle" align="right">
          <span style="font-size: 14px;font-weight:bold;">
          About
          </span>
@@ -19,7 +19,7 @@
       <td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual" style="width:295px;overflow:hidden;resize:none">{{ userdata.about }}</textarea></td>
    </tr>
    <tr>
-      <td valign="top" align="right">
+      <td valign="middle" align="right">
          <span style="font-size: 14px;font-weight:bold;">
          Location
          </span>
@@ -28,7 +28,7 @@
    </tr>
    {% if glob_forum %}
    <tr>
-      <td valign="top" align="right">
+      <td valign="middle" align="right">
          <span style="font-size: 14px;font-weight:bold;">
          Forum signature
          </span>
@@ -39,7 +39,7 @@
    <input type="hidden" name="signature" value="{{ userdata.signature }}">
    {% endif %}
    <tr>
-      <td valign="top" align="right">
+      <td valign="middle" align="right">
          <span style="font-size: 14px;font-weight:bold;">Birthday</span>
       </td>
       <td class="b">
@@ -48,10 +48,36 @@
 	  <input type="number" name="year" min="1900" max="{{ miniyear }}" step="1" value="{{ birthday.0 }}" />
 	  </td>
    </tr>
+   <tr>
+      <td valign="middle" align="right">
+         <span style="font-size: 14px;font-weight:bold;">Relationship Status</span>
+      </td>
+      <td class="b">
+		<select name="relationship" id="relationship">
+		  <option value="none">Private / Hide</option>
+		  <option value="single">Single</option>
+		  <option value="taken">Taken</option>
+		  <option value="married">Married</option>
+		</select>
+	  </td>
+   </tr>
+   <tr>
+      <td valign="middle" align="right">
+         <span style="font-size: 14px;font-weight:bold;">Gender</span>
+      </td>
+      <td class="b">
+		<select name="gender" id="gender">
+		  <option value="private">Private</option>
+		  <option value="unknown">Unknown</option>
+		  <option value="male">Male</option>
+		  <option value="female">Female</option>
+		</select>
+	  </td>
+   </tr>
 </table>
 <div class="tableSubTitle">Options</div>
 <table class="settings">
-   <td valign="top" align="right">
+   <td valign="middle" align="right">
       <span style="font-size: 14px;font-weight:bold;">
       Timezone
    </td>

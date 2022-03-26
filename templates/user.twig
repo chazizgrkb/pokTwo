@@ -72,14 +72,18 @@
                      <td>{{ age }} years old</td>
                   </tr>
 				  {% endif %}
+				  {% if gender != "private" %}
                   <tr>
                      <td align="right"><span class="label">Gender:</span></td>
-                     <td>Male</td>
+                     <td>{{ gender|capitalize }}</td>
                   </tr>
+				  {% endif %}
+				  {% if relationship != "none" %}
                   <tr>
                      <td align="right"><span class="label">Relationship Status:</span></td>
-                     <td>Taken</td>
+                     <td>{{ relationship|capitalize }}</td>
                   </tr>
+				  {% endif %}
                   <tr>
                      <td colspan="2">&nbsp;</td>
                   </tr>

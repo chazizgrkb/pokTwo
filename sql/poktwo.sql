@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2022 at 05:19 AM
+-- Generation Time: Mar 26, 2022 at 07:38 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -173,6 +173,7 @@ CREATE TABLE `users` (
   `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password, hashed in bcrypt.',
   `token` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User token for cookie authentication.',
   `joined` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'User''s join date',
+  `birthday` date DEFAULT NULL,
   `lastview` int(11) NOT NULL DEFAULT 0,
   `lastpost` int(11) NOT NULL DEFAULT 0,
   `avatar` tinyint(4) NOT NULL DEFAULT 0,
@@ -180,6 +181,8 @@ CREATE TABLE `users` (
   `timezone` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `powerlevel` tinyint(4) NOT NULL DEFAULT 1,
   `group_id` tinyint(4) NOT NULL DEFAULT 3 COMMENT 'Legacy Acmlmboard-related group ID field.',
+  `relationshipStatus` tinyint(4) NOT NULL,
+  `gender` tinyint(4) NOT NULL,
   `customcolor` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '#523bb8',
   `title` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,

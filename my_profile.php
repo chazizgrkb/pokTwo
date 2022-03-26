@@ -16,6 +16,11 @@ if (isset($_POST['magic'])) {
 	$year			= $_POST['year'] ? $_POST['year'] : null;
 	$month			= $_POST['month'] ? $_POST['month'] : null;
 	$day			= $_POST['day'] ? $_POST['day'] : null;
+	$relationship	= $_POST['relationship'] ? $_POST['relationship'] : null;
+	$gender			= $_POST['gender'] ? $_POST['gender'] : null;
+	
+	$relationStatus = type_to_relationship($relationship);
+	$genderShit = type_to_gender($gender);
 	
 	$dob = $year . "-" . $month . "-" . $day;
 	
@@ -29,8 +34,8 @@ if (isset($_POST['magic'])) {
 		die("Invalid date.");
 	}
 
-	query("UPDATE users SET title = ?, customcolor = ?, about = ?, location = ?, timezone = ?, signature = ?, birthday = ? WHERE id = ?",
-		[$title, $customcolor, $about, $location, $timezone, $signature, $dob, $userdata['id']]);
+	query("UPDATE users SET title = ?, customcolor = ?, about = ?, location = ?, timezone = ?, signature = ?, birthday = ?, relationshipStatus = ?, gender = ? WHERE id = ?",
+		[$title, $customcolor, $about, $location, $timezone, $signature, $dob, $relationStatus, $genderShit, $userdata['id']]);
 
 	redirect(sprintf("/profile.php?user=%s&edited", $userdata['name']));
 }

@@ -42,6 +42,42 @@ function die_dump($thingy) {
 	return false;
 }
 
+function type_to_relationship($type) {
+	return match ($type) {
+		'none'		=> 0,
+		'single'	=> 1,
+		'taken'		=> 2,
+		'married'	=> 3,
+	};
+}
+
+function relationship_to_type($relationship) {
+	return match ($relationship) {
+		0 => 'none',
+		1 => 'single',
+		2 => 'taken',
+		3 => 'married'
+	};
+}
+
+function type_to_gender($type) {
+	return match ($type) {
+		'private'	=> 0,
+		'unknown'	=> 1,
+		'male'		=> 2,
+		'female'	=> 3,
+	};
+}
+
+function gender_to_type($gender) {
+	return match ($gender) {
+		0 => 'private',
+		1 => 'unknown',
+		2 => 'male',
+		3 => 'female',
+	};
+}
+
 /**
  * Get hash of latest git commit
  *

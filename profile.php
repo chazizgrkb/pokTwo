@@ -45,4 +45,6 @@ echo $twig->render('user.twig', [
 	'edited' => (isset($_GET['edited']) ? true : false), // TODO: merge these three stuffs into one variable
 	'justbanned' => (isset($_GET['justbanned']) ? $_GET['justbanned'] : null),
 	'age' => $age,
+	'relationship' => relationship_to_type($userpagedata['relationshipStatus']),
+	'gender' => gender_to_type($userpagedata['gender']),
 ]);
