@@ -56,7 +56,13 @@
                   <!-- Personal Information: -->
                   <tr>
                      <td align="right"><span class="label">Name:</span></td>
-                     <td>{{ customProfile.name }}</td>
+                     <td>
+					 {% if userpagedata.title is empty %}
+					 None
+					 {% else %}
+					 {{ userpagedata.title }}
+					 {% endif %}
+					 </td>
                   </tr>
                   <tr>
                      <td align="right"><span class="label">Age:</span></td>
