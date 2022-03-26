@@ -15,6 +15,8 @@ if (isset($_POST['send'])) {
 	$reciever_id = result("SELECT id from users where name = ?", [$username]);
 	
 	query("INSERT INTO messages (sender, reciever, title, text, time) VALUES (?,?,?,?,?)", [$userdata['id'], $reciever_id, $title, $message, time()]);
+	
+	redirect('my_messages.php?sentMessage=true');
 }
 
 $twig = twigloader();

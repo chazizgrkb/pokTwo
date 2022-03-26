@@ -1,5 +1,10 @@
 {% extends "_layout.twig" %}
 {% block content %}
+{% if sentMessage %}
+<div class="success">
+Sent message.
+</div>
+{% endif %}
 <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
    <tbody>
       <tr>
@@ -36,7 +41,7 @@
                               <tbody>
                                  <tr>
                                     <td><a href="profile.php?user={{ message.u_name }}"><img src="get_still.php?video_id={{ video.video_id }}&amp;still_id=2" class="moduleEntryThumb" width="100" height="75"></a></td>
-                                 </tr>
+								 </tr>
                               </tbody>
                            </table>
                         </td>
@@ -46,6 +51,9 @@
                               {{ message.text }}
                            </div>
                            <div class="moduleEntryDetails">Sent: {{ message.time|date("F j, Y") }} by <a href="profile.php?user={{ message.u_name }}">{{ message.u_name }}</a></div>
+							<form method="post" action="outbox.php?user={{ message.u_name }}&subject=Re: {{ message.title }}">
+							  <input type="submit" value="Reply">
+						    </form>
                         </td>
                      </tr>
                   </tbody>
