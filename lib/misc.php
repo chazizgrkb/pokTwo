@@ -37,6 +37,11 @@ function delete_directory($dirname) {
      return true;
 }
 
+function die_dump($thingy) {
+	die(var_dump($thingy));
+	return false;
+}
+
 /**
  * Get hash of latest git commit
  *

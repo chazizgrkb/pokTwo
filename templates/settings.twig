@@ -6,20 +6,10 @@
 <table class="dataEntryTableSmall">
    <tr>
       <td valign="top" align="right">
-         <span style="font-size: 14px;font-weight:bold;">Title</span>
+         <span style="font-size: 14px;font-weight:bold;">Name</span>
       </td>
       <td class="b"><input type="text" name="title" size="45" maxlength="256" style="width:295px" value="{{ userdata.title }}"></td>
    </tr>
-   {% if userdata.powerlevel > 1 %}
-   <tr>
-      <td valign="top" align="right">
-         <span style="font-size: 14px;font-weight:bold;">
-         Custom color
-         </span>
-      </td>
-      <td class="b"><input name="customcolor" value="{{ userdata.customcolor | default('0000aa') }}" style="width:295px" data-jscolor="{}"></td>
-   </tr>
-   {% endif %}
    <tr>
       <td valign="top" align="right">
          <span style="font-size: 14px;font-weight:bold;">
@@ -48,6 +38,16 @@
    {% else %}
    <input type="hidden" name="signature" value="{{ userdata.signature }}">
    {% endif %}
+   <tr>
+      <td valign="top" align="right">
+         <span style="font-size: 14px;font-weight:bold;">Birthday</span>
+      </td>
+      <td class="b">
+	  <input type="number" name="month" min="01" max="12" step="1" value="{{ birthday.1 }}" />
+	  <input type="number" name="day" min="01" max="31" step="1" value="{{ birthday.2 }}" />
+	  <input type="number" name="year" min="1900" max="{{ miniyear }}" step="1" value="{{ birthday.0 }}" />
+	  </td>
+   </tr>
 </table>
 <div class="tableSubTitle">Options</div>
 <table class="settings">

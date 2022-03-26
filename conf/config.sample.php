@@ -10,6 +10,8 @@ $tplNoCache = false; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
 // Array of memcached server(s) for memcache caching. Leave empty to disable memcache caching.
 $memcachedServers = [];
 
+$basepath = '/';
+
 $tplCache = 'templates/cache';
 $tplNoCache = true; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
 
