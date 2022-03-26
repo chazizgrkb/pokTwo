@@ -30,7 +30,7 @@
 <div style="font-size: 13px; color: #333333; margin-bottom: 30px; text-align: center; width: 50%; margin-left: auto; margin-right: auto;">
 
 {% for tag in tags %}
-	<a style="font-size: 12px;" href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
+	<a style="font-size: {% if random(1, 100) > 75 %}17px{% else %}12px{% endif %};" href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
 {% else %}
 	<p>No tags!</p>
 {% endfor %}

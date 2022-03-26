@@ -27,13 +27,17 @@
                   <tbody>
                      <tr>
                         <td align="center">
-                           <div class="highlight">Last Video Added</div>
+						<div class="highlight">Last Video Added</div>
+						{% if latestVideo %}
                            <a href="watch.php?v={{ latestVideo.video_id }}"><img src="get_still.php?video_id={{ latestVideo.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
                            <div class="moduleFeaturedTitle"><a href="watch.php?v={{ latestVideo.video_id }}">{{ latestVideo.title }}</a></div>
                            <div class="moduleFeaturedDetails">Added: {{ latestVideo.time|date("F j, Y") }}<br>by <a href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a></div>
                            <div class="moduleFeaturedDetails">Views: {{ latestVideo.views }}</div>
                            <div class="moduleFeaturedDetails">Comments: {{ latestVideo.comments }}</div>
-                           <br>
+						{% else %}
+							<div class="moduleFeaturedDetails">{{ userpagedata.name }} does not have any uploaded videos.</div>
+						{% endif %}
+						<br>
                            <form method="post" action="outbox.php?user={{ userpagedata.name }}">
                               <input type="submit" value="Contact Me!">
                            </form>
@@ -54,20 +58,20 @@
                      <td>{{ userpagedata.name }}</td>
                   </tr>
                   <!-- Personal Information: -->
+				  {% if userpagedata.title %}
                   <tr>
                      <td align="right"><span class="label">Name:</span></td>
                      <td>
-					 {% if userpagedata.title is empty %}
-					 None
-					 {% else %}
 					 {{ userpagedata.title }}
-					 {% endif %}
 					 </td>
                   </tr>
+				  {% endif %}
+				  {% if age %}
                   <tr>
                      <td align="right"><span class="label">Age:</span></td>
-                     <td>31 years old</td>
+                     <td>{{ age }} years old</td>
                   </tr>
+				  {% endif %}
                   <tr>
                      <td align="right"><span class="label">Gender:</span></td>
                      <td>Male</td>

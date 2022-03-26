@@ -85,7 +85,7 @@ if (isset($_FILES['fileToUpload']))
 
         if (!$error)
         {
-            query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $seccount]);
+            query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $seccount]);
 
             $numID = result("SELECT id from videos WHERE video_id = ?", [$new]);
 

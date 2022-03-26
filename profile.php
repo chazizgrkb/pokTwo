@@ -17,6 +17,15 @@ if (!isset($userpagedata) || !$userpagedata) {
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 $forceuser = isset($_GET['forceuser']);
 
+if (isset($userpagedata['birthday'])) {
+$date = new DateTime($userpagedata['birthday']); // YYYY-MM-DD
+$now = new DateTime();
+$interval = $now->diff($date);
+$age = $interval->y;
+} else {
+$age = false;
+}
+
 // Personal user page stuff
 if ($userpagedata['about']) {
 	$markdown = new Parsedown();
@@ -34,5 +43,6 @@ echo $twig->render('user.twig', [
 	'forceuser' => $forceuser,
 	'page' => $page,
 	'edited' => (isset($_GET['edited']) ? true : false), // TODO: merge these three stuffs into one variable
-	'justbanned' => (isset($_GET['justbanned']) ? $_GET['justbanned'] : null)
+	'justbanned' => (isset($_GET['justbanned']) ? $_GET['justbanned'] : null),
+	'age' => $age,
 ]);
