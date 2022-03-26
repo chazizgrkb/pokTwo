@@ -73,14 +73,12 @@ if ($log) {
 	if ($userdata['powerlevel'] == 0) {
 		$userdata['banreason'] = result("SELECT reason FROM bans WHERE user = ?", [$id]);
 	}
-
-	query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), $_SERVER['REMOTE_ADDR'], $userdata['id']]);
 } else {
 	$userdata['powerlevel'] = 1;
 	$userdata['darkmode'] = $darkModeDefault;
 }
 
 if (!$log || !$userdata['timezone'])
-	$userdata['timezone'] = 'Europe/Stockholm'; // I'm a self-centered egomaniac! Time itself centers around me!
+	$userdata['timezone'] = 'America/New_York'; // I'm a self-centered egomaniac! Time itself centers around me!
 
 date_default_timezone_set($userdata['timezone']);

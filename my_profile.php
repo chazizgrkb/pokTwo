@@ -12,7 +12,7 @@ if (isset($_POST['magic'])) {
 	$about			= $_POST['about'] ? $_POST['about'] : null;
 	$location		= $_POST['location'] ? $_POST['location'] : null;
 	$signature		= $_POST['signature'] ? $_POST['signature'] : null;
-	$timezone		= $_POST['timezone'] != 'Europe/Stockholm' ? $_POST['timezone'] : null;
+	$timezone		= $_POST['timezone'] != 'America/New_York' ? $_POST['timezone'] : null;
 	$year			= $_POST['year'] ? $_POST['year'] : null;
 	$month			= $_POST['month'] ? $_POST['month'] : null;
 	$day			= $_POST['day'] ? $_POST['day'] : null;

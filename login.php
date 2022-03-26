@@ -22,6 +22,8 @@ if (isset($_POST['field_command'])) {
 
 	if ($error == '') {
 		setcookie($cookieName, $logindata['token'], 2147483647);
+		$nid = result("SELECT id FROM users WHERE token = ?", [$logindata['token']]);
+		query("UPDATE users SET lastview = ?, ip = ? WHERE id = ?", [time(), $_SERVER['REMOTE_ADDR'], $nid]);
 
 		redirect('./');
 	}
