@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2022 at 08:37 PM
+-- Generation Time: Mar 26, 2022 at 04:59 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -54,17 +54,6 @@ CREATE TABLE `channel_comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `channel_settings`
---
-
-CREATE TABLE `channel_settings` (
-  `user` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `comments`
 --
 
@@ -100,7 +89,7 @@ CREATE TABLE `messages` (
   `sender` bigint(20) NOT NULL,
   `reciever` bigint(20) NOT NULL,
   `text` text NOT NULL,
-  `date` bigint(20) NOT NULL DEFAULT current_timestamp()
+  `time` bigint(20) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -166,7 +155,7 @@ CREATE TABLE `tag_index` (
 --
 
 CREATE TABLE `tag_meta` (
-  `id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
   `name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -217,8 +206,7 @@ CREATE TABLE `videos` (
   `flags` tinyint(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '8 bools to determine certain video properties',
   `category_id` int(11) DEFAULT 0 COMMENT 'Category ID for the video',
   `videofile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Path to the video file(?)',
-  `videolength` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'Length of the video in seconds',
-  `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Video tags, serialized in JSON'
+  `videolength` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'Length of the video in seconds'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -241,12 +229,6 @@ CREATE TABLE `views` (
 --
 ALTER TABLE `channel_comments`
   ADD PRIMARY KEY (`comment_id`);
-
---
--- Indexes for table `channel_settings`
---
-ALTER TABLE `channel_settings`
-  ADD PRIMARY KEY (`user`);
 
 --
 -- Indexes for table `comments`
@@ -282,7 +264,7 @@ ALTER TABLE `posts`
 -- Indexes for table `tag_meta`
 --
 ALTER TABLE `tag_meta`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`tag_id`);
 
 --
 -- Indexes for table `users`
@@ -340,7 +322,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `tag_meta`
 --
 ALTER TABLE `tag_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
