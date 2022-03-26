@@ -37,7 +37,7 @@ if ($userpagedata['about']) {
 }
 
 $twig = twigloader();
-echo $twig->render('user.twig', [
+echo $twig->render('profile.twig', [
 	'id' => $userpagedata['id'],
 	'name' => $userpagedata['name'],
 	'latestVideo' => $latestVideo,
