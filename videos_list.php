@@ -1,6 +1,8 @@
 <?php
 require('lib/common.php');
 
+$page = "embed_list";
+
 if (isset($_GET['id'])) {
 	$userpagedata = fetch("SELECT * FROM users WHERE id = ?", [$_GET['id']]);
 } else if (isset($_GET['user'])) {

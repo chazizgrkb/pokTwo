@@ -197,7 +197,7 @@
                               </tbody>
                            </table>
                         </div>
-                        <iframe id="side_results" name="side_results" src="include_results.php?v={{ video.video_id }}&amp;search={% for tag in tags %}{{ tag.name }}+{% endfor %}#selected" scrolling="auto" width="270" height="400" frameborder="0" marginheight="0" marginwidth="0">
+                        <iframe id="side_results" name="side_results" src="include_results.php?v={{ video.video_id }}&amp;search={% for tag in tags %}{{ tag.name ~ "+" }}{% endfor %}#selected" scrolling="auto" width="270" height="400" frameborder="0" marginheight="0" marginwidth="0">
                         [Content for browsers that don't support iframes goes here]
                         </iframe>
                      </td>
