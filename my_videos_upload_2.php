@@ -56,8 +56,8 @@ if (isset($_FILES['fileToUpload']))
 
     if (move_uploaded_file($temp_name, $target_file))
     {
-        $seccount = round(exec("$ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 " . $target_file));
-        $seccount = $seccount / 3;
+        $seccount_og = round(exec("$ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 " . $target_file));
+        $seccount = $seccount_og / 3;
         $seccount = round($seccount);
         $thumbcmd1 = $ffmpegPath . " -i " . $target_file . " -vframes 1 -an -s 120x90 -ss " . $seccount . " -frames:v 1 thumbs/" . $new . ".1.jpg ";
         $seccount2 = $seccount + $seccount;
@@ -88,7 +88,7 @@ if (isset($_FILES['fileToUpload']))
 
         if (!$error)
         {
-            query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $seccount]);
+            query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $seccount_og]);
 
             $numID = result("SELECT id from videos WHERE video_id = ?", [$new]);
 
