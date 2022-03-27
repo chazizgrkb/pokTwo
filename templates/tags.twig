@@ -14,7 +14,7 @@
 	<div style="font-size: 16px; font-weight: bold; color: #666666; margin-bottom: 10px;">Most Popular Tags //</div>
 	<div style="margin-bottom: 20px;">
 		{% for tag in mostPopularTags %}
-			<a style="font-size: {% if tag.use_count > 10 %}17px{% else %}12px{% endif %};" href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
+			<a style="font-size: {% if tag.use_count > 10 %}20px{% elseif tag.use_count > 25 %}28px{% else %}14px{% endif %};" href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
 		{% else %}
 			<p>No tags!</p>
 		{% endfor %}
