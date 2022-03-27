@@ -29,13 +29,17 @@ if (fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$vid
     query("INSERT INTO views (video_id, user) VALUES (?,?)", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.") ]);
 }
 
-if (result("SELECT * from favorites WHERE video_id = ? AND user_id = ?", [$videoData['video_id'], $userdata['id']]))
-{
-    $isFavorited = true;
-}
-else
-{
-    $isFavorited = false;
+if ($log) {
+	if (result("SELECT * from favorites WHERE video_id = ? AND user_id = ?", [$videoData['video_id'], $userdata['id']]))
+	{
+		$isFavorited = true;
+	}
+	else
+	{
+		$isFavorited = false;
+	}
+} else {
+	$isFavorited = false;
 }
 
 if (isset($_GET['flash']) ? $_GET['flash'] : null)
@@ -48,7 +52,7 @@ else
 }
 
 $commentCount = fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$videoData['video_id']]) ['COUNT(id)'];
-$favoritesCount = fetch("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$userdata['id']]) ['COUNT(user_id)'];
+$favoritesCount = fetch("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$videoData['u_id']]) ['COUNT(user_id)'];
 $viewCount = fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
 
 $tags = fetchArray(query("SELECT * FROM `tag_index` ti JOIN tag_meta t ON (t.tag_id = ti.tag_id) WHERE ti.video_id = ?", [$videoData['id']]));

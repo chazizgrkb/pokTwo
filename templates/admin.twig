@@ -35,7 +35,7 @@
 				{% for video in videos %}
 					<tr>
 						<td class="b"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</td>
-						<td class="b">{{ video.date | relative_time }}</td>
+						<td class="b">{{ video.time | relative_time }}</td>
 					</tr>
 				{% endfor %}
 			</table>

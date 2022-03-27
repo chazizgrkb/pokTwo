@@ -22,7 +22,7 @@ if (isset($_FILES['fileToUpload']))
     $temp_name = $_FILES['fileToUpload']['tmp_name'];
     $target_file = "preload/" . $new . "/" . $new . "." . $vextension;
     $preload_folder = "preload/" . $new;
-    $upload_file = "media/" . $new . "." . $vextension;
+    $upload_file = "media/" . $new . "." . mp4;
     $target_thumb = "thumbs/" . $new . ".jpg";
 
     $title = (isset($_POST['title']) ? $_POST['title'] : '');
@@ -30,9 +30,6 @@ if (isset($_FILES['fileToUpload']))
     $tags = (isset($_POST['tags']) ? $_POST['tags'] : '');
     $tags2 = preg_split('/\s+/', $tags);
     $tagsIDbullshit = array();
-	if (count($tagsIDbullshit) < 3) {
-		die("Less than 3 tags!");
-	}
     foreach ($tags2 as $tag)
     {
         if (!result("SELECT name from tag_meta WHERE name = ?", [$tag]))
@@ -42,6 +39,9 @@ if (isset($_FILES['fileToUpload']))
         $number = result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
         $tagsIDbullshit[] = $number;
     }
+	if (count($tagsIDbullshit) < 3) {
+		die("Less than 3 tags!");
+	}
     //$thumbcmd = "$ffmpegPath -i $target_file -vf \"thumbnail\" -frames:v 1 -s 120x90 $target_thumb";
     if ($vextension != "mp4" && $vextension != "mkv" && $vextension != "wmv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp")
     {
