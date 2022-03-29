@@ -22,7 +22,7 @@ if (isset($_FILES['fileToUpload']))
     $temp_name = $_FILES['fileToUpload']['tmp_name'];
     $target_file = "preload/" . $new . "/" . $new . "." . $vextension;
     $preload_folder = "preload/" . $new;
-    $upload_file = "media/" . $new . "." . mp4;
+    $upload_file = "media/" . $new . ".mp4";
     $target_thumb = "thumbs/" . $new . ".jpg";
 
     $title = (isset($_POST['title']) ? $_POST['title'] : '');
