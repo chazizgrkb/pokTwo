@@ -25,7 +25,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 		$twig = $customenv($loader, $doCache);
 	}
 
-	// Add principia-web specific extension
+	// Add pokTwo specific extension
 	$twig->addExtension(new pokTwoExtension());
 
 	$twig->addGlobal('userdata', $userdata);
@@ -34,6 +34,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('smallHeader', $showSmallHeader);
 	$twig->addGlobal('pageName', $pageName);
 	$twig->addGlobal('searchText', $searchShit);
+	$twig->addGlobal('glob_lpp', $lpp);
 
 	return $twig;
 }

@@ -3,6 +3,8 @@ require('lib/common.php');
 
 if (!$log) redirect('login.php');
 
+$pageName = "myMessages";
+
 $sentMessage = (isset($_GET['sentMessage']) ? $_GET['sentMessage'] : null);
 
 $twig = twigloader();

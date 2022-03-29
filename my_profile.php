@@ -3,6 +3,8 @@ require('lib/common.php');
 
 if (!$log) redirect('login.php');
 
+$pageName = "settings";
+
 $coppaYearBS = date('Y') - 13;
 
 $birthday = explode('-', $userdata['birthday']);
