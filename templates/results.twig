@@ -2,7 +2,9 @@
 
 {% block title %}{{ query }}{% endblock %}
 
-	{% block content %}
+{% set le_url = 'results.php?search=%s' %}
+
+{% block content %}
 <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
 			<tbody><tr>
 				<td><img src="/img/box_login_tl.gif" width="5" height="5"></td>
@@ -19,7 +21,7 @@
 						<td><div class="moduleTitle">Search // {{ query }}</div></td>
 						<td align="right">
 						<div style="font-weight: color: #444; margin-right: 5px;">
-						Results <b>1-10</b> of <b>[placeholder]</b> for <b>'{{ query }}'</b>. (<b>[placeholder]</b> seconds)						</div>
+						Results <b>1-10</b> of <b>{{ count }}</b> for <b>'{{ query }}'</b>. (<b>[placeholder]</b> seconds)						</div>
 						</td>
 					</tr>
 				</tbody></table>
@@ -56,8 +58,8 @@
 				<!-- begin paging -->
 				<div style="font-size: 13px; font-weight: bold; color: #444; text-align: right; padding: 5px 0px 5px 0px;">Result Page:
 
-					
-					&nbsp;<a href="results.php?search={{ query }}&amp;page=1">&lt;&nbsp;Previous</a>&nbsp;<span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=1">1</a></span><span style="color: #444; background-color: #FFFFFF; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;">2</span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=3">3</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=4">4</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=5">5</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=6">6</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=7">7</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=8">8</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=9">9</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=10">10</a></span><a href="results.php?search={{ query }}&amp;page=3">Next&nbsp;&gt;</a>&nbsp;					
+					{{ pagination(count, glob_lpp, le_url, page) }}
+					<!-- &nbsp;<a href="results.php?search={{ query }}&amp;page=1">&lt;&nbsp;Previous</a>&nbsp;<span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=1">1</a></span><span style="color: #444; background-color: #FFFFFF; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;">2</span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=3">3</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=4">4</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=5">5</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=6">6</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=7">7</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=8">8</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=9">9</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=10">10</a></span><a href="results.php?search={{ query }}&amp;page=3">Next&nbsp;&gt;</a>&nbsp;-->					
 					
 				</div>
 				<!-- end paging -->
@@ -72,4 +74,4 @@
 				<td><img src="/img/box_login_br.gif" width="5" height="5"></td>
 			</tr>
 		</tbody></table>
-	{% endblock %}
+{% endblock %}
