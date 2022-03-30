@@ -7,47 +7,45 @@
 	<div class="header_message">{{ error }}</div>
 {% endif %}
 
-<div class="formTitle">Sign Up</div>
-
-<div class="formTable">
+<div class="tableSubTitle">Sign Up</div>
 					
-<div class="formIntro">Please enter your account information below. All fields are required.</div>
+Please enter your account information below. All fields are required
 
-			<table width="720" cellpadding="5" cellspacing="0" border="0">
-			<form method="post" action="signup.php">
-			<input type="hidden" name="field_command" value="signup_submit">
-			
-				<tbody><tr>
-					<td width="200" align="right"><span class="label">Email Address:</span></td>
-					<td><input type="text" size="30" maxlength="60" name="field_signup_email" value=""></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="label">User Name:</span></td>
-					<td><input type="text" size="20" maxlength="20" name="field_signup_username" value=""></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="label">Password:</span></td>
-					<td><input type="password" size="20" maxlength="20" name="field_signup_password_1" value=""></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="label">Retype Password:</span></td>
-					<td><input type="password" size="20" maxlength="20" name="field_signup_password_2" value=""></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td><br>- I certify I am over 13 years old.
-					<br>- I agree to the <a href="terms.php" target="_blank">terms of use</a> and <a href="privacy.php" target="_blank">privacy policy</a>.</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td><input type="submit" value="Sign Up"></td>
-				</tr>
-				
-				<tr>
-					<td>&nbsp;</td>
-					<td><br>Or, <a href="index.php">return to the homepage</a>.</td>
-				</tr>
-			</tbody></table>
-			</form>
-		</div>
+<table width="100%" cellpadding="5" cellspacing="0" border="0">
+<form method="post" action="signup.php">
+
+<input type="hidden" name="field_command" value="signup_submit">
+
+	<tbody><tr>
+		<td width="200" align="right"><span class="label">Email Address:</span></td>
+		<td><input type="text" size="30" maxlength="60" name="field_signup_email" value=""></td>
+	</tr>
+	<tr>
+		<td align="right"><span class="label">User Name:</span></td>
+		<td><input type="text" size="20" maxlength="20" name="field_signup_username" value=""></td>
+	</tr>
+	<tr>
+		<td align="right"><span class="label">Password:</span></td>
+		<td><input type="password" size="20" maxlength="20" name="field_signup_password_1" value=""></td>
+	</tr>
+	<tr>
+		<td align="right"><span class="label">Retype Password:</span></td>
+		<td><input type="password" size="20" maxlength="20" name="field_signup_password_2" value=""></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><br>- I certify I am over 13 years old.
+		<br>- I agree to the <a href="terms.php" target="_blank">terms of use</a> and <a href="privacy.php" target="_blank">privacy policy</a>.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><input type="submit" value="Sign Up"></td>
+	</tr>
+	</form>
+	
+	<tr>
+		<td>&nbsp;</td>
+		<td><br>Or, <a href="index.php">return to the homepage</a>.</td>
+	</tr>
+</tbody></table>
 	{% endblock %}
