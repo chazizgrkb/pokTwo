@@ -9,7 +9,57 @@
    <body>
       {% block script %}
       {% endblock %}
-      <table align="center" width="100%" bgcolor="#D5E5F5" cellpadding="0" cellspacing="0" border="0">
+<table width="800" cellpadding="0" cellspacing="0" border="0" align="center">
+	<tbody><tr>
+		<td bgcolor="#FFFFFF" style="padding-bottom: 25px;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tbody><tr valign="top">
+		<td width="130" rowspan="2" style="padding: 0px 5px 5px 5px;"><a href="index.php"><img src="img/logo_sm.gif" width="120" height="48" alt="PokTwo" border="0"></a></td>
+		<td valign="top">
+		
+		<table width="670" cellpadding="0" cellspacing="0" border="0">
+			<tbody><tr valign="top">
+				<td style="padding: 0px 5px 0px 5px; font-style: italic;">This time, it's not PokTube, I swear.</td>
+				<td align="right">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tbody><tr>
+					
+{% include "/components/userlinks.twig" %}
+
+				
+			</tr>
+		</tbody></table>
+		</td>
+		</tr>
+		</tbody></table>
+		</td>
+	</tr>
+
+		<tr>
+		<td width="100%">
+		
+		<div style="font-size: 12px; font-weight: bold; float: right; padding: 10px 5px 0px 5px;"><a href="my_videos_upload.php">Upload Videos</a> &nbsp;//&nbsp; <a href="browse.php">Browse Videos</a></div>
+		
+		<table cellpadding="2" cellspacing="0" border="0">
+			<tbody><tr>
+				<form method="GET" action="results.php">
+				<td>
+					<input type="text" value="" name="search" size="30" maxlength="128" style="color:#ff3333; font-size: 14px; padding: 2px;">
+				</td>
+				<td>
+					<input type="submit" value="Search Videos">
+				</td>
+				
+			</tr>
+		</tbody></table>
+		</form>
+		
+		</td>
+	</tr>
+
+			
+</tbody></table>
+      <table align="center" width="100%" bgcolor="#D5E5F5" cellpadding="0" cellspacing="0" border="0" style="margin: 5px 0px 10px 0px;">
          <tbody>
             <tr>
                <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
@@ -31,8 +81,6 @@
                                        <td><a href="my_videos.php">My Videos</a></td>
                                        <td>&nbsp;|&nbsp;</td>
                                        <td><a href="my_favorites.php">My Favorites</a></td>
-                                       <td>&nbsp;|&nbsp;</td>
-                                       <td><a href="my_messages.php" {% if pageName == "myMessages" %}class="bold"{% endif %}>My Messages</a>
                                        </td>
                                        <td>&nbsp;|&nbsp;</td>
                                        <td><a href="my_profile.php" {% if pageName == "settings" %}class="bold"{% endif %}>My Profile</a></td>
@@ -53,74 +101,16 @@
             </tr>
          </tbody>
       </table>
-      {% if smallHeader %}
-      <div class="tableLinkBar">
-         <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tbody>
-               <tr>
-                  <td width="100%" align="right">
-                     <table align="right" cellpadding="2" cellspacing="0" border="0">
-                        <tbody>
-                           <tr>
-                              {% include "/components/userlinks.twig" %}
-                           </tr>
-                        </tbody>
-                     </table>
-                  </td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-      {% else %}
-      <div class="tableLinkBar">
-         <table width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tbody>
-               <tr valign="top">
-                  <td width="130" rowspan="2"><a href="index.php"><img src="img/logo_sm.gif" width="120" height="48" alt="YouTube" border="0" hspace="5" vspace="8"></a></td>
-                  <td width="100%" align="right">
-                     <table align="right" cellpadding="2" cellspacing="0" border="0">
-                        <tbody>
-                           <tr>
-                              {% include "/components/userlinks.twig" %}
-                           </tr>
-                        </tbody>
-                     </table>
-                  </td>
-               </tr>
-               <tr>
-                  <td width="100%">
-                     <table cellpadding="2" cellspacing="0" border="0">
-                        <tbody>
-                           <tr>
-                              <form method="GET" action="results.php">
-                                 <td>
-                                    <input type="text" value="{{ searchText }}" name="search" size="30" maxlength="128" style="color:#ff3333; font-size: 16px; padding: 3px;">
-                                 </td>
-                                 <td>
-                                    <input type="submit" value="Search Videos">
-                                 </td>
-                              </form>
-                              <td width="100%">
-                                 <div style="font-size: 13px; font-weight: bold; padding: 4px 6px 4px 6px; background-color:#FFCC66; float: right;"><a href="browse.php">Browse Videos</a> <span style="color: #CC6600; font-size: 10px;">NEW!</span></div>
-                                 <div style="font-size: 13px; font-weight: bold; text-align: right; margin-right: 5px; padding: 4px;"><a href="my_videos_upload.php">Upload Videos</a> &nbsp;//&nbsp; </div>
-                              </td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-      {% endif %}
+<div style="padding: 0px 5px 0px 5px;">
       {% block content %}{% endblock %}
-      <br>
-      <table bgcolor="#FFFFFF" align="center" cellpadding="10" border="0">
-         <tbody>
-            <tr>
-               <td align="center" valign="center"><span class="footer"><a href="about.php">About Us</a> | <a href="contact.php">Contact Us</a> | <a href="terms.php">Terms of Use</a> | <a href="privacy.php">Privacy Policy</a> | By Chaz "Gamerappa" Peloquin | <a href="rss/global/recently_added.rss"><img src="/img/rss.gif" width="36" height="14" border="0" style="vertical-align: text-top;"></a></span></td>
-            </tr>
-         </tbody>
-      </table>
+</div>
+      </tr></tbody></table>
+<table cellpadding="10" cellspacing="0" border="0" align="center">
+	<tbody><tr>
+		<td align="center" valign="center"><span class="footer"><a href="whats_new.php">What's New</a> | <a href="about.php">About Us</a> | <a href="help.php">Help</a> | <a href="terms.php">Terms of Use</a> | <a href="privacy.php">Privacy Policy</a>
+		<br><br>By Gamerappa | <a href="rss/global/recently_added.rss"><img src="/img/rss.gif" width="36" height="14" border="0" style="vertical-align: text-top;"></a></span></td>
+	</tr>
+</tbody></table>
+	  
    </body>
 </html>

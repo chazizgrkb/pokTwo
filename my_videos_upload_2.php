@@ -68,7 +68,7 @@ if (isset($_FILES['fileToUpload']))
         exec($thumbcmd1);
         exec($thumbcmd2);
         exec($thumbcmd3);
-        exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240 -c:v libx264 -b:a 56k  -c:a mp3 -ar 22050 media/" . $new . ".mp4");
+        exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240 -c:v libx264 -b:a 56k  -c:a aac -ar 22050 media/" . $new . ".mp4");
         exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240 -c:v flv1 -b:a 80k  -c:a mp3 -ar 22050 media/" . $new . ".flv");
 
         clearstatcache();
