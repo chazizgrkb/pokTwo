@@ -21,8 +21,6 @@ $videoData = query("SELECT $userfields $videofields FROM videos v JOIN users u O
 $pageName = "browseMain";
 }
 
-die_dump(fetchArray($videoData));
-
 $twig = twigloader();
 
 echo $twig->render('browse.twig', [
