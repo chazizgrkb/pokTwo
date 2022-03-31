@@ -33,7 +33,7 @@ $twig = twigloader();
 echo $twig->render('profile.twig', [
 	'id' => $userpagedata['id'],
 	'name' => $userpagedata['name'],
-	'latestVideo' => fetchVideos("author", $userpagedata['id'], "v.id", 1),
+	'latestVideo' => fetchVideos("author", $userpagedata['id'], "v.id DESC", 1),
 	'allVideos' => getUserVideoCount($userpagedata['id']),
 	'allFavorites' => getUserFavoriteCount($userpagedata['id']),
 	'userpagedata' => $userpagedata,
