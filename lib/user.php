@@ -2,7 +2,7 @@
 namespace pokTwo;
 
 /**
- * Return HTML code for an userlink, including stuff like custom colors
+ * Return HTML code for an userlink.
  *
  * @param array $user User array containing user fields. Retrieve this from the database using userfields().
  * @param string $pre $user key prefix.

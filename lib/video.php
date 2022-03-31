@@ -1,6 +1,7 @@
 <?php
 namespace pokTwo;
 
+// this is like that so that it stays readable in the code and doesn't introduce a fucking huge scrollbar on github. -grkb 3/31/2022
 $recommendedfields = "
     jaccard.video_id,
     jaccard.intersect,
@@ -45,6 +46,14 @@ function videofields()
     return 'v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author';
 }
 
+
+/**
+ * Return a list of videos that are simillar to the video the user is watching.
+ *
+ * @param string $videoID The ID of the currently watched video.
+ * @return array A video list, ordered by "relevancy".
+ */
+ 
 function getRecommended($videoID)
 {
     global $userfields, $videofields, $recommendedfields;
@@ -59,10 +68,16 @@ function getRecommended($videoID)
     return $videoList;
 }
 
+/**
+ * Return a list of videos that are simillar to the video the user is watching.
+ *
+ * @param string $videoID The ID of the currently watched video.
+ * @return array Number of every single recommended video, goes further than 20 if there are more than 20 recommended videos.
+ */
 function countRecommended($videoID)
 {
 	global $userfields, $videofields, $recommendedfields;
 	$intID = result("SELECT id FROM videos WHERE video_id = ?", [$videoID]);
-	$recommendedList = fetch("SELECT COUNT(jaccard.video_id), $recommendedfields", [$intID]) ['COUNT(jaccard.video_id)'];
+	$recommendedList = fetch("SELECT COUNT(jaccard.video_id), $recommendedfields", [$intID]) ['COUNT(jaccard.video_id)']; // FIXME: don't do the ordering shit, also does it count all uploaded videos or just the relevant ones -grkb 3/31/2022.
 	return $recommendedList;
 }

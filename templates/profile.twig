@@ -1,7 +1,6 @@
 {% extends "_layout.twig" %}
 {% block title %}{{ name }}{% endblock %}
 {% block content %}
-{% include "/components/profilelinks.twig" %}
 {% if markread %}
 <div class="success">Marked all notifications as read.</div>
 {% elseif edited %}
@@ -11,43 +10,47 @@
 {% elseif justbanned == "unban" %}
 <div class="success">Successfully unbanned this user.</div>
 {% endif %}
-<table width="100%" align="center" cellpadding="5" cellspacing="0" border="0">
-   <tbody>
-      <tr valign="top">
-         <td width="200">
-            <div style="background-color: #D5E5F5; padding: 10px; padding-top: 5px; border: 6px double #FFFFFF;">
-               <table width="100%" bgcolor="#D5E5F5" cellpadding="5" cellspacing="0" border="0">
-                  <tbody>
-                     <tr>
-                        <td align="center">
-						<div class="highlight">Last Video Added</div>
-						{% if latestVideo %}
-                           <a href="watch.php?v={{ latestVideo.video_id }}"><img src="get_still.php?video_id={{ latestVideo.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
-                           <div class="moduleFeaturedTitle"><a href="watch.php?v={{ latestVideo.video_id }}">{{ latestVideo.title }}</a></div>
-                           <div class="moduleFeaturedDetails">Added: {{ latestVideo.time|date("F j, Y") }}<br>by <a href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a></div>
-                           <div class="moduleFeaturedDetails">Views: {{ latestVideo.views }}</div>
-                           <div class="moduleFeaturedDetails">Comments: {{ latestVideo.comments }}</div>
-						{% else %}
-							<div class="moduleFeaturedDetails">{{ userpagedata.name }} does not have any uploaded videos.</div>
-						{% endif %}
-						<br>
-                           <form method="post" action="outbox.php?user={{ userpagedata.name }}">
-                              <input type="submit" value="Contact Me!">
-                           </form>
-                           <!--<span style="font-size: 11px; margin-right: 3px;">Like my videos?<br>
-                           <a href="http://www.youtube.com/rss/user/lukechu/my_videos.rss">Subscribe to my RSS Feed.</a></span> -->
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </div>
-         </td>
-         <td>
-            <div class="tableSubTitle">User Details:</div>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+	<tbody><tr valign="top">
+		<td width="180">
+		
+		<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#E5ECF9">
+			<tbody><tr>
+				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+				<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+				<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+			</tr>
+			<tr>
+				<td><img src="img/pixel.gif" width="5" height="1"></td>
+				<td align="center" style="padding: 5px;">
+				
+				
+						<!-- <div style="font-size: 14px; font-weight: bold; color:#003366; margin-bottom: 5px;">Do you know {{ userpagedata.name }}?</div>
+					<a href="signup.php">Sign up</a> or <a href="login.php">log in</a> to add {{ userpagedata.name }} as friend.<br><br> -->
+									
+				<div style="font-size: 14px; font-weight: bold; color:#003366; margin-bottom: 5px;">Question? Comment?</div>
+				<form method="post" action="outbox.php?user={{ userpagedata.name }}">
+				<input type="submit" value="Contact Me!"><br>
+				</form>
+		
+				</td>
+				<td><img src="img/pixel.gif" width="5" height="1"></td>
+			</tr>
+			<tr>
+				<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+				<td><img src="img/pixel.gif" width="1" height="5"></td>
+				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
+			</tr>
+		</tbody></table>
+		
+		</td>
+		
+		<td style="padding: 0px 10px 0px 10px;">
+		
             <table width="100%" cellpadding="5" cellspacing="0" border="0">
                <tbody>
                   <tr>
-                     <td width="150" align="right"><span class="label">User Name:</span></td>
+                     <td width="120" align="right"><span class="label">User Name:</span></td>
                      <td>{{ userpagedata.name }}</td>
                   </tr>
                   <!-- Personal Information: -->
@@ -91,8 +94,65 @@
                   </tr>
                </tbody>
             </table>
-         </td>
-      </tr>
-   </tbody>
-</table>
+		
+		</td>
+		
+				
+		<td width="180">
+		
+		{% include "/components/profilelinks.twig" %}
+		
+		<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+			<tbody><tr>
+				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+				<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+				<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+			</tr>
+			<tr>
+				<td><img src="img/pixel.gif" width="5" height="1"></td>
+				<td>
+				<div class="moduleTitleBar">
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tbody><tr>
+						<td><div class="moduleTitle">My Latest Video</div></td>
+					</tr>
+				</tbody></table>
+				</div>
+		
+		<div class="moduleFeatured">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tbody><tr>
+				<td align="center">
+						{% if latestVideo %}
+                           <a href="watch.php?v={{ latestVideo.video_id }}"><img src="get_still.php?video_id={{ latestVideo.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
+                           <div class="moduleFeaturedTitle"><a href="watch.php?v={{ latestVideo.video_id }}">{{ latestVideo.title }}</a></div>
+                           <div class="moduleFeaturedDetails">Added: {{ latestVideo.time|date("F j, Y") }}<br>by <a href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a></div>
+                           <div class="moduleFeaturedDetails">Views: {{ latestVideo.views }}</div>
+                           <div class="moduleFeaturedDetails">Comments: {{ latestVideo.comments }}</div>
+						{% else %}
+							<div class="moduleFeaturedDetails">{{ userpagedata.name }} does not have any uploaded videos.</div>
+						{% endif %}
+				</td>
+			</tr>
+		</tbody></table>
+		</div>
+		
+				</td>
+				<td><img src="img/pixel.gif" width="5" height="1"></td>
+			</tr>
+			<tr>
+				<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+				<td><img src="img/pixel.gif" width="1" height="5"></td>
+				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
+			</tr>
+		</tbody></table>
+		
+		<div style="font-size: 12px; color: #444; margin: 10px 0px 0px 0px; text-align: center;"><strong>Like my videos?</strong><br>
+		<a href="http://www.placeholderdomain.poktwo/rss/user/{{ userpagedata.name }}/my_videos.rss">Subscribe to my RSS Feed.</a></div>
+		
+		</td>
+
+			
+	</tr>
+</tbody></table>
 {% endblock %}
