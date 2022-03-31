@@ -10,8 +10,6 @@ if (isset($_GET['id'])) {
 	$userpagedata = fetch("SELECT * FROM users WHERE name = ?", [$_GET['user']]);
 }
 
-$favoritesCount = result("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$userdata['id']]);
-
 if (!isset($userpagedata) || !$userpagedata) {
 	error('404', "No user specified.");
 }
