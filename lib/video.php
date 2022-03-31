@@ -1,7 +1,7 @@
 <?php
 namespace pokTwo;
 
-// this is like that so that it stays readable in the code and doesn't introduce a fucking huge scrollbar on github. -grkb 3/31/2022
+// this is like that so that it stays readable in the code and doesn't introduce a fucking huge horizontal scrollbar on github. -grkb 3/31/2022
 $recommendedfields = "
     jaccard.video_id,
     jaccard.intersect,
@@ -46,6 +46,58 @@ function videofields()
     return 'v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author';
 }
 
+/**
+ * Return the interger ID of a video.
+ *
+ * @param string $video The randomized video ID.
+ * @return int the ID of a video.
+ */
+function getVideoIntID($video)
+{
+	return result("SELECT id FROM videos WHERE video_id = ?", [$video]);
+}
+
+/**
+ * Return a list of videos, Limit and order is required.
+ *
+ * @param string $orderBy The ID of the currently watched video.
+ * @param int $limit The limit.
+ * @param string $whereSomething Precise what column.
+ * @param string $whereEquals Precise the value of the column.
+ * @return array A video list, ordered by what $orderBy specified.
+ */
+function getVideos($orderBy, $limit, $whereSomething = null, $whereEquals = null)
+{
+	global $userfields, $videofields;
+	if(isset($whereSomething)) {
+		$videoList = fetchArray(query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? ORDER BY $orderBy LIMIT $limit"), [$whereEquals]);
+	} else {
+		$videoList = fetchArray(query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY $orderBy LIMIT $limit"));
+	}
+	return $videoList;
+}
+
+/**
+ * Return a list of videos in an alternative way.
+ *
+ * @param string $whereSomething Precise what column.
+ * @param string $whereEquals Precise the value of the column.
+ * @return array A video list, ordered by what $orderBy specified.
+ */
+function fetchVideos($whereSomething, $whereEquals, $orderBy = null, $limit = null)
+{
+	global $userfields, $videofields;
+	if(isset($orderBy, $limit)) {
+		$videoList = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? ORDER BY $orderBy LIMIT $limit", [$whereEquals]);
+	} elseif(isset($orderBy)) {
+		$videoList = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? ORDER BY $orderBy", [$whereEquals]);
+	} elseif(isset($limit)) {
+		$videoList = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? LIMIT $limit", [$whereEquals]);
+	} else {
+		$videoList = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ?", [$whereEquals]);
+	}
+	return $videoList;
+}
 
 /**
  * Return a list of videos that are simillar to the video the user is watching.
@@ -57,12 +109,13 @@ function videofields()
 function getRecommended($videoID)
 {
     global $userfields, $videofields, $recommendedfields;
-    $intID = result("SELECT id FROM videos WHERE video_id = ?", [$videoID]);
+    $intID = getVideoIntID($videoID);
     $recommendedList = fetchArray(query("SELECT $recommendedfields LIMIT 20", [$intID]));
     $videoList = array();
     foreach ($recommendedList as $row)
     {
-        $videoData = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$row['video_id']]);
+        //$videoData = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$row['video_id']]);
+		$videoData = fetchVideos("v.video_id", $row['video_id']);
         array_push($videoList, $videoData);
     }
     return $videoList;
@@ -77,7 +130,7 @@ function getRecommended($videoID)
 function countRecommended($videoID)
 {
 	global $userfields, $videofields, $recommendedfields;
-	$intID = result("SELECT id FROM videos WHERE video_id = ?", [$videoID]);
+	$intID = getVideoIntID($videoID);
 	$recommendedList = fetch("SELECT COUNT(jaccard.video_id), $recommendedfields", [$intID]) ['COUNT(jaccard.video_id)']; // FIXME: don't do the ordering shit, also does it count all uploaded videos or just the relevant ones -grkb 3/31/2022.
 	return $recommendedList;
 }

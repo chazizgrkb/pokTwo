@@ -31,6 +31,39 @@ function userfields() {
 }
 
 /**
+ * Get the user's age.
+ *
+ * @return int
+ */
+function getAge($birthday) {
+	$date = new \DateTime($birthday); // YYYY-MM-DD
+	$now = new \DateTime();
+	$interval = $now->diff($date);
+	$age = $interval->y;
+	return $age;
+}
+
+/**
+ * Get the amount of videos a user has uploaded. Probably index this shit in the future.
+ *
+ * @return int
+ */
+function getUserVideoCount($userID) {
+	$count = result("SELECT COUNT(id) FROM videos WHERE author=?", [$userID]);
+	return $count;
+}
+
+/**
+ * Get the amount of videos a user has favorited. Probably index this shit in the future.
+ *
+ * @return int
+ */
+function getUserFavoriteCount($userID) {
+	$count = result("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$userID]);
+	return $count;
+}
+
+/**
  * Convert type of relationship to interger.
  *
  * @return int

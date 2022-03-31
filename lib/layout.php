@@ -7,7 +7,7 @@ namespace pokTwo;
  * @return \Twig\Environment Twig object.
  */
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-	global $tplCache, $tplNoCache, $userdata, $notificationCount, $log, $lpp, $forumEnabled, $invite, $showSmallHeader, $pageName, $searchShit;
+	global $tplCache, $tplNoCache, $userdata, $notificationCount, $log, $lpp, $forumEnabled, $invite, $pageName, $searchShit;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
@@ -31,7 +31,6 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('userdata', $userdata);
 	$twig->addGlobal('notification_count', $notificationCount);
 	$twig->addGlobal('log', $log);
-	$twig->addGlobal('smallHeader', $showSmallHeader);
 	$twig->addGlobal('pageName', $pageName);
 	$twig->addGlobal('searchText', $searchShit);
 	$twig->addGlobal('glob_lpp', $lpp);
