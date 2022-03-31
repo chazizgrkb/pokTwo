@@ -1,11 +1,7 @@
 <?php
 namespace pokTwo;
-require ('lib/common.php');
 
-function getRecommended($videoID) {
-global $userfields;
-$intID = result("SELECT id FROM videos WHERE video_id = ?", [$videoID]);
-	$initalList = fetchArray(query("SELECT
+$recommendedfields = "
     jaccard.video_id,
     jaccard.intersect,
     jaccard.union,
@@ -42,13 +38,31 @@ GROUP BY
 ) AS jaccard
 ORDER BY
     jaccard.intersect / jaccard.union
-DESC
-LIMIT 20;", [$intID]));
-$videoList = array();
-foreach ($initalList as $row) {
-	$videoData = fetchArray(query("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$row['video_id']]));
-	array_push($videoList, $videoData);
+DESC";
+
+function videofields()
+{
+    return 'v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author';
 }
-	die_dump($videoList);
-	return $videoList;
+
+function getRecommended($videoID)
+{
+    global $userfields, $videofields, $recommendedfields;
+    $intID = result("SELECT id FROM videos WHERE video_id = ?", [$videoID]);
+    $recommendedList = fetchArray(query("SELECT $recommendedfields LIMIT 20", [$intID]));
+    $videoList = array();
+    foreach ($recommendedList as $row)
+    {
+        $videoData = fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$row['video_id']]);
+        array_push($videoList, $videoData);
+    }
+    return $videoList;
+}
+
+function countRecommended($videoID)
+{
+	global $userfields, $videofields, $recommendedfields;
+	$intID = result("SELECT id FROM videos WHERE video_id = ?", [$videoID]);
+	$recommendedList = fetch("SELECT COUNT(jaccard.video_id), $recommendedfields", [$intID]) ['COUNT(jaccard.video_id)'];
+	return $recommendedList;
 }

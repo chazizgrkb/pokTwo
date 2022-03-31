@@ -31,6 +31,7 @@ if (!isCli() && $https && !isset($_SERVER['HTTPS'])) {
 }
 
 $userfields = userfields();
+$videofields = videofields();
 
 if (!isCli()) {
 	$ipban = fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$_SERVER['REMOTE_ADDR']]);

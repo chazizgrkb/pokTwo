@@ -67,4 +67,5 @@ echo $twig->render('watch.twig', [
 	'isFlash' => $isFlash,
 	'tags' => $tags,
 	'isFavorited' => $isFavorited,
+	'recommendedNumber' => countRecommended($videoData['video_id']),
 ]);
