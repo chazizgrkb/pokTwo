@@ -1,4 +1,5 @@
 <?php
+namespace pokTwo;
 require('lib/common.php');
 
 $showSmallHeader = false;

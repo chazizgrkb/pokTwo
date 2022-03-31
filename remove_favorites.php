@@ -1,4 +1,5 @@
 <?php
+namespace pokTwo;
 require ('lib/common.php');
 
 if (isset($_GET['video_id']))

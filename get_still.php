@@ -1,4 +1,5 @@
 <?php
+namespace pokTwo;
 require('lib/common.php');
 
 $video = htmlspecialchars($_GET["video_id"]);

@@ -1,5 +1,5 @@
 <?php
-
+namespace pokTwo;
 class pokTwoExtension extends \Twig\Extension\AbstractExtension {
 	public function getFunctions() {
 		global $profiler;
@@ -37,7 +37,7 @@ class pokTwoExtension extends \Twig\Extension\AbstractExtension {
 				return $markdown->text($text);
 			}, ['is_safe' => ['html']]),
 
-			new \Twig\TwigFilter('relative_time', 'relativeTime'),
+			new \Twig\TwigFilter('relative_time', 'pokTwo\relativeTime'),
 		];
 	}
 }

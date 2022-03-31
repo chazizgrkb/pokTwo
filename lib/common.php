@@ -1,4 +1,5 @@
 <?php
+namespace pokTwo;
 if (!file_exists('conf/config.php')) {
 	die('Please read the installing instructions in the README file.');
 }
@@ -29,8 +30,7 @@ if (!isCli() && $https && !isset($_SERVER['HTTPS'])) {
 	die();
 }
 
-if (!isset($acmlm))
-	$userfields = userfields();
+$userfields = userfields();
 
 if (!isCli()) {
 	$ipban = fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$_SERVER['REMOTE_ADDR']]);

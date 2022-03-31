@@ -1,4 +1,5 @@
 <?php
+namespace pokTwo;
 require('lib/common.php');
 
 $pageName = "profile";
@@ -21,8 +22,8 @@ $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 
 $forceuser = isset($_GET['forceuser']);
 
 if (isset($userpagedata['birthday'])) {
-$date = new DateTime($userpagedata['birthday']); // YYYY-MM-DD
-$now = new DateTime();
+$date = new \DateTime($userpagedata['birthday']); // YYYY-MM-DD
+$now = new \DateTime();
 $interval = $now->diff($date);
 $age = $interval->y;
 } else {

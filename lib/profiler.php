@@ -1,5 +1,5 @@
 <?php
-
+namespace pokTwo;
 class Profiler {
 	private $starttime;
 

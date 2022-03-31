@@ -1,4 +1,5 @@
 <?php
+namespace pokTwo;
 require('lib/common.php');
 
 $newsid = (isset($_GET['id']) ? $_GET['id'] : 0);

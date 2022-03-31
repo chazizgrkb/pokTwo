@@ -1,9 +1,8 @@
 <?php
+namespace pokTwo;
 require('lib/common.php');
 
 $showSmallHeader = true;
-
-$pageName = "index";
 
 $twig = twigloader();
 

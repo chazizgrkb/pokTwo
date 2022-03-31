@@ -1,5 +1,5 @@
 <?php
-
+namespace pokTwo;
 /**
  * Twig loader, initializes Twig with standard configurations and extensions.
  *

@@ -1,4 +1,5 @@
 <?php
+namespace pokTwo;
 require('lib/common.php');
 
 $query = isset($_GET['search']) ? $_GET['search'] : null;

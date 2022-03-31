@@ -17,7 +17,24 @@
 				<td style="padding: 5px 0px 10px 0px;">
 				
 				<table width="100%" cellpadding="0" cellspacing="0" border="0">
-					<tbody><tr valign="top">
+					<tbody>
+					{% if log %}
+                    <tr valign="top">
+                    <td width="60%" style="border-right: 1px dashed #369; padding: 0px 10px 10px 10px; color: #444;">
+                    <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">My Account Overview</div>
+                    <strong>User Name</strong>: <a href="/profile.php?user={{ userdata.name }}">{{ userdata.name }}</a><br>
+                    <strong>Email</strong>: {{ userdata.email }}<br>
+                    </td>
+                    <td width="40%" style="padding: 0px 10px 10px 10px; color: #444;">
+                    <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">Things To Do</div>
+                    <ul>
+                    <li><a href="/my_profile.php">Edit Your Profile</a></li>
+                    <li><a href="/my_videos_upload.php">Upload something</a></li>
+                    </ul>
+                    </td>
+                    </tr>
+					{% else %}
+					<tr valign="top">
 					<td width="33%" style="border-right: 1px dashed #369; padding: 0px 10px 10px 10px; color: #444;">
 					<div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;"><a href="my_videos_upload.php">Upload</a></div>
 					Quickly upload and tag videos in almost any video format.
@@ -31,6 +48,7 @@
 					Easily share your videos with family, friends, or co-workers.
 					</td>
 					</tr>
+					{% endif %}
 				</tbody></table>
 				
 				</td>
@@ -67,7 +85,7 @@
 							<div class="moduleEntryDescription">{{ video.description }}</div>
 							<div class="moduleEntryTags">
 							Tags // <a href="results.php?search=surfing">Fuck</a> : <a href="results.php?search=bigwave">There's</a> : <a href="results.php?search=whiteout">Tags???</a> : 							</div>
-							<div class="moduleEntryDetails">Added: {{ video.time|date("F j, Y") }} by <a href="profile.php?user=amoroma327">{{ video.u_name }}</a></div>
+							<div class="moduleEntryDetails">Added: {{ video.time|date("F j, Y") }} by <a href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a></div>
 							<div class="moduleEntryDetails">Views: {{ video.views }} | Comments: {{ video.comments }}</div>
 							</td>
 						</tr>

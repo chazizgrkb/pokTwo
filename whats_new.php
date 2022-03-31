@@ -1,4 +1,5 @@
 <?php
+namespace pokTwo;
 require('lib/common.php');
 
 $newsdata = query("SELECT * FROM news ORDER BY id DESC");
