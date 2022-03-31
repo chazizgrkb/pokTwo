@@ -1,7 +1,6 @@
 {% extends "_layout.twig" %}
 {% block title %}{{ name }}{% endblock %}
 {% block content %}
-<div class="pageTitle">Profile // <span style="text-transform: capitalize;">{{ userpagedata.name }}</span></div>
 {% include "/components/profilelinks.twig" %}
 {% if markread %}
 <div class="success">Marked all notifications as read.</div>
@@ -12,7 +11,7 @@
 {% elseif justbanned == "unban" %}
 <div class="success">Successfully unbanned this user.</div>
 {% endif %}
-<table width="80%" align="center" cellpadding="5" cellspacing="0" border="0">
+<table width="100%" align="center" cellpadding="5" cellspacing="0" border="0">
    <tbody>
       <tr valign="top">
          <td width="200">

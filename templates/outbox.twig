@@ -3,7 +3,7 @@
 {% block title %}Send message to {{ user }}{% endblock %}
 
 	{% block content %}
-	<div class="formTitle">Send message to <span style="text-transform: capitalize;">{{ user }}</span></div>
+	<div class="tableSubTitle">Send message to <span style="text-transform: capitalize;">{{ user }}</span></div>
 	<form name="messageForm" id="messageForm" method="post" action="outbox.php" enctype="multipart/form-data">
 	<input type="text" name="user" style="display:none;" value="{{ user }}" hidden>
 	<center><table class="dataEntryTableSmall">
