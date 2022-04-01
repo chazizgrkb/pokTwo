@@ -69,12 +69,12 @@ function getUserFavoriteCount($userID) {
  * @return int
  */
 function type_to_relationship($type) {
-	return match ($type) {
-		'none'		=> 0,
-		'single'	=> 1,
-		'taken'		=> 2,
-		'married'	=> 3,
-	};
+	switch ($type) {
+		case 'none':	return 0;
+		case 'single':	return 1;
+		case 'taken':	return 2;
+		case 'married':	return 3;
+	}
 }
 
 /**
@@ -83,12 +83,12 @@ function type_to_relationship($type) {
  * @return string
  */
 function relationship_to_type($relationship) {
-	return match ($relationship) {
-		0 => 'none',
-		1 => 'single',
-		2 => 'taken',
-		3 => 'married'
-	};
+	switch ($relationship) {
+		case 0:	return 'none';
+		case 1:	return 'single';
+		case 2:	return 'taken';
+		case 3:	return 'married';
+	}
 }
 
 /**
@@ -97,12 +97,12 @@ function relationship_to_type($relationship) {
  * @return int
  */
 function type_to_gender($type) {
-	return match ($type) {
-		'private'	=> 0,
-		'unknown'	=> 1,
-		'male'		=> 2,
-		'female'	=> 3,
-	};
+	switch ($type) {
+		case 'private':	return 0;
+		case 'unknown':	return 1;
+		case 'male':	return 2;
+		case 'female':	return 3;
+	}
 }
 
 /**
@@ -111,10 +111,10 @@ function type_to_gender($type) {
  * @return string
  */
 function gender_to_type($gender) {
-	return match ($gender) {
-		0 => 'private',
-		1 => 'unknown',
-		2 => 'male',
-		3 => 'female',
-	};
+	switch ($gender) {
+		case 0:	return 'private';
+		case 1:	return 'unknown';
+		case 2:	return 'male';
+		case 3:	return 'female';
+	}
 }
