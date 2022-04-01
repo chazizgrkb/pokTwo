@@ -13,6 +13,9 @@ require_once('vendor/autoload.php');
 foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
+$mysql = new MySQL();
+$videos = new Videos();
+$tags = new Tags();
 
 if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {
 	foreach ($blockedUA as $bl) {
@@ -31,10 +34,10 @@ if (!isCli() && $https && !isset($_SERVER['HTTPS'])) {
 }
 
 $userfields = userfields();
-$videofields = videofields();
+$videofields = videos::videofields();
 
 if (!isCli()) {
-	$ipban = fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$_SERVER['REMOTE_ADDR']]);
+	$ipban = $mysql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$_SERVER['REMOTE_ADDR']]);
 	if ($ipban) {
 		http_response_code(403);
 
@@ -53,7 +56,7 @@ if (isset($_COOKIE['passenc'])) setcookie('passenc', 'DEPRECATED', 1, '/');
 
 // Authentication code.
 if (isset($_COOKIE[$cookieName])) {
-	$id = result("SELECT id FROM users WHERE token = ?", [$_COOKIE[$cookieName]]);
+	$id = $mysql->result("SELECT id FROM users WHERE token = ?", [$_COOKIE[$cookieName]]);
 
 	if ($id) {
 		// Valid password cookie.
@@ -68,11 +71,11 @@ if (isset($_COOKIE[$cookieName])) {
 }
 
 if ($log) {
-	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
-	$notificationCount = result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
+	$userdata = $mysql->fetch("SELECT * FROM users WHERE id = ?", [$id]);
+	$notificationCount = $mysql->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
 
 	if ($userdata['powerlevel'] == 0) {
-		$userdata['banreason'] = result("SELECT reason FROM bans WHERE user = ?", [$id]);
+		$userdata['banreason'] = $mysql->result("SELECT reason FROM bans WHERE user = ?", [$id]);
 	}
 } else {
 	$userdata['powerlevel'] = 1;

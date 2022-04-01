@@ -10,34 +10,36 @@ try {
 } catch (\PDOException $e) {
 	die("Error - Can't connect to database. Please try again later.");
 }
+class mySQL
+{
+	function query($query,$params = []) {
+		global $sql;
 
-function query($query,$params = []) {
-	global $sql;
-
-	$res = $sql->prepare($query);
-	$res->execute($params);
-	return $res;
-}
-
-function fetch($query,$params = []) {
-	$res = query($query,$params);
-	return $res->fetch();
-}
-
-function result($query,$params = []) {
-	$res = query($query,$params);
-	return $res->fetchColumn();
-}
-
-function fetchArray($query) {
-	$out = [];
-	while ($record = $query->fetch()) {
-		$out[] = $record;
+		$res = $sql->prepare($query);
+		$res->execute($params);
+		return $res;
 	}
-	return $out;
-}
 
-function insertId() {
-	global $sql;
-	return $sql->lastInsertId();
+	function fetch($query,$params = []) {
+		$res = $this->query($query,$params);
+		return $res->fetch();
+	}
+
+	function result($query,$params = []) {
+		$res = $this->query($query,$params);
+		return $res->fetchColumn();
+	}
+
+	function fetchArray($query) {
+		$out = [];
+		while ($record = $query->fetch()) {
+			$out[] = $record;
+		}
+		return $out;
+	}
+
+	function insertId() {
+		global $sql;
+		return $sql->lastInsertId();
+	}
 }
