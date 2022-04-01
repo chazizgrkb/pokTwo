@@ -6,5 +6,5 @@ $twig = twigloader();
 
 echo $twig->render('index.twig', [
 	'videos' => getVideos("RAND()", 5),
-	'tags' => getListOfTags("use_count DESC", 50),
+	'tags' => getListOfTags("latestUse DESC", 50),
 ]);

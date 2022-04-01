@@ -7,6 +7,6 @@ $showSmallHeader = false;
 $twig = twigloader();
 
 echo $twig->render('tags.twig', [
-	'tags' => getListOfTags("ct.tag_id DESC", 50),
+	'tags' => getListOfTags("latestUse DESC", 50),
 	'mostPopularTags' => getListOfTags("use_count DESC", 50),
 ]);

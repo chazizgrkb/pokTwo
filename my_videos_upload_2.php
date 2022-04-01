@@ -35,8 +35,10 @@ if (isset($_FILES['fileToUpload']))
     {
         if (!result("SELECT name from tag_meta WHERE name = ?", [$tag]))
         {
-            query("INSERT INTO tag_meta (name) VALUES (?)", [$tag]);
-        }
+            query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
+        } else {
+			query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);
+		}
         $number = result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
         $tagsIDbullshit[] = $number;
     }
