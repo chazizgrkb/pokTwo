@@ -15,6 +15,12 @@ class Tags extends Videos {
 		return $tagList;
 	}
 	
+	/**
+	 * Return a list of tags, Limit and order is required.
+	 *
+	 * @param string $videoID The ID of the video
+	 * @return array The list of tags that the video has.
+	 */
 	function getVideoTags($videoID)
 	{
 		global $mysql;

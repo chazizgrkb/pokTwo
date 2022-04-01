@@ -38,7 +38,7 @@ if (isset($_POST['magic'])) {
 		die("Invalid date.");
 	}
 
-	query("UPDATE users SET title = ?, customcolor = ?, about = ?, location = ?, timezone = ?, signature = ?, birthday = ?, relationshipStatus = ?, gender = ? WHERE id = ?",
+	$mysql->query("UPDATE users SET title = ?, customcolor = ?, about = ?, location = ?, timezone = ?, signature = ?, birthday = ?, relationshipStatus = ?, gender = ? WHERE id = ?",
 		[$title, $customcolor, $about, $location, $timezone, $signature, $dob, $relationStatus, $genderShit, $userdata['id']]);
 
 	redirect(sprintf("/profile.php?user=%s&edited", $userdata['name']));

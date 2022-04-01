@@ -13,9 +13,13 @@ require_once('vendor/autoload.php');
 foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
+
+// Holy shit! Classes!
 $mysql = new MySQL();
 $videos = new Videos();
 $tags = new Tags();
+$users = new Users();
+$comments = new Comments();
 
 if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {
 	foreach ($blockedUA as $bl) {
@@ -33,7 +37,7 @@ if (!isCli() && $https && !isset($_SERVER['HTTPS'])) {
 	die();
 }
 
-$userfields = userfields();
+$userfields = users::userfields();
 $videofields = videos::videofields();
 
 if (!isCli()) {

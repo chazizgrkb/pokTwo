@@ -1,6 +1,6 @@
 <?php
 namespace pokTwo;
-class videos
+class Videos
 {
     // this is like that so that it stays readable in the code and doesn't introduce a fucking huge horizontal scrollbar on github. -grkb 3/31/2022
     public $recommendedfields = "

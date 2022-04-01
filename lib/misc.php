@@ -15,6 +15,11 @@ function register($name, $pass, $mail) {
 	return $token;
 }
 
+function closeWindow() {
+	echo "<script type='text/javascript'>window.close();</script>";
+	return true;
+}
+
 function randstr($len, $charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"){
     return substr(str_shuffle($charset),0,$len);
 }

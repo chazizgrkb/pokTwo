@@ -26,7 +26,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	}
 
 	// Add pokTwo specific extension
-	$twig->addExtension(new pokTwoExtension());
+	$twig->addExtension(new PokTwoExtension());
 
 	$twig->addGlobal('userdata', $userdata);
 	$twig->addGlobal('notification_count', $notificationCount);

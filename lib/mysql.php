@@ -10,7 +10,7 @@ try {
 } catch (\PDOException $e) {
 	die("Error - Can't connect to database. Please try again later.");
 }
-class mySQL
+class MySQL
 {
 	function query($query,$params = []) {
 		global $sql;

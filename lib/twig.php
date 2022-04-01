@@ -1,6 +1,6 @@
 <?php
 namespace pokTwo;
-class pokTwoExtension extends \Twig\Extension\AbstractExtension {
+class PokTwoExtension extends \Twig\Extension\AbstractExtension {
 	public function getFunctions() {
 		global $profiler;
 
