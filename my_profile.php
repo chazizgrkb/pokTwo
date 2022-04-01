@@ -25,7 +25,8 @@ if (isset($_POST['magic'])) {
 	$relationStatus = type_to_relationship($relationship);
 	$genderShit = type_to_gender($gender);
 	
-	$dob = $year . "-" . $month . "-" . $day;
+	$dob = strtotime($year . "-" . $month . "-" . $day);
+	$dob = date('Y-m-d',$dob);
 	
 	// this is in case one of those numberblock bfdi kids has enough knowledge in inspect element -grkb 3/26/2022
 	if ($year > $coppaYearBS) {
