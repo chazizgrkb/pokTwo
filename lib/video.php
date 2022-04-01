@@ -60,7 +60,7 @@ function getVideoIntID($video)
 /**
  * Return a list of videos, Limit and order is required.
  *
- * @param string $orderBy The ID of the currently watched video.
+ * @param string $orderBy A column in the videos table.
  * @param int $limit The limit.
  * @param string $whereSomething Precise what column.
  * @param string $whereEquals Precise the value of the column.
@@ -75,6 +75,19 @@ function getVideos($orderBy, $limit, $whereSomething = null, $whereEquals = null
 		$videoList = fetchArray(query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY $orderBy LIMIT $limit"));
 	}
 	return $videoList;
+}
+
+/**
+ * Return a list of tags, Limit and order is required.
+ *
+ * @param string $orderBy A column in the tags tables(?).
+ * @param int $limit The limit.
+ * @return array A tag list, ordered by what $orderBy specified.
+ */
+function getListOfTags($orderBy, $limit)
+{
+	$tagList = query("SELECT t.*, COUNT(t.tag_id) AS use_count FROM tag_index ct LEFT JOIN tag_meta t ON ct.tag_id = t.tag_id GROUP BY ct.tag_id ORDER BY $orderBy LIMIT $limit");
+	return $tagList;
 }
 
 /**
