@@ -2,7 +2,7 @@
 namespace pokTwo;
 require('lib/common.php');
 
-$videoData = query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time DESC LIMIT 5");
+$videoData = $mysql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time DESC LIMIT 5");
 
  header( "Content-type: text/xml");
  

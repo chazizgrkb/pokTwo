@@ -8,7 +8,7 @@ $twig = twigloader();
 
 if (isset($_REQUEST['new']) && $log && $userdata['powerlevel'] > 2) {
 	if (isset($_POST['ApOsTaL'])) {
-		query("INSERT INTO news (title, text, time, author_userid) VALUES (?,?,?,?)",
+		$mysql->query("INSERT INTO news (title, text, time, author_userid) VALUES (?,?,?,?)",
 			[$_POST['title'], $_POST['text'], time(), $userdata['id']]);
 
 		$insertid = result("SELECT LAST_INSERT_ID()");

@@ -2,8 +2,6 @@
 namespace pokTwo;
 require('lib/common.php');
 
-$showSmallHeader = false;
-
 $twig = twigloader();
 
 echo $twig->render('tags.twig', [
