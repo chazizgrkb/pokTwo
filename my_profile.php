@@ -22,8 +22,8 @@ if (isset($_POST['magic'])) {
 	$relationship	= $_POST['relationship'] ? $_POST['relationship'] : null;
 	$gender			= $_POST['gender'] ? $_POST['gender'] : null;
 	
-	$relationStatus = type_to_relationship($relationship);
-	$genderShit = type_to_gender($gender);
+	$relationStatus = $users->type_to_relationship($relationship);
+	$genderShit = $users->type_to_gender($gender);
 	
 	$dob = strtotime($year . "-" . $month . "-" . $day);
 	$dob = date('Y-m-d',$dob);

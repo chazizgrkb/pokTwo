@@ -11,7 +11,7 @@
 				<tr class="h"><td class="b" colspan="2">Latest registered users</td></tr>
 				{% for user in latest_registered_users %}
 					<tr>
-						<td class="b">{{ userlink(user) }}</td>
+						<td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
 						<td class="b">{{ user.joined | date() }}</td>
 					</tr>
 				{% endfor %}
@@ -22,7 +22,7 @@
 				<tr class="h"><td class="b" colspan="2">Latest seen users</td></tr>
 				{% for user in latest_seen_users %}
 					<tr>
-						<td class="b">{{ userlink(user) }}</td>
+						<td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
 						<td class="b">{{ user.lastview | relative_time }}</td>
 					</tr>
 				{% endfor %}
@@ -62,7 +62,7 @@
 	{% for cmnt in latest_comments %}
 		<div class="comment-entry{% if cmnt.deleted %} deleted{% endif %}" id="comment-{{ cmnt.id }}">
 			<p>
-				{{ userlink(cmnt, 'u_') }}
+				<a href="profile.php?user={{ cmt.u_name }}">{{ cmt.u_name }}</a>
 				commented on <a href="/watch.php?v={{ cmnt.id }}">{{ cmnt.id | title }}</a>: {{ cmnt.comment }}
 				<span class="date">{{ cmnt.date | relative_time }}</span>
 			</p>

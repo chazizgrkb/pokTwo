@@ -3,19 +3,6 @@ namespace pokTwo;
 class Users
 {
 	/**
-	 * Return HTML code for an userlink.
-	 *
-	 * @param array $user User array containing user fields. Retrieve this from the database using userfields().
-	 * @param string $pre $user key prefix.
-	 * @return string Userlink HTML code.
-	 */
-	function userlink($user, $pre = '') {
-		return <<<HTML
-			<a class="user" href="/profile.php?user={$user[$pre.'name']}"><span class="t_user">{$user[$pre.'name']}</span></a>
-HTML;
-	}
-
-	/**
 	 * Get list of SQL SELECT fields for userlinks.
 	 *
 	 * @return string String to put inside a SQL statement.
