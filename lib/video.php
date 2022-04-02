@@ -148,4 +148,20 @@ class Videos
         $recommendedList = $mysql->fetch("SELECT COUNT(jaccard.video_id), $recommendfields", [$intID]) ['COUNT(jaccard.video_id)']; // FIXME: don't do the ordering shit, also does it count all uploaded videos or just the relevant ones -grkb 3/31/2022.
         return $recommendedList;
     }
+	
+    /**
+     * Return the link to the FLV version of the video.
+     *
+     * @param string $videoID The ID of the currently watched video.
+     * @return string A link to the FLV version of the video, or if nothing is inputted, an error.
+     */
+    function getFlashVideo($videoID)
+    {
+		if (isset($videoID) ? $videoID : null) {
+		$file = "/media/" . $videoID . ".flv";
+		return $file;
+		} else {
+		die("getFlashVideo Error: videoID is missing!");
+		}
+    }
 }
