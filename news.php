@@ -11,7 +11,7 @@ if (isset($_REQUEST['new']) && $log && $userdata['powerlevel'] > 2) {
 		$mysql->query("INSERT INTO news (title, text, time, author_userid) VALUES (?,?,?,?)",
 			[$_POST['title'], $_POST['text'], time(), $userdata['id']]);
 
-		$insertid = result("SELECT LAST_INSERT_ID()");
+		$insertid = $mysql->result("SELECT LAST_INSERT_ID()");
 		redirect("/news.php?id=$insertid");
 	}
 

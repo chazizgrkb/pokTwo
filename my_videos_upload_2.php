@@ -12,6 +12,7 @@ $supportedTypes = ['mp4', 'avi', 'wmv', 'mov'];
 
 $error = '';
 
+$failcount = 0;
 
 // fixme: move this into a function probably?
 if (isset($_FILES['fileToUpload']))
