@@ -8,6 +8,7 @@ function isCli() {
 }
 
 function register($name, $pass, $mail) {
+	global $mysql;
 	$token = bin2hex(random_bytes(20));
 	$mysql->query("INSERT INTO users (name, password, email, token, joined) VALUES (?,?,?,?,?)",
 		[$name,password_hash($pass, PASSWORD_DEFAULT), $mail, $token, time()]);
