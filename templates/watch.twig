@@ -169,7 +169,7 @@
             <br>
             <div class="commentsTitle">Comments ({{ comCount }}):</div>
             {% for comment in comments %}
-            <div class="commentsEntry">"{{ comment.comment }}"<br> - <a href="profile.php?user={{ comment.u_name }}">{{ comment.u_name }}</a> // <a href="profile_videos.php?user={{ comment.u_name }}">Videos</a> (41) | <a href="profile_favorites.php?user={{ comment.u_name }}">Favorites</a> (6)  - ({{ comment.date | relative_time }})</div>
+            <div class="commentsEntry">"{{ comment.comment }}"<br> - <a href="profile.php?user={{ comment.u_name }}">{{ comment.u_name }}</a> // <a href="profile_videos.php?user={{ comment.u_name }}">Videos</a> ({{ comment.allVideos }}) | <a href="profile_favorites.php?user={{ comment.u_name }}">Favorites</a> ({{ comment.allFavorites }})  - ({{ comment.date | relative_time }})</div>
             {% endfor %}
          </td>
          <td width="280">

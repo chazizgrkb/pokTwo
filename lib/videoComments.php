@@ -7,4 +7,14 @@ class Comments extends Videos {
 		[$videoID, 0, $comment, $id, time(), 0]);
 		//[$videoID, $reply_to, $comment, $id, time(), 0]);
 	}
+	
+	static function getComments($videoID) {
+		global $sql, $userfields;
+		$videoComments = $sql->fetchArray($sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$videoID]));
+		foreach ($videoComments as &$comment) {
+			$comment['allVideos'] = Users::getUserVideoCount($comment['author']);
+			$comment['allFavorites'] = Users::getUserFavoriteCount($comment['author']);
+		}
+		return $videoComments;
+	}
 }

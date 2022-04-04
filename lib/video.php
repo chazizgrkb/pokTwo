@@ -143,7 +143,7 @@ class Videos
 	static function countRecommended($videoID)
 	{
 		global $userfields, $videofields, $recommendedfields, $sql;
-		$recommendfields = self::$recommendedfields;
+		$recommendfields = self::$recommendedfields; //the fuck? -grkb 4/4/2022
 		$intID = self::getVideoIntID($videoID);
 		$recommendedList = $sql->fetch("SELECT COUNT(jaccard.video_id), $recommendfields", [$intID]) ['COUNT(jaccard.video_id)']; // FIXME: don't do the ordering shit, also does it count all uploaded videos or just the relevant ones -grkb 3/31/2022.
 		return $recommendedList;
