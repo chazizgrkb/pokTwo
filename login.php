@@ -2,11 +2,6 @@
 namespace pokTwo;
 require('lib/common.php');
 
-if (isset($_POST['logout'])) {
-	setcookie($cookieName, '');
-	redirect('./');
-}
-
 if ($log) redirect('./');
 
 $error = '';
