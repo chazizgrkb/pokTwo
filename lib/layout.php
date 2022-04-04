@@ -33,6 +33,10 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('log', $log);
 	$twig->addGlobal('pageName', $pageName);
 	$twig->addGlobal('searchText', $searchShit);
+	// START OF CODE PORTED FROM SQUAREBRACKET
+	$twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+	$twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
+	// END OF PORTED CODE
 	$twig->addGlobal('glob_lpp', $lpp);
 	$twig->addGlobal('version', $versionString);
 

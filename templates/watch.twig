@@ -63,7 +63,7 @@
          <td width="515" style="padding-right: 15px;">
             <div class="tableSubTitle">{{ video.title }}</div>
             <div style="font-size: 13px; font-weight: bold; text-align:center;">
-               <a href="mailto:?subject={{ video.title }}&amp;body=http://www.youtube.com/?v={{ video.video_id }}">Share</a>
+               <a href="mailto:?subject={{ video.title }}&amp;body={{ page_url }}">Share</a>
                // <a href="#comment">Comment</a>
                // {% if isFavorited %}<a href="remove_favorites.php?video_id={{ video.video_id }}" target="invisible" onclick="return FavoritesHandler();">Remove from Favorites</a>{% else %}<a href="add_favorites.php?video_id={{ video.video_id }}" target="invisible" onclick="return FavoritesHandler();">Add to Favorites</a>{% endif %}
                // <a href="outbox.php?user={{ video.u_name }}&amp;subject=Re: {{ video.title }}">Contact Me</a>
@@ -145,7 +145,7 @@
                         <td align="center">
                            <div style="font-size: 11px; font-weight: bold; color: #CC6600; padding: 5px 0px 5px 0px;">Share this video! Copy and paste this link:</div>
                            <div style="font-size: 11px; padding-bottom: 15px;">
-                              <input name="video_link" type="text" onclick="javascript:document.linkForm.video_link.focus();document.linkForm.video_link.select();" value="http://placeholder.domain/watch.php?v={{ video.video_id }}" size="50" readonly="true" style="font-size: 10px; text-align: center;">
+                              <input name="video_link" type="text" onclick="javascript:document.linkForm.video_link.focus();document.linkForm.video_link.select();" value="{{ page_url }}" size="50" readonly="true" style="font-size: 10px; text-align: center;">
                            </div>
                         </td>
                         <td><img src="img/pixel.gif" width="5" height="1"></td>
