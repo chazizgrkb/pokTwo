@@ -43,9 +43,10 @@ if (isset($_FILES['fileToUpload']))
         $tagsIDbullshit[] = $number;
     }
 	if (count($tagsIDbullshit) < 3) {
-		die("Less than 3 tags!");
+		die("Less than 3 tags!"); // we should have an actual error page, but this is alpha shit, so meh.
 	}
-    //$thumbcmd = "$ffmpegPath -i $target_file -vf \"thumbnail\" -frames:v 1 -s 120x90 $target_thumb";
+
+	// FIXME: make this shit case-insensitive.
     if ($vextension != "mp4" && $vextension != "mkv" && $vextension != "wmv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp")
     {
         echo "<center><h1>Your video is an incompatible format.<br>To continue uploading this video, convert it to a supported format.</h1></center>";
@@ -62,12 +63,15 @@ if (isset($_FILES['fileToUpload']))
         $seccount_og = round(exec("$ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 " . $target_file));
         $seccount = $seccount_og / 3;
         $seccount = round($seccount);
+		// https://cdn.discordapp.com/attachments/955424378097655820/960638428859482122/unknown.png
         $thumbcmd1 = $ffmpegPath . " -i " . $target_file . " -vframes 1 -an -s 120x90 -ss " . $seccount . " -frames:v 1 thumbs/" . $new . ".1.jpg ";
         $seccount2 = $seccount + $seccount;
         $thumbcmd2 = $ffmpegPath . " -i " . $target_file . " -vframes 1 -an -s 120x90 -ss " . $seccount2 . " -frames:v 1 thumbs/" . $new . ".2.jpg ";
-        $seccount3 = $seccount2 + $seccount - 3;
+        $seccount3 = $seccount2 + $seccount - 2; // the sweet spot, tested with a gif of bingo heeler converted to mp4 and the 3rd thumb wasn't a few seconds earlier than the 2nd thumb. -grkb 4/4/2022
         $thumbcmd3 = $ffmpegPath . " -i " . $target_file . " -vframes 1 -an -s 120x90 -ss " . $seccount3 . " -frames:v 1 thumbs/" . $new . ".3.jpg ";
 
+		// FIXME: make it like squareBracket where the uploader is a PHP script outside of my_videos_upload_2.php, because making the browser wait until ffmpeg's done is dumb. -grkb 4/4/2022
+		
         exec($thumbcmd1);
         exec($thumbcmd2);
         exec($thumbcmd3);
