@@ -8,6 +8,7 @@ class PokTwoExtension extends \Twig\Extension\AbstractExtension {
 			new \Twig\TwigFunction('pagination', '\PokTwo\pagination', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('custom_info', '\PokTwo\customInfo', ['is_safe' => ['html']]),
 			new \Twig\TwigFunction('git_commit', '\PokTwo\gitCommit'),
+			new \Twig\TwigFunction('operating_system', '\PokTwo\getOS'),
 			new \Twig\TwigFunction('profiler_stats', function () use ($profiler) {
 				$profiler->getStats();
 			})

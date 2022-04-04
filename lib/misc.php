@@ -46,7 +46,7 @@ function delete_directory($dirname) {
 /**
  * Dump array and stop everything else. Meant for debugging.
  *
- * @param string $thingy Trim the hash to the first 7 characters
+ * @param $thingy An array or variable or whatever.
  * @return false
  */
 function die_dump($thingy) {
@@ -71,4 +71,13 @@ function gitCommit($trim = true) {
 		return substr($commit, 0, 7);
 	else
 		return rtrim($commit);
+}
+
+/**
+ * Get hash of latest git commit
+ *
+ * @return string Name of platform. It does NOT specify the Windows/macOS/Linux version.
+ */
+function getOS() {
+	printf(php_uname('s'));
 }
