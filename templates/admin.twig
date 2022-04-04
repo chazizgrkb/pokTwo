@@ -1,9 +1,10 @@
 {% extends "_layout.twig" %}
 
-{% block title %}{% endblock %}
+{% block title %}Admin panel{% endblock %}
 
 	{% block content %}
 <div class="tableSubTitle">Admin panel</div>
+<p>Currently running pokTwo version {{version}} (commit {{git_commit()}}) on {{operating_system()}}. {{profiler_stats()}}</p>
 <table style="width: 100%;">
 	<tr>
 		<td class="nb" style="width:33%; vertical-align:top;">
