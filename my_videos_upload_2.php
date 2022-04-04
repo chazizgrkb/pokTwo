@@ -7,9 +7,6 @@ error_reporting(E_ALL);
 
 if (!$log) redirect('login.php');
 
-// Supported file types (MIME-type with image/ stripped)
-$supportedTypes = ['mp4', 'avi', 'wmv', 'mov'];
-
 $error = '';
 
 $failcount = 0;
@@ -20,7 +17,7 @@ if (isset($_FILES['fileToUpload']))
     $uploader = $userdata['id'];
     $new = randstr(11);
 
-    $vextension = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
+    $vextension = strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
 
     $name = $_FILES['fileToUpload']['name'];
     $temp_name = $_FILES['fileToUpload']['tmp_name'];
