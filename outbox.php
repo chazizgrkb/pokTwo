@@ -13,9 +13,9 @@ if (isset($_POST['send'])) {
     $message = (isset($_POST['message']) ? $_POST['message'] : '');
 	$username = (isset($_POST['user']) ? $_POST['user'] : null);
 
-	$reciever_id = $mysql->result("SELECT id from users where name = ?", [$username]);
+	$reciever_id = $sql->result("SELECT id from users where name = ?", [$username]);
 	
-	$mysql->query("INSERT INTO messages (sender, reciever, title, text, time) VALUES (?,?,?,?,?)", [$userdata['id'], $reciever_id, $title, $message, time()]);
+	$sql->query("INSERT INTO messages (sender, reciever, title, text, time) VALUES (?,?,?,?,?)", [$userdata['id'], $reciever_id, $title, $message, time()]);
 	
 	redirect('my_messages.php?sentMessage=true');
 }

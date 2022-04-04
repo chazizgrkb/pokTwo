@@ -8,10 +8,10 @@ $twig = twigloader();
 
 if (isset($_REQUEST['new']) && $log && $userdata['powerlevel'] > 2) {
 	if (isset($_POST['ApOsTaL'])) {
-		$mysql->query("INSERT INTO news (title, text, time, author_userid) VALUES (?,?,?,?)",
+		$sql->query("INSERT INTO news (title, text, time, author_userid) VALUES (?,?,?,?)",
 			[$_POST['title'], $_POST['text'], time(), $userdata['id']]);
 
-		$insertid = $mysql->result("SELECT LAST_INSERT_ID()");
+		$insertid = $sql->result("SELECT LAST_INSERT_ID()");
 		redirect("/news.php?id=$insertid");
 	}
 

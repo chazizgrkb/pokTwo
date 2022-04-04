@@ -23,7 +23,7 @@ class Users
 	 *
 	 * @return int
 	 */
-	function getAge($birthday) {
+	static function getAge($birthday) {
 		$date = new \DateTime($birthday); // YYYY-MM-DD
 		$now = new \DateTime();
 		$interval = $now->diff($date);
@@ -36,9 +36,9 @@ class Users
 	 *
 	 * @return int
 	 */
-	function getUserVideoCount($userID) {
-		global $mysql;
-		$count = $mysql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$userID]);
+	static function getUserVideoCount($userID) {
+		global $sql;
+		$count = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$userID]);
 		return $count;
 	}
 
@@ -47,18 +47,18 @@ class Users
 	 *
 	 * @return int
 	 */
-	function getUserFavoriteCount($userID) {
-		global $mysql;
-		$count = $mysql->result("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$userID]);
+	static function getUserFavoriteCount($userID) {
+		global $sql;
+		$count = $sql->result("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$userID]);
 		return $count;
 	}
 
 	/**
-	 * Convert type of relationship to interger.
+	 * Convert type of relationship to integer.
 	 *
 	 * @return int
 	 */
-	function type_to_relationship($type) {
+	static function type_to_relationship($type) {
 		switch ($type) {
 			case 'none':	return 0;
 			case 'single':	return 1;
@@ -72,7 +72,7 @@ class Users
 	 *
 	 * @return string
 	 */
-	function relationship_to_type($relationship) {
+	static function relationship_to_type($relationship) {
 		switch ($relationship) {
 			case 0:	return 'none';
 			case 1:	return 'single';
@@ -86,7 +86,7 @@ class Users
 	 *
 	 * @return int
 	 */
-	function type_to_gender($type) {
+	static function type_to_gender($type) {
 		switch ($type) {
 			case 'private':	return 0;
 			case 'unknown':	return 1;
@@ -100,7 +100,7 @@ class Users
 	 *
 	 * @return string
 	 */
-	function gender_to_type($gender) {
+	static function gender_to_type($gender) {
 		switch ($gender) {
 			case 0:	return 'private';
 			case 1:	return 'unknown';
