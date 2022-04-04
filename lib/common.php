@@ -15,11 +15,7 @@ foreach (glob("lib/*.php") as $file) {
 }
 
 // Holy shit! Classes!
-$mysql = new MySQL();
-$videos = new Videos();
-$tags = new Tags();
-$users = new Users();
-$comments = new Comments();
+$sql = new MySQL($host, $user, $pass, $db);
 
 if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {
 	foreach ($blockedUA as $bl) {
@@ -37,11 +33,11 @@ if (!isCli() && $https && !isset($_SERVER['HTTPS'])) {
 	die();
 }
 
-$userfields = users::userfields();
-$videofields = videos::videofields();
+$userfields = Users::userfields();
+$videofields = Videos::videofields();
 
 if (!isCli()) {
-	$ipban = $mysql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$_SERVER['REMOTE_ADDR']]);
+	$ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$_SERVER['REMOTE_ADDR']]);
 	if ($ipban) {
 		http_response_code(403);
 
@@ -60,7 +56,7 @@ if (isset($_COOKIE['passenc'])) setcookie('passenc', 'DEPRECATED', 1, '/');
 
 // Authentication code.
 if (isset($_COOKIE[$cookieName])) {
-	$id = $mysql->result("SELECT id FROM users WHERE token = ?", [$_COOKIE[$cookieName]]);
+	$id = $sql->result("SELECT id FROM users WHERE token = ?", [$_COOKIE[$cookieName]]);
 
 	if ($id) {
 		// Valid password cookie.
@@ -75,11 +71,11 @@ if (isset($_COOKIE[$cookieName])) {
 }
 
 if ($log) {
-	$userdata = $mysql->fetch("SELECT * FROM users WHERE id = ?", [$id]);
-	$notificationCount = $mysql->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
+	$userdata = $sql->fetch("SELECT * FROM users WHERE id = ?", [$id]);
+	$notificationCount = $sql->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
 
 	if ($userdata['powerlevel'] == 0) {
-		$userdata['banreason'] = $mysql->result("SELECT reason FROM bans WHERE user = ?", [$id]);
+		$userdata['banreason'] = $sql->result("SELECT reason FROM bans WHERE user = ?", [$id]);
 	}
 } else {
 	$userdata['powerlevel'] = 1;

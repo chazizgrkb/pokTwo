@@ -1,22 +1,25 @@
 <?php
 namespace pokTwo;
-$options = [
-	\PDO::ATTR_ERRMODE				=> \PDO::ERRMODE_EXCEPTION,
-	\PDO::ATTR_DEFAULT_FETCH_MODE	=> \PDO::FETCH_ASSOC,
-	\PDO::ATTR_EMULATE_PREPARES		=> false,
-	\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET sql_mode="TRADITIONAL"'
-];
-try {
-	$sql = new \PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
-} catch (\PDOException $e) {
-	die("Error - Can't connect to database. Please try again later.");
-}
-class MySQL
-{
-	function query($query,$params = []) {
-		global $sql;
 
-		$res = $sql->prepare($query);
+class MySQL {
+	private $sql;
+
+	function __construct($host, $user, $pass, $db) {
+		$options = [
+			\PDO::ATTR_ERRMODE				=> \PDO::ERRMODE_EXCEPTION,
+			\PDO::ATTR_DEFAULT_FETCH_MODE	=> \PDO::FETCH_ASSOC,
+			\PDO::ATTR_EMULATE_PREPARES		=> false,
+			\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET sql_mode="TRADITIONAL"'
+		];
+		try {
+			$this->sql = new \PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, $options);
+		} catch (\PDOException $e) {
+			die("Error - Can't connect to database. Please try again later.");
+		}
+	}
+
+	function query($query,$params = []) {
+		$res = $this->sql->prepare($query);
 		$res->execute($params);
 		return $res;
 	}
@@ -40,7 +43,6 @@ class MySQL
 	}
 
 	function insertId() {
-		global $sql;
-		return $sql->lastInsertId();
+		return $this->sql->lastInsertId();
 	}
 }

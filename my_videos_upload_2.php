@@ -33,13 +33,13 @@ if (isset($_FILES['fileToUpload']))
     $tagsIDbullshit = array();
     foreach ($tags2 as $tag)
     {
-        if (!$mysql->result("SELECT name from tag_meta WHERE name = ?", [$tag]))
+        if (!$sql->result("SELECT name from tag_meta WHERE name = ?", [$tag]))
         {
-            $mysql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
+            $sql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
         } else {
-			$mysql->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);
+			$sql->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);
 		}
-        $number = $mysql->result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
+        $number = $sql->result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
         $tagsIDbullshit[] = $number;
     }
 	if (count($tagsIDbullshit) < 3) {
@@ -91,15 +91,15 @@ if (isset($_FILES['fileToUpload']))
 
         if (!$error)
         {
-            $mysql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $seccount_og]);
+            $sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $seccount_og]);
 
-            $numID = $mysql->result("SELECT id from videos WHERE video_id = ?", [$new]);
+            $numID = $sql->result("SELECT id from videos WHERE video_id = ?", [$new]);
 
             foreach ($tagsIDbullshit as $tagID)
             {
-                if (!$mysql->result("SELECT tag_id from tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $numID]))
+                if (!$sql->result("SELECT tag_id from tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $numID]))
                 {
-                    $mysql->query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)", [$numID, $tagID]);
+                    $sql->query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)", [$numID, $tagID]);
                 }
             }
 

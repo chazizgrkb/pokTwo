@@ -5,25 +5,25 @@ $id = (isset($_GET['v']) ? $_GET['v'] : null);
 $searchShit = (isset($_GET['search']) ? $_GET['search'] : null);
 $ip = (isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']));
 
-$videoData = $mysql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
+$videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 
 if (!$videoData) error('404', "The video you were looking for cannot be found.");
 
 $query = '';
 $count = 0;
-$commentData = $mysql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);
+$commentData = $sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id WHERE c.id = ? ORDER BY c.date DESC", [$id]);
 
 $pageName = "watch";
 
-$allVideos = $mysql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
+$allVideos = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 
-if ($mysql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.") ]) ['COUNT(video_id)'] < 1)
+if ($sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.") ]) ['COUNT(video_id)'] < 1)
 {
-    $mysql->query("INSERT INTO views (video_id, user) VALUES (?,?)", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.") ]);
+    $sql->query("INSERT INTO views (video_id, user) VALUES (?,?)", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.") ]);
 }
 
 if ($log) {
-	if ($mysql->result("SELECT * from favorites WHERE video_id = ? AND user_id = ?", [$videoData['video_id'], $userdata['id']]))
+	if ($sql->result("SELECT * from favorites WHERE video_id = ? AND user_id = ?", [$videoData['video_id'], $userdata['id']]))
 	{
 		$isFavorited = true;
 	}
@@ -44,14 +44,14 @@ else
     $isFlash = false;
 }
 
-$commentCount = $mysql->fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$videoData['video_id']]) ['COUNT(id)'];
-$favoritesCount = $mysql->fetch("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$videoData['u_id']]) ['COUNT(user_id)'];
-$viewCount = $mysql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
+$commentCount = $sql->fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$videoData['video_id']]) ['COUNT(id)'];
+$favoritesCount = $sql->fetch("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$videoData['u_id']]) ['COUNT(user_id)'];
+$viewCount = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
 
-$previousRecentView = $mysql->result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
+$previousRecentView = $sql->result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
 $currentTime = time();
 
-$mysql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
+$sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
 
 $twig = twigloader();
 echo $twig->render('watch.twig', [
@@ -63,7 +63,7 @@ echo $twig->render('watch.twig', [
 	'recentView' => $previousRecentView,
 	'allVideos' => $allVideos,
 	'isFlash' => $isFlash,
-	'tags' => $tags->getVideoTags($videoData['id']),
+	'tags' => Tags::getVideoTags($videoData['id']),
 	'isFavorited' => $isFavorited,
-	'recommendedNumber' => $videos->countRecommended($videoData['video_id']),
+	'recommendedNumber' => Videos::countRecommended($videoData['video_id']),
 ]);
