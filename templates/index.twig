@@ -114,7 +114,7 @@
 		
 		</td>
 		<td width="180">
-		
+		{% if not log %}
 		<table width="180" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFEEBB">
 			<tbody><tr>
 				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
@@ -127,12 +127,7 @@
 		
 								
 				<div style="font-size: 16px; font-weight: bold; text-align: center; padding: 5px 5px 10px 5px;">
-				{% if log %}
-				<a href="https://www.deviantart.com/polygon5/art/Teen-Bluey-and-Jean-Luc-832662990">Click this to make your cache cringe!</a>
-				<p style="font-size: 12px; font-weight: normal; margin: 0;">Warning: Bluey</p>
-				{% else %}
 				<a href="signup.php">Sign up for your free account!</a>
-				{% endif %}
 				</div>
 				
 								
@@ -145,6 +140,7 @@
 				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
 			</tr>
 		</tbody></table>
+		{% endif %}
 		
 		<div style="margin: 10px 0px 5px 0px; font-size: 12px; font-weight: bold; color: #333;">Recent Tags:</div>
 		<div style="font-size: 13px; color: #333333;">
