@@ -10,7 +10,7 @@ function isCli() {
 function register($name, $pass, $mail) {
 	global $sql;
 	$token = bin2hex(random_bytes(20));
-	$sql->query("INSERT INTO users (name, password, email, token, joined, lastview, ip) VALUES (?,?,?,?,?)",
+	$sql->query("INSERT INTO users (name, password, email, token, joined, lastview, ip) VALUES (?,?,?,?,?,?,?)",
 		[$name,password_hash($pass, PASSWORD_DEFAULT), $mail, $token, time(), time(), $_SERVER['REMOTE_ADDR']]);
 
 	return $token;
