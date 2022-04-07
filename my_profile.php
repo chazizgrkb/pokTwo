@@ -6,7 +6,7 @@ if (!$log) redirect('login.php');
 
 $pageName = "settings";
 
-$coppaYearBS = date('Y') - 13;
+$coppaYearBS = date('Y') - 14;
 
 $birthday = explode('-', $userdata['birthday']);
 
@@ -29,7 +29,7 @@ if (isset($_POST['magic'])) {
 	$dob = date('Y-m-d',$dob);
 
 	// this is in case one of those numberblock bfdi kids has enough knowledge in inspect element -grkb 3/26/2022
-	if ($year > $coppaYearBS) {
+	if ($year >= $coppaYearBS) {
 		die("Nice try, child.");
 	}
 
