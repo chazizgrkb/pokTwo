@@ -29,25 +29,27 @@ if (isset($_FILES['fileToUpload']))
     $title = (isset($_POST['title']) ? $_POST['title'] : '');
     $description = (isset($_POST['desc']) ? $_POST['desc'] : '');
     $tags = (isset($_POST['tags']) ? $_POST['tags'] : '');
-    $tags2 = preg_split('/\s+/', $tags);
+    $tags2 = preg_split('/[\s,]+/', $tags); // parses both commas and spaces
+	if (count($tags2) < 3) {
+		die("Less than 3 tags!"); // we should have an actual error page, but this is alpha shit, so meh.
+	}
     $tagsIDbullshit = array();
     foreach ($tags2 as $tag)
     {
+		$tagsIDbullshit[] = $number;
         if (!$sql->result("SELECT name from tag_meta WHERE name = ?", [$tag]))
         {
-            $sql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
+            $sql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]); //Insert tag onto database
         } else {
-			$sql->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);
+			$sql->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]); //Bump tag up the "lastest used" tags list by changing timestamp to current time.
 		}
         $number = $sql->result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
         $tagsIDbullshit[] = $number;
     }
-	if (count($tagsIDbullshit) < 3) {
-		die("Less than 3 tags!"); // we should have an actual error page, but this is alpha shit, so meh.
-	}
 
 	// FIXME: make this shit case-insensitive.
-    if ($vextension != "mp4" && $vextension != "mkv" && $vextension != "wmv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp")
+	// REMOVED WMV BECAUSE PRODUCTION FFMPEG DOES NOT SUPPORT WMV
+    if ($vextension != "mp4" && $vextension != "mkv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp")
     {
         echo "<center><h1>Your video is an incompatible format.<br>To continue uploading this video, convert it to a supported format.</h1></center>";
         die();
