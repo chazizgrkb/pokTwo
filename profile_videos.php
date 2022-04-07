@@ -16,6 +16,15 @@ $favoritesCount = $sql->result("SELECT COUNT(user_id) FROM favorites WHERE user_
 $twig = twigloader();
 
 $videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE author = ? ORDER BY v.time DESC LIMIT 5", [$userpagedata["id"]]);
+$videos = $sql->fetchArray($videoData);
+
+$tags = [];
+
+foreach($videos as $key=>$value)
+{
+	$tags[$key] = [];
+	array_push($tags[$key], Tags::getVideoTags($value['id']));
+}
 
 echo $twig->render('profile_videos.twig', [
 	'id' => $userpagedata['id'],
@@ -23,5 +32,6 @@ echo $twig->render('profile_videos.twig', [
 	'allVideos' => $allVideos,
 	'allFavorites' => $favoritesCount,
 	'userpagedata' => $userpagedata,
-	'videos' => $videoData,
+	'videos' => $videos,
+	'tags' => $tags,
 ]);

@@ -12,9 +12,6 @@ $memcachedServers = [];
 
 $basepath = '/';
 
-$tplCache = 'templates/cache';
-$tplNoCache = true; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
-
 $forumEnabled = true;
 
 // Should dark mode be default?
