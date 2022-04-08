@@ -96,9 +96,10 @@ if (isset($_FILES['fileToUpload']))
 			$duration = $ffprobe
 				->format($target_file)    // extracts file informations
 				->get('duration');  // returns the duration property
-			$seccount = round($duration / 3);
-			$seccount2 = $seccount + $seccount;
-			$seccount3 = $seccount2 + $seccount - 2;
+			//this doesn't scale too well with short videos.
+			$seccount = round($duration / 4);
+			$seccount2 = $seccount * 1.5;
+			$seccount3 = $seccount2 + $seccount - 1;
 
 			$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount));
 			$frame->filters()->custom('scale=120x90');
