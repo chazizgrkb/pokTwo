@@ -8,16 +8,7 @@ $query = isset($_GET['search']) ? $_GET['search'] : null;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 
 // currently selects all uploaded videos
-$videoData = $sql->query("SELECT * FROM videos WHERE author = ?", [$userdata['id']]);
-$videos = $sql->fetchArray($videoData);
-
-$tags = [];
-
-foreach($videos as $key=>$value)
-{
-	$tags[$key] = [];
-	array_push($tags[$key], Tags::getVideoTags($value['id']));
-}
+$videos = Videos::getVideos('v.time', 9223372036854775807, 'v.author', $userdata['id']);
 
 $count = $sql->result("SELECT COUNT(*) FROM videos WHERE author = ?", [$userdata['id']]);
 
@@ -28,5 +19,4 @@ echo $twig->render('vidlist.twig', [
 	'page' => $page,
 	'count' => $count,
 	'title' => "My Videos",
-	'tags' => $tags,
 ]);

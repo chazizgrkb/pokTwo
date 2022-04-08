@@ -3,6 +3,7 @@ namespace pokTwo;
 class Videos
 {
 	// this is like that so that it stays readable in the code and doesn't introduce a fucking huge horizontal scrollbar on github. -grkb 3/31/2022
+	//why the hell is it using tutorial names?
 	public static $recommendedfields = "
 		jaccard.video_id,
 		jaccard.intersect,
@@ -44,6 +45,7 @@ class Videos
 
 	static function videofields()
 	{
+		//todo: make this cleaner.
 		return 'v.id, v.video_id, v.title, v.description, v.time, (SELECT COUNT(*) FROM views WHERE video_id = v.video_id) AS views, (SELECT COUNT(*) FROM comments WHERE id = v.video_id) AS comments, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, (SELECT COUNT(*) FROM favorites WHERE video_id = v.video_id) AS favorites, v.videolength, v.category_id, v.author';
 	}
 
@@ -73,7 +75,7 @@ class Videos
 		global $userfields, $videofields, $sql;
 		if (isset($whereSomething))
 		{
-			$videoList = $sql->fetchArray($sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? ORDER BY $orderBy LIMIT $limit") , [$whereEquals]);
+			$videoList = $sql->fetchArray($sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? ORDER BY $orderBy LIMIT $limit", [$whereEquals]));
 		}
 		else
 		{
