@@ -48,8 +48,7 @@ if (isset($_FILES['fileToUpload']))
     }
 
 	// FIXME: make this shit case-insensitive.
-	// REMOVED WMV BECAUSE PRODUCTION FFMPEG DOES NOT SUPPORT WMV
-    if ($vextension != "mp4" && $vextension != "mkv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp")
+    if ($vextension != "mp4" && $vextension != "mkv" && $vextension != "wmv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp")
     {
         echo "<center><h1>Your video is an incompatible format.<br>To continue uploading this video, convert it to a supported format.</h1></center>";
         die();
@@ -77,8 +76,8 @@ if (isset($_FILES['fileToUpload']))
         exec($thumbcmd1);
         exec($thumbcmd2);
         exec($thumbcmd3);
-        exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240 -c:v libx264 -b:a 56k  -c:a aac -ar 22050 media/" . $new . ".mp4");
-        exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240 -c:v flv1 -b:a 80k  -c:a mp3 -ar 22050 media/" . $new . ".flv");
+        exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240,format=yuv422p -c:v libx264 -b:a 56k  -c:a aac -ar 22050 media/" . $new . ".mp4");
+        exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240,format=yuv422p -c:v flv1 -b:a 80k  -c:a mp3 -ar 22050 media/" . $new . ".flv");
 
         clearstatcache();
         if (0 == filesize("media/" . $new . ".mp4"))
