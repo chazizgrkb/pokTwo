@@ -1,5 +1,4 @@
 {% extends "_layout.twig" %}
-
 	{% block content %}
 <table align="center" cellpadding="5" cellspacing="0" border="0">
    <tbody>
@@ -49,6 +48,7 @@
                   </tbody>
                </table>
             </div>
+			{{ pagination(level_count, glob_lpp, "browse.php?page=%s", page) }}
          </td>
          <td><img src="img/pixel.gif" width="5" height="1"></td>
       </tr>
