@@ -1,9 +1,28 @@
 <?php
 namespace pokTwo;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Video\x264;
+use FFMpeg\Format\Video\FLV;
+use FFMpeg\FFProbe;
+use FFMpeg\Coordinate;
+use FFMpeg\Media;
+use FFMpeg\Filters;
+
+
 require ('lib/common.php');
+require_once('lib/external/FLV.php'); //annoyingly PHP-FFMpeg does not have FLV support.
+
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+$config = [
+	'timeout'          => 3600, // The timeout for the underlying process
+	'ffmpeg.threads'   => 12,   // The number of threads that FFmpeg should use
+	'ffmpeg.binaries'  => ($ffmpegPath ? $ffmpegPath : 'ffmpeg'),
+	'ffprobe.binaries' => ($ffprobePath ? $ffprobePath : 'ffprobe'),
+];
 
 if (!$log) redirect('login.php');
 
@@ -34,6 +53,7 @@ if (isset($_FILES['fileToUpload']))
 		die("Less than 3 tags!"); // we should have an actual error page, but this is alpha shit, so meh.
 	}
     $tagsIDbullshit = array();
+	$number = 0; //tf does this even do????
     foreach ($tags2 as $tag)
     {
 		$tagsIDbullshit[] = $number;
@@ -61,42 +81,45 @@ if (isset($_FILES['fileToUpload']))
 
     if (move_uploaded_file($temp_name, $target_file))
     {
-        $seccount_og = round(exec("$ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 " . $target_file));
-        $seccount = $seccount_og / 3;
-        $seccount = round($seccount);
-		// https://cdn.discordapp.com/attachments/955424378097655820/960638428859482122/unknown.png
-        $thumbcmd1 = $ffmpegPath . " -i " . $target_file . " -vframes 1 -an -s 120x90 -ss " . $seccount . " -frames:v 1 thumbs/" . $new . ".1.jpg ";
-        $seccount2 = $seccount + $seccount;
-        $thumbcmd2 = $ffmpegPath . " -i " . $target_file . " -vframes 1 -an -s 120x90 -ss " . $seccount2 . " -frames:v 1 thumbs/" . $new . ".2.jpg ";
-        $seccount3 = $seccount2 + $seccount - 2; // the sweet spot, tested with a gif of bingo heeler converted to mp4 and the 3rd thumb wasn't a few seconds earlier than the 2nd thumb. -grkb 4/4/2022
-        $thumbcmd3 = $ffmpegPath . " -i " . $target_file . " -vframes 1 -an -s 120x90 -ss " . $seccount3 . " -frames:v 1 thumbs/" . $new . ".3.jpg ";
-
 		// FIXME: make it like squareBracket where the uploader is a PHP script outside of my_videos_upload_2.php, because making the browser wait until ffmpeg's done is dumb. -grkb 4/4/2022
-		
-        exec($thumbcmd1);
-        exec($thumbcmd2);
-        exec($thumbcmd3);
-        exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240,format=yuv422p -c:v libx264 -b:a 56k  -c:a aac -ar 22050 media/" . $new . ".mp4");
-        exec("$ffmpegPath  -i " . $target_file . " -vf scale=320x240,format=yuv422p -c:v flv1 -b:a 80k  -c:a mp3 -ar 22050 media/" . $new . ".flv");
+		try {
+			$ffmpeg = FFMpeg::create($config);
+			$ffprobe = FFProbe::create($config);
+			$h264 = new \FFMpeg\Format\Video\X264();
+			$flv = new \FFMpeg\Format\Video\FLV();
+			
+			$h264->setAudioKiloBitrate(56)->setAdditionalParameters(array('-ar', '22050'));
+			$flv->setAudioKiloBitrate(80)->setAdditionalParameters(array('-ar', '22050'));
 
-        clearstatcache();
-        if (0 == filesize("media/" . $new . ".mp4"))
-        {
-            unlink("media/" . $new . ".mp4");
-            delete_directory($preload_folder);
-            $failcount++;
-        }
+			
+			$video = $ffmpeg->open($target_file);
+			$duration = $ffprobe
+				->format($target_file)    // extracts file informations
+				->get('duration');  // returns the duration property
+			$seccount = round($duration / 3);
+			$seccount2 = $seccount + $seccount;
+			$seccount3 = $seccount2 + $seccount - 2;
+			
+			$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount));
+			$frame->filters()->custom('scale=120x90');
+			$frame->save('thumbs/' . $new . '.1.jpg');
+			
+			$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2));
+			$frame->filters()->custom('scale=120x90');
+			$frame->save('thumbs/' . $new . '.2.jpg');
+			
+			$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount3));
+			$frame->filters()->custom('scale=120x90');
+			$frame->save('thumbs/' . $new . '.3.jpg');
+				
+			$video->filters()->resize(new Coordinate\Dimension(320, 240), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
+				->custom('format=yuv420p');
+			$video->save($h264, 'media/' . $new . '.mp4');
+			$video->save($flv, 'media/' . $new . '.flv');
+			debug_print_backtrace();
+			unlink($target_file);
 
-        if ($failcount == 1)
-        {
-            unlink("media/" . $new . ".mp4");
-            delete_directory($preload_folder);
-            die("<center><h1>Your video was unable to be uploaded.<br>If you see this screen, report it to staff/admin.</h1></center>");
-        }
-
-        if (!$error)
-        {
-            $sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $seccount_og]);
+			$sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $duration]);
 
             $numID = $sql->result("SELECT id from videos WHERE video_id = ?", [$new]);
 
@@ -110,6 +133,23 @@ if (isset($_FILES['fileToUpload']))
 
             delete_directory($preload_folder);
             redirect('/watch.php?v=' . $new);
+		} catch (Exception $e) {
+			echo "<center><h1>Your video was unable to be uploaded.<br>If you see this screen, report it to staff/admin.</h1></center>". $e->getMessage();
+		}
+
+        clearstatcache();
+        if (0 == filesize("media/" . $new . ".mp4"))
+        {
+            unlink("media/" . $new . ".mp4");
+            delete_directory($preload_folder);
+            $failcount++;
+        }
+
+        if ($failcount == 1)
+        {
+            unlink("media/" . $new . ".mp4");
+            delete_directory($preload_folder);
+            die("");
         }
     }
 }
