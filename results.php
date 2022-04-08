@@ -4,6 +4,7 @@ require('lib/common.php');
 
 $query = isset($_GET['search']) ? $_GET['search'] : null;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
+$limit = sprintf("LIMIT %s,%s", (($page - 1) * $lpp), $lpp);
 
 // currently selects all uploaded videos
 $videoData = $sql->query("
@@ -17,7 +18,7 @@ SELECT DISTINCT $userfields $videofields FROM videos v
 		v.description LIKE CONCAT('%', ?, '%') 
 	OR
 		t.name LIKE CONCAT('%', ?, '%') 
-ORDER BY v.id DESC", [$query, $query, $query]);
+ORDER BY v.id DESC $limit", [$query, $query, $query]);
 $videos = $sql->fetchArray($videoData);
 
 foreach ($videos as &$video) {

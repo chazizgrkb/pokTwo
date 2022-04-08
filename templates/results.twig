@@ -55,16 +55,7 @@
 		{% else %}
 		No videos!
 		{% endfor %}		
-				<!-- begin paging -->
-				<div style="font-size: 13px; font-weight: bold; color: #444; text-align: right; padding: 5px 0px 5px 0px;">Result Page:
-
-					{{ pagination(count, glob_lpp, le_url, page) }}
-					<!-- &nbsp;<a href="results.php?search={{ query }}&amp;page=1">&lt;&nbsp;Previous</a>&nbsp;<span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=1">1</a></span><span style="color: #444; background-color: #FFFFFF; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;">2</span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=3">3</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=4">4</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=5">5</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=6">6</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=7">7</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=8">8</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=9">9</a></span><span style="background-color: #CCC; padding: 1px 4px 1px 4px; border: 1px solid #999; margin-right: 5px;"><a href="results.php?search={{ query }}&amp;page=10">10</a></span><a href="results.php?search={{ query }}&amp;page=3">Next&nbsp;&gt;</a>&nbsp;-->					
-					
-				</div>
-				<!-- end paging -->
-				
-								
+				{{ pagination(count, glob_lpp, le_url, page) }}
 				</td>
 				<td><img src="/img/pixel.gif" width="5" height="1"></td>
 			</tr>
