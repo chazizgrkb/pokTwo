@@ -20,7 +20,6 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	if (!isset($customenv)) {
 		$twig = new \Twig\Environment($loader, [
 			'cache' => $doCache,
-			'debug' => true,
 		]);
 	} else {
 		$twig = $customenv($loader, $doCache);
@@ -28,7 +27,6 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 
 	// Add pokTwo specific extension
 	$twig->addExtension(new PokTwoExtension());
-	$twig->addExtension(new \Twig\Extension\DebugExtension());
 
 	$twig->addGlobal('userdata', $userdata);
 	$twig->addGlobal('notification_count', $notificationCount);
