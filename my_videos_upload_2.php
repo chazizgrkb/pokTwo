@@ -24,6 +24,8 @@ $config = [
 	'ffprobe.binaries' => ($ffprobePath ? $ffprobePath : 'ffprobe'),
 ];
 
+$supportedFormats = ["mp4", "mkv", "wmv", "flv", "avi", "mov", "3gp"];
+
 if (!$log) redirect('login.php');
 
 $error = '';
@@ -33,65 +35,63 @@ $failcount = 0;
 // fixme: move this into a function probably?
 if (isset($_FILES['fileToUpload']))
 {
-    $uploader = $userdata['id'];
-    $new = randstr(11);
+	$uploader = $userdata['id'];
+	$new = randstr(11);
 
-    $vextension = strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
+	$vextension = strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
 
-    $name = $_FILES['fileToUpload']['name'];
-    $temp_name = $_FILES['fileToUpload']['tmp_name'];
-    $target_file = "preload/" . $new . "/" . $new . "." . $vextension;
-    $preload_folder = "preload/" . $new;
-    $upload_file = "media/" . $new . ".mp4";
-    $target_thumb = "thumbs/" . $new . ".jpg";
+	$name = $_FILES['fileToUpload']['name'];
+	$temp_name = $_FILES['fileToUpload']['tmp_name'];
+	$target_file = "preload/" . $new . "/" . $new . "." . $vextension;
+	$preload_folder = "preload/" . $new;
+	$upload_file = "media/" . $new . ".mp4";
+	$target_thumb = "thumbs/" . $new . ".jpg";
 
-    $title = (isset($_POST['title']) ? $_POST['title'] : '');
-    $description = (isset($_POST['desc']) ? $_POST['desc'] : '');
-    $tags = (isset($_POST['tags']) ? $_POST['tags'] : '');
-    $tags2 = preg_split('/[\s,]+/', $tags); // parses both commas and spaces
+	$title = (isset($_POST['title']) ? $_POST['title'] : '');
+	$description = (isset($_POST['desc']) ? $_POST['desc'] : '');
+	$tags = (isset($_POST['tags']) ? $_POST['tags'] : '');
+	$tags2 = preg_split('/[\s,]+/', $tags); // parses both commas and spaces
 	if (count($tags2) < 3) {
 		die("Less than 3 tags!"); // we should have an actual error page, but this is alpha shit, so meh.
 	}
-    $tagsIDbullshit = array();
+	$tagsIDbullshit = array();
 	$number = 0; //tf does this even do????
-    foreach ($tags2 as $tag)
-    {
+	foreach ($tags2 as $tag)
+	{
 		$tagsIDbullshit[] = $number;
-        if (!$sql->result("SELECT name from tag_meta WHERE name = ?", [$tag]))
-        {
-            $sql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]); //Insert tag onto database
-        } else {
+		if (!$sql->result("SELECT name from tag_meta WHERE name = ?", [$tag]))
+		{
+			$sql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]); //Insert tag onto database
+		} else {
 			$sql->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]); //Bump tag up the "lastest used" tags list by changing timestamp to current time.
 		}
-        $number = $sql->result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
-        $tagsIDbullshit[] = $number;
-    }
+		$number = $sql->result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
+		$tagsIDbullshit[] = $number;
+	}
 
-	// FIXME: make this shit case-insensitive.
-    if ($vextension != "mp4" && $vextension != "mkv" && $vextension != "wmv" && $vextension != "flv" && $vextension != "avi" && $vextension != "mov" && $vextension != "3gp")
-    {
-        echo "<center><h1>Your video is an incompatible format.<br>To continue uploading this video, convert it to a supported format.</h1></center>";
-        die();
-    }
+	if (!in_array(strtolower($vextension), $supportedFormats, true)) {
+		echo "<center><h1>Your video is an incompatible format.<br>To continue uploading this video, convert it to a supported format.</h1></center>";
+		die();
+	}
 
-    if (!file_exists($preload_folder))
-    {
-        mkdir($preload_folder);
-    }
+	if (!file_exists($preload_folder))
+	{
+		mkdir($preload_folder);
+	}
 
-    if (move_uploaded_file($temp_name, $target_file))
-    {
+	if (move_uploaded_file($temp_name, $target_file))
+	{
 		// FIXME: make it like squareBracket where the uploader is a PHP script outside of my_videos_upload_2.php, because making the browser wait until ffmpeg's done is dumb. -grkb 4/4/2022
 		try {
 			$ffmpeg = FFMpeg::create($config);
 			$ffprobe = FFProbe::create($config);
 			$h264 = new X264();
 			$flv = new FLV();
-			
+
 			$h264->setAudioKiloBitrate(56)->setAdditionalParameters(array('-ar', '22050'));
 			$flv->setAudioKiloBitrate(80)->setAdditionalParameters(array('-ar', '22050'));
 
-			
+
 			$video = $ffmpeg->open($target_file);
 			$duration = $ffprobe
 				->format($target_file)    // extracts file informations
@@ -99,19 +99,19 @@ if (isset($_FILES['fileToUpload']))
 			$seccount = round($duration / 3);
 			$seccount2 = $seccount + $seccount;
 			$seccount3 = $seccount2 + $seccount - 2;
-			
+
 			$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount));
 			$frame->filters()->custom('scale=120x90');
 			$frame->save('thumbs/' . $new . '.1.jpg');
-			
+
 			$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2));
 			$frame->filters()->custom('scale=120x90');
 			$frame->save('thumbs/' . $new . '.2.jpg');
-			
+
 			$frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount3));
 			$frame->filters()->custom('scale=120x90');
 			$frame->save('thumbs/' . $new . '.3.jpg');
-				
+
 			$video->filters()->resize(new Coordinate\Dimension(320, 240), Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
 				->custom('format=yuv420p');
 			$video->save($h264, 'media/' . $new . '.mp4');
@@ -121,37 +121,37 @@ if (isset($_FILES['fileToUpload']))
 
 			$sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time() , time() , $upload_file, $duration]);
 
-            $numID = $sql->result("SELECT id from videos WHERE video_id = ?", [$new]);
+			$numID = $sql->result("SELECT id from videos WHERE video_id = ?", [$new]);
 
-            foreach ($tagsIDbullshit as $tagID)
-            {
-                if (!$sql->result("SELECT tag_id from tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $numID]))
-                {
-                    $sql->query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)", [$numID, $tagID]);
-                }
-            }
+			foreach ($tagsIDbullshit as $tagID)
+			{
+				if (!$sql->result("SELECT tag_id from tag_index WHERE tag_id = ? AND video_id = ?", [$tagID, $numID]))
+				{
+					$sql->query("INSERT INTO tag_index (video_id, tag_id) VALUES (?,?)", [$numID, $tagID]);
+				}
+			}
 
-            delete_directory($preload_folder);
-            redirect('/watch.php?v=' . $new);
+			delete_directory($preload_folder);
+			redirect('/watch.php?v=' . $new);
 		} catch (Exception $e) {
 			echo "<center><h1>Your video was unable to be uploaded.<br>If you see this screen, report it to staff/admin.</h1></center>". $e->getMessage();
 		}
 
-        clearstatcache();
-        if (0 == filesize("media/" . $new . ".mp4"))
-        {
-            unlink("media/" . $new . ".mp4");
-            delete_directory($preload_folder);
-            $failcount++;
-        }
+		clearstatcache();
+		if (0 == filesize("media/" . $new . ".mp4"))
+		{
+			unlink("media/" . $new . ".mp4");
+			delete_directory($preload_folder);
+			$failcount++;
+		}
 
-        if ($failcount == 1)
-        {
-            unlink("media/" . $new . ".mp4");
-            delete_directory($preload_folder);
-            die("");
-        }
-    }
+		if ($failcount == 1)
+		{
+			unlink("media/" . $new . ".mp4");
+			delete_directory($preload_folder);
+			die("");
+		}
+	}
 }
 
 $twig = twigloader();
