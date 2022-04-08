@@ -85,8 +85,8 @@ if (isset($_FILES['fileToUpload']))
 		try {
 			$ffmpeg = FFMpeg::create($config);
 			$ffprobe = FFProbe::create($config);
-			$h264 = new \FFMpeg\Format\Video\X264();
-			$flv = new \FFMpeg\Format\Video\FLV();
+			$h264 = new X264();
+			$flv = new FLV();
 			
 			$h264->setAudioKiloBitrate(56)->setAdditionalParameters(array('-ar', '22050'));
 			$flv->setAudioKiloBitrate(80)->setAdditionalParameters(array('-ar', '22050'));
