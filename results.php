@@ -18,6 +18,11 @@ SELECT DISTINCT $userfields $videofields FROM videos v
 	OR
 		t.name LIKE CONCAT('%', ?, '%') 
 ORDER BY v.id DESC", [$query, $query, $query]);
+$videos = $sql->fetchArray($videoData);
+
+foreach ($videos as &$video) {
+	$video['tags'] = Tags::getVideoTags($video['id']);
+}
 
 $count = $sql->result("
 SELECT COUNT(DISTINCT v.id) FROM videos v
@@ -34,8 +39,8 @@ ORDER BY v.id DESC", [$query, $query, $query]);
 $twig = twigloader();
 
 echo $twig->render('results.twig', [
-	'videos' => $sql->fetchArray($videoData),
+	'videos' => $videos,
 	'query' => $query,
 	'page' => $page,
-	'count' => $count
+	'count' => $count,
 ]);

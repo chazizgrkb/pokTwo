@@ -19,9 +19,16 @@ foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
 
+if ($isDebug) {
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+}
+
 // Holy shit! Classes!
 $sql = new MySQL($host, $user, $pass, $db);
 
+//tf does this do?
 if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {
 	foreach ($blockedUA as $bl) {
 		if (str_contains($_SERVER['HTTP_USER_AGENT'], $bl)) {
