@@ -2,7 +2,7 @@
 
 {% block title %}{{ query }}{% endblock %}
 
-{% set le_url = 'results.php?search=%s' %}
+{% set le_url = 'results.php?search='~ query ~'&page=%s' %}
 
 {% block content %}
 <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">

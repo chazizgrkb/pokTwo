@@ -6,9 +6,10 @@ if (!$log) redirect('vidlist.');
 
 $query = isset($_GET['search']) ? $_GET['search'] : null;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
+$limit = sprintf("%s,%s", (($page - 1) * $lpp), $lpp);
 
 // currently selects all uploaded videos
-$videos = Videos::getVideos('v.time', 9223372036854775807, 'v.author', $userdata['id']);
+$videos = Videos::getVideos('v.time DESC', $limit, 'v.author', $userdata['id']);
 
 $count = $sql->result("SELECT COUNT(*) FROM videos WHERE author = ?", [$userdata['id']]);
 
