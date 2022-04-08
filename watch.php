@@ -17,9 +17,9 @@ $pageName = "watch";
 
 $allVideos = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 
-if ($sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.") ]) ['COUNT(video_id)'] < 1)
+if ($sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, $ip) ]) ['COUNT(video_id)'] < 1)
 {
-    $sql->query("INSERT INTO views (video_id, user) VALUES (?,?)", [$videoData['video_id'], crypt($ip, "salt, used to encrypt stuff is very important.") ]);
+    $sql->query("INSERT INTO views (video_id, user) VALUES (?,?)", [$videoData['video_id'], crypt($ip, $ip) ]);
 }
 
 if ($log) {
