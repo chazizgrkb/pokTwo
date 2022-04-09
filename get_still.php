@@ -5,9 +5,6 @@ require('lib/common.php');
 
 $video = htmlspecialchars($_GET["video_id"]);
 
-$thumb = "thumbs/" . $video . ".2.jpg";
-
-
 if (isset($_GET['still_id'])) {
     switch ($_GET["still_id"]) {
         case 1:
@@ -23,6 +20,8 @@ if (isset($_GET['still_id'])) {
             $file = "img/thumbnail.jpg";
             break;
     }
+} else {
+    $thumb = "thumbs/" . $video . ".2.jpg";
 }
 
 if (file_exists($thumb)) {
