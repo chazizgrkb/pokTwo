@@ -17,7 +17,7 @@ if (isset($_GET['still_id'])) {
             $thumb = "thumbs/" . $video . ".3.jpg";
             break;
         default:
-            $file = "img/thumbnail.jpg";
+            $thumb = "img/thumbnail.jpg";
             break;
     }
 } else {

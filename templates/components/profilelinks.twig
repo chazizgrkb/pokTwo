@@ -1,7 +1,15 @@
-<div style="font-size: 14px; font-weight: bold; margin-bottom: 10px; color: #444;">{% if pageName != "profile" %}<a href="profile.php?user={{ userpagedata.name }}">{% endif %}» Profile{% if pageName != "profile" %}</a>{% endif %}</div>
-<div style="font-size: 14px; font-weight: bold; margin-bottom: 10px; color: #444;">» {% if pageName != "profile_videos" %}<a href="profile_videos.php?user={{ userpagedata.name }}">{% endif %}Public Videos{% if pageName != "profile_videos" %}</a>{% endif %} ({{ allVideos }})</div>
+<div style="font-size: 14px; font-weight: bold; margin-bottom: 10px; color: #444;">{% if pageName != "profile" %}<a
+            href="profile.php?user={{ userpagedata.name }}">{% endif %}»
+        Profile{% if pageName != "profile" %}</a>{% endif %}</div>
+<div style="font-size: 14px; font-weight: bold; margin-bottom: 10px; color: #444;">
+    » {% if pageName != "profile_videos" %}<a href="profile_videos.php?user={{ userpagedata.name }}">{% endif %}Public
+        Videos{% if pageName != "profile_videos" %}</a>{% endif %} ({{ allVideos }})
+</div>
 <!-- only show this link to friends in their network -->
 <!-- <div style="font-size: 14px; font-weight: bold; margin-bottom: 10px; color: #444;">» <a href="profile_videos_private.php?user={{ userpagedata.name }}">Private Videos</a> (0)</div> -->
 <!-- only show this link to friends in their network -->
-<div style="font-size: 14px; font-weight: bold; margin-bottom: 10px; color: #444;">» {% if pageName != "profile_favorites" %}<a href="profile_favorites.php?user={{ userpagedata.name }}">{% endif %}Favorites{% if pageName != "profile_favorites" %}</a>{% endif %} ({{ allFavorites }})</div>
+<div style="font-size: 14px; font-weight: bold; margin-bottom: 10px; color: #444;">
+    » {% if pageName != "profile_favorites" %}<a href="profile_favorites.php?user={{ userpagedata.name }}">{% endif %}
+        Favorites{% if pageName != "profile_favorites" %}</a>{% endif %} ({{ allFavorites }})
+</div>
 <!-- <div style="font-size: 14px; font-weight: bold; margin-bottom: 20px; color: #444;">» <a href="profile_friends.php?user={{ userpagedata.name }}">Friends</a> (0)</div> -->

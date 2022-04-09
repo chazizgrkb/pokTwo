@@ -3,67 +3,81 @@
 {% block title %}Help{% endblock %}
 
 	{% block content %}
-<div class="tableSubTitle">Help</div>
+        <div class="tableSubTitle">Help</div>
 
-<span class="highlight">Q: What kind of videos can I upload?</span>
+        <span class="highlight">Q: What kind of videos can I upload?</span>
 
-<br><br>A: You may upload any kind of personal video that you'd like to share with the world. We don't allow any nudity and your video must be appropriate for all audiences. 
-<br>
-<br>
-However, this still leaves a lot of room for creativity!! Do you own a <a href="results.php?search=dog">dog</a> or a <a href="results.php?search=cat">cat</a>? Have you gone on vacationing in <a href="results.php?search=mexico">Mexico</a>? Do you live in <a href="results.php?search=netherlands">The Netherlands</a>?
-<br>
-<br>
-These are just some examples of the videos that our users are uploading. In the end, you know yourself best. What would <i>you</i> like to capture on video?
+        <br>
+        <br>A: You may upload any kind of personal video that you'd like to share with the world. We don't allow any nudity and your video must be appropriate for all audiences.
+        <br>
+        <br>
+        However, this still leaves a lot of room for creativity!! Do you own a <a
+            href="results.php?search=dog">dog</a> or a <a
+            href="results.php?search=cat">cat</a>? Have you gone on vacationing in <a href="results.php?search=mexico">Mexico</a>? Do you live in
+        <a href="results.php?search=netherlands">The Netherlands</a>?
+        <br>
+        <br>
+        These are just some examples of the videos that our users are uploading. In the end, you know yourself best. What would
+        <i>you</i> like to capture on video?
 
-<br><br><span class="highlight">Q: How long can my video be?</span>
+        <br><br><span class="highlight">Q: How long can my video be?</span>
 
-<br><br>A: There is no time limit on your video, but the video file you upload must be less than 100 MB in size.
+        <br><br>A: There is no time limit on your video, but the video file you upload must be less than 100 MB in size.
 
-<br><br><span class="highlight">Q: What video file formats can I upload?</span>
+        <br><br><span class="highlight">Q: What video file formats can I upload?</span>
 
-<br><br>A: pokTwo accepts video files from most digital cameras and from cell phones in the .AVI, .MOV, and .MPG file formats.
+        <br>
+        <br>A: pokTwo accepts video files from most digital cameras and from cell phones in the .AVI, .MOV, and .MPG file formats.
 
-<br><br><span class="highlight">Q: How can I improve my videos?</span>
+        <br><br><span class="highlight">Q: How can I improve my videos?</span>
 
-<br><br>A: We encourage you to edit your videos with software such as <a href="https://web.archive.org/web/20050715234755/http://www.microsoft.com/windowsxp/using/moviemaker/default.mspx" target="_blank">Windows MovieMaker</a> (included with every Windows installation), or <a href="https://web.archive.org/web/20050715234755/http://www.apple.com/ilife/imovie/" target="_blank">Apple iMovie</a>. Using these programs you can easily edit
-your videos, add soundtracks, etc.
+        <br><br>A: We encourage you to edit your videos with software such as <a
+            href="https://web.archive.org/web/20050715234755/http://www.microsoft.com/windowsxp/using/moviemaker/default.mspx"
+            target="_blank">Windows MovieMaker</a> (included with every Windows installation), or <a
+            href="https://web.archive.org/web/20050715234755/http://www.apple.com/ilife/imovie/" target="_blank">Apple
+        iMovie</a>. Using these programs you can easily edit
+        your videos, add soundtracks, etc.
 
-<br><br><span class="highlight">Q: How do I link to my pokTwo videos from my homepage?</span>
+        <br><br><span class="highlight">Q: How do I link to my pokTwo videos from my homepage?</span>
 
-<br><br>A: Any video you upload to pokTwo is still <b>your</b> video. We want to enable pokTwo users to link to their videos in every way possible. By placing a small snippet of HTML code in your webpage, you can pull up a list of all your pokTwo videos in a neat, little window. Take a look at the example below, on the left is the HTML snippet you would copy+paste into your webpage. As a result, a small box with your videos will be rendered as shown on the right.
-<br>
-<br>
+        <br><br>A: Any video you upload to pokTwo is still
+        <b>your</b> video. We want to enable pokTwo users to link to their videos in every way possible. By placing a small snippet of HTML code in your webpage, you can pull up a list of all your pokTwo videos in a neat, little window. Take a look at the example below, on the left is the HTML snippet you would copy+paste into your webpage. As a result, a small box with your videos will be rendered as shown on the right.
+        <br>
+        <br>
 
-	<table width="100%">
-	<tbody><tr>
-		<td valign="top" align="center">
-			<span class="highlight">HTML Snippet (iframe version)</span>
-			<br>
-			<br>
-			<textarea cols="65" rows="8" id="snippet_iframe" wrap="soft">&lt;iframe id="videos_list" name="videos_list" src="http://placeholder.link/videos_list.php?user=YOUR_USERNAME" scrolling="auto" width="265" height="400" frameborder="0" marginheight="0" marginwidth="0"&gt;
+        <table width="100%">
+            <tbody>
+            <tr>
+                <td valign="top" align="center">
+                    <span class="highlight">HTML Snippet (iframe version)</span>
+                    <br>
+                    <br>
+                    <textarea cols="65" rows="8" id="snippet_iframe" wrap="soft">&lt;iframe id="videos_list" name="videos_list" src="http://placeholder.link/videos_list.php?user=YOUR_USERNAME" scrolling="auto" width="265" height="400" frameborder="0" marginheight="0" marginwidth="0"&gt;
 &lt;/iframe&gt;</textarea>
-			<br>
-			<!--
-			<br/>
-			<span class="highlight">HTML Snippet (embed version)</span>
-			<br/>
-			<br/>
-			<textarea cols="65" rows="8" id="snippet_embed" wrap="soft"><embed src="videos_list.php?user=grkb" scrolling="auto" width="265" height="400" frameborder="0" marginheight="0" marginwidth="0"></textarea>
-			<br/>
-			-->
-		</td>
-		<td valign="top" align="center">
-			<span class="highlight">What Shows Up</span>
-			<br>
-			<br>
-			<iframe id="videos_list" name="videos_list" src="videos_list.php?user=grkb" scrolling="auto" width="265" height="400" frameborder="0" marginheight="0" marginwidth="0">
-			</iframe>
-		</td>
-	</tr>
-</tbody></table>
+                    <br>
+                    <!--
+                    <br/>
+                    <span class="highlight">HTML Snippet (embed version)</span>
+                    <br/>
+                    <br/>
+                    <textarea cols="65" rows="8" id="snippet_embed" wrap="soft"><embed src="videos_list.php?user=grkb" scrolling="auto" width="265" height="400" frameborder="0" marginheight="0" marginwidth="0"></textarea>
+                    <br/>
+                    -->
+                </td>
+                <td valign="top" align="center">
+                    <span class="highlight">What Shows Up</span>
+                    <br>
+                    <br>
+                    <iframe id="videos_list" name="videos_list" src="videos_list.php?user=grkb" scrolling="auto"
+                            width="265" height="400" frameborder="0" marginheight="0" marginwidth="0">
+                    </iframe>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
 
-<br><br><br><span class="highlight">Contact pokTwo</span>
-<br><br>If you have any account or video issues, please contact us <a href="contact.php">here</a>.
-Also, if you have any ideas or suggestions to make our service better, please don't hesitate to drop us a line.
-	{% endblock %}
+        <br><br><br><span class="highlight">Contact pokTwo</span>
+        <br><br>If you have any account or video issues, please contact us <a href="contact.php">here</a>.
+        Also, if you have any ideas or suggestions to make our service better, please don't hesitate to drop us a line.
+    {% endblock %}

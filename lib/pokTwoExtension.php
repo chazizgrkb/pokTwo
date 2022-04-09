@@ -1,6 +1,7 @@
 <?php
 
 namespace pokTwo;
+
 use Parsedown;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;

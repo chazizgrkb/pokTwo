@@ -1,6 +1,7 @@
 <?php
 
 namespace pokTwo;
+
 use RelativeTime\RelativeTime;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
@@ -14,7 +15,7 @@ use Twig\Loader\FilesystemLoader;
  */
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
-    global $tplCache, $tplNoCache, $isDebug, $userdata, $notificationCount, $log, $lpp, $forumEnabled, $invite, $pageName, $searchShit, $versionString;
+    global $tplCache, $tplNoCache, $isDebug, $userdata, $notificationCount, $log, $lpp, $invite, $pageName, $searchShit, $versionString;
 
     $doCache = ($tplNoCache ? false : $tplCache);
 

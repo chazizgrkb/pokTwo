@@ -1,62 +1,77 @@
 {% extends "_layout.twig" %}
 	{% block content %}
-<table align="center" cellpadding="5" cellspacing="0" border="0">
-   <tbody>
-      <tr>
-         <td {% if pageName == "browseMain" %}class="bold">{% else %}><a href="browse.php">{% endif %}Most Recent{% if pageName == "browseMain" %}</td>{% else %}</a></td>{% endif %}
-         <td>|</td>
-		 <td {% if pageName == "browsePopular" %}class="bold">{% else %}><a href="browse.php?s=mp">{% endif %}Most Popular{% if pageName == "browsePopular" %}</td>{% else %}</a></td>{% endif %}
-         <td>|</td>
-         <td {% if pageName == "browseDiscussed" %}class="bold">{% else %}><a href="browse.php?s=md">{% endif %}Most Discussed{% if pageName == "browseDiscussed" %}</td>{% else %}</a></td>{% endif %}
-         <td>|</td>
-         <td {% if pageName == "browseFavorited" %}class="bold">{% else %}><a href="browse.php?s=mf">{% endif %}Most Added to Favorites{% if pageName == "browseFavorited" %}</td>{% else %}</a></td>{% endif %}
-         <td>|</td>
-         <td {% if pageName == "browseRandom" %}class="bold">{% else %}><a href="browse.php?s=r">{% endif %}Random{% if pageName == "browseRandom" %}</td>{% else %}</a></td>{% endif %}
-      </tr>
-   </tbody>
-</table>
-<br>
-<table width="80%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
-   <tbody>
-      <tr>
-         <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
-         <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
-         <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
-      </tr>
-      <tr>
-         <td><img src="img/pixel.gif" width="5" height="1"></td>
-         <td>
-            <div class="moduleTitleBar">
-               <div class="moduleTitle">
-                  Most Recent		
-               </div>
-            </div>
-            <div class="moduleFeatured">
-               <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                  <tbody>
-				  {% for row in videos|batch(5) %}
-                     <tr valign="top">
-					 {% for video in row %}
-						<td width="20%" align="center"><a href="watch.php?v={{ video.video_id }}"><img src="get_still.php?still_id=2&amp;video_id={{ video.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
-						<div class="moduleFeaturedTitle"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
-						<div class="moduleFeaturedDetails">Added: {{ video.time|date("F j, Y") }}	<br>by <a href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a><!-- (<a href="profile.php?user={{ video.u_name }}">10</a>) --></div>
-						<div class="moduleFeaturedDetails" style="padding-bottom: 5px;">Views: {{ video.views }} | Comments: {{ video.comments }}</div></td>
-					 {% endfor %}
-                     </tr>
-				{% endfor %}
-                     </tr>
-                  </tbody>
-               </table>
-            </div>
-			{{ pagination(level_count, glob_lpp, "browse.php?page=%s", page) }}
-         </td>
-         <td><img src="img/pixel.gif" width="5" height="1"></td>
-      </tr>
-      <tr>
-         <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
-         <td><img src="img/pixel.gif" width="1" height="5"></td>
-         <td><img src="img/box_login_br.gif" width="5" height="5"></td>
-      </tr>
-   </tbody>
-</table>
-	{% endblock %}
+        <table align="center" cellpadding="5" cellspacing="0" border="0">
+            <tbody>
+            <tr>
+                <td {% if pageName == "browseMain" %}class="bold">{% else %}><a href="browse.php">{% endif %}Most
+                        Recent{% if pageName == "browseMain" %}</td>
+                {% else %}</a></td>{% endif %}
+                <td>|</td>
+                <td {% if pageName == "browsePopular" %}class="bold">{% else %}><a href="browse.php?s=mp">{% endif %}
+                        Most Popular{% if pageName == "browsePopular" %}</td>{% else %}</a></td>{% endif %}
+                <td>|</td>
+                <td {% if pageName == "browseDiscussed" %}class="bold">{% else %}><a href="browse.php?s=md">{% endif %}
+                        Most Discussed{% if pageName == "browseDiscussed" %}</td>{% else %}</a></td>{% endif %}
+                <td>|</td>
+                <td {% if pageName == "browseFavorited" %}class="bold">{% else %}><a href="browse.php?s=mf">{% endif %}
+                        Most Added to Favorites{% if pageName == "browseFavorited" %}</td>{% else %}</a></td>{% endif %}
+                <td>|</td>
+                <td {% if pageName == "browseRandom" %}class="bold">{% else %}><a href="browse.php?s=r">{% endif %}
+                        Random{% if pageName == "browseRandom" %}</td>{% else %}</a></td>{% endif %}
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <table width="80%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+            <tbody>
+            <tr>
+                <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+                <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+            </tr>
+            <tr>
+                <td><img src="img/pixel.gif" width="5" height="1"></td>
+                <td>
+                    <div class="moduleTitleBar">
+                        <div class="moduleTitle">
+                            Most Recent
+                        </div>
+                    </div>
+                    <div class="moduleFeatured">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tbody>
+                            {% for row in videos|batch(5) %}
+                                <tr valign="top">
+                                    {% for video in row %}
+                                        <td width="20%" align="center"><a href="watch.php?v={{ video.video_id }}"><img
+                                                        src="get_still.php?still_id=2&amp;video_id={{ video.video_id }}"
+                                                        class="moduleFeaturedThumb" width="120" height="90"></a>
+                                            <div class="moduleFeaturedTitle"><a
+                                                        href="watch.php?v={{ video.video_id }}">{{ video.title }}</a>
+                                            </div>
+                                            <div class="moduleFeaturedDetails">Added: {{ video.time|date("F j, Y") }}
+                                                <br>by <a
+                                                        href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a>
+                                                <!-- (<a href="profile.php?user={{ video.u_name }}">10</a>) --></div>
+                                            <div class="moduleFeaturedDetails" style="padding-bottom: 5px;">
+                                                Views: {{ video.views }} | Comments: {{ video.comments }}</div>
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {{ pagination(level_count, glob_lpp, "browse.php?page=%s", page) }}
+                </td>
+                <td><img src="img/pixel.gif" width="5" height="1"></td>
+            </tr>
+            <tr>
+                <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                <td><img src="img/pixel.gif" width="1" height="5"></td>
+                <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+            </tr>
+            </tbody>
+        </table>
+    {% endblock %}

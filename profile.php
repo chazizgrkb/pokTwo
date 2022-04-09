@@ -1,6 +1,7 @@
 <?php
 
 namespace pokTwo;
+
 use Parsedown;
 
 require('lib/common.php');

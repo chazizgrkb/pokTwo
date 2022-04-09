@@ -1,158 +1,184 @@
 {% extends "_layout.twig" %}
 {% block title %}{{ name }}{% endblock %}
 {% block content %}
-{% if markread %}
-<div class="success">Marked all notifications as read.</div>
-{% elseif edited %}
-<div class="success">Settings successfully saved!</div>
-{% elseif justbanned == "ban" %}
-<div class="success">Successfully banned this user.</div>
-{% elseif justbanned == "unban" %}
-<div class="success">Successfully unbanned this user.</div>
-{% endif %}
-<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
-	<tbody><tr valign="top">
-		<td width="180">
-		
-		<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#E5ECF9">
-			<tbody><tr>
-				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
-				<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
-			</tr>
-			<tr>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-				<td align="center" style="padding: 5px;">
-				
-				
-						<!-- <div style="font-size: 14px; font-weight: bold; color:#003366; margin-bottom: 5px;">Do you know {{ userpagedata.name }}?</div>
-					<a href="signup.php">Sign up</a> or <a href="login.php">log in</a> to add {{ userpagedata.name }} as friend.<br><br> -->
-									
-				<div style="font-size: 14px; font-weight: bold; color:#003366; margin-bottom: 5px;">Question? Comment?</div>
-				<form method="post" action="outbox.php?user={{ userpagedata.name }}">
-				<input type="submit" value="Contact Me!"><br>
-				</form>
-		
-				</td>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-			</tr>
-			<tr>
-				<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
-				<td><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
-			</tr>
-		</tbody></table>
-		
-		</td>
-		
-		<td style="padding: 0px 10px 0px 10px;">
-		
-            <table width="100%" cellpadding="5" cellspacing="0" border="0">
-               <tbody>
-                  <tr>
-                     <td width="120" align="right"><span class="label">User Name:</span></td>
-                     <td>{{ userpagedata.name }}</td>
-                  </tr>
-                  <!-- Personal Information: -->
-				  {% if userpagedata.title %}
-                  <tr>
-                     <td align="right"><span class="label">Name:</span></td>
-                     <td>
-					 {{ userpagedata.title }}
-					 </td>
-                  </tr>
-				  {% endif %}
-				  {% if age %}
-                  <tr>
-                     <td align="right"><span class="label">Age:</span></td>
-                     <td>{{ age }} years old</td>
-                  </tr>
-				  {% endif %}
-				  {% if gender != "private" %}
-                  <tr>
-                     <td align="right"><span class="label">Gender:</span></td>
-                     <td>{{ gender|capitalize }}</td>
-                  </tr>
-				  {% endif %}
-				  {% if relationship != "none" %}
-                  <tr>
-                     <td align="right"><span class="label">Relationship Status:</span></td>
-                     <td>{{ relationship|capitalize }}</td>
-                  </tr>
-				  {% endif %}
-                  <tr>
-                     <td colspan="2">&nbsp;</td>
-                  </tr>
-                  <!-- Location Information -->
-                  <tr>
-                     <td colspan="2">&nbsp;</td>
-                  </tr>
-                  <!-- Random Information -->
-                  <tr>
-                     <td align="right"><span class="label">Last Login:</span></td>
-                     <td>{{ userpagedata.lastview | relative_time }}</td>
-                  </tr>
-               </tbody>
-            </table>
-		
-		</td>
-		
-				
-		<td width="180">
-		
-		{% include "/components/profilelinks.twig" %}
-		
-		<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
-			<tbody><tr>
-				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
-				<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
-			</tr>
-			<tr>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-				<td>
-				<div class="moduleTitleBar">
-				<table width="100%" cellpadding="0" cellspacing="0" border="0">
-					<tbody><tr>
-						<td><div class="moduleTitle">My Latest Video</div></td>
-					</tr>
-				</tbody></table>
-				</div>
-		
-		<div class="moduleFeatured">
-		<table width="100%" cellpadding="0" cellspacing="0" border="0">
-			<tbody><tr>
-				<td align="center">
-						{% if latestVideo %}
-                           <a href="watch.php?v={{ latestVideo.video_id }}"><img src="get_still.php?video_id={{ latestVideo.video_id }}" class="moduleFeaturedThumb" width="120" height="90"></a>
-                           <div class="moduleFeaturedTitle"><a href="watch.php?v={{ latestVideo.video_id }}">{{ latestVideo.title }}</a></div>
-                           <div class="moduleFeaturedDetails">Added: {{ latestVideo.time|date("F j, Y") }}<br>by <a href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a></div>
-                           <div class="moduleFeaturedDetails">Views: {{ latestVideo.views }}</div>
-                           <div class="moduleFeaturedDetails">Comments: {{ latestVideo.comments }}</div>
-						{% else %}
-							<div class="moduleFeaturedDetails">{{ userpagedata.name }} does not have any uploaded videos.</div>
-						{% endif %}
-				</td>
-			</tr>
-		</tbody></table>
-		</div>
-		
-				</td>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-			</tr>
-			<tr>
-				<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
-				<td><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
-			</tr>
-		</tbody></table>
-		
-		<div style="font-size: 12px; color: #444; margin: 10px 0px 0px 0px; text-align: center;"><strong>Like my videos?</strong><br>
-		<a href="http://www.placeholderdomain.poktwo/rss/user/{{ userpagedata.name }}/my_videos.rss">Subscribe to my RSS Feed.</a></div>
-		
-		</td>
+    {% if markread %}
+        <div class="success">Marked all notifications as read.</div>
+    {% elseif edited %}
+        <div class="success">Settings successfully saved!</div>
+    {% elseif justbanned == "ban" %}
+        <div class="success">Successfully banned this user.</div>
+    {% elseif justbanned == "unban" %}
+        <div class="success">Successfully unbanned this user.</div>
+    {% endif %}
+    <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+        <tr valign="top">
+            <td width="180">
 
-			
-	</tr>
-</tbody></table>
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#E5ECF9">
+                    <tbody>
+                    <tr>
+                        <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                        <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+                        <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/pixel.gif" width="5" height="1"></td>
+                        <td align="center" style="padding: 5px;">
+
+
+                            <!-- <div style="font-size: 14px; font-weight: bold; color:#003366; margin-bottom: 5px;">Do you know {{ userpagedata.name }}?</div>
+					<a href="signup.php">Sign up</a> or <a href="login.php">log in</a> to add {{ userpagedata.name }} as friend.<br><br> -->
+
+                            <div style="font-size: 14px; font-weight: bold; color:#003366; margin-bottom: 5px;">
+                                Question? Comment?
+                            </div>
+                            <form method="post" action="outbox.php?user={{ userpagedata.name }}">
+                                <input type="submit" value="Contact Me!"><br>
+                            </form>
+
+                        </td>
+                        <td><img src="img/pixel.gif" width="5" height="1"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                        <td><img src="img/pixel.gif" width="1" height="5"></td>
+                        <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+
+            <td style="padding: 0px 10px 0px 10px;">
+
+                <table width="100%" cellpadding="5" cellspacing="0" border="0">
+                    <tbody>
+                    <tr>
+                        <td width="120" align="right"><span class="label">User Name:</span></td>
+                        <td>{{ userpagedata.name }}</td>
+                    </tr>
+                    <!-- Personal Information: -->
+                    {% if userpagedata.title %}
+                        <tr>
+                            <td align="right"><span class="label">Name:</span></td>
+                            <td>
+                                {{ userpagedata.title }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% if age %}
+                        <tr>
+                            <td align="right"><span class="label">Age:</span></td>
+                            <td>{{ age }} years old</td>
+                        </tr>
+                    {% endif %}
+                    {% if gender != "private" %}
+                        <tr>
+                            <td align="right"><span class="label">Gender:</span></td>
+                            <td>{{ gender|capitalize }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if relationship != "none" %}
+                        <tr>
+                            <td align="right"><span class="label">Relationship Status:</span></td>
+                            <td>{{ relationship|capitalize }}</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <!-- Location Information -->
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <!-- Random Information -->
+                    <tr>
+                        <td align="right"><span class="label">Last Login:</span></td>
+                        <td>{{ userpagedata.lastview | relative_time }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+
+
+            <td width="180">
+
+                {% include "/components/profilelinks.twig" %}
+
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+                    <tbody>
+                    <tr>
+                        <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                        <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+                        <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/pixel.gif" width="5" height="1"></td>
+                        <td>
+                            <div class="moduleTitleBar">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="moduleTitle">My Latest Video</div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="moduleFeatured">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td align="center">
+                                            {% if latestVideo %}
+                                                <a href="watch.php?v={{ latestVideo.video_id }}"><img
+                                                            src="get_still.php?video_id={{ latestVideo.video_id }}"
+                                                            class="moduleFeaturedThumb" width="120" height="90"></a>
+                                                <div class="moduleFeaturedTitle"><a
+                                                            href="watch.php?v={{ latestVideo.video_id }}">{{ latestVideo.title }}</a>
+                                                </div>
+                                                <div class="moduleFeaturedDetails">
+                                                    Added: {{ latestVideo.time|date("F j, Y") }}<br>by <a
+                                                            href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a>
+                                                </div>
+                                                <div class="moduleFeaturedDetails">Views: {{ latestVideo.views }}</div>
+                                                <div class="moduleFeaturedDetails">
+                                                    Comments: {{ latestVideo.comments }}</div>
+                                            {% else %}
+                                                <div class="moduleFeaturedDetails">{{ userpagedata.name }} does not have
+                                                    any uploaded videos.
+                                                </div>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </td>
+                        <td><img src="img/pixel.gif" width="5" height="1"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                        <td><img src="img/pixel.gif" width="1" height="5"></td>
+                        <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div style="font-size: 12px; color: #444; margin: 10px 0px 0px 0px; text-align: center;"><strong>Like my
+                        videos?</strong><br>
+                    <a href="http://www.placeholderdomain.poktwo/rss/user/{{ userpagedata.name }}/my_videos.rss">Subscribe
+                        to my RSS Feed.</a></div>
+
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}

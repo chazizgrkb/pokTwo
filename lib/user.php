@@ -1,6 +1,7 @@
 <?php
 
 namespace pokTwo;
+
 use DateTime;
 
 class Users
@@ -69,14 +70,15 @@ class Users
     {
         switch ($type) {
             case 'none':
-                return 0;
+                $relationship = 0;
             case 'single':
-                return 1;
+                $relationship = 1;
             case 'taken':
-                return 2;
+                $relationship = 2;
             case 'married':
-                return 3;
+                $relationship = 3;
         }
+        return $relationship;
     }
 
     /**
@@ -88,14 +90,15 @@ class Users
     {
         switch ($relationship) {
             case 0:
-                return 'none';
+                $type = 'none';
             case 1:
-                return 'single';
+                $type = 'single';
             case 2:
-                return 'taken';
+                $type = 'taken';
             case 3:
-                return 'married';
+                $type = 'married';
         }
+        return $type;
     }
 
     /**
@@ -107,14 +110,15 @@ class Users
     {
         switch ($type) {
             case 'private':
-                return 0;
+                $gender = 0;
             case 'unknown':
-                return 1;
+                $gender = 1;
             case 'male':
-                return 2;
+                $gender = 2;
             case 'female':
-                return 3;
+                $gender = 3;
         }
+        return $gender;
     }
 
     /**
@@ -126,14 +130,15 @@ class Users
     {
         switch ($gender) {
             case 0:
-                return 'private';
+                $type = 'private';
             case 1:
-                return 'unknown';
+                $type = 'unknown';
             case 2:
-                return 'male';
+                $type = 'male';
             case 3:
-                return 'female';
+                $type = 'female';
         }
+        return $type;
     }
 
     public static function register($name, $pass, $mail): string

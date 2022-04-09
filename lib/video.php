@@ -3,7 +3,7 @@
 namespace pokTwo;
 class Videos
 {
-    // this is like that so that it stays readable in the code and doesn't introduce a fucking huge horizontal scrollbar on github. -grkb 3/31/2022
+    // this is like that so that it stays readable in the code and doesn't introduce a fucking huge horizontal scrollbar on GitHub. -grkb 3/31/2022
     //why the hell is it using tutorial names?
     public static string $recommendedfields = "
 		jaccard.video_id,

@@ -19,7 +19,7 @@ function randstr($len, $charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHI
     return substr(str_shuffle($charset), 0, $len);
 }
 
-function delete_directory($dirname)
+function delete_directory($dirname): bool
 {
     if (is_dir($dirname))
         $dir_handle = opendir($dirname);
@@ -75,11 +75,11 @@ function gitCommit($trim = true)
 }
 
 /**
- * Get hash of latest git commit
+ * Get name of the platform that pokTwo is running on
  *
  * @return string Name of platform. It does NOT specify the Windows/macOS/Linux version.
  */
 function getOS(): string
 {
-    printf(php_uname('s'));
+    return printf(php_uname('s'));
 }

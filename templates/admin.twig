@@ -3,72 +3,79 @@
 {% block title %}Admin panel{% endblock %}
 
 	{% block content %}
-<div class="tableSubTitle">Admin panel</div>
-<p>Currently running pokTwo version {{version}} (commit {{git_commit()}}) on {{operating_system()}}. {{profiler_stats()}}</p>
-<table style="width: 100%;">
-	<tr>
-		<td class="nb" style="width:33%; vertical-align:top;">
-			<table class="c1">
-				<tr class="h"><td class="b" colspan="2">Latest registered users</td></tr>
-				{% for user in latest_registered_users %}
-					<tr>
-						<td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
-						<td class="b">{{ user.joined | date() }}</td>
-					</tr>
-				{% endfor %}
-			</table>
-		</td>
-		<td class="nb" style="width:33%; vertical-align:top;">
-			<table class="c1">
-				<tr class="h"><td class="b" colspan="2">Latest seen users</td></tr>
-				{% for user in latest_seen_users %}
-					<tr>
-						<td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
-						<td class="b">{{ user.lastview | relative_time }}</td>
-					</tr>
-				{% endfor %}
-			</table>
-		</td>
-		<td class="nb" style="width:33%; vertical-align:top;">
-			<table class="c1">
-				<tr class="h"><td class="b" colspan="2">Latest uploaded videos</td></tr>
-				{% for video in videos %}
-					<tr>
-						<td class="b"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</td>
-						<td class="b">{{ video.time | relative_time }}</td>
-					</tr>
-				{% endfor %}
-			</table>
-		</td>
-	</tr>
-</table>
+        <div class="tableSubTitle">Admin panel</div>
+        <p>Currently running pokTwo version {{ version }} (commit {{ git_commit() }}) on {{ operating_system() }}
+            . {{ profiler_stats() }}</p>
+        <table style="width: 100%;">
+            <tr>
+                <td class="nb" style="width:33%; vertical-align:top;">
+                    <table class="c1">
+                        <tr class="h">
+                            <td class="b" colspan="2">Latest registered users</td>
+                        </tr>
+                        {% for user in latest_registered_users %}
+                            <tr>
+                                <td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
+                                <td class="b">{{ user.joined | date() }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+                <td class="nb" style="width:33%; vertical-align:top;">
+                    <table class="c1">
+                        <tr class="h">
+                            <td class="b" colspan="2">Latest seen users</td>
+                        </tr>
+                        {% for user in latest_seen_users %}
+                            <tr>
+                                <td class="b"><a href="profile.php?user={{ user.name }}">{{ user.name }}</a></td>
+                                <td class="b">{{ user.lastview | relative_time }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+                <td class="nb" style="width:33%; vertical-align:top;">
+                    <table class="c1">
+                        <tr class="h">
+                            <td class="b" colspan="2">Latest uploaded videos</td>
+                        </tr>
+                        {% for video in videos %}
+                            <tr>
+                                <td class="b"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</td>
+                                <td class="b">{{ video.time | relative_time }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+            </tr>
+        </table>
 
-<h3>Numbers</h3>
+        <h3>Numbers</h3>
 
-<table class="pageTable">
-	<tr class="h">
-		{% for thing in things_to_count %}
-			<td class="b h" width=100>{{ thing | title }}</td>
-		{% endfor %}
-	</tr>
-	<tr>
-		{% for thing in things_to_count %}
-			<td class="b">{{ count[thing] }}</td>
-		{% endfor %}
-	</tr>
-</table>
+        <table class="pageTable">
+            <tr class="h">
+                {% for thing in things_to_count %}
+                    <td class="b h" width=100>{{ thing | title }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for thing in things_to_count %}
+                    <td class="b">{{ count[thing] }}</td>
+                {% endfor %}
+            </tr>
+        </table>
 
-<h3>Latest comments</h3>
-<div class="pageTable">
-	{% for cmnt in latest_comments %}
-		<div class="comment-entry{% if cmnt.deleted %} deleted{% endif %}" id="comment-{{ cmnt.id }}">
-			<p>
-				<a href="profile.php?user={{ cmt.u_name }}">{{ cmt.u_name }}</a>
-				commented on <a href="/watch.php?v={{ cmnt.id }}">{{ cmnt.id | title }}</a>: {{ cmnt.comment }}
-				<span class="date">{{ cmnt.date | relative_time }}</span>
-			</p>
-			<span class="comment-text">{{ cmnt.message | markdown_inline | replace({'\n':'<br>'}) | raw }}</span>
-		</div>
-	{% endfor %}
-</div>
-	{% endblock %}
+        <h3>Latest comments</h3>
+        <div class="pageTable">
+            {% for cmnt in latest_comments %}
+                <div class="comment-entry{% if cmnt.deleted %} deleted{% endif %}" id="comment-{{ cmnt.id }}">
+                    <p>
+                        <a href="profile.php?user={{ cmt.u_name }}">{{ cmt.u_name }}</a>
+                        commented on <a href="/watch.php?v={{ cmnt.id }}">{{ cmnt.id | title }}</a>: {{ cmnt.comment }}
+                        <span class="date">{{ cmnt.date | relative_time }}</span>
+                    </p>
+                    <span class="comment-text">{{ cmnt.message | markdown_inline | replace({'\n':'<br>'}) | raw }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}

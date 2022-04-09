@@ -3,9 +3,9 @@
 {% block title %}Terms of Use{% endblock %}
 
 	{% block content %}
-{% for news in news %}
-<div class="tableSubTitle">{{ news.time | date("F jS Y") }}</div>
-{{ news.text | markdown }}
-<br><br><br>
-{% endfor %}
-	{% endblock %}
+        {% for news in news %}
+            <div class="tableSubTitle">{{ news.time | date("F jS Y") }}</div>
+            {{ news.text | markdown }}
+            <br><br><br>
+        {% endfor %}
+    {% endblock %}

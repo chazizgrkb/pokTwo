@@ -3,81 +3,95 @@
 {% block title %}Login{% endblock %}
 
 	{% block content %}
-{% if error %}
-	<div class="header_message">{{ error }}</div>
-{% endif %}
+        {% if error %}
+            <div class="header_message">{{ error }}</div>
+        {% endif %}
 
-<div class="tableSubTitle">Log In</div>
-<table width="795" align="center" cellpadding="0" cellspacing="0" border="0">
-	<tbody><tr valign="top">
-		<td style="padding-right: 15px;" width="515">
-		<span class="highlight">What is pokTwo?</span>
-		
-		<br><br>
-		
-		pokTwo is a way to get your videos to the people who matter to you. With pokTwo you can:
-		
-		<ul>
-		<li> Show off your favorite videos to the world
-		</li><li> Blog the videos you take with your digital camera or cell phone
-		</li><li> Securely and privately show videos to your friends and family around the world
-		</li><li> ... and much, much more!
-		</li></ul>
-		
-		<br><span class="highlight"><a href="signup.php">Sign up now</a> and open a free account.</span>
-		
-		<br><br><br>
-		
-		To learn more about our service, please see our <a href="help.php">Help</a> section.<br><br><br>
-		</td>
-		<td width="280">
-		
-		<table width="280" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#E5ECF9">
-			<tbody><tr>
-				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
-				<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
-			</tr>
-			<tr>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-				<td align="center">
-		<table width="100%" cellpadding="5" cellspacing="0" border="0">
-			<form method="post" action="login.php">
-			
-			<input type="hidden" name="field_command" value="login_submit">
-				<tbody><tr>
-					<td align="center" colspan="2"><div style="font-size: 14px; font-weight: bold; color:#003366; margin-bottom: 5px;">pokTwo Log In</div></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="label">User Name:</span></td>
-					<td><input type="text" size="20" name="field_login_username" value=""></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="label">Password:</span></td>
-					<td><input type="password" size="20" name="field_login_password"></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="label">&nbsp;</span></td>
-					<td><input type="submit" value="Log In"></td>
-				</tr>
-			</form>
-				<tr>
-					<td align="center" colspan="2"><a href="forgot.php">Forgot your password?</a><br><br></td>
-				</tr>
-			
-			</tbody></table>
-			
-			</td>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-			</tr>
-			<tr>
-				<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
-				<td><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
-			</tr>
-		</tbody></table>
-			
-		</td>
-	</tr>
-</tbody></table>
-	{% endblock %}
+        <div class="tableSubTitle">Log In</div>
+        <table width="795" align="center" cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr valign="top">
+                <td style="padding-right: 15px;" width="515">
+                    <span class="highlight">What is pokTwo?</span>
+
+                    <br><br>
+
+                    pokTwo is a way to get your videos to the people who matter to you. With pokTwo you can:
+
+                    <ul>
+                        <li> Show off your favorite videos to the world
+                        </li>
+                        <li> Blog the videos you take with your digital camera or cell phone
+                        </li>
+                        <li> Securely and privately show videos to your friends and family around the world
+                        </li>
+                        <li> ... and much, much more!
+                        </li>
+                    </ul>
+
+                    <br><span class="highlight"><a href="signup.php">Sign up now</a> and open a free account.</span>
+
+                    <br><br><br>
+
+                    To learn more about our service, please see our <a href="help.php">Help</a> section.<br><br><br>
+                </td>
+                <td width="280">
+
+                    <table width="280" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#E5ECF9">
+                        <tbody>
+                        <tr>
+                            <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                            <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+                            <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/pixel.gif" width="5" height="1"></td>
+                            <td align="center">
+                                <table width="100%" cellpadding="5" cellspacing="0" border="0">
+                                    <form method="post" action="login.php">
+
+                                        <input type="hidden" name="field_command" value="login_submit">
+                                        <tbody>
+                                        <tr>
+                                            <td align="center" colspan="2">
+                                                <div style="font-size: 14px; font-weight: bold; color:#003366; margin-bottom: 5px;">
+                                                    pokTwo Log In
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right"><span class="label">User Name:</span></td>
+                                            <td><input type="text" size="20" name="field_login_username" value=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right"><span class="label">Password:</span></td>
+                                            <td><input type="password" size="20" name="field_login_password"></td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right"><span class="label">&nbsp;</span></td>
+                                            <td><input type="submit" value="Log In"></td>
+                                        </tr>
+                                    </form>
+                                    <tr>
+                                        <td align="center" colspan="2"><a href="forgot.php">Forgot your
+                                                password?</a><br><br></td>
+                                    </tr>
+
+                                    </tbody></table>
+
+                            </td>
+                            <td><img src="img/pixel.gif" width="5" height="1"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                            <td><img src="img/pixel.gif" width="1" height="5"></td>
+                            <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    {% endblock %}

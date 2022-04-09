@@ -1,96 +1,103 @@
 {% extends "_layout.twig" %}
 {% block title %}Settings{% endblock %}
 {% block content %}
-<form action="my_profile.php" method="post">
-<div class="formTitle">My profile</div>
-<table class="dataEntryTableSmall">
-   <tr>
-      <td valign="middle" align="right">
-         <span style="font-size: 14px;font-weight:bold;">Name</span>
-      </td>
-      <td class="b"><input type="text" name="title" size="45" maxlength="256" style="width:295px" value="{{ userdata.title }}"></td>
-   </tr>
-   <tr>
-      <td valign="middle" align="right">
+    <form action="my_profile.php" method="post">
+    <div class="formTitle">My profile</div>
+    <table class="dataEntryTableSmall">
+        <tr>
+            <td valign="middle" align="right">
+                <span style="font-size: 14px;font-weight:bold;">Name</span>
+            </td>
+            <td class="b"><input type="text" name="title" size="45" maxlength="256" style="width:295px"
+                                 value="{{ userdata.title }}"></td>
+        </tr>
+        <tr>
+            <td valign="middle" align="right">
          <span style="font-size: 14px;font-weight:bold;">
          About
          </span>
-      </td>
-      <td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual" style="width:295px;overflow:hidden;resize:none">{{ userdata.about }}</textarea></td>
-   </tr>
-   <tr>
-      <td valign="middle" align="right">
+            </td>
+            <td class="b"><textarea name="about" rows="5" cols="80" wrap="virtual"
+                                    style="width:295px;overflow:hidden;resize:none">{{ userdata.about }}</textarea></td>
+        </tr>
+        <tr>
+            <td valign="middle" align="right">
          <span style="font-size: 14px;font-weight:bold;">
          Location
          </span>
-      </td>
-      <td class="b"><input type="text" name="location" size="45" maxlength="128" style="width:295px" value="{{ userdata.location }}"></td>
-   </tr>
-   {% if glob_forum %}
-   <tr>
-      <td valign="middle" align="right">
+            </td>
+            <td class="b"><input type="text" name="location" size="45" maxlength="128" style="width:295px"
+                                 value="{{ userdata.location }}"></td>
+        </tr>
+        {% if glob_forum %}
+            <tr>
+                <td valign="middle" align="right">
          <span style="font-size: 14px;font-weight:bold;">
          Forum signature
          </span>
-      </td>
-      <td class="b"><textarea name="signature" rows="5" cols="80" wrap="virtual" style="width:295px">{{ userdata.signature }}</textarea></td>
-   </tr>
-   {% else %}
-   <input type="hidden" name="signature" value="{{ userdata.signature }}">
-   {% endif %}
-   <tr>
-      <td valign="middle" align="right">
-         <span style="font-size: 14px;font-weight:bold;">Birthday</span>
-      </td>
-      <td class="b">
-	  <input type="number" name="month" min="01" max="12" step="1" value="{{ birthday.1 }}" placeholder="Month" />
-	  <input type="number" name="day" min="01" max="31" step="1" value="{{ birthday.2 }}" placeholder="Day" />
-	  <input type="number" name="year" min="1900" max="{{ miniyear }}" step="1" value="{{ birthday.0 }}" placeholder="Year" />
-	  </td>
-   </tr>
-   <tr>
-      <td valign="middle" align="right">
-         <span style="font-size: 14px;font-weight:bold;">Relationship Status</span>
-      </td>
-      <td class="b">
-		<select name="relationship" id="relationship">
-		  <option value="none">Private / Hide</option>
-		  <option value="single">Single</option>
-		  <option value="taken">Taken</option>
-		  <option value="married">Married</option>
-		</select>
-	  </td>
-   </tr>
-   <tr>
-      <td valign="middle" align="right">
-         <span style="font-size: 14px;font-weight:bold;">Gender</span>
-      </td>
-      <td class="b">
-		<select name="gender" id="gender">
-		  <option value="private">Private</option>
-		  <option value="unknown">Unknown</option>
-		  <option value="male">Male</option>
-		  <option value="female">Female</option>
-		</select>
-	  </td>
-   </tr>
-</table>
-<div class="tableSubTitle">Options</div>
-<table class="settings">
-   <td valign="middle" align="right">
+                </td>
+                <td class="b"><textarea name="signature" rows="5" cols="80" wrap="virtual"
+                                        style="width:295px">{{ userdata.signature }}</textarea></td>
+            </tr>
+        {% else %}
+            <input type="hidden" name="signature" value="{{ userdata.signature }}">
+        {% endif %}
+        <tr>
+            <td valign="middle" align="right">
+                <span style="font-size: 14px;font-weight:bold;">Birthday</span>
+            </td>
+            <td class="b">
+                <input type="number" name="month" min="01" max="12" step="1" value="{{ birthday.1 }}"
+                       placeholder="Month"/>
+                <input type="number" name="day" min="01" max="31" step="1" value="{{ birthday.2 }}" placeholder="Day"/>
+                <input type="number" name="year" min="1900" max="{{ miniyear }}" step="1" value="{{ birthday.0 }}"
+                       placeholder="Year"/>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle" align="right">
+                <span style="font-size: 14px;font-weight:bold;">Relationship Status</span>
+            </td>
+            <td class="b">
+                <select name="relationship" id="relationship">
+                    <option value="none">Private / Hide</option>
+                    <option value="single">Single</option>
+                    <option value="taken">Taken</option>
+                    <option value="married">Married</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle" align="right">
+                <span style="font-size: 14px;font-weight:bold;">Gender</span>
+            </td>
+            <td class="b">
+                <select name="gender" id="gender">
+                    <option value="private">Private</option>
+                    <option value="unknown">Unknown</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div class="tableSubTitle">Options</div>
+    <table class="settings">
+        <td valign="middle" align="right">
       <span style="font-size: 14px;font-weight:bold;">
       Timezone
-   </td>
-   </span>
-   <td class="b">
-      <select name="timezone">
-      {% for timezone in timezones %}
-      <option value="{{ timezone }}" {% if userdata.timezone == timezone %}selected{% endif %} style="width:295px">{{ timezone }}</option>
-      {% endfor %}
-      </select>
-   </td>
-   </tr>
-</table>
-<input type="hidden" name="magic" value="please change my settings :)">
-<input type="submit" name="action" value="Save Changes">
+        </td>
+        </span>
+        <td class="b">
+            <select name="timezone">
+                {% for timezone in timezones %}
+                    <option value="{{ timezone }}" {% if userdata.timezone == timezone %}selected{% endif %}
+                            style="width:295px">{{ timezone }}</option>
+                {% endfor %}
+            </select>
+        </td>
+        </tr>
+    </table>
+    <input type="hidden" name="magic" value="please change my settings :)">
+    <input type="submit" name="action" value="Save Changes">
 {% endblock %}

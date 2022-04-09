@@ -1,36 +1,52 @@
 {% extends "_layout_videolist.twig" %}
 {% block title %}Settings{% endblock %}
 {% block content %}
-{% if pageName == "embed_list" %}
-<div style="font-weight: bold; padding: 3px; margin-left: 5px; margin-right: 5px; border-bottom: 1px dashed #999;">
-<table width="100%" cellpadding="0" cellspacing="0" border="0">
-	<tbody><tr>
-		<td> My Videos // <span style="text-transform: capitalize;">{{ userpagedata.name }}</span> // ({{ allVideos }} videos)</td>
-		<td align="right"><div style="vertical-align: text-bottom; text-align: right; padding: 2px;">
-		<a href="https://pok.byteemail.com/" target="_blank"><img src="img/logo_sm.gif" width="38" height="15" border="0"></a>
-		</div></td>
-	</tr>
-</tbody></table>
-</div>
-{% endif %}
-{% for video in latestVideo %}
-<div class="moduleEntry">
-<table width="100%" cellpadding="0" cellspacing="0" border="0">
-	<tbody><tr valign="top">
-		<td><a href="watch.php?v={{ video.video_id }}" class="bold" target="_parent"><img src="get_still.php?video_id={{ video.video_id }}" class="moduleEntryThumb" width="80" height="60"></a></td>
-		<td width="100%"><div class="moduleFrameTitle"><a href="watch.php?v={{ video.video_id }}" target="_parent">{{ video.title }}</a></div>
-		<div class="moduleFrameDetails">Added: {{ video.time|date("F j, Y") }}<br>by <a href="/profile?user={{ video.u_name }}" target="_parent">{{ video.u_name }}</a></div>
-		<div class="moduleFrameDetails">Views: {{ video.views }} <br> Comments: {{ video.comments }}</div>
-		
-		</td>
-	</tr>
-</tbody></table>
-</div>
-{% else %}
-{% if pageName == "embed_list" %}
-{{ userpagedata.name }} hasen't uploaded any videos!
-{% else %}
-There are no other videos.
-{% endif %}
-{% endfor %}
+    {% if pageName == "embed_list" %}
+        <div style="font-weight: bold; padding: 3px; margin-left: 5px; margin-right: 5px; border-bottom: 1px dashed #999;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                <tr>
+                    <td> My Videos // <span style="text-transform: capitalize;">{{ userpagedata.name }}</span> //
+                        ({{ allVideos }} videos)
+                    </td>
+                    <td align="right">
+                        <div style="vertical-align: text-bottom; text-align: right; padding: 2px;">
+                            <a href="https://pok.byteemail.com/" target="_blank"><img src="img/logo_sm.gif" width="38"
+                                                                                      height="15" border="0"></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    {% for video in latestVideo %}
+        <div class="moduleEntry">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                <tr valign="top">
+                    <td><a href="watch.php?v={{ video.video_id }}" class="bold" target="_parent"><img
+                                    src="get_still.php?video_id={{ video.video_id }}" class="moduleEntryThumb"
+                                    width="80" height="60"></a></td>
+                    <td width="100%">
+                        <div class="moduleFrameTitle"><a href="watch.php?v={{ video.video_id }}"
+                                                         target="_parent">{{ video.title }}</a></div>
+                        <div class="moduleFrameDetails">Added: {{ video.time|date("F j, Y") }}<br>by <a
+                                    href="/profile?user={{ video.u_name }}" target="_parent">{{ video.u_name }}</a>
+                        </div>
+                        <div class="moduleFrameDetails">Views: {{ video.views }} <br> Comments: {{ video.comments }}
+                        </div>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        {% if pageName == "embed_list" %}
+            {{ userpagedata.name }} hasen't uploaded any videos!
+        {% else %}
+            There are no other videos.
+        {% endif %}
+    {% endfor %}
 {% endblock %}

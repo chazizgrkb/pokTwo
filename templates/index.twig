@@ -1,162 +1,200 @@
-
 {% extends "_layout.twig" %}
 
 	{% block content %}
-<table width="790" align="center" cellpadding="0" cellspacing="0" border="0">
-	<tbody><tr valign="top">
-		<td style="padding-right: 15px;">
-		
-		<table width="595" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#E5ECF9">
-			<tbody><tr>
-				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
-				<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
-			</tr>
-			<tr>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-				<td style="padding: 5px 0px 10px 0px;">
-				
-				<table width="100%" cellpadding="0" cellspacing="0" border="0">
-					<tbody>
-					{% if log %}
-                    <tr valign="top">
-                    <td width="60%" style="border-right: 1px dashed #369; padding: 0px 10px 10px 10px; color: #444;">
-                    <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">My Account Overview</div>
-                    <strong>User Name</strong>: <a href="/profile.php?user={{ userdata.name }}">{{ userdata.name }}</a><br>
-                    <strong>Email</strong>: {{ userdata.email }}<br>
-                    </td>
-                    <td width="40%" style="padding: 0px 10px 10px 10px; color: #444;">
-                    <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">Things To Do</div>
-                    <ul>
-                    <li><a href="/my_profile.php">Edit Your Profile</a></li>
-                    <li><a href="/my_videos_upload.php">Upload something</a></li>
-                    </ul>
-                    </td>
-                    </tr>
-					{% else %}
-					<tr valign="top">
-					<td width="33%" style="border-right: 1px dashed #369; padding: 0px 10px 10px 10px; color: #444;">
-					<div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;"><a href="my_videos_upload.php">Upload</a></div>
-					Quickly upload and tag videos in almost any video format.
-					</td>
-					<td width="33%" style="border-right: 1px dashed #369; padding: 0px 10px 10px 10px; color: #444;">
-					<div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;"><a href="browse.php">Watch</a></div>
-					Instantly find and watch 1000's of fast streaming videos.
-					</td>
-					<td width="33%" style="padding: 0px 10px 10px 10px; color: #444;">
-					<div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;"><a href="my_videos.php">Share</a></div>
-					Easily share your videos with family, friends, or co-workers.
-					</td>
-					</tr>
-					{% endif %}
-				</tbody></table>
-				
-				</td>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-			</tr>
-			<tr>
-				<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
-				<td><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
-			</tr>
-		</tbody></table><br>
-		
-		<table width="595" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
-			<tbody><tr>
-				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
-				<td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
-			</tr>
-			<tr>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-				<td width="585">
-				<div class="moduleTitleBar">
-				<div class="moduleTitle"><div style="float: right; padding: 1px 5px 0px 0px; font-size: 12px;"><a href="browse.php">See More Videos</a></div>
-				Today's Featured Videos
-				</div>
-				</div>
-		
-				{% for video in videos %}
-					<div class="moduleEntry">
-					<table width="565" cellpadding="0" cellspacing="0" border="0">
-						<tbody><tr valign="top">
-							<td><a href="watch.php?v={{ video.video_id }}"><img src="get_still.php?still_id=2&amp;video_id={{ video.video_id }}" class="moduleEntryThumb" width="120" height="90"></a></td>
-							<td width="100%"><div class="moduleEntryTitle"><a href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
-							<div class="moduleEntryDescription">{{ video.description }}</div>
-							<div class="moduleEntryTags">
-							Tags // 
-							{% for tag in video.tags %}
-							<a href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
-							{% endfor %}							
-							</div>
-							<div class="moduleEntryDetails">Added: {{ video.time|date("F j, Y") }} by <a href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a></div>
-							<div class="moduleEntryDetails">Views: {{ video.views }} | Comments: {{ video.comments }}</div>
-							</td>
-						</tr>
-					</tbody></table>
-					</div>
-				{% else %}
-				<div class="moduleEntry">
-				There are no videos!
-				</div>
-				{% endfor %}
-							
-				</td>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-			</tr>
-			<tr>
-				<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
-				<td><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
-			</tr>
-		</tbody></table>
+        <table width="790" align="center" cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr valign="top">
+                <td style="padding-right: 15px;">
 
-		
-		</td>
-		<td width="180">
-		{% if not log %}
-		<table width="180" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFEEBB">
-			<tbody><tr>
-				<td><img src="img/box_login_tl.gif" width="5" height="5"></td>
-				<td><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_tr.gif" width="5" height="5"></td>
-			</tr>
-			<tr>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-				<td width="170">
-		
-								
-				<div style="font-size: 16px; font-weight: bold; text-align: center; padding: 5px 5px 10px 5px;">
-				<a href="signup.php">Sign up for your free account!</a>
-				</div>
-				
-								
-				</td>
-				<td><img src="img/pixel.gif" width="5" height="1"></td>
-			</tr>
-			<tr>
-				<td><img src="img/box_login_bl.gif" width="5" height="5"></td>
-				<td><img src="img/pixel.gif" width="1" height="5"></td>
-				<td><img src="img/box_login_br.gif" width="5" height="5"></td>
-			</tr>
-		</tbody></table>
-		{% endif %}
-		
-		<div style="margin: 10px 0px 5px 0px; font-size: 12px; font-weight: bold; color: #333;">Recent Tags:</div>
-		<div style="font-size: 13px; color: #333333;">
-		
-{% for tag in tags %}
-	<a style="font-size: {% if tag.use_count > 10 %}17px{% else %}12px{% endif %};" href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
-{% else %}
-	<p>No tags!</p>
-{% endfor %}
-		
-					
-		<div style="font-size: 14px; font-weight: bold; margin-top: 10px;"><a href="tags.php">See More Tags</a></div>
-		
-		</div>
-		
-		</td>
-	</tr>
-</tbody></table>
-	{% endblock %}
+                    <table width="595" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#E5ECF9">
+                        <tbody>
+                        <tr>
+                            <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                            <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+                            <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/pixel.gif" width="5" height="1"></td>
+                            <td style="padding: 5px 0px 10px 0px;">
+
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    {% if log %}
+                                        <tr valign="top">
+                                            <td width="60%"
+                                                style="border-right: 1px dashed #369; padding: 0px 10px 10px 10px; color: #444;">
+                                                <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">My
+                                                    Account Overview
+                                                </div>
+                                                <strong>User Name</strong>: <a
+                                                        href="/profile.php?user={{ userdata.name }}">{{ userdata.name }}</a><br>
+                                                <strong>Email</strong>: {{ userdata.email }}<br>
+                                            </td>
+                                            <td width="40%" style="padding: 0px 10px 10px 10px; color: #444;">
+                                                <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">
+                                                    Things To Do
+                                                </div>
+                                                <ul>
+                                                    <li><a href="/my_profile.php">Edit Your Profile</a></li>
+                                                    <li><a href="/my_videos_upload.php">Upload something</a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr valign="top">
+                                            <td width="33%"
+                                                style="border-right: 1px dashed #369; padding: 0px 10px 10px 10px; color: #444;">
+                                                <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;"><a
+                                                            href="my_videos_upload.php">Upload</a></div>
+                                                Quickly upload and tag videos in almost any video format.
+                                            </td>
+                                            <td width="33%"
+                                                style="border-right: 1px dashed #369; padding: 0px 10px 10px 10px; color: #444;">
+                                                <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;"><a
+                                                            href="browse.php">Watch</a></div>
+                                                Instantly find and watch 1000's of fast streaming videos.
+                                            </td>
+                                            <td width="33%" style="padding: 0px 10px 10px 10px; color: #444;">
+                                                <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;"><a
+                                                            href="my_videos.php">Share</a></div>
+                                                Easily share your videos with family, friends, or co-workers.
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+
+                            </td>
+                            <td><img src="img/pixel.gif" width="5" height="1"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                            <td><img src="img/pixel.gif" width="1" height="5"></td>
+                            <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+
+                    <table width="595" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+                        <tbody>
+                        <tr>
+                            <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                            <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+                            <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/pixel.gif" width="5" height="1"></td>
+                            <td width="585">
+                                <div class="moduleTitleBar">
+                                    <div class="moduleTitle">
+                                        <div style="float: right; padding: 1px 5px 0px 0px; font-size: 12px;"><a
+                                                    href="browse.php">See More Videos</a></div>
+                                        Today's Featured Videos
+                                    </div>
+                                </div>
+
+                                {% for video in videos %}
+                                    <div class="moduleEntry">
+                                        <table width="565" cellpadding="0" cellspacing="0" border="0">
+                                            <tbody>
+                                            <tr valign="top">
+                                                <td><a href="watch.php?v={{ video.video_id }}"><img
+                                                                src="get_still.php?still_id=2&amp;video_id={{ video.video_id }}"
+                                                                class="moduleEntryThumb" width="120" height="90"></a>
+                                                </td>
+                                                <td width="100%">
+                                                    <div class="moduleEntryTitle"><a
+                                                                href="watch.php?v={{ video.video_id }}">{{ video.title }}</a>
+                                                    </div>
+                                                    <div class="moduleEntryDescription">{{ video.description }}</div>
+                                                    <div class="moduleEntryTags">
+                                                        Tags //
+                                                        {% for tag in video.tags %}
+                                                            <a href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="moduleEntryDetails">
+                                                        Added: {{ video.time|date("F j, Y") }} by <a
+                                                                href="profile.php?user={{ video.u_name }}">{{ video.u_name }}</a>
+                                                    </div>
+                                                    <div class="moduleEntryDetails">Views: {{ video.views }} |
+                                                        Comments: {{ video.comments }}</div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                {% else %}
+                                    <div class="moduleEntry">
+                                        There are no videos!
+                                    </div>
+                                {% endfor %}
+
+                            </td>
+                            <td><img src="img/pixel.gif" width="5" height="1"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                            <td><img src="img/pixel.gif" width="1" height="5"></td>
+                            <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+                </td>
+                <td width="180">
+                    {% if not log %}
+                        <table width="180" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFEEBB">
+                            <tbody>
+                            <tr>
+                                <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                                <td><img src="img/pixel.gif" width="1" height="5"></td>
+                                <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/pixel.gif" width="5" height="1"></td>
+                                <td width="170">
+
+
+                                    <div style="font-size: 16px; font-weight: bold; text-align: center; padding: 5px 5px 10px 5px;">
+                                        <a href="signup.php">Sign up for your free account!</a>
+                                    </div>
+
+
+                                </td>
+                                <td><img src="img/pixel.gif" width="5" height="1"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                                <td><img src="img/pixel.gif" width="1" height="5"></td>
+                                <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    {% endif %}
+
+                    <div style="margin: 10px 0px 5px 0px; font-size: 12px; font-weight: bold; color: #333;">Recent
+                        Tags:
+                    </div>
+                    <div style="font-size: 13px; color: #333333;">
+
+                        {% for tag in tags %}
+                            <a style="font-size: {% if tag.use_count > 10 %}17px{% else %}12px{% endif %};"
+                               href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :
+                        {% else %}
+                            <p>No tags!</p>
+                        {% endfor %}
+
+
+                        <div style="font-size: 14px; font-weight: bold; margin-top: 10px;"><a href="tags.php">See More
+                                Tags</a></div>
+
+                    </div>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    {% endblock %}
