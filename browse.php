@@ -3,7 +3,7 @@
 namespace pokTwo;
 require('lib/common.php');
 
-$section = (isset($_GET['s']) ? $_GET['s'] : null);
+$section = ($_GET['s'] ?? null);
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 $limit = sprintf("%s,%s", (($page - 1) * $lpp), $lpp);
 

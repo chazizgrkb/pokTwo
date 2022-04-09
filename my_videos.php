@@ -5,7 +5,7 @@ require('lib/common.php');
 
 if (!$log) redirect('vidlist.');
 
-$query = isset($_GET['search']) ? $_GET['search'] : null;
+$query = $_GET['search'] ?? null;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 $limit = sprintf("%s,%s", (($page - 1) * $lpp), $lpp);
 

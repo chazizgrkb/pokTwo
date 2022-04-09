@@ -47,9 +47,9 @@ if (isset($_FILES['fileToUpload'])) {
     $upload_file = "media/" . $new . ".mp4";
     $target_thumb = "thumbs/" . $new . ".jpg";
 
-    $title = (isset($_POST['title']) ? $_POST['title'] : '');
-    $description = (isset($_POST['desc']) ? $_POST['desc'] : '');
-    $tags = (isset($_POST['tags']) ? $_POST['tags'] : '');
+    $title = ($_POST['title'] ?? '');
+    $description = ($_POST['desc'] ?? '');
+    $tags = ($_POST['tags'] ?? '');
     $tags2 = preg_split('/[\s,]+/', $tags); // parses both commas and spaces
     if (count($tags2) < 3) {
         die("Less than 3 tags!"); // we should have an actual error page, but this is alpha shit, so meh.

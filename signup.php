@@ -8,10 +8,10 @@ if ($log) redirect('./');
 $error = '';
 
 if (isset($_POST['field_command'])) {
-    $name = (isset($_POST['field_signup_username']) ? $_POST['field_signup_username'] : null);
-    $mail = (isset($_POST['field_signup_email']) ? $_POST['field_signup_email'] : null);
-    $pass = (isset($_POST['field_signup_password_1']) ? $_POST['field_signup_password_1'] : null);
-    $pass2 = (isset($_POST['field_signup_password_2']) ? $_POST['field_signup_password_2'] : null);
+    $name = ($_POST['field_signup_username'] ?? null);
+    $mail = ($_POST['field_signup_email'] ?? null);
+    $pass = ($_POST['field_signup_password_1'] ?? null);
+    $pass2 = ($_POST['field_signup_password_2'] ?? null);
 
     if (!isset($name)) $error .= 'Blank username. ';
     if (!isset($mail)) $error .= 'Blank email. ';

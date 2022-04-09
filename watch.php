@@ -2,9 +2,9 @@
 
 namespace pokTwo;
 require('lib/common.php');
-$id = (isset($_GET['v']) ? $_GET['v'] : null);
-$searchShit = (isset($_GET['search']) ? $_GET['search'] : null);
-$ip = (isset($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']));
+$id = ($_GET['v'] ?? null);
+$searchShit = ($_GET['search'] ?? null);
+$ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']));
 
 $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
 
@@ -32,7 +32,7 @@ if ($log) {
     $isFavorited = false;
 }
 
-if (isset($_GET['flash']) ? $_GET['flash'] : null) {
+if ($_GET['flash'] ?? null) {
     $isFlash = true;
 } else {
     $isFlash = false;

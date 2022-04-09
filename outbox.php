@@ -5,14 +5,14 @@ require('lib/common.php');
 
 if (!$log) redirect('login.php');
 
-$subject = (isset($_GET['subject']) ? $_GET['subject'] : null);
+$subject = ($_GET['subject'] ?? null);
 
-$user = (isset($_GET['user']) ? $_GET['user'] : null);
+$user = ($_GET['user'] ?? null);
 
 if (isset($_POST['send'])) {
-    $title = (isset($_POST['title']) ? $_POST['title'] : '');
-    $message = (isset($_POST['message']) ? $_POST['message'] : '');
-    $username = (isset($_POST['user']) ? $_POST['user'] : null);
+    $title = ($_POST['title'] ?? '');
+    $message = ($_POST['message'] ?? '');
+    $username = ($_POST['user'] ?? null);
 
     $reciever_id = $sql->result("SELECT id from users where name = ?", [$username]);
 
