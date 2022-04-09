@@ -1,4 +1,5 @@
 <?php
+
 namespace pokTwo;
 require('lib/common.php');
 
@@ -13,6 +14,6 @@ $twig = twigloader();
 $inboxData = $sql->query("SELECT $userfields m.* FROM messages m JOIN users u ON m.sender = u.id WHERE reciever = ? ORDER BY m.time DESC LIMIT 10", [$userdata['id']]);
 
 echo $twig->render('my_messages.twig', [
-	'inbox' => $inboxData,
-	'sentMessage' => $sentMessage,
+    'inbox' => $inboxData,
+    'sentMessage' => $sentMessage,
 ]);

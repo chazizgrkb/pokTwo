@@ -1,4 +1,5 @@
 <?php
+
 namespace pokTwo;
 require('lib/common.php');
 
@@ -16,8 +17,8 @@ $count = $sql->result("SELECT COUNT(*) FROM videos WHERE author = ?", [$userdata
 $twig = twigloader();
 
 echo $twig->render('vidlist.twig', [
-	'videos' => $videos,
-	'page' => $page,
-	'count' => $count,
-	'title' => "My Videos",
+    'videos' => $videos,
+    'page' => $page,
+    'count' => $count,
+    'title' => "My Videos",
 ]);

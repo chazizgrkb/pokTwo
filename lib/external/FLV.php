@@ -1,4 +1,5 @@
 <?php
+
 namespace FFMpeg\Format\Video;
 
 /**
@@ -56,6 +57,14 @@ class FLV extends DefaultVideo
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function getPasses()
+    {
+        return 0 === $this->getKiloBitrate() ? 1 : $this->passes;
+    }
+
+    /**
      * @param $passes
      *
      * @return FLV
@@ -65,14 +74,6 @@ class FLV extends DefaultVideo
         $this->passes = $passes;
 
         return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPasses()
-    {
-        return 0 === $this->getKiloBitrate() ? 1 : $this->passes;
     }
 
     /**

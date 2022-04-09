@@ -1,26 +1,27 @@
 <?php
+
 namespace pokTwo;
 require('lib/common.php');
 
 $videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time DESC LIMIT 5");
 
- header( "Content-type: text/xml");
- 
- echo "<?xml version='1.0' encoding='UTF-8'?>
+header("Content-type: text/xml");
+
+echo "<?xml version='1.0' encoding='UTF-8'?>
  <rss version='2.0' xmlns:media='http://search.yahoo.com/mrss'>
  <channel>
  <title>PokTwo :: Recently Added Videos</title>
  <link>$domain/rss/global/recently_added.rss</link>
  <description>Recently Added Videos</description>";
- 
- while($row = $videoData->fetch()){
-   $title=$row["title"];
-   $id=$row["video_id"];
-   $description=$row["description"];
-   $username=$row["u_name"];
-   $date=date(DATE_RFC2822, $row["time"]);
- 
-   echo "<item>
+
+while ($row = $videoData->fetch()) {
+    $title = $row["title"];
+    $id = $row["video_id"];
+    $description = $row["description"];
+    $username = $row["u_name"];
+    $date = date(DATE_RFC2822, $row["time"]);
+
+    echo "<item>
     <author>rss@poktwo.com ($username)</author>
     <title>$title</title>
     <link>$domain/?v=$id</link>
@@ -40,6 +41,6 @@ $videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN use
     <media:credit>$username</media:credit>
     <enclosure url='$domain/v/$id.swf' length='177' type='application/x-shockwave-flash' />
 </item>";
- }
- echo "</channel></rss>";
+}
+echo "</channel></rss>";
 ?>

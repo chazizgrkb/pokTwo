@@ -1,6 +1,6 @@
 <?php
 $host = '127.0.0.1';
-$db   = 'codename-web';
+$db = 'codename-web';
 $user = '';
 $pass = '';
 

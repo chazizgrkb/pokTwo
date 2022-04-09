@@ -1,4 +1,5 @@
 <?php
+
 namespace pokTwo;
 require('lib/common.php');
 
@@ -13,8 +14,8 @@ $mostCommentedData = $sql->query("SELECT $userfields $videofields FROM videos v 
 $mostFavoritedData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY favorites DESC LIMIT 5");
 
 echo $twig->render('videos_page.twig', [
-	'videos' => $videoData,
-	'mostViewed' => $mostViewedData,
-	'mostCommented' => $mostCommentedData,
-	'mostFavorited' => $mostFavoritedData,
+    'videos' => $videoData,
+    'mostViewed' => $mostViewedData,
+    'mostCommented' => $mostCommentedData,
+    'mostFavorited' => $mostFavoritedData,
 ]);

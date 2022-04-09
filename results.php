@@ -1,4 +1,5 @@
 <?php
+
 namespace pokTwo;
 require('lib/common.php');
 
@@ -22,7 +23,7 @@ ORDER BY v.id DESC $limit", [$query, $query, $query]);
 $videos = $sql->fetchArray($videoData);
 
 foreach ($videos as &$video) {
-	$video['tags'] = Tags::getVideoTags($video['id']);
+    $video['tags'] = Tags::getVideoTags($video['id']);
 }
 
 $count = $sql->result("
@@ -40,8 +41,8 @@ ORDER BY v.id DESC", [$query, $query, $query]);
 $twig = twigloader();
 
 echo $twig->render('results.twig', [
-	'videos' => $videos,
-	'query' => $query,
-	'page' => $page,
-	'count' => $count,
+    'videos' => $videos,
+    'query' => $query,
+    'page' => $page,
+    'count' => $count,
 ]);

@@ -1,4 +1,5 @@
 <?php
+
 namespace pokTwo;
 require('lib/common.php');
 
@@ -14,8 +15,8 @@ $thingsToCount = ['comments', 'users', 'videos', 'views', 'messages', 'favorites
 
 $query = "SELECT ";
 foreach ($thingsToCount as $thing) {
-	if ($query != "SELECT ") $query .= ", ";
-	$query .= sprintf("(SELECT COUNT(*) FROM %s) %s", $thing, $thing);
+    if ($query != "SELECT ") $query .= ", ";
+    $query .= sprintf("(SELECT COUNT(*) FROM %s) %s", $thing, $thing);
 }
 $count = $sql->fetch($query);
 
@@ -23,10 +24,10 @@ $latestComments = $sql->query("SELECT $userfields c.* FROM comments c JOIN users
 
 $twig = twigloader();
 echo $twig->render('admin.twig', [
-	'latest_registered_users' => $latestRegisteredUsers,
-	'latest_seen_users' => $latestSeenUsers,
-	'things_to_count' => $thingsToCount,
-	'count' => $count,
-	'latest_comments' => $latestComments,
-	'videos' => $videoData,
+    'latest_registered_users' => $latestRegisteredUsers,
+    'latest_seen_users' => $latestSeenUsers,
+    'things_to_count' => $thingsToCount,
+    'count' => $count,
+    'latest_comments' => $latestComments,
+    'videos' => $videoData,
 ]);

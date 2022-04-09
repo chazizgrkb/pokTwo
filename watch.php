@@ -1,4 +1,5 @@
 <?php
+
 namespace pokTwo;
 require('lib/common.php');
 $id = (isset($_GET['v']) ? $_GET['v'] : null);
@@ -17,30 +18,23 @@ $pageName = "watch";
 
 $allVideos = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 
-if ($sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, $ip) ]) ['COUNT(video_id)'] < 1)
-{
-    $sql->query("INSERT INTO views (video_id, user) VALUES (?,?)", [$videoData['video_id'], crypt($ip, $ip) ]);
+if ($sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=? AND user=?", [$videoData['video_id'], crypt($ip, $ip)]) ['COUNT(video_id)'] < 1) {
+    $sql->query("INSERT INTO views (video_id, user) VALUES (?,?)", [$videoData['video_id'], crypt($ip, $ip)]);
 }
 
 if ($log) {
-	if ($sql->result("SELECT * from favorites WHERE video_id = ? AND user_id = ?", [$videoData['video_id'], $userdata['id']]))
-	{
-		$isFavorited = true;
-	}
-	else
-	{
-		$isFavorited = false;
-	}
+    if ($sql->result("SELECT * from favorites WHERE video_id = ? AND user_id = ?", [$videoData['video_id'], $userdata['id']])) {
+        $isFavorited = true;
+    } else {
+        $isFavorited = false;
+    }
 } else {
-	$isFavorited = false;
+    $isFavorited = false;
 }
 
-if (isset($_GET['flash']) ? $_GET['flash'] : null)
-{
+if (isset($_GET['flash']) ? $_GET['flash'] : null) {
     $isFlash = true;
-}
-else
-{
+} else {
     $isFlash = false;
 }
 
@@ -55,15 +49,15 @@ $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$curre
 
 $twig = twigloader();
 echo $twig->render('watch.twig', [
-	'video' => $videoData,
-	'comments' => $commentData,
-	'favorites' => $favoritesCount,
-	'comCount' => $commentCount,
-	'viewCount' => $viewCount,
-	'recentView' => $previousRecentView,
-	'allVideos' => $allVideos,
-	'isFlash' => $isFlash,
-	'tags' => Tags::getVideoTags($videoData['id']),
-	'isFavorited' => $isFavorited,
-	'recommendedNumber' => Videos::countRecommended($videoData['video_id']),
+    'video' => $videoData,
+    'comments' => $commentData,
+    'favorites' => $favoritesCount,
+    'comCount' => $commentCount,
+    'viewCount' => $viewCount,
+    'recentView' => $previousRecentView,
+    'allVideos' => $allVideos,
+    'isFlash' => $isFlash,
+    'tags' => Tags::getVideoTags($videoData['id']),
+    'isFavorited' => $isFavorited,
+    'recommendedNumber' => Videos::countRecommended($videoData['video_id']),
 ]);
