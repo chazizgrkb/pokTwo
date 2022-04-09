@@ -1,11 +1,16 @@
 <?php
 
 namespace pokTwo;
+use RelativeTime\RelativeTime;
+use Twig\Environment;
+use Twig\Extension\DebugExtension;
+use Twig\Loader\FilesystemLoader;
+
 /**
  * Twig loader, initializes Twig with standard configurations and extensions.
  *
  * @param string $subfolder Subdirectory to use in the templates/ directory.
- * @return \Twig\Environment Twig object.
+ * @return Environment Twig object.
  */
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
@@ -14,13 +19,13 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $doCache = ($tplNoCache ? false : $tplCache);
 
     if (!isset($customloader)) {
-        $loader = new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);
+        $loader = new FilesystemLoader('templates/' . $subfolder);
     } else {
         $loader = $customloader();
     }
 
     if (!isset($customenv)) {
-        $twig = new \Twig\Environment($loader, [
+        $twig = new Environment($loader, [
             'cache' => $doCache,
             'debug' => $isDebug,
         ]);
@@ -30,7 +35,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
 
     // Add pokTwo specific extension
     $twig->addExtension(new PokTwoExtension());
-    if ($isDebug) $twig->addExtension(new \Twig\Extension\DebugExtension());
+    if ($isDebug) $twig->addExtension(new DebugExtension());
 
     $twig->addGlobal('userdata', $userdata);
     $twig->addGlobal('notification_count', $notificationCount);
@@ -61,12 +66,7 @@ function pagination($levels, $lpp, $url, $current): string
 
 function error($title, $message)
 {
-    global $acmlm;
-
-    if ($acmlm)
-        $twig = _twigloader();
-    else
-        $twig = twigloader();
+    $twig = twigloader();
 
     echo $twig->render('_error.twig', ['err_title' => $title, 'err_message' => $message]);
     die();
@@ -74,7 +74,7 @@ function error($title, $message)
 
 function relativeTime($time): string
 {
-    $relativeTime = new \RelativeTime\RelativeTime([
+    $relativeTime = new RelativeTime([
         'language' => '\RelativeTime\Languages\English',
         'separator' => ', ',
         'suffix' => true,

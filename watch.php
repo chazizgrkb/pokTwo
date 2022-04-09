@@ -12,7 +12,7 @@ if (!$videoData) error('404', "The video you were looking for cannot be found.")
 
 $query = '';
 $count = 0;
-$commentData = Comments::getComments($id);
+$commentData = VideoComments::getComments($id);
 
 $pageName = "watch";
 
@@ -57,7 +57,7 @@ echo $twig->render('watch.twig', [
     'recentView' => $previousRecentView,
     'allVideos' => $allVideos,
     'isFlash' => $isFlash,
-    'tags' => Tags::getVideoTags($videoData['id']),
+    'tags' => VideoTags::getVideoTags($videoData['id']),
     'isFavorited' => $isFavorited,
     'recommendedNumber' => Videos::countRecommended($videoData['video_id']),
 ]);

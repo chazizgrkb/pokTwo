@@ -1,6 +1,8 @@
 <?php
 
 namespace pokTwo;
+use Parsedown;
+
 require('lib/common.php');
 
 $pageName = "profile";
@@ -25,7 +27,7 @@ if (isset($userpagedata['birthday'])) {
 
 // Personal user page stuff
 if ($userpagedata['about']) {
-    $markdown = new \Parsedown();
+    $markdown = new Parsedown();
     $markdown->setSafeMode(true);
     $userpagedata['about'] = $markdown->text($userpagedata['about']);
 }

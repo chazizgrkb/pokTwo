@@ -68,7 +68,7 @@ class Videos
             $videoList = $sql->fetchArray($sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY $orderBy LIMIT $limit"));
         }
         foreach ($videoList as &$video) {
-            $video['tags'] = Tags::getVideoTags($video['id']);
+            $video['tags'] = VideoTags::getVideoTags($video['id']);
         }
         return $videoList;
     }
@@ -158,5 +158,11 @@ class Videos
         } else {
             die("getFlashVideo Error: videoID is missing!");
         }
+    }
+
+    public static function addVideo($new, $title, $description, $id, string $upload_file, $duration): void
+    {
+        global $sql;
+        $sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $id, time(), time(), $upload_file, $duration]);
     }
 }

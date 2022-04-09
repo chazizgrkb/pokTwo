@@ -9,16 +9,6 @@ function isCli()
     return php_sapi_name() == "cli";
 }
 
-function register($name, $pass, $mail): string
-{
-    global $sql;
-    $token = bin2hex(random_bytes(20));
-    $sql->query("INSERT INTO users (name, password, email, token, joined, lastview, ip) VALUES (?,?,?,?,?,?,?)",
-        [$name, password_hash($pass, PASSWORD_DEFAULT), $mail, $token, time(), time(), $_SERVER['REMOTE_ADDR']]);
-
-    return $token;
-}
-
 function closeWindow()
 {
     echo "<script type='text/javascript'>window.close();</script>";
@@ -55,7 +45,13 @@ function delete_directory($dirname)
  */
 function die_dump($thingy)
 {
-    die('<pre>' . var_export($thingy, true) . '</pre>');
+    global $isDebug;
+    if ($isDebug) {
+        die('<pre>' . var_export($thingy, true) . '</pre>');
+    } else {
+        trigger_error("Die_dump function called when debug is disabled!", E_USER_WARNING);
+        // this is probably a fucking bad idea -grkb 4/9/2022
+    }
 }
 
 /**

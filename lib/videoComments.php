@@ -1,7 +1,7 @@
 <?php
 
 namespace pokTwo;
-class Comments extends Videos
+class VideoComments extends Videos
 {
     static function addComment($videoID, $comment, $id)
     {

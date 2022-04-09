@@ -24,7 +24,7 @@ if (isset($_POST['field_command'])) {
     //if (result("SELECT COUNT(*) FROM users WHERE ip = ?", [$_SERVER['REMOTE_ADDR']])) $error .= "Creating multiple accounts (alts) aren't allowed. ";
 
     if ($error == '') {
-        $token = register($name, $pass, $mail);
+        $token = Users::register($name, $pass, $mail);
 
         setcookie($cookieName, $token, 2147483647);
         //makeProfileData($userdata['id']);

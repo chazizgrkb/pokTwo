@@ -1,6 +1,8 @@
 <?php
 
 namespace pokTwo;
+use DateTime;
+
 class Users
 {
     /**
@@ -27,8 +29,8 @@ class Users
      */
     static function getAge($birthday): int
     {
-        $date = new \DateTime($birthday); // YYYY-MM-DD
-        $now = new \DateTime();
+        $date = new DateTime($birthday); // YYYY-MM-DD
+        $now = new DateTime();
         $interval = $now->diff($date);
         $age = $interval->y;
         return $age;
@@ -132,5 +134,15 @@ class Users
             case 3:
                 return 'female';
         }
+    }
+
+    public static function register($name, $pass, $mail): string
+    {
+        global $sql;
+        $token = bin2hex(random_bytes(20));
+        $sql->query("INSERT INTO users (name, password, email, token, joined, lastview, ip) VALUES (?,?,?,?,?,?,?)",
+            [$name, password_hash($pass, PASSWORD_DEFAULT), $mail, $token, time(), time(), $_SERVER['REMOTE_ADDR']]);
+
+        return $token;
     }
 }

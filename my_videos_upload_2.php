@@ -9,14 +9,8 @@ use FFMpeg\Filters;
 use FFMpeg\Format\Video\FLV;
 use FFMpeg\Format\Video\x264;
 
-
 require('lib/common.php');
 require_once('lib/external/FLV.php'); //annoyingly PHP-FFMpeg does not have FLV support.
-
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 $config = [
     'timeout' => 3600, // The timeout for the underlying process
@@ -34,18 +28,16 @@ $error = '';
 $failcount = 0;
 
 // fixme: move this into a function probably?
+
 if (isset($_FILES['fileToUpload'])) {
-    $uploader = $userdata['id'];
     $new = randstr(11);
 
     $vextension = strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
 
-    $name = $_FILES['fileToUpload']['name'];
     $temp_name = $_FILES['fileToUpload']['tmp_name'];
     $target_file = "preload/" . $new . "/" . $new . "." . $vextension;
     $preload_folder = "preload/" . $new;
     $upload_file = "media/" . $new . ".mp4";
-    $target_thumb = "thumbs/" . $new . ".jpg";
 
     $title = ($_POST['title'] ?? '');
     $description = ($_POST['desc'] ?? '');
@@ -57,18 +49,18 @@ if (isset($_FILES['fileToUpload'])) {
     $tagsIDbullshit = array();
     $number = 0; //tf does this even do????
     foreach ($tags2 as $tag) {
-        $tagsIDbullshit[] = $number;
+        $tagsIDbullshit[] = $number; // what the fuck
         if (!$sql->result("SELECT name from tag_meta WHERE name = ?", [$tag])) {
-            $sql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]); //Insert tag onto database
+            VideoTags::insertTag($tag); //Insert tag onto database
         } else {
-            $sql->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]); //Bump tag up the "lastest used" tags list by changing timestamp to current time.
+            VideoTags::bumpTag($tag); //Bump tag up the "lastest used" tags list by changing timestamp to current time.
         }
         $number = $sql->result("SELECT tag_id from tag_meta WHERE name = ?", [$tag]);
         $tagsIDbullshit[] = $number;
     }
 
     if (!in_array(strtolower($vextension), $supportedFormats, true)) {
-        echo "<center><h1>Your video is an incompatible format.<br>To continue uploading this video, convert it to a supported format.</h1></center>";
+        echo "<h1>Your video is an incompatible format.<br>To continue uploading this video, convert it to a supported format.</h1>";
         die();
     }
 
@@ -116,7 +108,7 @@ if (isset($_FILES['fileToUpload'])) {
             debug_print_backtrace();
             unlink($target_file);
 
-            $sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $userdata['id'], time(), time(), $upload_file, $duration]);
+            Videos::addVideo($new, $title, $description, $userdata['id'], $upload_file, $duration);
 
             $numID = $sql->result("SELECT id from videos WHERE video_id = ?", [$new]);
 
@@ -129,7 +121,7 @@ if (isset($_FILES['fileToUpload'])) {
             delete_directory($preload_folder);
             redirect('/watch.php?v=' . $new);
         } catch (Exception $e) {
-            echo "<center><h1>Your video was unable to be uploaded.<br>If you see this screen, report it to staff/admin.</h1></center>" . $e->getMessage();
+            echo "<h1>Your video was unable to be uploaded.<br>If you see this screen, report it to staff/admin.</h1>" . $e->getMessage();
         }
 
         clearstatcache();

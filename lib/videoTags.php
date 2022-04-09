@@ -1,7 +1,7 @@
 <?php
 
 namespace pokTwo;
-class Tags extends Videos
+class VideoTags extends Videos
 {
     /**
      * Return a list of tags, Limit and order is required.
@@ -28,5 +28,17 @@ class Tags extends Videos
         global $sql;
         $videoTags = $sql->fetchArray($sql->query("SELECT * FROM `tag_index` ti JOIN tag_meta t ON (t.tag_id = ti.tag_id) WHERE ti.video_id = ?", [$videoID]));
         return $videoTags;
+    }
+
+    public static function insertTag($tag): void
+    {
+        global $sql;
+        $sql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
+    }
+
+    public static function bumpTag($tag): void
+    {
+        global $sql;
+        $sql->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);
     }
 }

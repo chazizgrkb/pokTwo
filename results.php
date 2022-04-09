@@ -23,7 +23,7 @@ ORDER BY v.id DESC $limit", [$query, $query, $query]);
 $videos = $sql->fetchArray($videoData);
 
 foreach ($videos as &$video) {
-    $video['tags'] = Tags::getVideoTags($video['id']);
+    $video['tags'] = VideoTags::getVideoTags($video['id']);
 }
 
 $count = $sql->result("

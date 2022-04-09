@@ -7,5 +7,5 @@ $twig = twigloader();
 
 echo $twig->render('index.twig', [
     'videos' => Videos::getVideos("RAND()", 5),
-    'tags' => Tags::getListOfTags("latestUse DESC", 50),
+    'tags' => VideoTags::getListOfTags("latestUse DESC", 50),
 ]);
