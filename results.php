@@ -35,8 +35,7 @@ SELECT COUNT(DISTINCT v.id) FROM videos v
 	OR v.description 
 		LIKE CONCAT('%', ?, '%') 
 	OR
-		t.name LIKE CONCAT('%', ?, '%') 
-ORDER BY v.id DESC", [$query, $query, $query]);
+		t.name LIKE CONCAT('%', ?, '%') ", [$query, $query, $query]);
 
 $twig = twigloader();
 
