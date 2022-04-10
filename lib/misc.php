@@ -41,7 +41,7 @@ function delete_directory($dirname): bool
 /**
  * Dump array and stop everything else. Meant for debugging.
  *
- * @param $thingy An array or variable or whatever.
+ * @param $thingy
  */
 function die_dump($thingy)
 {

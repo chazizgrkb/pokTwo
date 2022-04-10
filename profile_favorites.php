@@ -13,31 +13,19 @@ if (isset($_GET['id'])) {
     $userpagedata = $sql->fetch("SELECT * FROM users WHERE name = ?", [$_GET['user']]);
 }
 
-$allVideos = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$userpagedata['id']]);
-$favoritesCount = $sql->result("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$userdata['id']]);
-
 $twig = twigloader();
 
-$videoData = $sql->query("
-SELECT $userfields $videofields FROM videos v 
-	JOIN users u ON v.author = u.id 
-	JOIN favorites f ON (f.video_id = v.video_id) 
-	WHERE 
-		f.user_id = ?
-ORDER BY v.time DESC $limit", [$userpagedata['id']]);
-$videos = $sql->fetchArray($videoData);
-foreach ($videos as &$video) {
-    $video['tags'] = VideoTags::getVideoTags($video['id']);
-}
+$videos = Videos::getFavoritedVideosFromUser($limit, $userpagedata['id']);
+
 
 echo $twig->render('profile_videos.twig', [
     'id' => $userpagedata['id'],
     'name' => $userpagedata['name'],
-    'allVideos' => $allVideos,
-    'allFavorites' => $favoritesCount,
+    'allVideos' => Users::getUserVideoCount($userpagedata['id']),
+    'allFavorites' => Users::getUserFavoriteCount($userpagedata['id']),
     'userpagedata' => $userpagedata,
     'videos' => $videos,
 	'page' => $page,
-    'level_count' => $favoritesCount,
+    'level_count' => Users::getUserFavoriteCount($userpagedata['id']),
 	'page_name' => $pageName
 ]);

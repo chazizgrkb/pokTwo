@@ -43,7 +43,7 @@ echo $twig->render('profile.twig', [
     'userpagedata' => $userpagedata,
     'forceuser' => $forceuser,
     'edited' => (isset($_GET['edited']) ? true : false), // TODO: merge these three stuffs into one variable
-    'justbanned' => (isset($_GET['justbanned']) ? $_GET['justbanned'] : null),
+    'justbanned' => ($_GET['justbanned'] ?? null),
     'age' => $age,
     'relationship' => Users::relationship_to_type($userpagedata['relationshipStatus']),
     'gender' => Users::gender_to_type($userpagedata['gender']),

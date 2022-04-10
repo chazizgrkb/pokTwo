@@ -177,4 +177,21 @@ class Videos
         global $sql;
         return $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
     }
+
+    static function getFavoritedVideosFromUser(string $limit, $id): array
+    {
+        global $sql, $userfields, $videofields;
+        $videoData = $sql->query("
+SELECT $userfields $videofields FROM videos v 
+	JOIN users u ON v.author = u.id 
+	JOIN favorites f ON (f.video_id = v.video_id) 
+	WHERE 
+		f.user_id = ?
+ORDER BY v.time DESC $limit", [$id]);
+        $videos = $sql->fetchArray($videoData);
+        foreach ($videos as &$video) {
+            $video['tags'] = VideoTags::getVideoTags($video['id']);
+        }
+        return $videos;
+    }
 }
