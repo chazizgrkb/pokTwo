@@ -15,7 +15,7 @@ use Twig\Loader\FilesystemLoader;
  */
 function twigloader($subfolder = '', $customloader = null, $customenv = null)
 {
-    global $tplCache, $tplNoCache, $isDebug, $userdata, $notificationCount, $log, $lpp, $invite, $pageName, $searchShit, $versionString;
+    global $tplCache, $tplNoCache, $isDebug, $userdata, $messages, $log, $lpp, $invite, $pageName, $searchShit, $versionString;
 
     $doCache = ($tplNoCache ? false : $tplCache);
 
@@ -39,7 +39,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     if ($isDebug) $twig->addExtension(new DebugExtension());
 
     $twig->addGlobal('userdata', $userdata);
-    $twig->addGlobal('notification_count', $notificationCount);
+    $twig->addGlobal('message_count', $messages);
     $twig->addGlobal('log', $log);
     $twig->addGlobal('pageName', $pageName);
     $twig->addGlobal('searchText', $searchShit);

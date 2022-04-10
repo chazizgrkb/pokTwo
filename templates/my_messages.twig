@@ -40,9 +40,11 @@
                                     <table cellpadding="0" cellspacing="0" border="0">
                                         <tbody>
                                         <tr>
-                                            <td><a href="profile.php?user={{ message.u_name }}"><img
-                                                            src="get_still.php?video_id={{ video.video_id }}&amp;still_id=2"
-                                                            class="moduleEntryThumb" width="100" height="75"></a></td>
+                                            <td align="center"><a href="profile.php?user={{ message.u_name }}"><img
+                                                            src="get_still.php?video_id={{ message.latest_video.video_id }}&amp;still_id=2"
+                                                            class="moduleEntryThumb" width="100" height="75"></a>
+                                                <div class="moduleFeaturedTitle"><a href="profile.php?user={{ message.u_name }}">{{ message.u_name }}</a></div>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>

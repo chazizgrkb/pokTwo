@@ -85,6 +85,7 @@ if (isset($_COOKIE[$cookieName])) {
 
 if ($log) {
     $userdata = $sql->fetch("SELECT * FROM users WHERE id = ?", [$id]);
+    $messages = $sql->result("SELECT COUNT(*) FROM messages m WHERE reciever = ?", [$userdata['id']]);
 
     if ($userdata['powerlevel'] == 0) {
         $userdata['banreason'] = $sql->result("SELECT reason FROM bans WHERE user = ?", [$id]);

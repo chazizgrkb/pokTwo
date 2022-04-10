@@ -108,6 +108,18 @@ class Videos
     }
 
     /**
+     * Return the randomized ID of a video.
+     *
+     * @param string $video The randomized video ID.
+     * @return string the ID of a video.
+     */
+    static function getVideoRanID($video): string
+    {
+        global $sql;
+        return $sql->result("SELECT video_id FROM videos WHERE id = ?", [$video]);
+    }
+
+    /**
      * Return a list of videos in an alternative way.
      *
      * @param string $whereSomething Precise what column.
@@ -127,6 +139,12 @@ class Videos
             $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ?", [$whereEquals]);
         }
         return $videoList;
+    }
+
+    static function getLatestVideo($userID): array
+    {
+        $video = Videos::fetchVideos("author", $userID, "v.id DESC", 1);
+        return $video;
     }
 
     /**
