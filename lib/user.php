@@ -157,12 +157,22 @@ class Users
         return $type;
     }
 
+    /**
+     *
+     * Registers an user.
+     *
+     * @param $name
+     * @param $pass
+     * @param $mail
+     * @return string
+     * @throws \Exception
+     */
     static function register($name, $pass, $mail): string
     {
         global $sql;
         $token = bin2hex(random_bytes(20));
         $sql->query("INSERT INTO users (name, password, email, token, joined, lastview, ip) VALUES (?,?,?,?,?,?,?)",
-            [$name, password_hash($pass, PASSWORD_DEFAULT), $mail, $token, time(), time(), $_SERVER['REMOTE_ADDR']]);
+            [$name, password_hash($pass, PASSWORD_DEFAULT), $mail, $token, time(), time(), getUserIpAddr()]);
 
         return $token;
     }

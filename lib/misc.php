@@ -58,7 +58,7 @@ function die_dump($thingy)
  * Get hash of latest git commit
  *
  * @param bool $trim Trim the hash to the first 7 characters
- * @return void
+ * @return string
  */
 function gitCommit($trim = true)
 {
@@ -82,4 +82,25 @@ function gitCommit($trim = true)
 function getOS(): string
 {
     return printf(php_uname('s'));
+}
+
+/**
+ * Get the IP address of the user. Scandal incoming!
+ *
+ * @return mixed
+ */
+function getUserIpAddr()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        //ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+        $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        //ip pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
 }
