@@ -71,12 +71,16 @@ class Users
         switch ($type) {
             case 'none':
                 $relationship = 0;
+                break;
             case 'single':
                 $relationship = 1;
+                break;
             case 'taken':
                 $relationship = 2;
+                break;
             case 'married':
                 $relationship = 3;
+                break;
         }
         return $relationship;
     }
@@ -91,12 +95,16 @@ class Users
         switch ($relationship) {
             case 0:
                 $type = 'none';
+                break;
             case 1:
                 $type = 'single';
+                break;
             case 2:
                 $type = 'taken';
+                break;
             case 3:
                 $type = 'married';
+                break;
         }
         return $type;
     }
@@ -111,12 +119,16 @@ class Users
         switch ($type) {
             case 'private':
                 $gender = 0;
+                break;
             case 'unknown':
                 $gender = 1;
+                break;
             case 'male':
                 $gender = 2;
+                break;
             case 'female':
                 $gender = 3;
+                break;
         }
         return $gender;
     }
@@ -131,12 +143,16 @@ class Users
         switch ($gender) {
             case 0:
                 $type = 'private';
+                break;
             case 1:
                 $type = 'unknown';
+                break;
             case 2:
                 $type = 'male';
+                break;
             case 3:
                 $type = 'female';
+                break;
         }
         return $type;
     }
