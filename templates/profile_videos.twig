@@ -18,7 +18,7 @@
                             <div class="watchTitleBar">
                                 <table width="100%" cellpadding="0" cellspacing="0" border="0">
                                     <tbody><tr valign="top">
-                                        <td><div class="watchTitle">Public Videos // <span style="text-transform: capitalize;">{{ userpagedata.name }}</span></div></td>
+                                        <td><div class="watchTitle">{% if page_name == "profile_videos" %}Public Videos{% elseif page_name == "profile_favorites" %}Favorites{% else %}{% endif %} // <span style="text-transform: capitalize;">{{ userpagedata.name }}</span></div></td>
                                         <td align="right">
                                             <div style="font-weight: bold; color: #444; margin-right: 5px;">
                                                 Videos 1-(?) of {{ allVideos }}								</div>
@@ -61,7 +61,7 @@
 
 
                             <!-- end paging -->
-
+							{{ pagination(level_count, 5, (page_name == "profile_videos" ? "profile_videos.php" : "profile_favorites.php") ~ "?user="~ userpagedata.name ~"&page=%s", page) }}
                         </td>
                         <td><img src="img/pixel.gif" width="5" height="1"></td>
                     </tr>
