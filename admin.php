@@ -20,14 +20,11 @@ foreach ($thingsToCount as $thing) {
 }
 $count = $sql->fetch($query);
 
-$latestComments = $sql->query("SELECT $userfields c.* FROM comments c JOIN users u ON c.author = u.id ORDER BY c.date DESC LIMIT 7");
-
 $twig = twigloader();
 echo $twig->render('admin.twig', [
     'latest_registered_users' => $latestRegisteredUsers,
     'latest_seen_users' => $latestSeenUsers,
     'things_to_count' => $thingsToCount,
     'count' => $count,
-    'latest_comments' => $latestComments,
     'videos' => $videoData,
 ]);

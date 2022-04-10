@@ -64,18 +64,4 @@
                 {% endfor %}
             </tr>
         </table>
-
-        <h3>Latest comments</h3>
-        <div class="pageTable">
-            {% for cmnt in latest_comments %}
-                <div class="comment-entry{% if cmnt.deleted %} deleted{% endif %}" id="comment-{{ cmnt.id }}">
-                    <p>
-                        <a href="profile.php?user={{ cmt.u_name }}">{{ cmt.u_name }}</a>
-                        commented on <a href="/watch.php?v={{ cmnt.id }}">{{ cmnt.id | title }}</a>: {{ cmnt.comment }}
-                        <span class="date">{{ cmnt.date | relative_time }}</span>
-                    </p>
-                    <span class="comment-text">{{ cmnt.message | markdown_inline | replace({'\n':'<br>'}) | raw }}</span>
-                </div>
-            {% endfor %}
-        </div>
     {% endblock %}

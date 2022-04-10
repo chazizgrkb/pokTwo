@@ -55,7 +55,7 @@ if (!isCli()) {
         http_response_code(403);
 
         printf(
-            "<p>Your IP adress has been banned.</p>" .
+            "<p>Your IP address has been banned.</p>" .
             "<p><strong>Reason:</strong> %s</p>",
             $ipban['reason']);
 
@@ -85,7 +85,6 @@ if (isset($_COOKIE[$cookieName])) {
 
 if ($log) {
     $userdata = $sql->fetch("SELECT * FROM users WHERE id = ?", [$id]);
-    $notificationCount = $sql->result("SELECT COUNT(*) FROM notifications WHERE recipient = ?", [$userdata['id']]);
 
     if ($userdata['powerlevel'] == 0) {
         $userdata['banreason'] = $sql->result("SELECT reason FROM bans WHERE user = ?", [$id]);
