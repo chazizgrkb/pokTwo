@@ -66,11 +66,19 @@
                                 {{ userpagedata.title }}
                             </td>
                         </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
                     {% endif %}
                     {% if age %}
                         <tr>
                             <td align="right"><span class="label">Age:</span></td>
                             <td>{{ age }} years old</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
                         </tr>
                     {% endif %}
                     {% if gender != "private" %}
@@ -78,11 +86,19 @@
                             <td align="right"><span class="label">Gender:</span></td>
                             <td>{{ gender|capitalize }}</td>
                         </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
                     {% endif %}
                     {% if relationship != "none" %}
                         <tr>
                             <td align="right"><span class="label">Relationship Status:</span></td>
                             <td>{{ relationship|capitalize }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
                         </tr>
                     {% endif %}
                     <tr>
@@ -92,6 +108,7 @@
                     <tr>
                         <td colspan="2">&nbsp;</td>
                     </tr>
+                    <!-- Location Information -->
                     <!-- Random Information -->
                     <tr>
                         <td align="right"><span class="label">Last Login:</span></td>

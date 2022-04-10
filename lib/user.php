@@ -157,7 +157,7 @@ class Users
         return $type;
     }
 
-    public static function register($name, $pass, $mail): string
+    static function register($name, $pass, $mail): string
     {
         global $sql;
         $token = bin2hex(random_bytes(20));

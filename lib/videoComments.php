@@ -8,7 +8,6 @@ class VideoComments extends Videos
         global $sql;
         $sql->query("INSERT INTO comments (id, reply_to, comment, author, date, deleted) VALUES (?,?,?,?,?,?)",
             [$videoID, 0, $comment, $id, time(), 0]);
-        //[$videoID, $reply_to, $comment, $id, time(), 0]);
     }
 
     static function getComments($videoID): array

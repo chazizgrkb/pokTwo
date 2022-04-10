@@ -6,12 +6,10 @@ $id = ($_GET['v'] ?? null);
 $searchShit = ($_GET['search'] ?? null);
 $ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']));
 
-$videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
+$videoData = Videos::getVideoData($userfields, $id);
 
 if (!$videoData) error('404', "The video you were looking for cannot be found.");
 
-$query = '';
-$count = 0;
 $commentData = VideoComments::getComments($id);
 
 $pageName = "watch";
@@ -43,9 +41,8 @@ $favoritesCount = $sql->fetch("SELECT COUNT(user_id) FROM favorites WHERE user_i
 $viewCount = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
 
 $previousRecentView = $sql->result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
-$currentTime = time();
 
-$sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
+Videos::bumpVideo(time(), $id);
 
 $twig = twigloader();
 echo $twig->render('watch.twig', [

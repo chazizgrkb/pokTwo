@@ -30,13 +30,13 @@ class VideoTags extends Videos
         return $videoTags;
     }
 
-    public static function insertTag($tag): void
+    static function insertTag($tag): void
     {
         global $sql;
         $sql->query("INSERT INTO tag_meta (name, latestUse) VALUES (?,?)", [$tag, time()]);
     }
 
-    public static function bumpTag($tag): void
+    static function bumpTag($tag): void
     {
         global $sql;
         $sql->query("UPDATE tag_meta SET latestUse = ? WHERE name = ?", [time(), $tag]);

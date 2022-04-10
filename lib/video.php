@@ -160,9 +160,21 @@ class Videos
         }
     }
 
-    public static function addVideo($new, $title, $description, $id, string $upload_file, $duration): void
+    static function addVideo($new, $title, $description, $id, string $upload_file, $duration): void
     {
         global $sql;
         $sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $id, time(), time(), $upload_file, $duration]);
+    }
+
+    static function bumpVideo(int $currentTime, $id): void
+    {
+        global $sql;
+        $sql->query("UPDATE videos SET most_recent_view = ? WHERE video_id = ?", [$currentTime, $id]);
+    }
+
+    static function getVideoData($userfields, $id)
+    {
+        global $sql;
+        return $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
     }
 }
