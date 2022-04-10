@@ -5,13 +5,13 @@ require('lib/common.php');
 
 $twig = twigloader();
 
-$videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time DESC LIMIT 5");
+$videoData = Videos::getVideos("v.time DESC", 5);
 
-$mostViewedData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY views DESC LIMIT 5");
+$mostViewedData = Videos::getVideos("views DESC", 5);
 
-$mostCommentedData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY comments DESC LIMIT 5");
+$mostCommentedData = Videos::getVideos("comments DESC", 5);
 
-$mostFavoritedData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY favorites DESC LIMIT 5");
+$mostFavoritedData = Videos::getVideos("favorites DESC", 5);
 
 echo $twig->render('videos_page.twig', [
     'videos' => $videoData,

@@ -1,74 +1,81 @@
 {% extends "_layout.twig" %}
 {% block title %}{{ name }}{% endblock %}
 {% block content %}
-    {% include "/components/profilelinks.twig" %}
-    <div class="pageTable">
+    <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+        <tbody><tr valign="top">
+            <td style="padding-right: 15px;">
 
-        <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
-            <tbody>
-            <tr>
-                <td><img src="/img/box_login_tl.gif" width="5" height="5"></td>
-                <td width="100%"><img src="/img/pixel.gif" width="1" height="5"></td>
-                <td><img src="/img/box_login_tr.gif" width="5" height="5"></td>
-            </tr>
-            <tr>
-                <td><img src="/img/pixel.gif" width="5" height="1"></td>
-                <td>
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#CCCCCC">
+                    <tbody><tr>
+                        <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                        <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+                        <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/pixel.gif" width="5" height="1"></td>
+                        <td>
 
-                    <div class="watchTitleBar">
-                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                            <tbody>
-                            <tr valign="top">
-                                <td>
-                                    <div class="watchTitle">Videos // <span
-                                                style="text-transform: capitalize;">{{ userpagedata.name }}</span></div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            <div class="watchTitleBar">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tbody><tr valign="top">
+                                        <td><div class="watchTitle">Public Videos // <span style="text-transform: capitalize;">{{ userpagedata.name }}</span></div></td>
+                                        <td align="right">
+                                            <div style="font-weight: bold; color: #444; margin-right: 5px;">
+                                                Videos 1-(?) of {{ allVideos }}								</div>
+                                        </td>
+                                    </tr>
+                                    </tbody></table>
+                            </div>
 
-                    {% for video in videos %}
-                        <div class="moduleEntry">
-                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                <tbody>
-                                <tr valign="top">
-                                    <td><a href="watch.php?v={{ video.video_id }}"><img
-                                                    src="get_still.php?video_id={{ video.video_id }}"
-                                                    class="moduleEntryThumb" width="120" height="90"></a></td>
-                                    <td width="100%">
-                                        <div class="moduleEntryTitle"><a
-                                                    href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
-                                        <div class="moduleEntryDescription">{{ video.description }}</div>
-                                        <div class="moduleEntryTags">
-                                            Tags // {% for tag in video.tags %}<a
-                                                href="results.php?search={{ tag.name }}">{{ tag.name }}</a> :{% endfor %}
-                                        </div>
-                                        <div class="moduleEntryDetails">Added: {{ video.time|date("F j, Y") }} by <a
-                                                    href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a>
-                                        </div>
-                                        <div class="moduleEntryDetails">Views: {{ video.views }} |
-                                            Comments: {{ video.comments }}</div>
-                                    </td>
 
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    {% else %}
-                        No videos!
-                    {% endfor %}
 
-                </td>
-                <td><img src="/img/pixel.gif" width="5" height="1"></td>
-            </tr>
-            <tr>
-                <td><img src="/img/box_login_bl.gif" width="5" height="5"></td>
-                <td><img src="/img/pixel.gif" width="1" height="5"></td>
-                <td><img src="/img/box_login_br.gif" width="5" height="5"></td>
-            </tr>
-            </tbody>
-        </table>
+                            {% for video in videos %}
+                                <div class="moduleEntry">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                        <tr valign="top">
+                                            <td><a href="watch.php?v={{ video.video_id }}"><img
+                                                            src="get_still.php?video_id={{ video.video_id }}"
+                                                            class="moduleEntryThumb" width="120" height="90"></a></td>
+                                            <td width="100%">
+                                                <div class="moduleEntryTitle"><a
+                                                            href="watch.php?v={{ video.video_id }}">{{ video.title }}</a></div>
+                                                <div class="moduleEntryDescription">{{ video.description }}</div>
+                                                <div class="moduleEntryTags">
+                                                    Tags // {% for tag in video.tags %}<a
+                                                        href="results.php?search={{ tag.name }}">{{ tag.name }}</a> : {% endfor %}
+                                                </div>
+                                                <div class="moduleEntryDetails">Added: {{ video.time|date("F j, Y") }} by <a
+                                                            href="profile.php?user={{ userpagedata.name }}">{{ userpagedata.name }}</a>
+                                                </div>
+                                                <div class="moduleEntryDetails">Views: {{ video.views }} |
+                                                    Comments: {{ video.comments }}</div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                No videos!
+                            {% endfor %}
 
-    </div>
+
+                            <!-- end paging -->
+
+                        </td>
+                        <td><img src="img/pixel.gif" width="5" height="1"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                        <td><img src="img/pixel.gif" width="1" height="5"></td>
+                        <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+                    </tr>
+                    </tbody></table>
+
+            </td>
+            <td width="180">
+                {% include "/components/profilelinks.twig" %}
+            </td>
+        </tr>
+        </tbody></table>
 {% endblock %}

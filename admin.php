@@ -5,8 +5,6 @@ require('lib/common.php');
 
 if ($userdata['powerlevel'] < 3) error('403', "You shouldn't be here, get out!");
 
-//$memcachedStats = $cache->memcached->getStats();
-
 $latestRegisteredUsers = $sql->query("SELECT id, name, joined FROM users ORDER BY joined DESC LIMIT 15");
 $latestSeenUsers = $sql->query("SELECT id, name, lastview FROM users ORDER BY lastview DESC LIMIT 15");
 $videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time DESC LIMIT 7");

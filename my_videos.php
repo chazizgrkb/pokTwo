@@ -3,7 +3,7 @@
 namespace pokTwo;
 require('lib/common.php');
 
-if (!$log) redirect('vidlist.');
+if (!$log) redirect('login.php');
 
 $query = $_GET['search'] ?? null;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);

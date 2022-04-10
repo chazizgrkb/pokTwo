@@ -7,6 +7,7 @@ if (!$log) redirect('login.php');
 
 $pageName = "settings";
 
+// FIXME: actually calculate this shit
 $coppaYearBS = date('Y') - 14;
 
 $birthday = explode('-', $userdata['birthday']);

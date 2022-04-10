@@ -134,7 +134,7 @@ if (isset($_FILES['fileToUpload'])) {
         if ($failcount == 1) {
             unlink("media/" . $new . ".mp4");
             delete_directory($preload_folder);
-            die("");
+            die("Fuck");
         }
     }
 }
