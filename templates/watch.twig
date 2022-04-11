@@ -47,7 +47,7 @@
             return true;
         }
     </script>
-    {% if isFlash %}
+    {% if isFlash == "true" %}
         <script type="text/javascript" src="/img/flashobject.js"></script>
     {% endif %}
 {% endblock %}
@@ -69,7 +69,7 @@
                 </div>
                 <div style="text-align: center; padding-bottom: 10px;">
                     <div id="flashcontent">
-                        {% if isFlash %}
+                        {% if isFlash == "true" %}
                             <div style="padding: 20px; font-size:14px; font-weight: bold;">
                                 Hello, you either have JavaScript turned off or an old version of Macromedia's Flash
                                 Player, <a href="http://www.macromedia.com/go/getflashplayer/">click here</a> to get the

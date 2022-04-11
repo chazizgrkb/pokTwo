@@ -23,6 +23,7 @@ if (isset($_POST['magic'])) {
     $day = $_POST['day'] ? $_POST['day'] : null;
     $relationship = $_POST['relationship'] ? $_POST['relationship'] : null;
     $gender = $_POST['gender'] ? $_POST['gender'] : null;
+	$flash = isset($_POST['flash']) ? $_POST['flash'] : 'false';
 
     $relationStatus = Users::type_to_relationship($relationship);
     $genderShit = Users::type_to_gender($gender);
@@ -40,6 +41,8 @@ if (isset($_POST['magic'])) {
         die("Invalid date.");
     }
 
+	setcookie('useFlashPlayer', $flash, 2147483647);
+	
     $sql->query("UPDATE users SET title = ?, about = ?, location = ?, timezone = ?, signature = ?, birthday = ?, relationshipStatus = ?, gender = ? WHERE id = ?",
         [$title, $about, $location, $timezone, $signature, $dob, $relationStatus, $genderShit, $userdata['id']]);
 

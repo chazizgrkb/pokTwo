@@ -30,7 +30,9 @@ if ($log) {
     $isFavorited = false;
 }
 
-if ($_GET['flash'] ?? null) {
+if (isset($_COOKIE['useFlashPlayer'])) {
+    $isFlash = $_COOKIE['useFlashPlayer'];
+} elseif ($_GET['flash'] ?? null) {
     $isFlash = true;
 } else {
     $isFlash = false;
