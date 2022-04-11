@@ -20,13 +20,10 @@ $forumEnabled = true;
 $darkModeDefault = false;
 
 // Redirect all pages to https.
-$https = false;
+$https = true;
 
 // Cookie token name. Don't change this too often as it'll invalidate old logins!
 $cookieName = 'token';
-
-// Website domain.
-$domain = 'https://codenameweb.domain';
 
 // Discord server link. If blank will disable Discord link.
 $invite = '';

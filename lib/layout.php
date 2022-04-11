@@ -13,9 +13,8 @@ use Twig\Loader\FilesystemLoader;
  * @param string $subfolder Subdirectory to use in the templates/ directory.
  * @return Environment Twig object.
  */
-function twigloader($subfolder = '', $customloader = null, $customenv = null)
-{
-    global $tplCache, $tplNoCache, $isDebug, $userdata, $messages, $log, $lpp, $invite, $pageName, $searchShit, $versionString;
+function twigloader($subfolder = '', $customloader = null, $customenv = null) {
+    global $tplCache, $tplNoCache, $userdata, $notificationCount, $isDebug, $messages, $log, $lpp, $https, $pageName, $searchShit, $versionString, $domain;
 
     $doCache = ($tplNoCache ? false : $tplCache);
 
@@ -44,8 +43,8 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null)
     $twig->addGlobal('pageName', $pageName);
     $twig->addGlobal('searchText', $searchShit);
     // START OF CODE PORTED FROM SQUAREBRACKET
-    $twig->addGlobal("page_url", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
-    $twig->addGlobal("domain", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/");
+	$twig->addGlobal("page_url", sprintf("%s%s", $domain, $_SERVER['REQUEST_URI']));
+	$twig->addGlobal("domain", $domain);
     // END OF PORTED CODE
     $twig->addGlobal('glob_lpp', $lpp);
     $twig->addGlobal('version', $versionString);
