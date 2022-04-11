@@ -3,6 +3,7 @@
 {% block content %}
     <form action="my_profile.php" method="post">
     <div class="formTitle">My profile</div>
+	<center>
     <table class="dataEntryTableSmall">
         <tr>
             <td valign="middle" align="right">
@@ -80,9 +81,6 @@
                 </select>
             </td>
         </tr>
-    </table>
-    <div class="tableSubTitle">Options</div>
-    <table class="settings">
         <td valign="middle" align="right">
       <span style="font-size: 14px;font-weight:bold;">
       Timezone
@@ -98,6 +96,7 @@
         </td>
         </tr>
     </table>
+	</center>
     <input type="hidden" name="magic" value="please change my settings :)">
     <input type="submit" name="action" value="Save Changes">
 {% endblock %}

@@ -7,7 +7,7 @@ $page = "recommended";
 
 if (isset($_GET['v'])) {
     $query = substr($_GET['search'], 0, -1);
-    $query = implode("','", explode(" ", $query));
+    $query = implode("','", explode(" ", $query)); //the fuck does this do
     $vid = $_GET['v'];
     $latestVideo = Videos::getRecommended($vid);
 }

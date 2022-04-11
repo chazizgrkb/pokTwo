@@ -4,7 +4,7 @@ namespace pokTwo;
 require('lib/common.php');
 $id = ($_GET['v'] ?? null);
 $searchShit = ($_GET['search'] ?? null);
-$ip = ($_SERVER['HTTP_CLIENT_IP'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']));
+$ip = getUserIpAddr();
 
 $videoData = Videos::getVideoData($userfields, $id);
 
@@ -57,4 +57,5 @@ echo $twig->render('watch.twig', [
     'tags' => VideoTags::getVideoTags($videoData['id']),
     'isFavorited' => $isFavorited,
     'recommendedNumber' => Videos::countRecommended($videoData['video_id']),
+	'relatedTags' => VideoTags::getListOfTags("RAND()", 50),
 ]);
