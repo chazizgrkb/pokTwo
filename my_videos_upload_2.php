@@ -81,23 +81,39 @@ if (isset($_FILES['fileToUpload'])) {
 
 
             $video = $ffmpeg->open($target_file);
+			
+			//get frame count
             $duration = $ffprobe
-                ->format($target_file)    // extracts file informations
-                ->get('duration');  // returns the duration property
-            //this doesn't scale too well with short videos.
+                ->streams($target_file)	// extracts file informations
+				->videos()              // filters video streams
+				->first()               // returns the first video stream			
+                ->get('nb_frames');  	// returns the duration property
+			
+			//get fractional framerate
+			$fracFramerate = $ffprobe
+				->streams($target_file)	// extracts file informations
+				->videos()              // filters video streams
+				->first()               // returns the first video stream	
+				->get("avg_frame_rate");
+				
+			//get the actual framerate
+			$framerate = explode("/", $fracFramerate)[0] / explode("/", $fracFramerate)[1];
+            
+			
+			//this doesn't scale too well with short videos.
             $seccount = round($duration / 4);
             $seccount2 = $seccount * 1.5;
             $seccount3 = $seccount2 + $seccount - 1;
 
-            $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount));
+            $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount / $framerate));
             $frame->filters()->custom('scale=120x90');
             $frame->save('thumbs/' . $new . '.1.jpg');
 
-            $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2));
+            $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount2 / $framerate));
             $frame->filters()->custom('scale=120x90');
             $frame->save('thumbs/' . $new . '.2.jpg');
 
-            $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount3));
+            $frame = $video->frame(Coordinate\TimeCode::fromSeconds($seccount3 / $framerate));
             $frame->filters()->custom('scale=120x90');
             $frame->save('thumbs/' . $new . '.3.jpg');
 
