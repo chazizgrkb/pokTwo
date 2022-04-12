@@ -126,7 +126,7 @@ class Videos
      * @param string $whereEquals Precise the value of the column.
      * @return array A video list, ordered by what $orderBy specified.
      */
-    static function fetchVideos($whereSomething, $whereEquals, $orderBy = null, $limit = null): array
+    static function fetchVideos($whereSomething, $whereEquals, $orderBy = null, $limit = null)
     {
         global $userfields, $videofields, $sql;
         if (isset($orderBy, $limit)) {
@@ -141,7 +141,7 @@ class Videos
         return $videoList;
     }
 
-    static function getLatestVideo($userID): array
+    static function getLatestVideo($userID)
     {
         $video = Videos::fetchVideos("author", $userID, "v.id DESC", 1);
         return $video;
