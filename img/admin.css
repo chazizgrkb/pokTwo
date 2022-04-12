@@ -1,0 +1,160 @@
+table.c1 {
+	border: #000000 1px solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.c1 tr.c {
+	text-align: center;
+}
+
+table.c1 tr.h {
+	background: #6e94b7;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+table.c1 tr.c {
+	background: #55b4cc;
+}
+
+table.c1 td.b {
+	border: #000000 1px solid;
+	padding: 5px;
+}
+
+table.c1 td.nb {
+	padding: 1px;
+	border: 0px none;
+}
+
+table.c1 tr.n1, table.c1 td.n1 {
+	background: #afc6db;
+}
+
+table.c1 tr.n2, table.c1 td.n2 {
+	background: #ffffff;
+}
+
+table.c1 tr.n3, table.c1 td.n3 {
+	background: #d4d4d4;
+}
+
+table.c1 .delete {
+	font-weight: 900;
+	display: inline-block;
+	margin-left: 6px;
+	margin-right: 6px;
+	font-size: 18px;
+	color: red;
+}
+
+.pagelist {
+	margin-left: 4px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.posttoolbar button {
+	height: 2em;
+	width: 2em;
+	padding: 0 1px 2px;
+}
+
+.threadpost .topbar_1 {
+	border-bottom: 0 !important;
+	min-width: 180px;
+	text-align: center;
+	height: 24px;
+}
+
+.threadpost .sidebar {
+	border-top: 0 !important;
+	text-align: center;
+}
+
+.threadpost .sidebar .avatar {
+	max-width: 120px;
+	max-height: 120px;
+	border-radius: 5px;
+}
+
+.threadpost .mainbar p {
+	margin-top: 0;
+}
+
+.threadpost .mainbar table {
+	border: #000000 1px solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+.threadpost .mainbar th {
+	background: #3367aa;
+	font-size: 1em;
+	color: #ffffff;
+}
+
+.threadpost .mainbar td, .threadpost .mainbar th {
+	border: #000000 1px solid;
+	padding: 5px;
+}
+
+.threadpost .mainbar .siggy {
+	border-top: 1px solid black;
+	font-size: 10pt;
+	margin-top: 3em;
+}
+
+.threadpost .mainbar img {
+	max-width: 100%;
+}
+
+.autowidth {
+	width: auto !important;
+}
+
+.wbreak {
+	word-break: break-word;
+}
+
+.fullwidth {
+	width: 100% !important;
+}
+
+table.c1 {
+	border: 1px solid #393939;
+}
+
+table.c1 td.b {
+	border: 1px solid #393939;
+}
+
+table.c1 tr.n1, table.c1 td.n1 {
+	background-color: #0a0a0a;
+}
+
+table.c1 tr.n2, table.c1 td.n2 {
+	background-color: #141414;
+}
+
+table.c1 tr.n3, table.c1 td.n3 {
+	background-color: #2b2b2b;
+}
+
+table.c1 tr.h {
+	background-color: #1b7fcc;
+}
+
+.threadpost .mainbar td, .threadpost .mainbar th, .threadpost .mainbar table {
+	border: 1px solid white;
+}
+
+.threadpost .mainbar .siggy {
+	border-top: 1px solid white;
+}
+
+.top_forum {
+	margin-top: -1px;
+}

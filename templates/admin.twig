@@ -3,6 +3,7 @@
 {% block title %}Admin panel{% endblock %}
 
 	{% block content %}
+		<link href="/img/admin.css" rel="stylesheet" type="text/css">
         <div class="tableSubTitle">Admin panel</div>
         <p>Currently running pokTwo version {{ version }} (commit {{ git_commit() }}) on {{ operating_system() }}
             . {{ profiler_stats() }}</p>
