@@ -6,7 +6,42 @@
         {% if error %}
             <div class="header_message">{{ error }}</div>
         {% endif %}
-
+		{% if videoid %}
+			<div class="tableSubTitle">Thank you!</div>
+			Your video has been sucessfully uploaded! It will be soon processed!
+            <div style="padding: 15px 0px 10px 0px;">
+				<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#E5ECF9">
+					<tbody>
+						<tr>
+                            <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
+                            <td width="100%"><img src="img/pixel.gif" width="1" height="5"></td>
+                            <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
+                        </tr>
+                        <tr>
+                            <form name="linkForm" id="linkForm"></form>
+                            <td><img src="img/pixel.gif" width="5" height="1"></td>
+                            <td align="center">
+                                <div style="font-size: 11px; font-weight: bold; color: #CC6600; padding: 5px 0px 5px 0px;">
+                                    Share this video! Copy and paste this link:
+                                </div>
+                                <div style="font-size: 11px; padding-bottom: 15px;">
+                                    <input name="video_link" type="text"
+                                           onclick="javascript:document.linkForm.video_link.focus();document.linkForm.video_link.select();"
+                                           value="{{ domain }}/watch.php?v={{ videoid }}" size="50" readonly="true"
+                                           style="font-size: 10px; text-align: center;">
+                                </div>
+                            </td>
+                            <td><img src="img/pixel.gif" width="5" height="1"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
+                            <td><img src="img/pixel.gif" width="1" height="5"></td>
+                            <td><img src="img/box_login_br.gif" width="5" height="5"></td>
+                        </tr>
+					</tbody>
+				</table>
+            </div>
+		{% else %}
         <div id="uploadVid">
             <h2 style="color:green">Video Upload (Step 2 of 2)</h2>
 
@@ -51,4 +86,5 @@
                 </center>
             </form>
         </div>
+		{% endif %}
     {% endblock %}

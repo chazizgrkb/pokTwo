@@ -19,6 +19,8 @@ SELECT DISTINCT $userfields $videofields FROM videos v
 		v.description LIKE CONCAT('%', ?, '%') 
 	OR
 		t.name LIKE CONCAT('%', ?, '%') 
+	AND 
+		flags != 0x2
 ORDER BY v.id DESC $limit", [$query, $query, $query]);
 $videos = $sql->fetchArray($videoData);
 
@@ -35,7 +37,9 @@ SELECT COUNT(DISTINCT v.id) FROM videos v
 	OR v.description 
 		LIKE CONCAT('%', ?, '%') 
 	OR
-		t.name LIKE CONCAT('%', ?, '%') ", [$query, $query, $query]);
+		t.name LIKE CONCAT('%', ?, '%') 
+	AND 
+		flags != 0x2", [$query, $query, $query]);
 
 $twig = twigloader();
 
