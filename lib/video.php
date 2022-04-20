@@ -7,6 +7,7 @@ class Videos
     //why the hell is it using tutorial names?
     public static $recommendedfields = "
 		jaccard.video_id,
+		jaccard.flags,
 		jaccard.intersect,
 		jaccard.union,
 		jaccard.intersect / jaccard.union AS 'jaccard index'
@@ -14,6 +15,7 @@ class Videos
 		(
 		SELECT
 			c2.video_id AS video_id,
+			c2.flags AS flags,
 			COUNT(ct2.tag_id) AS 'intersect',
 			(
 			SELECT
@@ -40,6 +42,8 @@ class Videos
 		c1.id,
 		c2.id
 	) AS jaccard
+	WHERE
+		jaccard.flags != 0x2
 	ORDER BY
 		jaccard.intersect / jaccard.union
 	DESC";
@@ -63,9 +67,9 @@ class Videos
     {
         global $userfields, $videofields, $sql;
         if (isset($whereSomething)) {
-            $videoList = $sql->fetchArray($sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? ORDER BY $orderBy LIMIT $limit", [$whereEquals]));
+            $videoList = $sql->fetchArray($sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? AND flags != 0x2 ORDER BY $orderBy LIMIT $limit", [$whereEquals]));
         } else {
-            $videoList = $sql->fetchArray($sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY $orderBy LIMIT $limit"));
+            $videoList = $sql->fetchArray($sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE flags != 0x2 ORDER BY $orderBy LIMIT $limit"));
         }
         foreach ($videoList as &$video) {
             $video['tags'] = VideoTags::getVideoTags($video['id']);
@@ -130,13 +134,13 @@ class Videos
     {
         global $userfields, $videofields, $sql;
         if (isset($orderBy, $limit)) {
-            $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? ORDER BY $orderBy LIMIT $limit", [$whereEquals]);
+            $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? AND flags != 0x2 ORDER BY $orderBy LIMIT $limit", [$whereEquals]);
         } elseif (isset($orderBy)) {
-            $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? ORDER BY $orderBy", [$whereEquals]);
+            $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? AND flags != 0x2 ORDER BY $orderBy", [$whereEquals]);
         } elseif (isset($limit)) {
-            $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? LIMIT $limit", [$whereEquals]);
+            $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? AND flags != 0x2 LIMIT $limit", [$whereEquals]);
         } else {
-            $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ?", [$whereEquals]);
+            $videoList = $sql->fetch("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id WHERE $whereSomething = ? AND flags != 0x2", [$whereEquals]);
         }
         return $videoList;
     }
@@ -178,10 +182,10 @@ class Videos
         }
     }
 
-    static function addVideo($new, $title, $description, $id, string $upload_file, $duration): void
+    static function addVideo($new, $title, $description, $id, string $upload_file): void
     {
         global $sql;
-        $sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, videolength) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $id, time(), time(), $upload_file, $duration]);
+        $sql->query("INSERT INTO videos (video_id, title, description, author, time, most_recent_view, videofile, flags) VALUES (?,?,?,?,?,?,?,?)", [$new, $title, $description, $id, time(), time(), $upload_file, 0x2]);
     }
 
     static function bumpVideo(int $currentTime, $id): void
@@ -205,6 +209,8 @@ SELECT $userfields $videofields FROM videos v
 	JOIN favorites f ON (f.video_id = v.video_id) 
 	WHERE 
 		f.user_id = ?
+	AND 
+		flags != 0x2
 ORDER BY v.time DESC $limit", [$id]);
         $videos = $sql->fetchArray($videoData);
         foreach ($videos as &$video) {
