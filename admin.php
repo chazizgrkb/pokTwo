@@ -18,7 +18,7 @@ if(isset($_GET['action'])) {
 $latestRegisteredUsers = $sql->query("SELECT id, name, joined FROM users ORDER BY joined DESC LIMIT 15");
 $latestSeenUsers = $sql->query("SELECT id, name, lastview FROM users ORDER BY lastview DESC LIMIT 15");
 $videoData = $sql->query("SELECT $userfields $videofields FROM videos v JOIN users u ON v.author = u.id ORDER BY v.time DESC LIMIT 7");
-$comments = $sql->fetchArray($sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id ORDER BY c.date DESC"));
+$comments = $sql->fetchArray($sql->query("SELECT $userfields c.comment_id, c.id, c.comment, c.author, c.date, c.deleted, v.title, (SELECT COUNT(reply_to) FROM comments WHERE reply_to = c.comment_id) AS replycount FROM comments c JOIN users u ON c.author = u.id JOIN videos v ON c.id = v.video_id ORDER BY c.date DESC"));
 foreach ($comments as &$comment) {
     $comment['allVideos'] = Users::getUserVideoCount($comment['author']);
     $comment['allFavorites'] = Users::getUserFavoriteCount($comment['author']);
