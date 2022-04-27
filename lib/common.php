@@ -52,7 +52,7 @@ $userfields = Users::userfields();
 $videofields = Videos::videofields();
 
 if (!isCli()) {
-	$ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [$_SERVER['REMOTE_ADDR']]);
+	$ipban = $sql->fetch("SELECT * FROM ipbans WHERE ? LIKE ip", [getUserIpAddr()]);
 	if ($ipban) {
 		http_response_code(403);
 

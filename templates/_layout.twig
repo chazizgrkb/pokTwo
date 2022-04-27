@@ -97,9 +97,9 @@
                                                          {% if pageName == "index" %}class="bold"{% endif %}>Home</a>
                                             </td>
                                             <td>&nbsp;|&nbsp;</td>
-                                            <td><a href="my_videos.php">My Videos</a></td>
+                                            <td><a href="my_videos.php" {% if pageName == "myVideos" %}class="bold"{% endif %}>My Videos</a></td>
                                             <td>&nbsp;|&nbsp;</td>
-                                            <td><a href="my_favorites.php">My Favorites</a></td>
+                                            <td><a href="my_favorites.php" {% if pageName == "myFavorites" %}class="bold"{% endif %}>My Favorites</a></a></td>
                                             </td>
                                             <td>&nbsp;|&nbsp;</td>
                                             <td><a href="my_profile.php"

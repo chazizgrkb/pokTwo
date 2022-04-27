@@ -3,6 +3,8 @@
 namespace pokTwo;
 require('lib/common.php');
 
+$pageName = "index";
+
 $twig = twigloader();
 
 echo $twig->render('index.twig', [
