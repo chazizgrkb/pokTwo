@@ -36,7 +36,7 @@ if (isset($_POST['field_command'])) {
 	if ($sql->result("SELECT COUNT(*) FROM users WHERE email = ?", [$mail]))
 		$error .= "You've already registered an account using this email address. ";
 
-	if (result("SELECT COUNT(*) FROM users WHERE ip = ?", [getUserIpAddr()]) > 10)
+	if ($sql->result("SELECT COUNT(*) FROM users WHERE ip = ?", [getUserIpAddr()]) > 10)
 		$error .= "Creating more than 10 accounts isn't allowed. ";
 
 	if ($error == '') {
