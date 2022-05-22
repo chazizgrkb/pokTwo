@@ -4,3 +4,5 @@ RewriteBase /
 
 RewriteCond %{QUERY_STRING} ^$
 RewriteRule ^rss/global/recently_added\.rss$ /rss.php?&%{QUERY_STRING}
+RewriteRule ^channel/(.*) /profile.php?user=$1
+RewriteRule ^channel/(.*)/ /profile.php?user=$1

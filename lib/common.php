@@ -1,7 +1,7 @@
 <?php
 
 namespace pokTwo;
-$version = "0.02";
+$version = "0.03";
 $revision = "r0";
 
 $versionString = $version . $revision;
