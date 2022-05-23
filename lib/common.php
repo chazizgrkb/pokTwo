@@ -1,10 +1,6 @@
 <?php
 
 namespace pokTwo;
-$version = "0.03";
-$revision = "r0";
-
-$versionString = $version . $revision;
 
 if (!file_exists('conf/config.php')) {
 	die('Please read the installing instructions in the README file.');

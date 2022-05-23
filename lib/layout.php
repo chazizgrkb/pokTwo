@@ -14,7 +14,7 @@ use Twig\Loader\FilesystemLoader;
  * @return Environment Twig object.
  */
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-    global $tplCache, $tplNoCache, $userdata, $notificationCount, $isDebug, $messages, $log, $lpp, $https, $pageName, $searchShit, $versionString, $domain, $featuredUsers;
+    global $tplCache, $tplNoCache, $userdata, $notificationCount, $isDebug, $messages, $log, $lpp, $https, $pageName, $searchShit, $domain, $featuredUsers, $cssGarbage;
 
     $doCache = ($tplNoCache ? false : $tplCache);
 
@@ -47,8 +47,8 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal("domain", $domain);
     // END OF PORTED CODE
     $twig->addGlobal('glob_lpp', $lpp);
-    $twig->addGlobal('version', $versionString);
 	$twig->addGlobal('featuredUsers', $featuredUsers);
+	$twig->addGlobal('cssGarbage', $cssGarbage);
 
     return $twig;
 }

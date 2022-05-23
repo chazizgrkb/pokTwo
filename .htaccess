@@ -1,8 +1,8 @@
 # AddHandler application/x-httpd-php .rss
 RewriteEngine on
 RewriteBase /
-
-RewriteCond %{QUERY_STRING} ^$
-RewriteRule ^rss/global/recently_added\.rss$ /rss.php?&%{QUERY_STRING}
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
 RewriteRule ^channel/(.*) /profile.php?user=$1
 RewriteRule ^channel/(.*)/ /profile.php?user=$1
