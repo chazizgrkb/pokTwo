@@ -232,8 +232,8 @@
                         <div class="guide-module-toggle">
                            <span class="guide-module-toggle-icon">
                            <span class="guide-module-toggle-arrow"></span>
-                           <img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="">
-                           <img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" id="collapsed-notification-icon">
+                           <img src="/yts/img/pixel.gif" alt="">
+                           <img src="/yts/img/pixel.gif" alt="" id="collapsed-notification-icon">
                            </span>
                            <div class="guide-module-toggle-label">
                               <h3>
@@ -249,10 +249,10 @@
                                  <div class="guide-item-container personal-item">
                                     <ul class="guide-user-links yt-box">
                                        <li class="vve-check guide-channel" id="UCdJDMvA1JEGkPIUsxVgfOrg-guide-item">
-                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/channel/UCdJDMvA1JEGkPIUsxVgfOrg" title="Owen Wang" data-sessionlink="feature=g-personal&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="UCdJDMvA1JEGkPIUsxVgfOrg">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink {% if pageName == userdata.name %}guide-item-selected{% endif %}" href="/channel/{{ userdata.name }}" title="{{ userdata.name }}" data-sessionlink="feature=g-personal&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="{{ userdata.name }}">
                                           <span class="yt-valign-container">
                                           <span class="display-name no-count">
-                                          <span>Owen Wang</span>
+                                          <span>{{ userdata.name }}</span>
                                           </span>
                                           </span>
                                           </a>
@@ -292,7 +292,7 @@
                                  <div class="guide-item-container personal-item">
                                     <ul class="guide-user-links yt-box">
                                        <li class="vve-check guide-channel" id="what_to_watch-guide-item">
-                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink guide-item-selected" href="/feed/what_to_watch" title="What to watch" data-sessionlink="feature=g-system&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="what_to_watch">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink" href="/feed/what_to_watch" title="What to watch" data-sessionlink="feature=g-system&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="what_to_watch">
                                           <span class="yt-valign-container">
                                           <span class="display-name no-count">
                                           <span>What to watch</span>
@@ -331,16 +331,16 @@
                                     <div class="guide-input-container guide-quick-filter-container">
                                        <span class="guide-sort-container yt-uix-button-group">
                                           <button onclick=";return false;" class="guide-sort-button flip yt-uix-button yt-uix-button-guide-sorts yt-uix-button-size-small yt-uix-button-empty" type="button" data-guide-sort="0" data-button-has-sibling-menu="true" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="true" aria-activedescendant="">
-                                             <img class="yt-uix-button-arrow" src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title="">
+                                             <img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title="">
                                              <ul class=" yt-uix-button-menu yt-uix-button-menu-guide-sorts" role="menu" aria-haspopup="true" style="display: none;">
-                                                <li role="menuitem" id="aria-id-37235879768"><span class="yt-uix-button-icon-wrapper yt-uix-button-icon-checkbox"><img class="yt-uix-button-icon-dropdown-checked" src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></span><span onclick=";return false;" class="guide-sort-choice yt-uix-button-menu-item" checked="True" data-guide-sort="0">Most Relevant</span></li>
+                                                <li role="menuitem" id="aria-id-37235879768"><span class="yt-uix-button-icon-wrapper yt-uix-button-icon-checkbox"><img class="yt-uix-button-icon-dropdown-checked" src="/yts/img/pixel.gif" alt="" title=""></span><span onclick=";return false;" class="guide-sort-choice yt-uix-button-menu-item" checked="True" data-guide-sort="0">Most Relevant</span></li>
                                                 <li role="menuitem" id="aria-id-24649225687"><span onclick=";return false;" class="guide-sort-choice yt-uix-button-menu-item" checked="False" data-guide-sort="1">New Activity</span></li>
                                                 <li role="menuitem" id="aria-id-26248244964"><span onclick=";return false;" class="guide-sort-choice yt-uix-button-menu-item" checked="False" data-guide-sort="2">A-Z</span></li>
                                              </ul>
                                           </button>
                                        </span>
                                        <a class="thumb guide-quick-filter-clear hid" style="display: none;">
-                                       <img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="">
+                                       <img src="/yts/img/pixel.gif" alt="">
                                        </a>
                                        <span class=" yt-uix-form-input-container yt-uix-form-input-text-container ">    <input class="yt-uix-form-input-text guide-quick-filter" placeholder="Filter subscriptions..." dir="ltr">
                                        </span>
@@ -350,7 +350,7 @@
                                           <ul id="guide-channels" class="guide-channels-list guide-item-container yt-uix-scroller yt-uix-tdl filter-has-matches" data-scroller-mousewheel-listener="" data-scroller-scroll-listener="" style="height: auto;">
 											 {% for user in allUsers %}
                                              <li class="vve-check guide-channel" id="{{ user.name }}-guide-item" style="">
-                                                <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/channel/{{ user.name }}" title="{{ user.name }}" data-sessionlink="feature=g-channel&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="{{ user.name }}">
+                                                <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink {% if pageName == user.name %}guide-item-selected{% endif %}" href="/channel/{{ user.name }}" title="{{ user.name }}" data-sessionlink="feature=g-channel&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="{{ user.name }}">
                                                 <span class="yt-valign-container">
                                                 <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
                                                 <span class="yt-thumb-square">
@@ -384,7 +384,7 @@
                                           <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/channels" title="Browse channels" data-sessionlink="feature=g-manage&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="guide_builder">
                                           <span class="yt-valign-container">
                                           <span class="thumb guide-builder-icon">
-                                          <img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="">
+                                          <img src="/yts/img/pixel.gif" alt="">
                                           </span>
                                           <span class="display-name no-count">
                                           <span>Browse channels</span>
@@ -396,7 +396,7 @@
                                           <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/subscription_manager" title="Manage subscriptions" data-sessionlink="feature=g-manage&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="subscription_manager">
                                           <span class="yt-valign-container">
                                           <span class="thumb guide-subscription-manager-icon">
-                                          <img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="">
+                                          <img src="/yts/img/pixel.gif" alt="">
                                           </span>
                                           <span class=" no-count">
                                           <span>Manage subscriptions</span>
