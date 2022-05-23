@@ -6,3 +6,5 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php
 RewriteRule ^channel/(.*) /profile.php?user=$1
 RewriteRule ^channel/(.*)/ /profile.php?user=$1
+RewriteRule ^user/(.*) /profile.php?user=$1
+RewriteRule ^user/(.*)/ /profile.php?user=$1

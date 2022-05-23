@@ -157,7 +157,7 @@
                                        <div class="feed-item-main feed-item-no-author">
                                           <div class="feed-item-main-content">
                                              <div class="shelf-wrapper clearfix">
-                                                <div class="compact-shelf shelf-item yt-uix-shelfslider yt-uix-shelfslider-at-head vve-check clearfix feeds-mode yt-uix-tdl" data-sessionlink="ved=CCAQ3Bw&amp;ei=Y7DBUtzyIauPigKPvIHIAQ" data-fold="971,734">
+                                                <div class="compact-shelf shelf-item yt-uix-shelfslider yt-uix-shelfslider-at-head vve-check clearfix feeds-mode yt-uix-tdl" data-sessionlink="ved=CCAQ3Bw&amp;ei=Y7DBUtzyIauPigKPvIHIAQ" data-fold="{{ video.views }}">
                                                    <h2 class="branded-page-module-title">
                                                       <a href="/channel/HCtnHdj3df7iM" class="yt-uix-sessionlink branded-page-module-title-link spf-nolink g-hovercard" data-sessionlink="ei=Y7DBUtzyIauPigKPvIHIAQ" data-ytid="HCtnHdj3df7iM">
                                                       <span class="video-thumb  yt-thumb yt-thumb-20">
@@ -177,35 +177,35 @@
                                                       <ul class="yt-uix-shelfslider-list">
 													  {% for video in popularVideos %}
                                                          <li class="channels-content-item yt-shelf-grid-item yt-uix-shelfslider-item ">
-                                                            <div class="yt-lockup clearfix  yt-lockup-video yt-lockup-grid vve-check context-data-item" data-context-item-views="9,950,768 views" data-context-item-title="{{ video.title }}" data-context-item-time="15:06" data-context-item-user="NewsBeFunny" data-context-item-type="video" data-context-item-id="7OihpIHUYYU">
+                                                            <div class="yt-lockup clearfix  yt-lockup-video yt-lockup-grid vve-check context-data-item" data-context-item-views="{{ video.views }} views" data-context-item-title="{{ video.title }}" data-context-item-time="15:06" data-context-item-user="{{ video.u_name }}" data-context-item-type="video" data-context-item-id="{{ video.video_id }}">
                                                                <div class="yt-lockup-thumbnail">
-                                                                  <a href="/watch?v=7OihpIHUYYU" class="ux-thumb-wrap yt-uix-sessionlink yt-uix-contextlink yt-fluid-thumb-link contains-addto " data-sessionlink="ved=CCQQwBs&amp;feature=g-high&amp;ei=Y7DBUtzyIauPigKPvIHIAQ">    <span class="video-thumb  yt-thumb yt-thumb-175 yt-thumb-fluid">
+                                                                  <a href="/watch?v={{ video.video_id }}" class="ux-thumb-wrap yt-uix-sessionlink yt-uix-contextlink yt-fluid-thumb-link contains-addto " data-sessionlink="ved=CCQQwBs&amp;feature=g-high&amp;ei=Y7DBUtzyIauPigKPvIHIAQ">    <span class="video-thumb  yt-thumb yt-thumb-175 yt-thumb-fluid">
                                                                   <span class="yt-thumb-default">
                                                                   <span class="yt-thumb-clip">
-                                                                  <img alt="Thumbnail" src="//i1.ytimg.com/vi/7OihpIHUYYU/mqdefault.jpg" width="175">
+                                                                  <img alt="Thumbnail" src="get_still.php?still_id=2&amp;video_id={{ video.video_id }}" width="175">
                                                                   <span class="vertical-align"></span>
                                                                   </span>
                                                                   </span>
                                                                   </span>
                                                                   <span class="video-time">15:06</span>
-                                                                  <button title="Watch Later" class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" type="button" onclick=";return false;" data-video-ids="7OihpIHUYYU" data-button-menu-id="shared-addto-watch-later-login" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
+                                                                  <button title="Watch Later" class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" type="button" onclick=";return false;" data-video-ids="{{ video.video_id }}" data-button-menu-id="shared-addto-watch-later-login" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
                                                                   </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
                                                                   </a>
                                                                </div>
                                                                <div class="yt-lockup-content">
                                                                   <h3 class="yt-lockup-title">
-                                                                     <a class="yt-uix-sessionlink yt-uix-tile-link yt-ui-ellipsis yt-ui-ellipsis-2" dir="ltr" title="{{ video.title }}" data-sessionlink="ved=CCMQvxs&amp;feature=g-high&amp;ei=Y7DBUtzyIauPigKPvIHIAQ" href="/watch?v=7OihpIHUYYU"><span class="yt-ui-ellipsis-wrapper" data-original-html="{{ video.title }}">
+                                                                     <a class="yt-uix-sessionlink yt-uix-tile-link yt-ui-ellipsis yt-ui-ellipsis-2" dir="ltr" title="{{ video.title }}" data-sessionlink="ved=CCMQvxs&amp;feature=g-high&amp;ei=Y7DBUtzyIauPigKPvIHIAQ" href="/watch?v={{ video.video_id }}"><span class="yt-ui-ellipsis-wrapper" data-original-html="{{ video.title }}">
 																	 {{ video.title }}
                                                                      </span></a>
                                                                   </h3>
                                                                   <div class="yt-lockup-meta">
                                                                      <ul class="yt-lockup-meta-info">
                                                                         <li>
-                                                                           by <a href="/channel/UCbKW7smxCcAvvatHJFLlIhw?feature=g-high" class="g-hovercard yt-uix-sessionlink yt-user-name " data-sessionlink="ved=CCIQwRs&amp;feature=g-high&amp;ei=Y7DBUtzyIauPigKPvIHIAQ" dir="ltr" data-ytid="UCbKW7smxCcAvvatHJFLlIhw" data-name="g-high">NewsBeFunny</a>
+                                                                           by <a href="/channel/{{ video.u_name }}" class="g-hovercard yt-uix-sessionlink yt-user-name " data-sessionlink="ved=CCIQwRs&amp;feature=g-high&amp;ei=Y7DBUtzyIauPigKPvIHIAQ" dir="ltr" data-ytid="UCbKW7smxCcAvvatHJFLlIhw" data-name="g-high">{{ video.u_name }}</a>
                                                                         </li>
-                                                                        <li>9,950,768 views</li>
+                                                                        <li>{{ video.views }} views</li>
                                                                         <li class="yt-lockup-deemphasized-text">
-                                                                           4 days ago
+                                                                           {{ video.time | relative_time }}
                                                                         </li>
                                                                      </ul>
                                                                   </div>

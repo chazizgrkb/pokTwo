@@ -1,482 +1,606 @@
 <!DOCTYPE html>
 <html lang="en" data-cast-api-enabled="true">
    <head>
-	  <script id="js-48156213" src="/yts/jsbin/www-searchbox.js" data-loaded="true"></script>
-	  <script id="js-3193726280" class="html5player" async="" src="/yts/jsbin/html5player.js" data-loaded="true"></script>
-	  <script id="js-2106260837" class="www_feed_mod" async="" src="/yts/jsbin/www/www_feed_mod.js" data-loaded="true"></script>
-	  <script id="js-1989376184" class="www_common_mod" async="" src="/yts/jsbin/www/www_common_mod.js" data-loaded="true"></script>
-	  <script id="js-2477478160" class="www-pageframe" async="" src="/yts/jsbin/www-pageframe.js" data-loaded="true"></script>
+      <script id="js-48156213" src="/yts/jsbin/www-searchbox.js" data-loaded="true"></script>
+      <script id="js-3193726280" class="html5player" async="" src="/yts/jsbin/html5player.js" data-loaded="true"></script>
+      <script id="js-2106260837" class="www_feed_mod" async="" src="/yts/jsbin/www/www_feed_mod.js" data-loaded="true"></script>
+      <script id="js-1989376184" class="www_common_mod" async="" src="/yts/jsbin/www/www_common_mod.js" data-loaded="true"></script>
+      <script id="js-2477478160" class="www-pageframe" async="" src="/yts/jsbin/www-pageframe.js" data-loaded="true"></script>
       <script>var ytcsi = {
-		gt: function(n) {
-			n = (n || '') + 'data_';
-			return ytcsi[n] || (ytcsi[n] = {
-				tick: {},
-				span: {},
-				info: {}
-			});
-		},
-		tick: function(l, t, n) {
-			ytcsi.gt(n).tick[l] = t || +new Date();
-		},
-		span: function(l, s, n) {
-			ytcsi.gt(n).span[l] = (typeof s == 'number') ? s : +new Date() - ytcsi.data_.tick[l];
-		},
-		info: function(k, v, n) {
-			ytcsi.gt(n).info[k] = v;
-		}
-	};
-	(function() {
-		var perf = window['performance'] || window['mozPerformance'] || window['msPerformance'] || window['webkitPerformance'];
-		ytcsi.tick('_start', perf ? perf['timing']['responseStart'] : null);
-	})();
-	if (document.webkitVisibilityState == 'prerender') {
-		ytcsi.info('prerender', 1);
-		document.addEventListener('webkitvisibilitychange', function() {
-			ytcsi.tick('_start');
-		}, false);
-	}
-	try {
-		ytcsi.pt_ = (window.chrome && chrome.csi().pageT || window.gtbExternal && gtbExternal.pageT() || window.external && external.pageT);
-		if (ytcsi.pt_) {
-			ytcsi.info('pt', Math.floor(ytcsi.pt_));
-		}
-	} catch (e) {}</script>	  
-	  <link id="css-344564990" class="www-core" rel="stylesheet" href="/yts/cssbin/www-core.css" data-loaded="true">
-	  <link id="css-3663405153" class="www-home-c4" rel="stylesheet" href="/yts/cssbin/www-home-c4.css" data-loaded="true">
-	  <script>if (window.ytcsi) {window.ytcsi.tick("ce", null, '');}</script>  
-	  <script>
-		 try {var ytbuffer = {};ytbuffer.bufferedClick;ytbuffer.handleClick = function(e) {var element = e.target || e.srcElement;while (element.parentElement) {if (element.className.match(/^yt-can-buffer$|^yt-can-buffer | yt-can-buffer$| yt-can-buffer /)) {ytbuffer.bufferedClick = e;element.className += ' yt-is-buffered';break;}element = element.parentElement;}};if (document.addEventListener) {document.addEventListener('click', ytbuffer.handleClick);} else {document.attachEvent('onclick', ytbuffer.handleClick);}} catch(e) {}  
-	  </script>
-	  <title>YouTube</title>
-	  <link rel="search" type="application/opensearchdescription+xml" href="http://www.youtube.com/opensearch?locale=en_US" title="YouTube Video Search">
-	  <link rel="shortcut icon" href="https://s.ytimg.com/yts/img/favicon-vfldLzJxy.ico" type="image/x-icon">
-	  <link rel="icon" href="//s.ytimg.com/yts/img/favicon_32-vflWoMFGx.png" sizes="32x32">
-	  <link rel="canonical" href="http://www.youtube.com/">
-	  <link rel="alternate" media="handheld" href="http://m.youtube.com/index?&amp;desktop_uri=%2F">
-	  <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.youtube.com/index?&amp;desktop_uri=%2F">
-	  <meta name="description" content="Share your videos with friends, family, and the world">
-	  <meta name="keywords" content="video, sharing, camera phone, video phone, free, upload">
-	  <meta property="og:image" content="//s.ytimg.com/yts/img/youtube_logo_stacked-vfl225ZTx.png">
-	  <meta property="fb:app_id" content="87741124305">
-	  <link rel="publisher" href="https://plus.google.com/115229808208707341778">
-	  <script>if (window.ytcsi) {window.ytcsi.tick("cl", null, '');}</script>
-	  <link id="css-849266402" class="www-player" rel="stylesheet" href="/yts/cssbin/www-player.css" data-loaded="true">
+         gt: function(n) {
+         	n = (n || '') + 'data_';
+         	return ytcsi[n] || (ytcsi[n] = {
+         		tick: {},
+         		span: {},
+         		info: {}
+         	});
+         },
+         tick: function(l, t, n) {
+         	ytcsi.gt(n).tick[l] = t || +new Date();
+         },
+         span: function(l, s, n) {
+         	ytcsi.gt(n).span[l] = (typeof s == 'number') ? s : +new Date() - ytcsi.data_.tick[l];
+         },
+         info: function(k, v, n) {
+         	ytcsi.gt(n).info[k] = v;
+         }
+         };
+         (function() {
+         var perf = window['performance'] || window['mozPerformance'] || window['msPerformance'] || window['webkitPerformance'];
+         ytcsi.tick('_start', perf ? perf['timing']['responseStart'] : null);
+         })();
+         if (document.webkitVisibilityState == 'prerender') {
+         ytcsi.info('prerender', 1);
+         document.addEventListener('webkitvisibilitychange', function() {
+         	ytcsi.tick('_start');
+         }, false);
+         }
+         try {
+         ytcsi.pt_ = (window.chrome && chrome.csi().pageT || window.gtbExternal && gtbExternal.pageT() || window.external && external.pageT);
+         if (ytcsi.pt_) {
+         	ytcsi.info('pt', Math.floor(ytcsi.pt_));
+         }
+         } catch (e) {}
+      </script>	  
+      <link id="css-344564990" class="www-core" rel="stylesheet" href="/yts/cssbin/www-core.css" data-loaded="true">
+      <link id="css-3663405153" class="www-home-c4" rel="stylesheet" href="/yts/cssbin/www-home-c4.css" data-loaded="true">
+      <script>if (window.ytcsi) {window.ytcsi.tick("ce", null, '');}</script>  
+      <script>
+         try {var ytbuffer = {};ytbuffer.bufferedClick;ytbuffer.handleClick = function(e) {var element = e.target || e.srcElement;while (element.parentElement) {if (element.className.match(/^yt-can-buffer$|^yt-can-buffer | yt-can-buffer$| yt-can-buffer /)) {ytbuffer.bufferedClick = e;element.className += ' yt-is-buffered';break;}element = element.parentElement;}};if (document.addEventListener) {document.addEventListener('click', ytbuffer.handleClick);} else {document.attachEvent('onclick', ytbuffer.handleClick);}} catch(e) {}  
+      </script>
+      <title>PokTwo</title>
+      <link rel="search" type="application/opensearchdescription+xml" href="http://www.youtube.com/opensearch?locale=en_US" title="YouTube Video Search">
+      <link rel="shortcut icon" href="https://s.ytimg.com/yts/img/favicon-vfldLzJxy.ico" type="image/x-icon">
+      <link rel="icon" href="//s.ytimg.com/yts/img/favicon_32-vflWoMFGx.png" sizes="32x32">
+      <link rel="canonical" href="http://www.youtube.com/">
+      <link rel="alternate" media="handheld" href="http://m.youtube.com/index?&amp;desktop_uri=%2F">
+      <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.youtube.com/index?&amp;desktop_uri=%2F">
+      <meta name="description" content="Share your videos with friends, family, and the world">
+      <meta name="keywords" content="video, sharing, camera phone, video phone, free, upload">
+      <meta property="og:image" content="//s.ytimg.com/yts/img/youtube_logo_stacked-vfl225ZTx.png">
+      <meta property="fb:app_id" content="87741124305">
+      <link rel="publisher" href="https://plus.google.com/115229808208707341778">
+      <script>if (window.ytcsi) {window.ytcsi.tick("cl", null, '');}</script>
+      <link id="css-849266402" class="www-player" rel="stylesheet" href="/yts/cssbin/www-player.css" data-loaded="true">
    </head>
    <body dir="ltr" class="ltr site-left-aligned hitchhiker-enabled guide-enabled guide-expanded flex-width-enabled page-loaded" id="body">
-	  {% block script %}
-	  {% endblock %}
-	  <div id="body-container">
-		 <div id="yt-masthead-container" class="yt-grid-box yt-base-gutter">
-			<div id="yt-masthead" class="">
-			   <a id="logo-container" href="/" title="YouTube home" class=" "><img id="logo" src="/yts/img/pixel.gif" alt="YouTube home"></a>
-			   <div id="yt-masthead-signin"><button class=" yt-uix-button yt-uix-button-primary yt-uix-button-size-default" type="button" href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dsign_in_button%26hl%3Den%26next%3D%252F" onclick=";window.location.href=this.getAttribute('href');return false;" role="button"><span class="yt-uix-button-content">Sign in </span></button></div>
-			   <div id="yt-masthead-content">
-				  <span id="masthead-upload-button-group"><a href="//www.youtube.com/upload" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default" data-sessionlink="feature=mhsb&amp;ei=VuTCUr32BsfKiAKQzoCwBg"><span class="yt-uix-button-content">Upload </span></a></span>
-				  <form id="masthead-search" class="search-form consolidated-form" action="/results" onsubmit="if (_gel('masthead-search-term').value == '') return false;">
-					 <button onclick="if (_gel('masthead-search-term').value == '') return false; _gel('masthead-search').submit(); return false;;return true;" dir="ltr" class="search-btn-component search-button yt-uix-button yt-uix-button-default yt-uix-button-size-default" id="search-btn" type="submit" tabindex="2" role="button"><span class="yt-uix-button-content">Search </span></button>
-					 <div id="masthead-search-terms" class="masthead-search-terms-border " dir="ltr">
-						<label><input id="masthead-search-term" autocomplete="off" autofocus="" class="search-term yt-uix-form-input-bidi" name="search_query" value="" type="text" tabindex="1" title="Search" dir="ltr" spellcheck="false" style="outline: none;"></label><script>var searchBox = document.getElementById('masthead-search-term');if (searchBox) {searchBox.focus();}</script>
-					 </div>
-					 <input type="hidden" name="sm">
-				  </form>
-			   </div>
-			</div>
-		 </div>
-<div id="alerts" class="content-alignment">
-	  
-
-  </div>
-		 <div id="page-container">
-			<div id="page" class="{{ cssGarbage }}">
-			   <div id="guide">
-				  <div id="guide-container" class=" vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CAEQ_h4">
-					 <div id="guide-main" class="    guide-module     spf-nolink   yt-uix-tdl " data-fold="190,651">
-						<div class="guide-module-toggle">
-						   <span class="guide-module-toggle-icon">
-						   <span class="guide-module-toggle-arrow"></span>
-						   <img src="/yts/img/pixel.gif" alt="">
-						   <img src="/yts/img/pixel.gif" alt="" id="collapsed-notification-icon">
-						   </span>
-						   <div class="guide-module-toggle-label">
-							  <h3>
-								 <span>
-								 Guide
-								 </span>
-							  </h3>
-						   </div>
-						</div>
-						<div class="guide-module-content yt-scrollbar">
-						   <ul class="guide-toplevel">
-							  <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CAIQ5isoAA" data-visibility-tracking="CAAQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
-								 <div class="guide-item-container personal-item">
-									<ul class="guide-user-links yt-box">
-									   <li class="vve-check overflowable-list-item guide-channel" id="HCtnHdj3df7iM-guide-item" data-visibility-tracking="CAEQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
-										  <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink   " href="/channel/HCtnHdj3df7iM" title="Popular on PokTwo" data-sessionlink="feature=g-channel&amp;ei=VuTCUr32BsfKiAKQzoCwBg" data-visibility-tracking="CAEQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="HCtnHdj3df7iM" data-serialized-endpoint="0qDduQEPEg1IQ3RuSGRqM2RmN2lN">
-										  <span class="yt-valign-container">
-										  <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
-										  <span class="yt-thumb-square">
-										  <span class="yt-thumb-clip">
-										  <img src="/yts/img/popular.jpg" alt="Thumbnail" width="18">
-										  <span class="vertical-align"></span>
-										  </span>
-										  </span>
-										  </span>
-										  </span>
-										  <span class="display-name  no-count">
-										  <span>Popular on PokTwo</span>
-										  </span>
-										  </span>
-										  </a>
-									   </li>
-									</ul>
-								 </div>
-								 <hr class="guide-section-separator">
-							  </li>
-							  <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CA0Q5isoAQ" data-visibility-tracking="CAsQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
-								 <div class="guide-item-container personal-item">
-									<h3>Channels for you</h3>
-									{% for user in featuredUsers %}
-									<ul class="guide-user-links yt-box">
-									   <li class="vve-check overflowable-list-item guide-channel" id="{{ user }}-guide-item" data-visibility-tracking="CAwQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
-										  <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink {% if pageName == user %}guide-item-selected{% endif %}" href="/channel/{{ user }}" title="{{ user }}" data-sessionlink="feature=g-chfeat&amp;ei={{ user }}" data-visibility-tracking="CAwQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="UCSAUGyc_xA8uYzaIVG6MESQ" data-serialized-endpoint="0qDduQEaEhhVQ1NBVUd5Y194QTh1WXphSVZHNk1FU1E%3D">
-										  <span class="yt-valign-container">
-										  <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
-										  <span class="yt-thumb-square">
-										  <span class="yt-thumb-clip">
-										  <img src="/yts/img/pfp48.png" alt="Thumbnail" width="18">
-										  <span class="vertical-align"></span>
-										  </span>
-										  </span>
-										  </span>
-										  </span>
-										  <span class="display-name  no-count">
-										  <span>{{ user }}</span>
-										  </span>
-										  </span>
-										  </a>
-									   </li>
-									</ul>
-									{% endfor %}
-								 </div>
-								 <hr class="guide-section-separator">
-							  </li>
-							  <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CBMQ5isoAg" data-visibility-tracking="CBEQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
-								 <div class="guide-item-container personal-item">
-									<ul class="guide-user-links yt-box">
-									   <li class="vve-check overflowable-list-item guide-channel" id="guide_builder-guide-item" data-visibility-tracking="CBIQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
-										  <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink   " href="/channels" title="Browse channels" data-sessionlink="feature=g-manage&amp;ei=VuTCUr32BsfKiAKQzoCwBg" data-visibility-tracking="CBIQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="guide_builder" data-serialized-endpoint="0qPduQECCAE%3D">
-										  <span class="yt-valign-container">
-										  <img class="thumb guide-builder-icon" src="/yts/img/pixel.gif" alt="" title="">
-										  <span class="display-name  no-count">
-										  <span>Browse channels</span>
-										  </span>
-										  </span>
-										  </a>
-									   </li>
-									</ul>
-								 </div>
-								 <hr class="guide-section-separator">
-							  </li>
-							  <li class="guide-section guide-header signup-promo guided-help-box">
-								 <p>
-									Sign in now to see your channels and recommendations!
-								 </p>
-								 <div id="guide-builder-promo-buttons" class="signed-out clearfix">
-									<a href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dsign_in_promo%26hl%3Den%26next%3D%252F" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg"><span class="yt-uix-button-content">Sign In </span></a>
-								 </div>
-							  </li>
-						   </ul>
-						</div>
-					 </div>
-				  </div>
-			   </div>
-				   <div id="content" class="  content-alignment">
-				   {% block content %}{% endblock %}
-				   </div>
-			</div>
-		 </div>
-	  </div>
-<div id="footer-container" class="yt-base-gutter"><div id="footer"><div id="footer-main"><div id="footer-logo"><a href="/" title="YouTube home"><img src="/yts/img/pixel.gif" alt="YouTube home"></a></div>  <ul class="pickers yt-uix-button-group" data-button-toggle-group="optional">
-	  <li>
-		  
-  <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-has-icon" type="button" id="yt-picker-language-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="language" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-footer-language" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
-Language:
-  </span>
-  English
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-
-
-	  </li>
-	  <li>
-		  
-  <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default" type="button" id="yt-picker-country-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="country" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
-Country:
-  </span>
-  Worldwide
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-
-
-	  </li>
-	  <li>
-		  
-  <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default" type="button" id="yt-picker-safetymode-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="safetymode" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
-Safety:
-  </span>
-Off
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-
-
-	  </li>
-  </ul>
-  <button type="button" onclick=";return false;" class="yt-uix-button-reverse yt-google-help-link yt-uix-button yt-uix-button-default yt-uix-button-size-default" id="google-help" data-ghelp-anchor="google-help" role="button"><span class="yt-uix-button-content">  <img class="questionmark" src="/yts/img/pixel.gif">
-  <span>Help</span>
-	<img class="yt-uix-button-arrow" src="/yts/img/pixel.gif">
- </span></button>
-	  <div id="yt-picker-language-footer" class="yt-picker" style="display: none">
-	  <p class="yt-spinner">
-		<img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
-
-	<span class="yt-spinner-message">
-Loading...
-	</span>
-  </p>
-
-  </div>
-
-	  <div id="yt-picker-country-footer" class="yt-picker" style="display: none">
-	  <p class="yt-spinner">
-		<img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
-
-	<span class="yt-spinner-message">
-Loading...
-	</span>
-  </p>
-
-  </div>
-
-	  <div id="yt-picker-safetymode-footer" class="yt-picker" style="display: none">
-	  <p class="yt-spinner">
-		<img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
-
-	<span class="yt-spinner-message">
-Loading...
-	</span>
-  </p>
-
-  </div>
-
-</div><div id="footer-links"><ul id="footer-links-primary">  <li><a href="//www.youtube.com/yt/about/">About</a></li>
-  <li><a href="//www.youtube.com/yt/press/">Press &amp; Blogs</a></li>
-  <li><a href="//www.youtube.com/yt/copyright/">Copyright</a></li>
-  <li><a href="//www.youtube.com/yt/creators/">Creators &amp; Partners</a></li>
-  <li><a href="//www.youtube.com/yt/advertise/">Advertising</a></li>
-  <li><a href="//www.youtube.com/yt/dev/">Developers</a></li>
-</ul><ul id="footer-links-secondary">  <li><a href="/t/terms">Terms</a></li>
-  <li><a href="http://www.google.com/intl/en/policies/privacy/">Privacy</a></li>
-  <li><a href="//www.youtube.com/yt/policyandsafety/">
-Policy &amp; Safety
-  </a></li>
-  <li><a href="//www.google.com/tools/feedback/intl/en/error.html" onclick="return yt.www.feedback.start(59);" class="reportbug">Send feedback</a></li>
-  <li><a href="/testtube">Try something new!</a></li>
-  <li>  <span class="copyright" dir="ltr">© {{ fuckingYear | date("Y") }} pokTwo, not affiliated with Google LLC and YouTube, LLC.</span>
-</li>
-</ul></div></div></div>
-<div class="yt-dialog hid" id="feed-privacy-lb">
-	<div class="yt-dialog-base">
-	  <span class="yt-dialog-align"></span>
-	  <div class="yt-dialog-fg">
-		<div class="yt-dialog-fg-content">
-		  <div class="yt-dialog-loading">
-			  <div class="yt-dialog-waiting-content">
-	<div class="yt-spinner-img"></div><div class="yt-dialog-waiting-text">Loading...</div>
-  </div>
-
-		  </div>
-		  <div class="yt-dialog-content">
-			  <div id="feed-privacy-dialog">
-  </div>
-
-		  </div>
-		  <div class="yt-dialog-working">
-			  <div id="yt-dialog-working-overlay">
-  </div>
-  <div id="yt-dialog-working-bubble">
-	<div class="yt-dialog-waiting-content">
-	  <div class="yt-spinner-img"></div><div class="yt-dialog-waiting-text">Working...</div>
-	</div>
-  </div>
-
-		  </div>
-		</div>
-	  </div>
-	</div>
-  </div>
-<div id="shared-addto-watch-later-login" class="hid">
-	  <a href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dplaylist%26hl%3Den%26next%3D%252F" class="sign-in-link">Sign in</a> to add this to Watch Later
-
-	</div>
-<div id="shared-addto-menu" style="display: none;" class="hid sign-in">
-	  <div class="addto-menu">
-		<div id="addto-list-panel" class="menu-panel active-panel">
-		  <span class="addto-playlist-item yt-uix-button-menu-item yt-uix-tooltip sign-in" data-possible-tooltip="" data-tooltip-show-delay="750">
-<img class="playlist-status" src="/yts/img/pixel.gif" alt="" title=""><a href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dplaylist%26hl%3Den%26next%3D%252F" class="sign-in-link">Sign in</a> to add this to Watch Later
-  </span>
-
-
-  </div>
-  <div id="addto-list-saving-panel" class="menu-panel">
-	<div class="addto-loading loading-content">
-		<p class="yt-spinner">
-		<img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
-
-	<span class="yt-spinner-message">
-		Loading playlists...
-	</span>
-  </p>
-
-	</div>
-  </div>
-  <div id="addto-list-error-panel" class="menu-panel">
-	<div class="panel-content">
-	  <img src="/yts/img/pixel.gif">
-	  <span class="error-details"></span>
-	  <a class="show-menu-link">Back</a>
-	</div>
-  </div>
-
-  </div>
-
-  </div>
-<script>if (window.ytcsi) {window.ytcsi.tick("hr", null, '');}</script>
-<script>var ytspf = ytspf || {};ytspf.enabled = false;</script>
-<script id="js-3395904476" class="spf" src="/yts/jsbin/spf.js" data-loaded="true"></script>   
-<script id="js-3698437330" class="www_base_mod" src="/yts/jsbin/www/www_base_mod.js" data-loaded="true"></script>
-<script>if (window.ytcsi) {window.ytcsi.tick("je", null, '');}</script>
-<script>
-	  yt.setAjaxToken('feed_change_ajax', "Qvn84m14fyxRlfC1OkPqo_nWVIl8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
-
-	  yt.setConfig({
-		'MASTHEAD_ENCRYPTED_ID': "nbVtlg3BbA8",
-		'MASTHEAD_IS_BRANDED': true
-	  });
-
-	yt.setConfig('JS_PAGE_MODULES', {
-	  "\/yts\/jsbin\/www\/www_feed_mod.js": []
-	});
-	yt.setConfig('DISMISS_THROUGH_IT', true);
-  </script>
-  <script>
-	  yt.setConfig({
-		'GUIDE_SELECTED_ITEM': "0qDduQEREg9GRXdoYXRfdG9fd2F0Y2g%3D"
-	  });
-
-	  yt.setConfig({
-	'GUIDED_HELP_LOCALE': "en_US",
-	'GUIDED_HELP_ENVIRONMENT': "prod"
-  });
-
-  </script>
-  <script>yt.setConfig({
-    'EVENT_ID': "VuTCUr32BsfKiAKQzoCwBg",
-    'PAGE_NAME': "index",
-    'LOGGED_IN': false,
-    'SESSION_INDEX': null,
-    'DELEGATED_SESSION_ID': null,
-    'GAPI_HOST': "https:\/\/apis.google.com",
-    'GAPI_HINT_PARAMS': "m;\/_\/scs\/abc-static\/_\/js\/k=gapi.gapi.en.5GL3tg_C6Nc.O\/m=__features__\/rt=j\/d=1\/rs=AItRSTPfsfz-ifAZeiHMk7mKfiGQJuhVFw",
-    'GAPI_LOCALE': "en_US",
-    'GOOGLEPLUS_HOST': "https:\/\/plus.google.com",
-    'PAGEFRAME_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-pageframe-vfl2mrQyf.js",
-    'JS_COMMON_MODULE': "\/yts\/jsbin\/www\/www_common_mod.js",
-    'PAGE_FRAME_DELAYLOADED_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-pageframedelayloaded-vfl6BqFHU.css",
-    'PREFETCH_CSS_RESOURCES': ["\/\/s.ytimg.com\/yts\/cssbin\/www-player-vflBjKccE.css", ''],
-    'PREFETCH_JS_RESOURCES': ["\/\/s.ytimg.com\/yts\/jsbin\/html5player-vflG49soT.js", ''],
-    'SAFETY_MODE_PENDING': false,
-    'LOCAL_DATE_TIME_CONFIG': {
-        "shortWeekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        "amPms": ["AM", "PM"],
-        "shortMonths": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        "formatLongDateOnly": "MMMM d, yyyy",
-        "formatShortDate": "MMM d, yyyy",
-        "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-        "formatWeekdayShortTime": "EE h:mm a",
-        "formatLongDate": "MMMM d, yyyy h:mm a"
-    },
-    'PAGE_CL': 58452362,
-    'PAGE_BUILD_TIMESTAMP': "Thu Dec 19 02:54:48 2013 (1387450488)",
-    'UNIVERSAL_HOVERCARDS': true,
-    'FEEDBACK_BUCKET_ID': "Home",
-    'FEEDBACK_LOCALE_LANGUAGE': "en",
-    'FEEDBACK_LOCALE_EXTRAS': {
-        "is_branded": "",
-        "accept_language": null,
-        "logged_in": false,
-        "is_partner": "",
-        "guide_subs": "NA",
-        "experiments": "904000,923902,911429,908540,916615,927303,909717,929150,925728,936327,906945,906948,927704,920605,912715,919811,935704,931943,921410,920607,936702,911427,922804,931207,929505,901812,932276,932295,919389,934003,934004,938614,938617,938626,936912,936910,923305,936913,936914,924203,935006,939201,941241,934507,907231,907240,939918,921090,906001"
-    }
-});
-yt.setMsg({
-    'ADDTO_WATCH_LATER': "Watch Later",
-    'ADDTO_WATCH_LATER_ADDED': "Added",
-    'ADDTO_WATCH_LATER_ERROR': "Error"
-});
-yt.setAjaxToken('addto_ajax_logged_out', "TJfj3lIaIE0zhBNz9qnTobFRfPl8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
-yt.setAjaxToken('watch_fragments_ajax', "yxRxkum9o4exNOHGVpeGh3ZDRv98MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
-yt.setConfig('FEED_PRIVACY_CSS_URL', "\/\/s.ytimg.com\/yts\/cssbin\/www-feedprivacydialog-vflIiktxn.css");
-yt.setAjaxToken('feed_privacy_ajax', "rlUeh7QSpN0f9A7gDN3gcGLvcdt8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
-if (yt.www && yt.www.account) {
-    yt.pubsub.subscribe('init', yt.www.account.FeedPrivacyDialog.init);
-} else {
-    yt.setConfig('FEED_PRIVACY_LIGHTBOX_ENABLED', true);
-}
-yt.setConfig({
-    'SBOX_JS_URL': "\/yts\/jsbin\/www-searchbox.js",
-    'SBOX_SETTINGS': {
-        "USE_HTTPS": true,
-        "PSUGGEST_TOKEN": null,
-        "HAS_ON_SCREEN_KEYBOARD": false,
-        "SESSION_INDEX": null,
-        "REQUEST_LANGUAGE": "en",
-        "EXPERIMENT_ID": -1,
-        "REQUEST_DOMAIN": "us"
-    },
-    'SBOX_LABELS': {
-        "VIEW_CHANNEL_LABEL": "View channel",
-        "WATCH_NOW_LABEL": "Watch now",
-        "SUGGESTION_DISMISS_LABEL": "Dismiss",
-        "SUGGESTION_DISMISSED_LABEL": "Suggestion dismissed"
-    }
-});
-yt.setConfig({
-    'YPC_LOADER_ENABLED': true,
-    'YPC_LOADER_CONFIGS': "\/ypc_config_ajax",
-    'YPC_LOADER_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-ypc-vfl2d1W-e.js",
-    'YPC_LOADER_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-ypc-vfldrpIdw.css",
-    'YPC_LOADER_CALLBACKS': ['yt.www.ypc.checkout.init', 'yt.www.ypc.subscription.init']
-});
-yt.setConfig('GOOGLE_HELP_CONTEXT', "homepage");
-</script>
-<script>
-ytcsi.span('st', 148);
-yt.setConfig({
-    'TIMING_ACTION': "glo",
-    'TIMING_INFO': {
-        "e": "904000,923902,911429,908540,916615",
-        "ei": "VuTCUr32BsfKiAKQzoCwBg",
-        "yt_lt": "warm",
-        "yt_li": 0,
-        "yt_spf": 0
-    }
-});
-</script>
-<script> yt.setConfig({
-    'XSRF_TOKEN': "ymrXkmSluD-qY71xtxQLUViovXd8MTM4ODU5MDU1MEAxMzg4NTA0MTUw",
-    'XSRF_REDIRECT_TOKEN': "q2j2usJlAWJi54py9YBRf5XanhV8MTM4ODU5MDU1MEAxMzg4NTA0MTUw",
-    'XSRF_FIELD_NAME': "session_token"
-});</script>
-<script>yt.setConfig('THUMB_DELAY_LOAD_BUFFER', 300);</script>
-<script>if (window.ytcsi) {window.ytcsi.tick("jl", null, '');}</script>
-</body>
+      {% block script %}
+      {% endblock %}
+      <div id="body-container">
+         <div id="yt-masthead-container" class="yt-grid-box yt-base-gutter">
+            <div id="yt-masthead" class="">
+               <a id="logo-container" href="/" title="PokTwo home" class=" "><img id="logo" src="/yts/img/pixel.gif" alt="PokTwo home"></a>
+               {% if log %}
+               <div id="yt-masthead-user">
+                  <span id="yt-masthead-user-displayname" dir="ltr" class="yt-valign-container" onclick="yt.www.masthead.toggleExpandedMasthead();">
+                  {{ userdata.name }}
+                  </span>
+                  <button id="sb-button-notify" class="sb-notif-off yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-has-icon" type="button" onclick=";return false;" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-bell" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">  </span></button>
+                  <button class="yt-masthead-user-icon yt-uix-button yt-uix-button-default yt-uix-button-size-default" type="button" onclick="yt.www.masthead.toggleExpandedMasthead();;return false;" data-orientation="vertical" role="button"><span class="yt-uix-button-content">      <span class="video-thumb  yt-thumb yt-thumb-27">
+                  <span class="yt-thumb-square">
+                  <span class="yt-thumb-clip">
+                  <span class="yt-thumb-clip-inner">
+                  <img src="https://lh5.googleusercontent.com/-e0WuOa4KHkk/AAAAAAAAAAI/AAAAAAAAAAA/eX3TFoHubzg/s88-c-k/photo.jpg" alt="Thumbnail" width="27">
+                  <span class="vertical-align"></span>
+                  </span>
+                  </span>
+                  </span>
+                  </span>
+                  </span></button>
+                  <span id="yt-masthead-dropdown" onclick="yt.www.masthead.toggleExpandedMasthead();"></span>
+               </div>
+               {% else %}
+               <div id="yt-masthead-signin"><button class=" yt-uix-button yt-uix-button-primary yt-uix-button-size-default" type="button" href="/signin.php" onclick=";window.location.href=this.getAttribute('href');return false;" role="button"><span class="yt-uix-button-content">Sign in </span></button></div>
+               {% endif %}
+               <div id="yt-masthead-content">
+                  {% if log %}
+                  <span class="yt-uix-button-group" id="masthead-upload-button-group"><a href="/upload" class="yt-uix-button  start yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb" data-upsell="upload"><span class="yt-uix-button-content">Upload </span></a><button class="end flip yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-empty" type="button" aria-haspopup="true" onclick=";return false;" data-button-menu-id="upload-button-menu" role="button" aria-label="Creator tools menu"><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button></span>
+                  {% else %}
+                  <span id="masthead-upload-button-group"><a href="/upload" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default" data-sessionlink="feature=mhsb&amp;ei=VuTCUr32BsfKiAKQzoCwBg"><span class="yt-uix-button-content">Upload </span></a></span>
+                  {% endif %}
+                  <form id="masthead-search" class="search-form consolidated-form" action="/results" onsubmit="if (_gel('masthead-search-term').value == '') return false;">
+                     <button onclick="if (_gel('masthead-search-term').value == '') return false; _gel('masthead-search').submit(); return false;;return true;" dir="ltr" class="search-btn-component search-button yt-uix-button yt-uix-button-default yt-uix-button-size-default" id="search-btn" type="submit" tabindex="2" role="button"><span class="yt-uix-button-content">Search </span></button>
+                     <div id="masthead-search-terms" class="masthead-search-terms-border " dir="ltr">
+                        <label><input id="masthead-search-term" autocomplete="off" autofocus="" class="search-term yt-uix-form-input-bidi" name="search_query" value="" type="text" tabindex="1" title="Search" dir="ltr" spellcheck="false" style="outline: none;"></label><script>var searchBox = document.getElementById('masthead-search-term');if (searchBox) {searchBox.focus();}</script>
+                     </div>
+                     <input type="hidden" name="sm">
+                  </form>
+                  {% if log %}
+					<ul id="upload-button-menu" class="yt-uix-button-menu yt-uix-button-menu-default" role="menu" aria-haspopup="true" style="display: none">
+					   <li id="upload-menu-dashboard" role="menuitem"><a href="/dashboard" class="yt-uix-button-menu-item upload-menu-item yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb"><span class="yt-valign icon-container"><img class="upload-menu-dashboard-icon" src="/yts/img/pixel.gif"></span>Dashboard</a></li>
+					   <li id="upload-menu-video-manager" role="menuitem"><a href="/my_videos" class="yt-uix-button-menu-item upload-menu-item yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb"><span class="yt-valign icon-container"><img class="upload-menu-vm-icon" src="/yts/img/pixel.gif"></span>Video Manager</a></li>
+					   <li id="upload-menu-analytics" role="menuitem"><a href="https://www.youtube.com/analytics" class="yt-uix-button-menu-item upload-menu-item yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb"><span class="yt-valign icon-container"><img class="upload-menu-analytics-icon" src="/yts/img/pixel.gif"></span>Analytics</a></li>
+					</ul>                  
+				  {% endif %}
+               </div>
+            </div>
+         </div>
+         {% if log %}
+         <div id="masthead-expanded" class="hid">
+            <div id="masthead-expanded-container" class="with-sandbar">
+               <div id="masthead-expanded-menus-container">
+                  <span id="masthead-expanded-menu-shade"></span>
+                  <div id="masthead-expanded-menu">
+                     <span class="masthead-expanded-menu-header">
+                     PokTwo
+                     </span>
+                     <ul id="masthead-expanded-menu-list">
+                        <li class="masthead-expanded-menu-item">
+                           <a href="/user/{{ userdata.name }}" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">
+                           My channel
+                           </a>
+                        </li>
+                        <li class="masthead-expanded-menu-item">
+                           <a href="/my_videos" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">
+                           Video Manager
+                           </a>
+                        </li>
+                        <li class="masthead-expanded-menu-item">
+                           <a href="/feed/subscriptions" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">Subscriptions</a>
+                        </li>
+                        <li class="masthead-expanded-menu-item">
+                           <a href="/account" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">
+                           YouTube settings
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div id="masthead-expanded-google-menu">
+                     <span class="masthead-expanded-menu-header">
+                     Google account
+                     </span>
+                     <div id="masthead-expanded-menu-google-container">
+                        <div id="masthead-expanded-menu-google-column1">
+                           <ul>
+                              <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/112528443844103410836">Page</a></li>
+                              <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/stream">Google+</a></li>
+                              <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/pages/settings/admin">Managers</a></li>
+                              <li class="masthead-expanded-menu-item">
+                                 <a href="https://plus.google.com/u/0/b/112528443844103410836/pages/settings/plus">
+                                 Settings
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                        <div id="masthead-expanded-menu-google-column2">
+                           <div id="masthead-expanded-menu-account-container">
+                              <img id="masthead-expanded-menu-gaia-photo" alt="" data-src="https://lh5.googleusercontent.com/-e0WuOa4KHkk/AAAAAAAAAAI/AAAAAAAAAAA/eX3TFoHubzg/s88-c-k/photo.jpg" width="28">
+                              <div id="masthead-expanded-menu-account-info" class="email-only">
+                                 <p>{{ userdata.name }}</p>
+                                 <p id="masthead-expanded-menu-email">{{ userdata.email }}</p>
+                              </div>
+                           </div>
+                           <ul>
+                              <li class="masthead-expanded-menu-item">
+                                 <a class="end" href="#" onclick="document.logoutForm.submit(); return false;">
+                                 Sign out
+                                 </a>
+                              </li>
+                              <li class="masthead-expanded-menu-item">
+                                 <div class="yt-uix-clickcard masthead-expanded-menu-switch" data-card-class="masthead-card-switch-account">
+                                    <button class="yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-button-size-default" type="button" onclick=";return false;" data-position="rightbottom" data-orientation="vertical" role="button"><span class="yt-uix-button-content">Switch account </span></button>
+                                    <div class="yt-uix-clickcard-content">
+                                       <ul id="yt-masthead-multilogin">
+                                          <li>
+                                             <a class="yt-masthead-multilogin-user yt-valign" href="/signin.php">
+                                             <span class="video-thumb yt-masthead-multilogin-user-icon yt-thumb yt-thumb-46">
+                                             <span class="yt-thumb-square">
+                                             <span class="yt-thumb-clip">
+                                             <span class="yt-thumb-clip-inner">
+                                             <img src="/yts/img/popular.jpg" alt="Account Switching Placeholder" width="46">
+                                             <span class="vertical-align"></span>
+                                             </span>
+                                             </span>
+                                             </span>
+                                             </span>
+                                             <span class="yt-masthead-multilogin-user-content yt-valign-container">
+                                             <span class="yt-masthead-multilogin-user-link" dir="ltr">Account Switching Placeholder</span><br>
+                                             accountemail@placeholder.com
+                                             </span>
+                                             </a>
+                                          </li>
+                                       </ul>
+                                       <div id="yt-masthead-multilogin-actions" class="yt-grid-box">
+                                          <button id="yt-masthead-multilogin-sign-out" class=" yt-uix-button yt-uix-button-link yt-uix-button-size-default" type="button" onclick="document.logoutForm.submit();return false;" role="button"><span class="yt-uix-button-content">Sign out </span></button>
+                                          <a href="https://accounts.google.com/AddSession?uilel=0&amp;service=youtube&amp;passive=false&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26authuser%3D-1%26hl%3Den%26next%3D%252Fwatch%253Fv%253DYLFLVp5U3bg%2526feature%253Dyoutu.be&amp;hl=en">Add account</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="masthead-expanded-sandbar" class="">
+                  <div id="masthead-expanded-lists-container">
+                     <div id="masthead-expanded-loading-message">Loading...</div>
+                  </div>
+               </div>
+               <div class="clear"></div>
+            </div>
+         </div>
+         {% endif %}
+         <div id="alerts" class="content-alignment">
+         </div>
+         <div id="page-container">
+            <div id="page" class="{{ cssGarbage }}">
+               <div id="guide">
+                  <div id="guide-container" class=" vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CAEQ_h4">
+                     <div id="guide-main" class="    guide-module     spf-nolink   yt-uix-tdl " data-fold="190,651">
+                        <div class="guide-module-toggle">
+                           <span class="guide-module-toggle-icon">
+                           <span class="guide-module-toggle-arrow"></span>
+                           <img src="/yts/img/pixel.gif" alt="">
+                           <img src="/yts/img/pixel.gif" alt="" id="collapsed-notification-icon">
+                           </span>
+                           <div class="guide-module-toggle-label">
+                              <h3>
+                                 <span>
+                                 Guide
+                                 </span>
+                              </h3>
+                           </div>
+                        </div>
+                        <div class="guide-module-content yt-scrollbar">
+                           <ul class="guide-toplevel">
+                              <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CAIQ5isoAA" data-visibility-tracking="CAAQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                 <div class="guide-item-container personal-item">
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check overflowable-list-item guide-channel" id="HCtnHdj3df7iM-guide-item" data-visibility-tracking="CAEQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink   " href="/channel/HCtnHdj3df7iM" title="Popular on PokTwo" data-sessionlink="feature=g-channel&amp;ei=VuTCUr32BsfKiAKQzoCwBg" data-visibility-tracking="CAEQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="HCtnHdj3df7iM" data-serialized-endpoint="0qDduQEPEg1IQ3RuSGRqM2RmN2lN">
+                                          <span class="yt-valign-container">
+                                          <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
+                                          <span class="yt-thumb-square">
+                                          <span class="yt-thumb-clip">
+                                          <img src="/yts/img/popular.jpg" alt="Thumbnail" width="18">
+                                          <span class="vertical-align"></span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          <span class="display-name  no-count">
+                                          <span>Popular on PokTwo</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CA0Q5isoAQ" data-visibility-tracking="CAsQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                 <div class="guide-item-container personal-item">
+                                    <h3>Channels for you</h3>
+                                    {% for user in featuredUsers %}
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check overflowable-list-item guide-channel" id="{{ user }}-guide-item" data-visibility-tracking="CAwQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink {% if pageName == user %}guide-item-selected{% endif %}" href="/channel/{{ user }}" title="{{ user }}" data-sessionlink="feature=g-chfeat&amp;ei={{ user }}" data-visibility-tracking="CAwQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="UCSAUGyc_xA8uYzaIVG6MESQ" data-serialized-endpoint="0qDduQEaEhhVQ1NBVUd5Y194QTh1WXphSVZHNk1FU1E%3D">
+                                          <span class="yt-valign-container">
+                                          <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
+                                          <span class="yt-thumb-square">
+                                          <span class="yt-thumb-clip">
+                                          <img src="/yts/img/pfp48.png" alt="Thumbnail" width="18">
+                                          <span class="vertical-align"></span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          <span class="display-name  no-count">
+                                          <span>{{ user }}</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                    {% endfor %}
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CBMQ5isoAg" data-visibility-tracking="CBEQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                 <div class="guide-item-container personal-item">
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check overflowable-list-item guide-channel" id="guide_builder-guide-item" data-visibility-tracking="CBIQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink   " href="/channels" title="Browse channels" data-sessionlink="feature=g-manage&amp;ei=VuTCUr32BsfKiAKQzoCwBg" data-visibility-tracking="CBIQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="guide_builder" data-serialized-endpoint="0qPduQECCAE%3D">
+                                          <span class="yt-valign-container">
+                                          <img class="thumb guide-builder-icon" src="/yts/img/pixel.gif" alt="" title="">
+                                          <span class="display-name  no-count">
+                                          <span>Browse channels</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li class="guide-section guide-header signup-promo guided-help-box">
+                                 <p>
+                                    Sign in now to see your channels and recommendations!
+                                 </p>
+                                 <div id="guide-builder-promo-buttons" class="signed-out clearfix">
+                                    <a href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dsign_in_promo%26hl%3Den%26next%3D%252F" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg"><span class="yt-uix-button-content">Sign In </span></a>
+                                 </div>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="content" class="  content-alignment">
+                  {% block content %}{% endblock %}
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="footer-container" class="yt-base-gutter">
+         <div id="footer">
+            <div id="footer-main">
+               <div id="footer-logo"><a href="/" title="YouTube home"><img src="/yts/img/pixel.gif" alt="YouTube home"></a></div>
+               <ul class="pickers yt-uix-button-group" data-button-toggle-group="optional">
+                  <li>
+                     <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-has-icon" type="button" id="yt-picker-language-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="language" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-footer-language" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
+                     Language:
+                     </span>
+                     English
+                     </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
+                  </li>
+                  <li>
+                     <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default" type="button" id="yt-picker-country-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="country" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
+                     Country:
+                     </span>
+                     Worldwide
+                     </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
+                  </li>
+                  <li>
+                     <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default" type="button" id="yt-picker-safetymode-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="safetymode" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
+                     Safety:
+                     </span>
+                     Off
+                     </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
+                  </li>
+               </ul>
+               <button type="button" onclick=";return false;" class="yt-uix-button-reverse yt-google-help-link yt-uix-button yt-uix-button-default yt-uix-button-size-default" id="google-help" data-ghelp-anchor="google-help" role="button"><span class="yt-uix-button-content">  <img class="questionmark" src="/yts/img/pixel.gif">
+               <span>Help</span>
+               <img class="yt-uix-button-arrow" src="/yts/img/pixel.gif">
+               </span></button>
+               <div id="yt-picker-language-footer" class="yt-picker" style="display: none">
+                  <p class="yt-spinner">
+                     <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
+                     <span class="yt-spinner-message">
+                     Loading...
+                     </span>
+                  </p>
+               </div>
+               <div id="yt-picker-country-footer" class="yt-picker" style="display: none">
+                  <p class="yt-spinner">
+                     <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
+                     <span class="yt-spinner-message">
+                     Loading...
+                     </span>
+                  </p>
+               </div>
+               <div id="yt-picker-safetymode-footer" class="yt-picker" style="display: none">
+                  <p class="yt-spinner">
+                     <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
+                     <span class="yt-spinner-message">
+                     Loading...
+                     </span>
+                  </p>
+               </div>
+            </div>
+            <div id="footer-links">
+               <ul id="footer-links-primary">
+                  <li><a href="//www.youtube.com/yt/about/">About</a></li>
+                  <li><a href="//www.youtube.com/yt/press/">Press &amp; Blogs</a></li>
+                  <li><a href="//www.youtube.com/yt/copyright/">Copyright</a></li>
+                  <li><a href="//www.youtube.com/yt/creators/">Creators &amp; Partners</a></li>
+                  <li><a href="//www.youtube.com/yt/advertise/">Advertising</a></li>
+                  <li><a href="//www.youtube.com/yt/dev/">Developers</a></li>
+               </ul>
+               <ul id="footer-links-secondary">
+                  <li><a href="/t/terms">Terms</a></li>
+                  <li><a href="http://www.google.com/intl/en/policies/privacy/">Privacy</a></li>
+                  <li><a href="//www.youtube.com/yt/policyandsafety/">
+                     Policy &amp; Safety
+                     </a>
+                  </li>
+                  <li><a href="//www.google.com/tools/feedback/intl/en/error.html" onclick="return yt.www.feedback.start(59);" class="reportbug">Send feedback</a></li>
+                  <li><a href="/testtube">Try something new!</a></li>
+                  <li>  <span class="copyright" dir="ltr">© {{ fuckingYear | date("Y") }} pokTwo, not affiliated with Google LLC and YouTube, LLC.</span></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="yt-dialog hid" id="feed-privacy-lb">
+         <div class="yt-dialog-base">
+            <span class="yt-dialog-align"></span>
+            <div class="yt-dialog-fg">
+               <div class="yt-dialog-fg-content">
+                  <div class="yt-dialog-loading">
+                     <div class="yt-dialog-waiting-content">
+                        <div class="yt-spinner-img"></div>
+                        <div class="yt-dialog-waiting-text">Loading...</div>
+                     </div>
+                  </div>
+                  <div class="yt-dialog-content">
+                     <div id="feed-privacy-dialog">
+                     </div>
+                  </div>
+                  <div class="yt-dialog-working">
+                     <div id="yt-dialog-working-overlay">
+                     </div>
+                     <div id="yt-dialog-working-bubble">
+                        <div class="yt-dialog-waiting-content">
+                           <div class="yt-spinner-img"></div>
+                           <div class="yt-dialog-waiting-text">Working...</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="shared-addto-watch-later-login" class="hid">
+         <a href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dplaylist%26hl%3Den%26next%3D%252F" class="sign-in-link">Sign in</a> to add this to Watch Later
+      </div>
+      <div id="shared-addto-menu" style="display: none;" class="hid sign-in">
+         <div class="addto-menu">
+            <div id="addto-list-panel" class="menu-panel active-panel">
+               <span class="addto-playlist-item yt-uix-button-menu-item yt-uix-tooltip sign-in" data-possible-tooltip="" data-tooltip-show-delay="750">
+               <img class="playlist-status" src="/yts/img/pixel.gif" alt="" title=""><a href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dplaylist%26hl%3Den%26next%3D%252F" class="sign-in-link">Sign in</a> to add this to Watch Later
+               </span>
+            </div>
+            <div id="addto-list-saving-panel" class="menu-panel">
+               <div class="addto-loading loading-content">
+                  <p class="yt-spinner">
+                     <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
+                     <span class="yt-spinner-message">
+                     Loading playlists...
+                     </span>
+                  </p>
+               </div>
+            </div>
+            <div id="addto-list-error-panel" class="menu-panel">
+               <div class="panel-content">
+                  <img src="/yts/img/pixel.gif">
+                  <span class="error-details"></span>
+                  <a class="show-menu-link">Back</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script>if (window.ytcsi) {window.ytcsi.tick("hr", null, '');}</script>
+      <script>var ytspf = ytspf || {};ytspf.enabled = false;</script>
+      <script id="js-3395904476" class="spf" src="/yts/jsbin/spf.js" data-loaded="true"></script>   
+      <script id="js-3698437330" class="www_base_mod" src="/yts/jsbin/www/www_base_mod.js" data-loaded="true"></script>
+      <script>if (window.ytcsi) {window.ytcsi.tick("je", null, '');}</script>
+      <script>
+         yt.setAjaxToken('feed_change_ajax', "Qvn84m14fyxRlfC1OkPqo_nWVIl8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
+         
+         yt.setConfig({
+         'MASTHEAD_ENCRYPTED_ID': "nbVtlg3BbA8",
+         'MASTHEAD_IS_BRANDED': true
+         });
+         
+         yt.setConfig('JS_PAGE_MODULES', {
+         "\/yts\/jsbin\/www\/www_feed_mod.js": []
+         });
+         yt.setConfig('DISMISS_THROUGH_IT', true);
+      </script>
+      <script>
+         yt.setConfig({
+         'GUIDE_SELECTED_ITEM': "0qDduQEREg9GRXdoYXRfdG9fd2F0Y2g%3D"
+         });
+         
+         yt.setConfig({
+         'GUIDED_HELP_LOCALE': "en_US",
+         'GUIDED_HELP_ENVIRONMENT': "prod"
+         });
+         
+      </script>
+      <script>yt.setConfig({
+         'EVENT_ID': "VuTCUr32BsfKiAKQzoCwBg",
+         'PAGE_NAME': "index",
+         'LOGGED_IN': false,
+         'SESSION_INDEX': null,
+         'DELEGATED_SESSION_ID': null,
+         'GAPI_HOST': "https:\/\/apis.google.com",
+         'GAPI_HINT_PARAMS': "m;\/_\/scs\/abc-static\/_\/js\/k=gapi.gapi.en.5GL3tg_C6Nc.O\/m=__features__\/rt=j\/d=1\/rs=AItRSTPfsfz-ifAZeiHMk7mKfiGQJuhVFw",
+         'GAPI_LOCALE': "en_US",
+         'GOOGLEPLUS_HOST': "https:\/\/plus.google.com",
+         'PAGEFRAME_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-pageframe-vfl2mrQyf.js",
+         'JS_COMMON_MODULE': "\/yts\/jsbin\/www\/www_common_mod.js",
+         'PAGE_FRAME_DELAYLOADED_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-pageframedelayloaded-vfl6BqFHU.css",
+         'PREFETCH_CSS_RESOURCES': ["\/\/s.ytimg.com\/yts\/cssbin\/www-player-vflBjKccE.css", ''],
+         'PREFETCH_JS_RESOURCES': ["\/\/s.ytimg.com\/yts\/jsbin\/html5player-vflG49soT.js", ''],
+         'SAFETY_MODE_PENDING': false,
+         'LOCAL_DATE_TIME_CONFIG': {
+             "shortWeekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+             "amPms": ["AM", "PM"],
+             "shortMonths": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+             "formatLongDateOnly": "MMMM d, yyyy",
+             "formatShortDate": "MMM d, yyyy",
+             "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+             "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+             "formatWeekdayShortTime": "EE h:mm a",
+             "formatLongDate": "MMMM d, yyyy h:mm a"
+         },
+         'PAGE_CL': 58452362,
+         'PAGE_BUILD_TIMESTAMP': "Thu Dec 19 02:54:48 2013 (1387450488)",
+         'UNIVERSAL_HOVERCARDS': true,
+         'FEEDBACK_BUCKET_ID': "Home",
+         'FEEDBACK_LOCALE_LANGUAGE': "en",
+         'FEEDBACK_LOCALE_EXTRAS': {
+             "is_branded": "",
+             "accept_language": null,
+             "logged_in": false,
+             "is_partner": "",
+             "guide_subs": "NA",
+             "experiments": "904000,923902,911429,908540,916615,927303,909717,929150,925728,936327,906945,906948,927704,920605,912715,919811,935704,931943,921410,920607,936702,911427,922804,931207,929505,901812,932276,932295,919389,934003,934004,938614,938617,938626,936912,936910,923305,936913,936914,924203,935006,939201,941241,934507,907231,907240,939918,921090,906001"
+         }
+         });
+         yt.setMsg({
+         'ADDTO_WATCH_LATER': "Watch Later",
+         'ADDTO_WATCH_LATER_ADDED': "Added",
+         'ADDTO_WATCH_LATER_ERROR': "Error"
+         });
+         yt.setAjaxToken('addto_ajax_logged_out', "TJfj3lIaIE0zhBNz9qnTobFRfPl8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
+         yt.setAjaxToken('watch_fragments_ajax', "yxRxkum9o4exNOHGVpeGh3ZDRv98MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
+         yt.setConfig('FEED_PRIVACY_CSS_URL', "\/\/s.ytimg.com\/yts\/cssbin\/www-feedprivacydialog-vflIiktxn.css");
+         yt.setAjaxToken('feed_privacy_ajax', "rlUeh7QSpN0f9A7gDN3gcGLvcdt8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
+         if (yt.www && yt.www.account) {
+         yt.pubsub.subscribe('init', yt.www.account.FeedPrivacyDialog.init);
+         } else {
+         yt.setConfig('FEED_PRIVACY_LIGHTBOX_ENABLED', true);
+         }
+         yt.setConfig({
+         'SBOX_JS_URL': "\/yts\/jsbin\/www-searchbox.js",
+         'SBOX_SETTINGS': {
+             "USE_HTTPS": true,
+             "PSUGGEST_TOKEN": null,
+             "HAS_ON_SCREEN_KEYBOARD": false,
+             "SESSION_INDEX": null,
+             "REQUEST_LANGUAGE": "en",
+             "EXPERIMENT_ID": -1,
+             "REQUEST_DOMAIN": "us"
+         },
+         'SBOX_LABELS': {
+             "VIEW_CHANNEL_LABEL": "View channel",
+             "WATCH_NOW_LABEL": "Watch now",
+             "SUGGESTION_DISMISS_LABEL": "Dismiss",
+             "SUGGESTION_DISMISSED_LABEL": "Suggestion dismissed"
+         }
+         });
+         yt.setConfig({
+         'YPC_LOADER_ENABLED': true,
+         'YPC_LOADER_CONFIGS': "\/ypc_config_ajax",
+         'YPC_LOADER_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-ypc-vfl2d1W-e.js",
+         'YPC_LOADER_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-ypc-vfldrpIdw.css",
+         'YPC_LOADER_CALLBACKS': ['yt.www.ypc.checkout.init', 'yt.www.ypc.subscription.init']
+         });
+         yt.setConfig('GOOGLE_HELP_CONTEXT', "homepage");
+      </script>
+      <script>
+         ytcsi.span('st', 148);
+         yt.setConfig({
+             'TIMING_ACTION': "glo",
+             'TIMING_INFO': {
+                 "e": "904000,923902,911429,908540,916615",
+                 "ei": "VuTCUr32BsfKiAKQzoCwBg",
+                 "yt_lt": "warm",
+                 "yt_li": 0,
+                 "yt_spf": 0
+             }
+         });
+      </script>
+      <script> yt.setConfig({
+         'XSRF_TOKEN': "ymrXkmSluD-qY71xtxQLUViovXd8MTM4ODU5MDU1MEAxMzg4NTA0MTUw",
+         'XSRF_REDIRECT_TOKEN': "q2j2usJlAWJi54py9YBRf5XanhV8MTM4ODU5MDU1MEAxMzg4NTA0MTUw",
+         'XSRF_FIELD_NAME': "session_token"
+         });
+      </script>
+      <script>yt.setConfig('THUMB_DELAY_LOAD_BUFFER', 300);</script>
+      <script>if (window.ytcsi) {window.ytcsi.tick("jl", null, '');}</script>
+   </body>
 </html>
