@@ -19,6 +19,7 @@ if (!isset($userpagedata) || !$userpagedata) {
 }
 
 $pageName = $userpagedata['name'];
+$jsPageName = "channel";
 
 $forceuser = isset($_GET['forceuser']);
 

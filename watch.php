@@ -13,6 +13,7 @@ if (!$videoData) error('404', "The video you were looking for cannot be found.")
 $commentData = VideoComments::getComments($id);
 
 $pageName = "watch";
+$jsPageName = "watch";
 $cssGarbage = "watch clearfix";
 
 $allVideos = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);

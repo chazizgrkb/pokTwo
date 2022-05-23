@@ -4,6 +4,7 @@ namespace pokTwo;
 require('lib/common.php');
 
 $pageName = "index";
+$jsPageName = "index";
 $cssGarbage = "home clearfix masthead-ad-expanded";
 
 $twig = twigloader();

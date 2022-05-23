@@ -25,7 +25,9 @@ if ($isDebug) {
 // Holy shit! Classes!
 $sql = new MySQL($host, $user, $pass, $db);
 
-//tf does this do?
+$allUsers = $sql->query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 5");
+
+// user agent blocking shit
 if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {
 	foreach ($blockedUA as $bl) {
 		if (str_contains($_SERVER['HTTP_USER_AGENT'], $bl)) {
