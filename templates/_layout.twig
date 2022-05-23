@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-cast-api-enabled="true">
    <head>
-      <script id="js-48156213" src="/yts/jsbin/www-searchbox.js" data-loaded="true"></script>
-      <script id="js-3193726280" class="html5player" async="" src="/yts/jsbin/html5player.js" data-loaded="true"></script>
-      <script id="js-2106260837" class="www_feed_mod" async="" src="/yts/jsbin/www/www_feed_mod.js" data-loaded="true"></script>
-      <script id="js-1989376184" class="www_common_mod" async="" src="/yts/jsbin/www/www_common_mod.js" data-loaded="true"></script>
-      <script id="js-2477478160" class="www-pageframe" async="" src="/yts/jsbin/www-pageframe.js" data-loaded="true"></script>
-      <script>var ytcsi = {
+	  {# the javascript loading shit is handled by either www_base_mod or spf #}
+      <script>
+	  var ytcsi = {
          gt: function(n) {
          	n = (n || '') + 'data_';
          	return ytcsi[n] || (ytcsi[n] = {
@@ -63,10 +60,11 @@
       <script>if (window.ytcsi) {window.ytcsi.tick("cl", null, '');}</script>
       <link id="css-849266402" class="www-player" rel="stylesheet" href="/yts/cssbin/www-player.css" data-loaded="true">
    </head>
-   <body dir="ltr" class="ltr site-left-aligned hitchhiker-enabled guide-enabled guide-expanded flex-width-enabled page-loaded" id="body">
+   <body dir="ltr" class="ltr webkit site-left-aligned hitchhiker-enabled guide-enabled guide-expanded flex-width-enabled" id="body">
       {% block script %}
       {% endblock %}
       <div id="body-container">
+	     <form name="logoutForm" method="POST" action="/logout"><input type="hidden" name="action_logout" value="1"><input name="session_token" type="hidden" value="zP6Q9UqbN8W4RTZmZbCNY5gw36h8MTM4MDQ5MDMzOUAxMzgwNDAzOTM5"></form>
          <div id="yt-masthead-container" class="yt-grid-box yt-base-gutter">
             <div id="yt-masthead" class="">
                <a id="logo-container" href="/" title="PokTwo home" class=" "><img id="logo" src="/yts/img/pixel.gif" alt="PokTwo home"></a>
@@ -517,7 +515,71 @@
                      </div>
                   </div>
                </div>
-               {% endif %}   
+               {% endif %}
+<div id="player" class="{% if pageName == "watch" %}watch-small{% else %}off-screen{% endif %}">
+  <div id="playlist" class="playlist">
+    
+  </div>
+
+  <div id="player-unavailable" class="  hid  ">
+    
+  </div>
+
+    <div id="player-api" class="player-width player-height off-screen-target watch-content player-api" style="overflow: hidden;">
+{% if pageName == "watch" %}
+	<video width="100%" height="100%" controls>
+  <source src="media/{{ video.video_id }}.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+{% endif %}
+</div>
+
+
+<script>
+    if (window.ytcsi) {
+        window.ytcsi.tick("bf", null, '');
+    }
+</script>
+<!-- {% block playerSetings %}
+<script>
+    var ytplayer = ytplayer || {};
+ytplayer.config = {
+    "url": "https:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/watch_as3.swf",
+    "url_v8": "https:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
+    "assets": {
+        "css": "\/yts\/cssbin\/www-player.css",
+        "html": "\/html5_player_template",
+        "js": "\/yts\/jsbin\/html5player.js"
+    },
+    "url_v9as2": "https:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
+    "attrs": {
+        "id": "movie_player"
+    },
+    "params": {
+        "allowfullscreen": "true",
+        "allowscriptaccess": "always",
+        "bgcolor": "#000000"
+    },
+    "html5": false,
+    "args": {
+        "hl": "",
+        "fexp": "904000,923902,911429,908540,916615,909717,932295,936912,936910,923305,936913,907231,907240,921090",
+        "ssl": "1",
+        "enablejsapi": 1,
+        "autoplay": "0",
+        "cr": ""
+    },
+    "sts": 16057,
+    "min_version": "8.0.0"
+};
+</script>
+{% endblock %} -->
+  <div id="playlist-tray" class="playlist-tray">
+    
+  </div>
+
+  <div class="clear"></div>
+</div>
                <div id="content" class="  content-alignment">
                   {% block content %}{% endblock %}
                </div>
@@ -666,6 +728,8 @@
       <script id="js-3395904476" class="spf" src="/yts/jsbin/spf.js" data-loaded="true"></script>   
       <script id="js-3698437330" class="www_base_mod" src="/yts/jsbin/www/www_base_mod.js" data-loaded="true"></script>
       <script>if (window.ytcsi) {window.ytcsi.tick("je", null, '');}</script>
+
+	{% block javascriptSettings %}
       <script>
          yt.setAjaxToken('feed_change_ajax', "Qvn84m14fyxRlfC1OkPqo_nWVIl8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
          
@@ -679,6 +743,7 @@
          });
          yt.setConfig('DISMISS_THROUGH_IT', true);
       </script>
+	{% endblock %}
       <script>
          yt.setConfig({
          'GUIDE_SELECTED_ITEM': "{{ pageName }}"
