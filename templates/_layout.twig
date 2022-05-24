@@ -49,16 +49,16 @@
       <link rel="search" type="application/opensearchdescription+xml" href="http://www.youtube.com/opensearch?locale=en_US" title="YouTube Video Search">
       <link rel="shortcut icon" href="https://s.ytimg.com/yts/img/favicon-vfldLzJxy.ico" type="image/x-icon">
       <link rel="icon" href="//s.ytimg.com/yts/img/favicon_32-vflWoMFGx.png" sizes="32x32">
-      <link rel="canonical" href="http://www.youtube.com/">
+      <link rel="canonical" href="https://pok.byteemail.com">
       <link rel="alternate" media="handheld" href="http://m.youtube.com/index?&amp;desktop_uri=%2F">
       <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.youtube.com/index?&amp;desktop_uri=%2F">
-      <meta name="description" content="Share your videos with friends, family, and the world">
+      <meta name="description" content="youtube 2013 年，但它由 bluey 尿布艺术家 grkb 运营。他妈的！">
       <meta name="keywords" content="video, sharing, camera phone, video phone, free, upload">
       <meta property="og:image" content="//s.ytimg.com/yts/img/youtube_logo_stacked-vfl225ZTx.png">
       <meta property="fb:app_id" content="87741124305">
       <link rel="publisher" href="https://plus.google.com/115229808208707341778">
       <script>if (window.ytcsi) {window.ytcsi.tick("cl", null, '');}</script>
-      <link id="css-849266402" class="www-player" rel="stylesheet" href="/yts/cssbin/www-player.css" data-loaded="true">
+      <!-- <link id="css-849266402" class="www-player" rel="stylesheet" href="/yts/cssbin/www-player.css" data-loaded="true"> -->
    </head>
    <body dir="ltr" class="ltr webkit site-left-aligned hitchhiker-enabled guide-enabled guide-expanded flex-width-enabled" id="body">
       {% block script %}
@@ -78,7 +78,7 @@
                   <span class="yt-thumb-square">
                   <span class="yt-thumb-clip">
                   <span class="yt-thumb-clip-inner">
-                  <img src="https://lh5.googleusercontent.com/-e0WuOa4KHkk/AAAAAAAAAAI/AAAAAAAAAAA/eX3TFoHubzg/s88-c-k/photo.jpg" alt="Thumbnail" width="27">
+                  <img src="{{ profile_image(userdata.name) }}" alt="Thumbnail" width="27">
                   <span class="vertical-align"></span>
                   </span>
                   </span>
@@ -138,20 +138,20 @@
                         </li>
                         <li class="masthead-expanded-menu-item">
                            <a href="/account" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">
-                           YouTube settings
+                           PokTwo settings
                            </a>
                         </li>
                      </ul>
                   </div>
                   <div id="masthead-expanded-google-menu">
                      <span class="masthead-expanded-menu-header">
-                     Google account
+                     Chaziz account
                      </span>
                      <div id="masthead-expanded-menu-google-container">
                         <div id="masthead-expanded-menu-google-column1">
                            <ul>
                               <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/112528443844103410836">Page</a></li>
-                              <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/stream">Google+</a></li>
+                              <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/stream">Chaziz+</a></li>
                               <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/pages/settings/admin">Managers</a></li>
                               <li class="masthead-expanded-menu-item">
                                  <a href="https://plus.google.com/u/0/b/112528443844103410836/pages/settings/plus">
@@ -162,7 +162,7 @@
                         </div>
                         <div id="masthead-expanded-menu-google-column2">
                            <div id="masthead-expanded-menu-account-container">
-                              <img id="masthead-expanded-menu-gaia-photo" alt="" data-src="https://lh5.googleusercontent.com/-e0WuOa4KHkk/AAAAAAAAAAI/AAAAAAAAAAA/eX3TFoHubzg/s88-c-k/photo.jpg" width="28">
+                              <img id="masthead-expanded-menu-gaia-photo" alt="" data-src="{{ profile_image(userdata.name) }}" width="28">
                               <div id="masthead-expanded-menu-account-info" class="email-only">
                                  <p>{{ userdata.name }}</p>
                                  <p id="masthead-expanded-menu-email">{{ userdata.email }}</p>
@@ -354,7 +354,7 @@
                                                 <span class="yt-thumb-square">
                                                 <span class="yt-thumb-clip">
                                                 <span class="yt-thumb-clip-inner">
-                                                <img data-group-key="guide-channel-thumbs" data-thumb-manual="1" alt="Thumbnail" src="//i1.ytimg.com/i/ZC45sBWNdkqSQ9Bwtt5lfA/1.jpg" width="18">
+                                                <img data-group-key="guide-channel-thumbs" data-thumb-manual="1" alt="Thumbnail" src="{{ profile_image(user.name) }}" width="18">
                                                 <span class="vertical-align"></span>
                                                 </span>
                                                 </span>
@@ -468,7 +468,7 @@
                                           <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
                                           <span class="yt-thumb-square">
                                           <span class="yt-thumb-clip">
-                                          <img src="/yts/img/pfp48.png" alt="Thumbnail" width="18">
+                                          <img src="{{ profile_image(user.name) }}" alt="Thumbnail" width="18">
                                           <span class="vertical-align"></span>
                                           </span>
                                           </span>
@@ -516,14 +516,28 @@
                   </div>
                </div>
                {% endif %}
-<div id="player" class="{% if pageName == "watch" %}watch-small{% else %}off-screen{% endif %}">
+<div id="player" class="{% if pageName == "watch" %}watch-small{% elseif pageName == "watchError" %}off-screen-trigger{% else %}off-screen{% endif %}">
   <div id="playlist" class="playlist">
     
   </div>
-
-  <div id="player-unavailable" class="  hid  ">
-    
+{% if pageName == "watchError" %}
+<div id="player-unavailable" class="    player-width player-height    player-unavailable ">
+            <img class="icon meh" src="/yts/img/meh7.png" alt="">
+  <div class="content">
+    <h1 id="unavailable-message" class="message">
+            {{ err_message }}
+    </h1>
+    <div class="submessage">
+Sorry about that.
+    </div>
   </div>
+
+
+  </div>
+{% else %}
+  <div id="player-unavailable" class="  hid  ">
+  </div>
+{% endif %}
 
     <div id="player-api" class="player-width player-height off-screen-target watch-content player-api" style="overflow: hidden;">
 {% if pageName == "watch" %}

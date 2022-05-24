@@ -8,7 +8,7 @@ $ip = getUserIpAddr();
 
 $videoData = Videos::getVideoData($userfields, $id);
 
-if (!$videoData) error('404', "The video you were looking for cannot be found.");
+if (!$videoData) playerError("This video does not exist.");
 
 /* $fmt_stream_map = [
 	[

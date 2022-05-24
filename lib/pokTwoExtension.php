@@ -18,6 +18,7 @@ class PokTwoExtension extends AbstractExtension
             new TwigFunction('custom_info', '\PokTwo\customInfo', ['is_safe' => ['html']]),
             new TwigFunction('git_commit', '\PokTwo\gitCommit'),
             new TwigFunction('operating_system', '\PokTwo\getOS'),
+			new TwigFunction('profile_image', '\PokTwo\profileImage', ['is_safe' => ['html']]),
             new TwigFunction('profiler_stats', function () use ($profiler) {
                 $profiler->getStats();
             })

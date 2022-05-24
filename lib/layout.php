@@ -60,17 +60,38 @@ function comments($cmnts, $type, $id): string
     return $twig->render('comment.twig', ['cmnts' => $cmnts, 'type' => $type, 'id' => $id]);
 }
 
+function profileImage($username) {
+	$file_exists = file_exists('pfps/'.$username.'.png');
+	$twig = twigloader('components');
+	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists]);
+}
+
 function pagination($levels, $lpp, $url, $current): string
 {
     $twig = twigloader('components');
     return $twig->render('pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
 }
 
+// generic error
 function error($title, $message)
 {
     $twig = twigloader();
 
     echo $twig->render('_error.twig', ['err_title' => $title, 'err_message' => $message]);
+    die();
+}
+
+// error for watch
+function playerError($message)
+{
+	global $pageName, $jsPageName, $cssGarbage;
+	$pageName = "watchError";
+	$jsPageName = "watch";
+	$cssGarbage = "watch clearfix";
+	
+    $twig = twigloader();
+
+    echo $twig->render('_error_player.twig', ['err_message' => $message]);
     die();
 }
 
