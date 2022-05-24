@@ -1,0 +1,182 @@
+#watch-headline-title-form .yt-uix-form-input-container {
+	width: 450px;
+	display: block;
+	float: left
+}
+
+#watch-headline-title-form .yt-uix-form-input-text {
+	width: 100%
+}
+
+#watch-headline-title-form .form-buttons {
+	float: right
+}
+
+#watch-headline-title {
+	overflow: hidden;
+	white-space: nowrap;
+	word-wrap: normal;
+	*zoom: 1;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis
+}
+
+#watch-headline-title .watch-title {
+	padding: 4px
+}
+
+#watch-privacy-icon {
+	margin-right: 0
+}
+
+.watch-editable:hover {
+	background-color: #f6f6f6;
+	cursor: pointer
+}
+
+#watch-privacy-icon:hover {
+	cursor: pointer
+}
+
+.watch-pencil-icon {
+	display: none;
+	margin: 0 5px
+}
+
+.watch-title .watch-pencil-icon {
+	height: 21px;
+	width: 27px;
+	vertical-align: top;
+	padding: 0
+}
+
+#action-panel-details .watch-pencil-icon {
+	position: absolute;
+	top: 20px;
+	right: 15px
+}
+
+.watch-editable:hover .watch-pencil-icon {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1
+}
+
+.watch-pencil-icon .yt-uix-button-icon-pencil {
+	background: no-repeat url(//s.ytimg.com/yts/imgbin/www-watchedit-vflxUZcSA.png) 0 -140px;
+	background-size: auto;
+	width: 13px;
+	height: 12px
+}
+
+#watch-video-info-form {
+	margin-bottom: 30px
+}
+
+#watch7-creator-bar {
+	width: 600px;
+	height: 38px;
+	padding: 10px 20px 0;
+	background: #535353;
+	display: table
+}
+
+.watch-medium #watch7-creator-bar {
+	width: 814px
+}
+
+.sidebar-collapsed .watch-medium #watch7-creator-bar {
+	width: 778px
+}
+
+.watch-large #watch7-creator-bar {
+	width: 1240px
+}
+
+#watch7-creator-bar #watch7-creator-bar-nav-buttons {
+	float: right
+}
+
+#watch7-creator-bar .creator-bar-item {
+	float: left;
+	margin-left: 8px;
+	padding-bottom: 10px;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1
+}
+
+#watch7-creator-bar .creator-bar-item:first-child {
+	margin-left: 0
+}
+
+.creator-bar-item .yt-uix-button-icon-info {
+	background: no-repeat url(//s.ytimg.com/yts/imgbin/www-watchedit-vflxUZcSA.png) 0 -112px;
+	background-size: auto;
+	width: 24px;
+	height: 24px
+}
+
+.creator-bar-item .yt-uix-button-icon-enhance {
+	background: no-repeat url(//s.ytimg.com/yts/imgbin/www-watchedit-vflxUZcSA.png) 0 -84px;
+	background-size: auto;
+	width: 24px;
+	height: 24px
+}
+
+.creator-bar-item .yt-uix-button-icon-audio {
+	background: no-repeat url(//s.ytimg.com/yts/imgbin/www-watchedit-vflxUZcSA.png) 0 0;
+	background-size: auto;
+	width: 24px;
+	height: 24px
+}
+
+.creator-bar-item .yt-uix-button-icon-captions {
+	background: no-repeat url(//s.ytimg.com/yts/imgbin/www-watchedit-vflxUZcSA.png) 0 -56px;
+	background-size: auto;
+	width: 24px;
+	height: 24px
+}
+
+.creator-bar-item .yt-uix-button-icon-annotations {
+	background: no-repeat url(//s.ytimg.com/yts/imgbin/www-watchedit-vflxUZcSA.png) 0 -28px;
+	background-size: auto;
+	width: 24px;
+	height: 24px
+}
+
+.creator-bar-item .yt-uix-button-text-dark {
+	border: 1px solid transparent
+}
+
+.yt-uix-button-panel:hover .creator-bar-item .yt-uix-button-text-dark {
+	border-color: #222;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+	background-image: -moz-linear-gradient(top, #333 0, #2b2b2b 100%);
+	background-image: -ms-linear-gradient(top, #333 0, #2b2b2b 100%);
+	background-image: -o-linear-gradient(top, #333 0, #2b2b2b 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333), color-stop(100%, #2b2b2b));
+	background-image: -webkit-linear-gradient(top, #333 0, #2b2b2b 100%);
+	background-image: linear-gradient(to bottom, #333 0, #2b2b2b 100%);
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ff333333, EndColorStr=#ff2b2b2b)
+}
+
+.yt-uix-button-panel .creator-bar-item .yt-uix-button-text-dark:hover {
+	border-color: #000;
+	background-image: -moz-linear-gradient(top, #2b2b2b 0, #272727 100%);
+	background-image: -ms-linear-gradient(top, #2b2b2b 0, #272727 100%);
+	background-image: -o-linear-gradient(top, #2b2b2b 0, #272727 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2b2b2b), color-stop(100%, #272727));
+	background-image: -webkit-linear-gradient(top, #2b2b2b 0, #272727 100%);
+	background-image: linear-gradient(to bottom, #2b2b2b 0, #272727 100%);
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ff2b2b2b, EndColorStr=#ff272727)
+}
+
+.yt-uix-button-panel .creator-bar-item .yt-uix-button-text-dark:active {
+	border-color: #000;
+	background-color: #222;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.75);
+	-ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.75);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.75)
+}

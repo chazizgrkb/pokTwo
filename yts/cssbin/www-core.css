@@ -10904,6 +10904,10 @@ body.yt-dialog-active {
 	transition: margin-top .3s ease-in-out, padding-top .3s ease-in-out
 }
 
+.watch-edit #watch7-sidebar {
+    margin-top: -438px;
+}
+
 .site-center-aligned .watch-sidebar-gutter {
 	padding-left: 10px;
 	padding-right: 10px

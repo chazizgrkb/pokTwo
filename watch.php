@@ -63,8 +63,15 @@ if ($log) {
     } else {
         $isFavorited = false;
     }
+	// this is a bit retarded.
+	if ($sql->result("SELECT video_id from videos WHERE video_id = ? AND author = ?", [$videoData['video_id'], $userdata['id']])) {
+        $isVideoOwnedByCurrentUser = true;
+    } else {
+        $isVideoOwnedByCurrentUser = false;
+    }
 } else {
     $isFavorited = false;
+	$isVideoOwnedByCurrentUser = false;
 }
 
 if (isset($_COOKIE['useFlashPlayer'])) {
@@ -95,5 +102,5 @@ echo $twig->render('watch.twig', [
 /* 	'url_encoded_fmt_stream_map' => $url_encoded_fmt_stream_map,
 	'adaptive_fmts' => $adaptive_fmts, */
     'recommendedNumber' => Videos::countRecommended($videoData['video_id']),
-	'relatedTags' => VideoTags::getListOfTags("RAND()", 50),
+	'videoOwnershipFuckery' => $isVideoOwnedByCurrentUser,
 ]);

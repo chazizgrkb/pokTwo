@@ -41,6 +41,8 @@
       </script>	  
       <link id="css-344564990" class="www-core" rel="stylesheet" href="/yts/cssbin/www-core.css" data-loaded="true">
       <link id="css-3663405153" class="www-home-c4" rel="stylesheet" href="/yts/cssbin/www-home-c4.css" data-loaded="true">
+	  {# what the fuck #}
+	  {% block loadCSS %}{% endblock %}
       <script>if (window.ytcsi) {window.ytcsi.tick("ce", null, '');}</script>  
       <script>
          try {var ytbuffer = {};ytbuffer.bufferedClick;ytbuffer.handleClick = function(e) {var element = e.target || e.srcElement;while (element.parentElement) {if (element.className.match(/^yt-can-buffer$|^yt-can-buffer | yt-can-buffer$| yt-can-buffer /)) {ytbuffer.bufferedClick = e;element.className += ' yt-is-buffered';break;}element = element.parentElement;}};if (document.addEventListener) {document.addEventListener('click', ytbuffer.handleClick);} else {document.attachEvent('onclick', ytbuffer.handleClick);}} catch(e) {}  
@@ -60,7 +62,7 @@
       <script>if (window.ytcsi) {window.ytcsi.tick("cl", null, '');}</script>
       <!-- <link id="css-849266402" class="www-player" rel="stylesheet" href="/yts/cssbin/www-player.css" data-loaded="true"> -->
    </head>
-   <body dir="ltr" class="ltr webkit site-left-aligned hitchhiker-enabled guide-enabled guide-expanded flex-width-enabled" id="body">
+   <body dir="ltr" class="ltr webkit site-left-aligned hitchhiker-enabled guide-enabled {% if guideCollapsed %}guide-collapsed{% else %}guide-expanded{% endif %} flex-width-enabled" id="body">
       {% block script %}
       {% endblock %}
       <div id="body-container">
@@ -499,7 +501,7 @@
                   </div>
                </div>
                {% endif %}
-<div id="player" class="{% if pageName == "watch" %}watch-small{% elseif pageName == "watchError" %}off-screen-trigger{% else %}off-screen{% endif %}">
+<div id="player" class="{% if pageName == "watch" %}{% elseif pageName == "watchError" %}off-screen-trigger{% else %}off-screen{% endif %}">
   <div id="playlist" class="playlist">
     
   </div>
@@ -522,7 +524,7 @@ Sorry about that.
   </div>
 {% endif %}
 
-    <div id="player-api" class="player-width player-height off-screen-target watch-content player-api" style="overflow: hidden;">
+    <div id="player-api" class="player-width player-height off-screen-target player-api" style="overflow: hidden;">
 {% if pageName == "watch" %}
 	<video width="100%" height="100%" controls>
   <source src="media/{{ video.video_id }}.mp4" type="video/mp4">
@@ -530,6 +532,35 @@ Sorry about that.
 </video>
 {% endif %}
 </div>
+
+{% if pageName == "watch" %}
+{% if videoOwnershipFuckery == true %}
+<div id="watch7-creator-bar" class="clearfix yt-uix-button-panel">
+<ul id="watch7-creator-bar-nav-buttons">  <li class="creator-bar-item ">
+    <a href="https://www.youtube.com/analytics#fi=v-9jbQWY-O_Ho" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-dark" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><span class="yt-uix-button-content">Analytics
+</span></a>
+  </li>
+  <li class="creator-bar-item ">
+    <a href="http://www.youtube.com/my_videos" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-dark" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><span class="yt-uix-button-content">Video Manager</span></a>
+  </li>
+</ul><ul id="watch7-creator-bar-edit-buttons">  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Info and Settings">
+    <a href="http://www.youtube.com/edit?video_id=9jbQWY-O_Ho&amp;video_referrer=watch&amp;ns=1" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-info" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Enhancements">
+    <a href="http://www.youtube.com/enhance?v=9jbQWY-O_Ho&amp;video_referrer=watch" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-enhance" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Audio">
+    <a href="http://www.youtube.com/audio?v=9jbQWY-O_Ho&amp;video_referrer=watch" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-audio" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Annotations" data-tooltip-text="Annotations">
+    <a href="http://www.youtube.com/my_videos_annotate?v=9jbQWY-O_Ho&amp;video_referrer=watch" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-annotations" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Captions" data-tooltip-text="Captions">
+    <a href="http://www.youtube.com/my_videos_timedtext?video_referrer=watch&amp;video_id=9jbQWY-O_Ho" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-captions" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+</ul>  </div>
+{% endif %}
+{% endif %}
 
 
 <script>
