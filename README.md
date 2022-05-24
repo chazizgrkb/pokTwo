@@ -1,6 +1,6 @@
 # pokTwo
 
-Another sequel to PokTube. We plan on being accurate to the original YouTube website from near the end of 2013, by using HTML dumps accidentally uploaded to GitHub and archives from the Internet Archive.
+Another sequel to PokTube. We plan on being accurate to the original YouTube website, by using archives from the Internet Archive.
 
 This is based on the internals of squareBracket, with a few bits of code originating from SuxCox.
 
@@ -12,9 +12,9 @@ This is based on the internals of squareBracket, with a few bits of code origina
 
 ### Production specific
 1. Instead of installing dependencies using `composer update` you do `composer update --no-dev`
-1. Make the `media/`, `templates/cache/`, `thumb/` and `pfps/` directories writable by your web server.
+1. Make the `media/`, `templates/cache/` and `thumb/` directories writable by your web server.
 
 ### Development specific
 1. Disable Twig's template caching by setting `$tplNoCache` to true.
 1. Enable debugging features by setting `$isDebug` to true.
-1. If you want to be able to upload videos during development, make the `videos/` and `assets/thumb/` directory writable by your web server.
+1. If you want to be able to upload videos during development, make the `media/` and `thumb/` directory writable by your web server.
