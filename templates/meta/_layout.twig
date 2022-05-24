@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <title>
+      {% block title %}{% endblock %} - PokTwo
+    </title>
+    <meta content="" name="description">
+    <meta content="PokTwo" name="author">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700&amp;lang=en" rel="stylesheet" title="Open Sans Stylesheet">
+    <link href="/pt/css/www-about.css" rel="stylesheet" title="">
+  </head>
+  <body class="ltr" dir="ltr">
+    <div id="page">
+      <div id="masthead-container">
+        <div id="masthead">
+          <div id="masthead-root">
+            <a href="/" id="masthead-logo" title="PokTwo home"><img alt="PokTwo home" src="/pt/img/logo_hh.png"></a>
+            <form action="//pok.byteemail.com/results" autocomplete="on" class="search-form" id="masthead-search" method="get" name="masthead-search">
+              <button aria-pressed="false" class="search-button yt-uix-button yt-uix-button-default" dir="ltr" id="search-btn" role="button" tabindex="2" type="submit"><span class="yt-uix-button-content">Search</span></button> <label id="masthead-search-term"><input class="search-term" name="search_query" tabindex="1" title="Search" type="text" value=""></label>
+            </form>
+            <div id="masthead-utility">
+              <a class="yt-uix-button yt-uix-button-default" href="//pok.byteemail.com/my_videos_upload"><span class="yt-uix-button-content">Upload</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="yt-microsite">
+        <div class="" id="yt-main-nav-container">
+          <nav id="yt-main-nav">
+            <nav id="yt-microsite-nav">
+              <a {% if pageName == "about" %}class="active"{% endif %} href="/pt/about.php">About</a>
+<!-- 			  <a href="/pt/press">Press</a>
+			  <a href="/pt/copyright">Copyright</a>
+			  <a href="/pt/policyandsafety">Safety</a>
+			  <a href="/pt/creators">Creators</a>
+			  <a href="/pt/advertise">Advertise</a>
+			  <a href="/pt/dev">Developers</a> -->
+			  <a {% if pageName == "help" %}class="active"{% endif %} href="/pt/help">Help</a>
+			  <a {% if pageName == "contact" %}class="active"{% endif %} href="/pt/contact">Contact</a>
+			  <a {% if pageName == "newShit" %}class="active"{% endif %} href="/pt/whats_new">What's new?</a>
+            </nav>
+          </nav>
+        </div>
+        <div id="yt-microsite-features">
+          <div class="yt-microsite-features">
+			<div class="yt-microsite-features">
+			  <h1>
+				{{ block('title') }}
+			  </h1>
+			  <div class="yt-horizontal-rule">
+				<span class="first"></span> <span class="second"></span> <span class="third"></span>
+			  </div>
+			</div>
+			{% block content %}{% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-container">
+      <div id="footer-main">
+        <span id="footer-logo"><a href="/"><img alt="YouTube home" src="/pt/img/logo_hh.png"></a></span>
+      </div>
+      <div id="footer-secondary">
+        <ul class="footer-primary-info">
+          <li>
+            <a href="/pt/about.php/">About</a>
+          </li>
+          <li>
+            <a href="/pt/press/">Press</a>
+          </li>
+          <li>
+            <a href="/pt/copyright/">Copyright</a>
+          </li>
+          <li>
+            <a href="/pt/creators/">Creators</a>
+          </li>
+          <li>
+            <a href="/pt/advertise/">Advertise</a>
+          </li>
+          <li>
+            <a href="/pt/dev/">Developers</a>
+          </li>
+          <li>
+            <a href="/pt/help">Help</a>
+          </li>
+        </ul>
+        <ul class="footer-secondary-info">
+          <li>
+            <a href="/t/terms">Terms</a>
+          </li>
+          <li>
+            <a href="/pt/policyandsafety/">Policy and Safety</a>
+          </li>
+          <li>
+            <a href="//www.google.com/policies/privacy/">Privacy</a>
+          </li>
+          <li>
+            <a href="/testtube">Try something new!</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</body></html>

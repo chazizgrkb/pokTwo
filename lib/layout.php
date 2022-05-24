@@ -85,10 +85,11 @@ function error($title, $message)
 // error for watch
 function playerError($message)
 {
-	global $pageName, $jsPageName, $cssGarbage;
+	global $pageName, $jsPageName, $cssGarbage, $guideCollapsed;
 	$pageName = "watchError";
 	$jsPageName = "watch";
 	$cssGarbage = "watch clearfix";
+	$guideCollapsed = true; // https://web.archive.org/web/20131113075554/youtube.com/watch?v=1
 	
     $twig = twigloader();
 

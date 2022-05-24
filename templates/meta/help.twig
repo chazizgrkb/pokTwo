@@ -1,10 +1,8 @@
-{% extends "_layout.twig" %}
+{% extends "meta/_layout.twig" %}
 
 {% block title %}Help{% endblock %}
 
 	{% block content %}
-        <div class="tableSubTitle">Help</div>
-
         <span class="highlight">Q: What kind of videos can I upload?</span>
 
         <br>
@@ -37,45 +35,6 @@
             href="https://web.archive.org/web/20050715234755/http://www.apple.com/ilife/imovie/" target="_blank">Apple
         iMovie</a>. Using these programs you can easily edit
         your videos, add soundtracks, etc.
-
-        <br><br><span class="highlight">Q: How do I link to my pokTwo videos from my homepage?</span>
-
-        <br><br>A: Any video you upload to pokTwo is still
-        <b>your</b> video. We want to enable pokTwo users to link to their videos in every way possible. By placing a small snippet of HTML code in your webpage, you can pull up a list of all your pokTwo videos in a neat, little window. Take a look at the example below, on the left is the HTML snippet you would copy+paste into your webpage. As a result, a small box with your videos will be rendered as shown on the right.
-        <br>
-        <br>
-
-        <table width="100%">
-            <tbody>
-            <tr>
-                <td valign="top" align="center">
-                    <span class="highlight">HTML Snippet (iframe version)</span>
-                    <br>
-                    <br>
-                    <textarea cols="65" rows="8" id="snippet_iframe" wrap="soft">&lt;iframe id="videos_list" name="videos_list" src="http://placeholder.link/videos_list.php?user=YOUR_USERNAME" scrolling="auto" width="265" height="400" frameborder="0" marginheight="0" marginwidth="0"&gt;
-&lt;/iframe&gt;</textarea>
-                    <br>
-                    <!--
-                    <br/>
-                    <span class="highlight">HTML Snippet (embed version)</span>
-                    <br/>
-                    <br/>
-                    <textarea cols="65" rows="8" id="snippet_embed" wrap="soft"><embed src="videos_list.php?user=grkb" scrolling="auto" width="265" height="400" frameborder="0" marginheight="0" marginwidth="0"></textarea>
-                    <br/>
-                    -->
-                </td>
-                <td valign="top" align="center">
-                    <span class="highlight">What Shows Up</span>
-                    <br>
-                    <br>
-                    <iframe id="videos_list" name="videos_list" src="videos_list.php?user=grkb" scrolling="auto"
-                            width="265" height="400" frameborder="0" marginheight="0" marginwidth="0">
-                    </iframe>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
 
         <br><br><br><span class="highlight">Contact pokTwo</span>
         <br><br>If you have any account or video issues, please contact us <a href="contact.php">here</a>.

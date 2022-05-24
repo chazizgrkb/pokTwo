@@ -1,11 +1,11 @@
 <?php
-
-namespace pokTwo;
+namespace pokTwo\Meta;
 require('lib/common.php');
 
+$pageName = "newShit";
 $newsdata = $sql->query("SELECT * FROM news ORDER BY id DESC");
 
-$twig = twigloader();
-echo $twig->render('whats_new.twig', [
+$twig = _twigloader();
+echo $twig->render('meta/whats_new.twig', [
     'news' => $newsdata,
 ]);
