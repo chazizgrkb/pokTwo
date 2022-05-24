@@ -51,6 +51,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('jsPageName', $jsPageName);
 	$twig->addGlobal('cssGarbage', $cssGarbage);
 	$twig->addGlobal('guideCollapsed', $guideCollapsed);
+	$twig->addGlobal('token', Users::getCurrentToken());
 
     return $twig;
 }

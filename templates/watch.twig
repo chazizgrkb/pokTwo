@@ -1,136 +1,4 @@
 {% extends "_layout.twig" %}
-{% block playerSetings %}
-<script>
-var ytplayer = ytplayer || {};
-ytplayer.config = {
-    "assets": {
-        "js": "\/yts\/jsbin\/html5player.js",
-        "css": "\/yts\/cssbin\/www-player.css",
-        "html": "\/html5_player_template"
-    },
-    "min_version": "8.0.0",
-    "html5": false,
-    "sts": 16057,
-    "url_v9as2": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
-    "url_v8": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
-    "attrs": {
-        "id": "movie_player"
-    },
-    "params": {
-        "allowscriptaccess": "always",
-        "allowfullscreen": "true",
-        "bgcolor": "#000000"
-    },
-    "args": {
-        "ucid": "UC0v-tlzsn0QZwJnkiaUSJVQ",
-        "ad_preroll": "1",
-        "adsense_video_doc_id": "yt_JgZHEfDkUkk",
-        "cos": "X11",
-        "max_dynamic_allocation_ad_tag_length": 2040,
-        "loeid": "938627,914072,916625",
-        "account_playback_token": "OI1zGgmHgnAgicFVT_23TImG7iN8MTM4ODQzMzkxOUAxMzg4MzQ3NTE5",
-        "showpopout": 1,
-        "show_pyv_in_related": true,
-        "cafe_experiment_id": "",
-        "cid": 563326,
-        "ad_host": "ca-host-pub-0161219093041726",
-        "idpj": "0",
-        "aid": "P8MtocA8rLA",
-        "cc_asr": 1,
-        "instream": true,
-        "video_id": "{{ video.video_id }}",
-        "invideo": true,
-        "ytfocEnabled": "1",
-        "enablecsi": "1",
-        "title": "{{ video.title }}",
-        "ldpj": "-38",
-        "iv3_module": "1",
-        "afv_ad_tag": "http:\/\/googleads.g.doubleclick.net\/pagead\/ads?ht_id=5012008\u0026url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026video_cpm=6000000\u0026ad_type=video\u0026loeid=938627%2C914072%2C916625\u0026description_url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026max_ad_duration=15000\u0026channel=afv_instream%2BVertical_3%2BVertical_36%2BVertical_182%2BVertical_211%2BVertical_613%2Bafv_instream_us%2Bafv_user_thefinebros%2Bafv_user_id_0v-tlzsn0QZwJnkiaUSJVQ%2Byt_mpvid_AATusdjArkr0Na3s%2Byt_cid_563326%2Bytdevice_1%2Bytps_default%2Bytel_detailpage\u0026ytdevice=1\u0026client=ca-pub-6219811747049371\u0026host=ca-host-pub-0161219093041726\u0026hl=en\u0026yt_pt=APb3F2-UzROhTG2DrogSjnsEmBefBe1fuul3896zfZAoOhRcIuLroRNca3Y8dY2PyOv-CRBajvy3F-XEi3qhzRFk8NuvzAgd9Na36osfzgZe46OQ9XqtPJlS406l8BQ839Ai7EpOBNDzgbDhDA70",
-        "vq": "auto",
-        "c": "WEB",
-        "iv_load_policy": 1,
-        "pyv_in_related_cafe_experiment_id": "",
-        "enablejsapi": 1,
-        "iv_invideo_url": "http:\/\/www.youtube.com\/annotations_invideo?features=1\u0026legacy=1\u0026plid=AATusdjAPZogtcft\u0026video_id=JgZHEfDkUkk",
-        "fmt_list": "22\/1280x720\/9\/0\/115,43\/640x360\/99\/0\/0,18\/640x360\/9\/0\/115,5\/320x240\/7\/0\/0,36\/320x240\/99\/1\/0,17\/176x144\/99\/1\/0",
-        "afv_video_min_cpm": 6000000,
-        "ad_video_pub_id": "ca-pub-6219811747049371",
-        "csi_page_type": "watch,watch7ad",
-        "vid": "JgZHEfDkUkk",
-        "ad3_module": "1",
-        "cbr": "Firefox",
-        "shortform": true,
-        "allow_embed": 1,
-        "ttsurl": "http:\/\/www.youtube.com\/api\/timedtext?asr_langs=de%2Cit%2Cko%2Cru%2Cen%2Cfr%2Cnl%2Cpt%2Cja%2Ces\u0026caps=asr\u0026sparams=asr_langs%2Ccaps%2Cv%2Cexpire\u0026v=JgZHEfDkUkk\u0026expire=1388372719\u0026hl=en_US\u0026signature=9CC35C197E7787C611B1D1821F0A980F3D189771.8B6B652BD8D7CB990A0532E2CC64B9E7BFE9CB59\u0026key=yttt1",
-        "dclk": true,
-        "cc_module": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/subtitle_module.swf",
-        "pltype": "content",
-        "content_owner_name": "FullScreen",
-        "trueview": true,
-        "eventid": "f4DAUq3_OImVkgLEuICgAw",
-        "timestamp": 1388347519,
-        "afv": true,
-        "url_encoded_fmt_stream_map": "{{url_encoded_fmt_stream_map}}",
-		"afv_invideo_ad_tag": "http:\/\/googleads.g.doubleclick.net\/pagead\/ads?ht_id=5012008\u0026url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026ad_type=text_image_flash\u0026loeid=938627%2C914072%2C916625\u0026description_url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026max_ad_duration=15000\u0026channel=invideo_overlay_480x70_cat24%2Bafv_overlay%2BVertical_3%2BVertical_36%2BVertical_182%2BVertical_211%2BVertical_613%2Bafv_user_thefinebros%2Bafv_user_id_0v-tlzsn0QZwJnkiaUSJVQ%2Byt_mpvid_AATusdjArkr0Na3s%2Byt_cid_563326%2Bytdevice_1%2Bytps_default%2Bytel_detailpage\u0026ytdevice=1\u0026client=ca-pub-6219811747049371\u0026host=ca-host-pub-0161219093041726\u0026hl=en",
-        "loaderUrl": "http:\/\/www.youtube.com\/watch?v=JgZHEfDkUkk\u0026gl=US\u0026hl=en",
-        "ad_channel_code_instream": "afv_instream,Vertical_3,Vertical_36,Vertical_182,Vertical_211,Vertical_613,afv_instream_us,afv_user_thefinebros,afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ,yt_mpvid_AATusdjArkr0Na3s,yt_cid_563326,ytdevice_1,ytps_default,ytel_detailpage",
-        "ad_eurl": "http:\/\/www.youtube.com\/video\/JgZHEfDkUkk",
-        "dynamic_allocation_ad_tag": "http:\/\/ad.doubleclick.net\/N4061\/pfadx\/com.ytpwatch.entertainment\/main_563326;sz=WIDTHxHEIGHT;kvid=JgZHEfDkUkk;kpu=TheFineBros;kpeid=0v-tlzsn0QZwJnkiaUSJVQ;kpid=563326;mpvid=AATusdjArkr0Na3s;afv=1;afvbase=eJxdkV1vmzAUhn9NuKPyR2LgggvIx7ZoS5qkrdrcWA4YcGMwNTZJ-PVz2SalsywdP-8557V1XBkq8ngGIAIg9KyWcWVMO8HJBK3cvlwuDzdljT3xh0zVTulFzpWL6_L4fVkszs_nszdqNGvrmIBxeSyn5tbyeMx4UnF3SYRDgoIJmkdwCgI0HghBM8_Q9tbH_JpJm3OvZlfq2nOrmRGqiSGZOcOsYk3DZfxLNPO2nobgGoAn3hk4QSkreiqazmjO3AvTF66NyJik-AuQe4IhukcE4T0SiP-zpbb7q9iOa2oqXoiGn7T6Ioucgt43cugasDte1s1ZsOfD-mXnim6G1q0bB02SJ9vl74k-a7BhuPuTy1xmRjBGZOSc9yLjFI7QdjTnBbPSjMilQ8OEbFnJvX-1MfQq1Zk4Y_5n9Ft78gEkEMEIRBhMYYCI9_kNXmNrN-DONWRKay6ZUTqGOAzxNJjBKAqck4x546xpa-Lk8YRXyH8e9tvq6RtaaFUe3ptuWae8SDksrJU4jMhQHBO1rfbZD_tTq_0mY_gtzN_Q423b-_N9yt77G175r0uBP6phvzqHG9sPSZlHbghEdcVQHvmUbHfR64d5XMvDFBAZprsQR4kIlu023SyG8rSoFkkAfgPeKudB;dc_backfill=1;dc_yt=1;dt_yt=1;k5=3_36_182_211_613;kclg=1;kclt=1;kga=-1;kgg=-1;klg=en;kmsrd=1;ko=p;kr=H;kvz=203;longads=1;nlfb=1;yt_vrallowed=1;ytcat=24;ytdevice=1;ytexp=938627,914072,916625;!c=563326;k2=3;k2=36;k2=182;k2=211;k2=613;kvlg=en;",
-        "cr": "US",
-        "keywords": "YouTube Rewind: What Does 2013 Say?,YouTube Rewind 2013,YouTube Rewind,What Does 2013 Say?,thefinebros,finebros,fine bros,fine brothers,kids react,elders react,youtubers react,teens react,mymusic,my music,mymusicshow",
-        "oid": "Cy8DuulTcwc7ci4zPWrKiw",
-        "cc_font": "Arial Unicode MS, arial, verdana, _sans",
-        "cc3_module": "1",
-        "ad_device": 1,
-        "afv_instream_max": 15000,
-        "iv_module": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/iv_module.swf",
-        "gut_tag": "\/4061\/ytpwatch\/main_563326",
-        "rvs": "id=Ua4K5OyA7cQ\u0026author=TheFineBros\u0026view_count=2%2C617%2C235\u0026title=YouTubers+React+To+Short+Viral+Videos\u0026length_seconds=600,id=VfFU9u3XXww\u0026author=TheFineBros\u0026view_count=1%2C501%2C673\u0026title=Kids+React+To+XBOX+ONE+vs.+PlayStation+4%21\u0026length_seconds=540,id=i4i72gAmziw\u0026author=TheFineBros\u0026view_count=243%2C378\u0026title=YouTubers+React+to+1D+Deleted%3F%21%2C+2013+Recap%2C+and+more%21+%28Fine+Time+%2314%29\u0026length_seconds=459,id=6KXqYZnJGVE\u0026author=TheFineBros\u0026view_count=1%2C794%2C420\u0026title=Kids+React+To+going+to+the+store%21\u0026length_seconds=420,id=TM9-K95B5b4\u0026author=TheFineBros\u0026view_count=2%2C829%2C894\u0026title=YouTubers+React+To+DyE+Fantasy\u0026length_seconds=600,id=1gg1P090DDc\u0026author=TheFineBros\u0026view_count=1%2C705%2C991\u0026title=Elders+React+to+Brain+Surgery+Vlog+%28CTFxC%29\u0026length_seconds=705,id=era8q_hswns\u0026author=TheFineBros\u0026view_count=1%2C742%2C558\u0026title=TEENS+REACT+TO+CRYING+BABY\u0026length_seconds=465,id=RDlmJfLz1fg\u0026author=TheFineBros\u0026view_count=338%2C317\u0026title=2013%3A+Year+In+Review\u0026length_seconds=411,id=R2LsyxsueeY\u0026author=TheFineBros\u0026view_count=443%2C194\u0026title=YouTubers+React+To+Short+Viral+Videos+%28BONUS+%2326%29\u0026length_seconds=350,id=6NmGOQr-PYA\u0026author=TheFineBros\u0026view_count=2%2C384%2C819\u0026title=TEENS+REACT+TO+CAPTAINSPARKLEZ\u0026length_seconds=521,id=i0uuBoDcSC8\u0026author=TheFineBros\u0026view_count=1%2C389%2C816\u0026title=Elders+React+to+Hunger+Games%3A+Catching+Fire\u0026length_seconds=530,id=BJxRGvtSW74\u0026author=TheFineBros\u0026view_count=558%2C540\u0026title=SOMEONE+QUITS%21+%28MyMusic+Season+2+Episode+16%29\u0026length_seconds=636",
-        "watermark": ",http:\/\/s.ytimg.com\/yts\/img\/watermark\/youtube_watermark-vflHX6b6E.png,http:\/\/s.ytimg.com\/yts\/img\/watermark\/youtube_hd_watermark-vflAzLcD6.png",
-        "t": "vjVQa1PpcFOKPIkURH-7YnJSjOQv-PP-0F2TPIqxyKU=",
-        "allowed_ads": [0, 1, 2, 4, 8, 9, 10],
-        "ad_tag": "http:\/\/ad.doubleclick.net\/N4061\/pfadx\/com.ytpwatch.entertainment\/main_563326;sz=WIDTHxHEIGHT;kvid=JgZHEfDkUkk;kpu=TheFineBros;kpeid=0v-tlzsn0QZwJnkiaUSJVQ;kpid=563326;mpvid=AATusdjArkr0Na3s;afv=1;dc_yt=1;dt_yt=1;k5=3_36_182_211_613;kclg=1;kclt=1;kga=-1;kgg=-1;klg=en;kmsrd=1;ko=p;kr=H;kvz=203;longads=1;nlfb=1;yt_vrallowed=1;ytcat=24;ytdevice=1;ytexp=938627,914072,916625;!c=563326;k2=3;k2=36;k2=182;k2=211;k2=613;kvlg=en;",
-        "referrer": null,
-        "sendtmp": "1",
-        "show_content_thumbnail": true,
-        "mpu": true,
-        "ptchn": "0v-tlzsn0QZwJnkiaUSJVQ",
-        "pyv_ad_channels": "afv_user_thefinebros+afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ+yt_mpvid_AATusdjArkr0Na3s+yt_cid_563326+ytdevice_1",
-        "ad_slots": "0",
-        "ad_channel_code_overlay": "invideo_overlay_480x70_cat24,afv_overlay,Vertical_3,Vertical_36,Vertical_182,Vertical_211,Vertical_613,afv_user_thefinebros,afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ,yt_mpvid_AATusdjArkr0Na3s,yt_cid_563326,ytdevice_1,ytps_default,ytel_detailpage",
-        "as_launched_in_country": "1",
-        "plid": "AATusdjAPZogtcft",
-        "ptk": "FullScreen",
-        "midroll_freqcap": 270.0,
-        "ad_logging_flag": 1,
-        "hl": "en_US",
-        "tag_for_child_directed": false,
-        "no_get_video_log": "1",
-        "focEnabled": "1",
-        "host_language": "en",
-        "afv_ad_tag_restricted_to_instream": "http:\/\/googleads.g.doubleclick.net\/pagead\/ads?ht_id=5012008\u0026url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026video_cpm=6000000\u0026ad_type=video\u0026loeid=938627%2C914072%2C916625\u0026description_url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026max_ad_duration=15000\u0026channel=afv_instream%2BVertical_3%2BVertical_36%2BVertical_182%2BVertical_211%2BVertical_613%2Bafv_instream_us%2Bafv_user_thefinebros%2Bafv_user_id_0v-tlzsn0QZwJnkiaUSJVQ%2Byt_mpvid_AATusdjArkr0Na3s%2Byt_cid_563326%2Bytdevice_1%2Bytps_default%2Bytel_detailpage\u0026ytdevice=1\u0026client=ca-pub-6219811747049371\u0026host=ca-host-pub-0161219093041726\u0026hl=en",
-        "sffb": true,
-        "rmktPingThreshold": 0,
-        "aftv": true,
-        "yt_pt": "APb3F2-UzROhTG2DrogSjnsEmBefBe1fuul3896zfZAoOhRcIuLroRNca3Y8dY2PyOv-CRBajvy3F-XEi3qhzRFk8NuvzAgd9Na36osfzgZe46OQ9XqtPJlS406l8BQ839Ai7EpOBNDzgbDhDA70",
-        "length_seconds": 577,
-        "tmi": "1",
-        "dash": "0",
-        "uid": "0v-tlzsn0QZwJnkiaUSJVQ",
-        "ad_host_tier": "5012008",
-        "cbrver": "4.0b11",
-        "fexp": "938627,914072,916625,909717,932295,936912,936910,923305,936913,907231,907240,921090",
-        "ad_flags": 0,
-        "mpvid": "AATusdjArkr0Na3s",
-        "baseUrl": "http:\/\/googleads.g.doubleclick.net\/pagead\/viewthroughconversion\/962985656\/",
-        "tk": "1",
-		"cver": "html5",
-		"adaptive_fmts": "{{adaptive_fmts}}",
-    },
-    "url": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/watch_as3.swf"
-};
-</script>
-{% endblock %}
 {% block javascriptSettings %}
 <script>
     yt.setConfig({
@@ -142,9 +10,10 @@ ytplayer.config = {
       'IS_UNAVAILABLE_PAGE': false,
 
       'JS_PAGE_MODULES': {
-        "\/\/s.ytimg.com\/yts\/jsbin\/www-vfltBaFhL\/www_watch_mod.js": [
-            "\/\/s.ytimg.com\/yts\/jsbin\/www-vfltBaFhL\/www_watch_transcript_mod.js",
-            "\/\/s.ytimg.com\/yts\/jsbin\/www-vfltBaFhL\/www_watch_missilecommand_mod.js",
+        "\/yts\/jsbin\/www\/www_watch_mod.js": [
+            "\/yts\/jsbin\/www\/www_watch_transcript_mod.js",
+            "\/yts\/jsbin\/www\/www_watch_missilecommand_mod.js",
+			"\/yts\/jsbin\/www\/www_watch_edit_mod.js",
           ''         ]
       },
 
@@ -162,6 +31,7 @@ ytplayer.config = {
     yt.setAjaxToken('insight_ajax', "_6rBSOyJpU1RSXwwSyOb7Www01h8MTM4ODQzMzkyMEAxMzg4MzQ3NTIw");
     yt.setAjaxToken('guide_ajax', "aC-oI8kOCuLdvGmTCFXssV2LW6N8MTM4ODQzMzkyMEAxMzg4MzQ3NTIw");
     yt.setAjaxToken('promo_ajax_token', "uaIbCXYt4F5iNand8VnfbHIlcAt8MTM4ODQzMzkyMEAxMzg4MzQ3NTIw");
+	yt.setAjaxToken('comments_ajax', "gh4B658b9x6EJUHBlwHg9owUOmR8MTM2NzQxMzA4OUAxMzY3MzI2Njg5");
 
       yt.setConfig({
     'EMBED_HTML_TEMPLATE': "\u003ciframe width=\"__width__\" height=\"__height__\" src=\"__url__\" frameborder=\"0\" allowfullscreen\u003e\u003c\/iframe\u003e",
@@ -207,13 +77,12 @@ ytplayer.config = {
       'SHARE_ON_VIDEO_PAUSE': false,
       'SHARE_ON_VIDEO_END': true,
       'SHARE_ON_VIDEO_START': false,
-      'ADS_DATA': {"show_pyv": true, "afc_vars": {"ad_type": "image", "ad_client": "ca-pub-6219811747049371", "alternate_ad_url": "http:\/\/www.youtube.com\/ad_frame?id=watch-channel-brand-div", "language": "en", "format": "300x250_as", "ad_host_tier_id": "5012008", "ad_channel": "0854550287+afv_user_thefinebros+afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ+yt_mpvid_AATusdjArkr0Na3s+yt_cid_563326+ytdevice_1+Vertical_3+Vertical_36+Vertical_182+Vertical_211+Vertical_613+ytps_default+ytel_detailpage+afc_on_page", "video_doc_id": "yt_JgZHEfDkUkk", "ad_host": "ca-host-pub-0161219093041726", "ad_block": "2", "lact": -1}, "fetch_ads_in_page": false, "afv_vars": {"google_ad_host_tier_id": "5012008", "google_ad_channel": "0854550288+afv_user_thefinebros+afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ+yt_mpvid_AATusdjArkr0Na3s+yt_cid_563326+ytdevice_1+Vertical_3+Vertical_36+Vertical_182+Vertical_211+Vertical_613+ytps_default+ytel_detailpage", "google_ad_host": "ca-host-pub-0161219093041726", "google_lact": -1, "google_ad_format": "300x250_as", "google_ad_client": "ca-pub-6219811747049371", "google_language": "en", "google_ad_height": "250", "google_ad_type": "image", "google_loeid": "938627,914072,916625", "google_video_doc_id": "yt_JgZHEfDkUkk", "google_alternate_ad_url": "http:\/\/www.youtube.com\/ad_frame?id=watch-channel-brand-div", "google_ad_block": "2", "google_page_url": "http:\/\/www.youtube.com\/video\/JgZHEfDkUkk", "google_yt_pt": "APb3F2-UzROhTG2DrogSjnsEmBefBe1fuul3896zfZAoOhRcIuLroRNca3Y8dY2PyOv-CRBajvy3F-XEi3qhzRFk8NuvzAgd9Na36osfzgZe46OQ9XqtPJlS406l8BQ839Ai7EpOBNDzgbDhDA70"}, "use_gut": true, "check_status": false, "show_instream": true, "show_afv": true, "gut_vars": {"tag": "\/4061\/ytpwatch\/main_563326"}, "show_companion": true, "pyv_vars": {"iframe_json": "{\"google_ad_output\": \"js\", \"google_only_pyv_ads\": true, \"google_max_num_ads\": 1, \"google_language\": \"en\", \"google_loeid\": \"938627,914072,916625\", \"google_ad_host_tier_id\": \"5012008\", \"google_page_url\": \"http:\\\/\\\/www.youtube.com\\\/video\\\/JgZHEfDkUkk\", \"google_video_doc_id\": \"yt_JgZHEfDkUkk\", \"google_ad_host\": \"ca-host-pub-0161219093041726\", \"google_lact\": -1, \"google_ad_client\": \"ca-pub-6219811747049371\", \"google_ad_type\": \"text\", \"google_ad_block\": \"3\", \"google_yt_pt\": \"APb3F2-UzROhTG2DrogSjnsEmBefBe1fuul3896zfZAoOhRcIuLroRNca3Y8dY2PyOv-CRBajvy3F-XEi3qhzRFk8NuvzAgd9Na36osfzgZe46OQ9XqtPJlS406l8BQ839Ai7EpOBNDzgbDhDA70\", \"google_ad_channel\": \"PyvWatchInRelated+PyvYTWatch+PyvWatchNoAdX+pw+non_lpw+afv_user_thefinebros+afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ+yt_mpvid_AATusdjArkr0Na3s+yt_cid_563326+ytdevice_1\"}"}, "show_afc": false, "log_pyv": false},
       'PLAYBACK_ID': "AATusdjAPZogtcft",
       'IS_ACTIVE_LIVE_VIDEO': false,
       'IS_DISTILLER': true,
       'RADIO_ENTRYPOINT_RESUMES_CURRENTLY_PLAYING_VIDEO': false,
       'WATCH_STATS_RATING_BUTTONS': false,
-      'SHARE_CAPTION': "Uploaded by TheFineBros"
+      'SHARE_CAPTION': "Uploaded by {{ video.u_name }}"
     });
 
     yt.setMsg({
@@ -226,19 +95,74 @@ ytplayer.config = {
     'BLOCK_USER': "Are you sure you want to block this user?"
   });
   yt.setConfig('BLOCK_USER_AJAX_XSRF', 'session_token=Pn3PHa9zlKV-lIJkMmwjGE8m0-N8MTM4ODQzMzkyMEAxMzg4MzQ3NTIw');
+  
+
+  yt.setConfig({
+    'COMMENTS_CHANNEL_CREATE_URL': null,
+    'COMMENTS_SIGNIN_URL': null,
+    'COMMENTS_THRESHHOLD': -5,
+    'COMMENTS_PAGE_SIZE': 10,
+    'COMMENTS_COUNT': 0,
+    'COMMENTS_YPC_CAN_POST_OR_REACT_TO_COMMENT': true,
+    'COMMENT_SOURCE': "w",
+    'COMMENT_OPEN_REPLY_BOX' : false
+  });
+
+  yt.setAjaxToken('link_ajax', "wd0stygXjwRe2Sl2sohSbxce8RB8MTM2NzQxMzA4OUAxMzY3MzI2Njg5");
+  yt.setAjaxToken('comment_servlet', "SYKSm1aoXBWS_BqMHGmDe8kSn758MTM2NzQxMzA4OUAxMzY3MzI2Njg5");
+  yt.setAjaxToken('comment_voting', "ljpw39TIN_HqUvGh_ckPbwfNsAN8MTM2NzQxMzA4OUAxMzY3MzI2Njg5");
 
 
-    
 
+  yt.setMsg({
+    'CHARACTERS_REMAINING': {"case1": "1 character remaining", "case0": "No characters remaining", "other": "# characters remaining"},
+    'COMMENT_OK': "OK",
+    'COMMENT_BLOCKED': "You have been blocked by the owner of this video.",
+    'COMMENT_CAPTCHAFAIL': "The response to the letters on the image was not correct, please try again.",
+    'COMMENT_PENDING': "Comment Pending Approval!",
+    'COMMENT_ERROR_EMAIL': "Error, account unverified (see email)",
+    'COMMENT_ERROR': "Error, try again",
+    'COMMENT_FAILED_MAINTENANCE': "We're currently performing site maintenace, please try later.",
+    'COMMENT_OWNER_LINKING': "Comments can't contain links, please put the link in your video description and refer to it in the comment.",
+    'FAILED_HASLINK': "Oops! Remove any web addresses and try again.",
+    'FAILED_HASTAGS': "Oops! Remove the HTML tags and try again.",
+    'FAILED_ASCIIART': "Oops! Remove the character (ascii) art and try again.",
+    'FAILED_TOOSHORT': "Oops! Your comment is too short.",
+    'FAILED_TOOLONG': "Oops! Your comment is too long.",
+    'FAILED_BADPARENT': "Oops! You cannot respond to a deleted comment.",
+    'SECONDS_REMAINING': {"case1": "1 second remaining before you can post", "case0": "You can post again", "other": "# seconds remaining before you can post"}
+  });
+  
+        yt.setAjaxToken('video_acls_ajax', "WYvPlPKgJOKd-88eYlYeF8bQNn98MTM2NzQxMzA4OUAxMzY3MzI2Njg5");
 
+  video_acl_context = {
+    'aclJson': null,
+    'useChipsIFrame': true,
+    'gaiaId': "1083792852468",
+    'prevTimeUpdated': 0,
+    'isRestrictedUser': false,
+    'sessionIndex': 0,
+    'locale': "en_US",
 
+      'chipsUrl': "https:\/\/plus.google.com\/",
 
+      'addContacts': "Enter an email address or YouTube username"
+  };
 
+  yt.setConfig({
+    'VIDEO_ACL_CONTEXT': video_acl_context,
+    'USE_CHIPS_IFRAME': true,
+    'IS_RESTRICTED_USER': false
+  });
 
+  yt.setMsg({
+      'ADD_CONTACTS': "Enter an email address or YouTube username",
+    'INCAPABLE_SSL': "Changes to private video access will not be saved. Please upgrade your browse or visit this page in https."
+  });
 
-    
-
-
+    yt.setGoogMsg({
+    'Add more people': "Add more people"
+  });
 
       yt.setConfig({
     'GUIDED_HELP_LOCALE': "en_US",
@@ -992,4 +916,136 @@ Loading more suggestions...
   </div>
 
   </div>
+{% endblock %}
+{% block playerSetings %}
+<script>
+var ytplayer = ytplayer || {};
+ytplayer.config = {
+    "assets": {
+        "js": "\/yts\/jsbin\/html5player.js",
+        "css": "\/yts\/cssbin\/www-player.css",
+        "html": "\/html5_player_template"
+    },
+    "min_version": "8.0.0",
+    "html5": false,
+    "sts": 16057,
+    "url_v9as2": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
+    "url_v8": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
+    "attrs": {
+        "id": "movie_player"
+    },
+    "params": {
+        "allowscriptaccess": "always",
+        "allowfullscreen": "true",
+        "bgcolor": "#000000"
+    },
+    "args": {
+        "ucid": "UC0v-tlzsn0QZwJnkiaUSJVQ",
+        "ad_preroll": "1",
+        "adsense_video_doc_id": "yt_JgZHEfDkUkk",
+        "cos": "X11",
+        "max_dynamic_allocation_ad_tag_length": 2040,
+        "loeid": "938627,914072,916625",
+        "account_playback_token": "OI1zGgmHgnAgicFVT_23TImG7iN8MTM4ODQzMzkxOUAxMzg4MzQ3NTE5",
+        "showpopout": 1,
+        "show_pyv_in_related": true,
+        "cafe_experiment_id": "",
+        "cid": 563326,
+        "ad_host": "ca-host-pub-0161219093041726",
+        "idpj": "0",
+        "aid": "P8MtocA8rLA",
+        "cc_asr": 1,
+        "instream": true,
+        "video_id": "{{ video.video_id }}",
+        "invideo": true,
+        "ytfocEnabled": "1",
+        "enablecsi": "1",
+        "title": "{{ video.title }}",
+        "ldpj": "-38",
+        "iv3_module": "1",
+        "afv_ad_tag": "http:\/\/googleads.g.doubleclick.net\/pagead\/ads?ht_id=5012008\u0026url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026video_cpm=6000000\u0026ad_type=video\u0026loeid=938627%2C914072%2C916625\u0026description_url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026max_ad_duration=15000\u0026channel=afv_instream%2BVertical_3%2BVertical_36%2BVertical_182%2BVertical_211%2BVertical_613%2Bafv_instream_us%2Bafv_user_thefinebros%2Bafv_user_id_0v-tlzsn0QZwJnkiaUSJVQ%2Byt_mpvid_AATusdjArkr0Na3s%2Byt_cid_563326%2Bytdevice_1%2Bytps_default%2Bytel_detailpage\u0026ytdevice=1\u0026client=ca-pub-6219811747049371\u0026host=ca-host-pub-0161219093041726\u0026hl=en\u0026yt_pt=APb3F2-UzROhTG2DrogSjnsEmBefBe1fuul3896zfZAoOhRcIuLroRNca3Y8dY2PyOv-CRBajvy3F-XEi3qhzRFk8NuvzAgd9Na36osfzgZe46OQ9XqtPJlS406l8BQ839Ai7EpOBNDzgbDhDA70",
+        "vq": "auto",
+        "c": "WEB",
+        "iv_load_policy": 1,
+        "pyv_in_related_cafe_experiment_id": "",
+        "enablejsapi": 1,
+        "iv_invideo_url": "http:\/\/www.youtube.com\/annotations_invideo?features=1\u0026legacy=1\u0026plid=AATusdjAPZogtcft\u0026video_id=JgZHEfDkUkk",
+        "fmt_list": "22\/1280x720\/9\/0\/115,43\/640x360\/99\/0\/0,18\/640x360\/9\/0\/115,5\/320x240\/7\/0\/0,36\/320x240\/99\/1\/0,17\/176x144\/99\/1\/0",
+        "afv_video_min_cpm": 6000000,
+        "ad_video_pub_id": "ca-pub-6219811747049371",
+        "csi_page_type": "watch,watch7ad",
+        "vid": "JgZHEfDkUkk",
+        "ad3_module": "1",
+        "cbr": "Firefox",
+        "shortform": true,
+        "allow_embed": 1,
+        "ttsurl": "http:\/\/www.youtube.com\/api\/timedtext?asr_langs=de%2Cit%2Cko%2Cru%2Cen%2Cfr%2Cnl%2Cpt%2Cja%2Ces\u0026caps=asr\u0026sparams=asr_langs%2Ccaps%2Cv%2Cexpire\u0026v=JgZHEfDkUkk\u0026expire=1388372719\u0026hl=en_US\u0026signature=9CC35C197E7787C611B1D1821F0A980F3D189771.8B6B652BD8D7CB990A0532E2CC64B9E7BFE9CB59\u0026key=yttt1",
+        "dclk": true,
+        "cc_module": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/subtitle_module.swf",
+        "pltype": "content",
+        "content_owner_name": "FullScreen",
+        "trueview": true,
+        "eventid": "f4DAUq3_OImVkgLEuICgAw",
+        "timestamp": 1388347519,
+        "afv": true,
+        "url_encoded_fmt_stream_map": "{{url_encoded_fmt_stream_map}}",
+		"afv_invideo_ad_tag": "http:\/\/googleads.g.doubleclick.net\/pagead\/ads?ht_id=5012008\u0026url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026ad_type=text_image_flash\u0026loeid=938627%2C914072%2C916625\u0026description_url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026max_ad_duration=15000\u0026channel=invideo_overlay_480x70_cat24%2Bafv_overlay%2BVertical_3%2BVertical_36%2BVertical_182%2BVertical_211%2BVertical_613%2Bafv_user_thefinebros%2Bafv_user_id_0v-tlzsn0QZwJnkiaUSJVQ%2Byt_mpvid_AATusdjArkr0Na3s%2Byt_cid_563326%2Bytdevice_1%2Bytps_default%2Bytel_detailpage\u0026ytdevice=1\u0026client=ca-pub-6219811747049371\u0026host=ca-host-pub-0161219093041726\u0026hl=en",
+        "loaderUrl": "http:\/\/www.youtube.com\/watch?v=JgZHEfDkUkk\u0026gl=US\u0026hl=en",
+        "ad_channel_code_instream": "afv_instream,Vertical_3,Vertical_36,Vertical_182,Vertical_211,Vertical_613,afv_instream_us,afv_user_thefinebros,afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ,yt_mpvid_AATusdjArkr0Na3s,yt_cid_563326,ytdevice_1,ytps_default,ytel_detailpage",
+        "ad_eurl": "http:\/\/www.youtube.com\/video\/JgZHEfDkUkk",
+        "dynamic_allocation_ad_tag": "http:\/\/ad.doubleclick.net\/N4061\/pfadx\/com.ytpwatch.entertainment\/main_563326;sz=WIDTHxHEIGHT;kvid=JgZHEfDkUkk;kpu=TheFineBros;kpeid=0v-tlzsn0QZwJnkiaUSJVQ;kpid=563326;mpvid=AATusdjArkr0Na3s;afv=1;afvbase=eJxdkV1vmzAUhn9NuKPyR2LgggvIx7ZoS5qkrdrcWA4YcGMwNTZJ-PVz2SalsywdP-8557V1XBkq8ngGIAIg9KyWcWVMO8HJBK3cvlwuDzdljT3xh0zVTulFzpWL6_L4fVkszs_nszdqNGvrmIBxeSyn5tbyeMx4UnF3SYRDgoIJmkdwCgI0HghBM8_Q9tbH_JpJm3OvZlfq2nOrmRGqiSGZOcOsYk3DZfxLNPO2nobgGoAn3hk4QSkreiqazmjO3AvTF66NyJik-AuQe4IhukcE4T0SiP-zpbb7q9iOa2oqXoiGn7T6Ioucgt43cugasDte1s1ZsOfD-mXnim6G1q0bB02SJ9vl74k-a7BhuPuTy1xmRjBGZOSc9yLjFI7QdjTnBbPSjMilQ8OEbFnJvX-1MfQq1Zk4Y_5n9Ft78gEkEMEIRBhMYYCI9_kNXmNrN-DONWRKay6ZUTqGOAzxNJjBKAqck4x546xpa-Lk8YRXyH8e9tvq6RtaaFUe3ptuWae8SDksrJU4jMhQHBO1rfbZD_tTq_0mY_gtzN_Q423b-_N9yt77G175r0uBP6phvzqHG9sPSZlHbghEdcVQHvmUbHfR64d5XMvDFBAZprsQR4kIlu023SyG8rSoFkkAfgPeKudB;dc_backfill=1;dc_yt=1;dt_yt=1;k5=3_36_182_211_613;kclg=1;kclt=1;kga=-1;kgg=-1;klg=en;kmsrd=1;ko=p;kr=H;kvz=203;longads=1;nlfb=1;yt_vrallowed=1;ytcat=24;ytdevice=1;ytexp=938627,914072,916625;!c=563326;k2=3;k2=36;k2=182;k2=211;k2=613;kvlg=en;",
+        "cr": "US",
+        "keywords": "YouTube Rewind: What Does 2013 Say?,YouTube Rewind 2013,YouTube Rewind,What Does 2013 Say?,thefinebros,finebros,fine bros,fine brothers,kids react,elders react,youtubers react,teens react,mymusic,my music,mymusicshow",
+        "oid": "Cy8DuulTcwc7ci4zPWrKiw",
+        "cc_font": "Arial Unicode MS, arial, verdana, _sans",
+        "cc3_module": "1",
+        "ad_device": 1,
+        "afv_instream_max": 15000,
+        "iv_module": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/iv_module.swf",
+        "gut_tag": "\/4061\/ytpwatch\/main_563326",
+        "rvs": "id=Ua4K5OyA7cQ\u0026author=TheFineBros\u0026view_count=2%2C617%2C235\u0026title=YouTubers+React+To+Short+Viral+Videos\u0026length_seconds=600,id=VfFU9u3XXww\u0026author=TheFineBros\u0026view_count=1%2C501%2C673\u0026title=Kids+React+To+XBOX+ONE+vs.+PlayStation+4%21\u0026length_seconds=540,id=i4i72gAmziw\u0026author=TheFineBros\u0026view_count=243%2C378\u0026title=YouTubers+React+to+1D+Deleted%3F%21%2C+2013+Recap%2C+and+more%21+%28Fine+Time+%2314%29\u0026length_seconds=459,id=6KXqYZnJGVE\u0026author=TheFineBros\u0026view_count=1%2C794%2C420\u0026title=Kids+React+To+going+to+the+store%21\u0026length_seconds=420,id=TM9-K95B5b4\u0026author=TheFineBros\u0026view_count=2%2C829%2C894\u0026title=YouTubers+React+To+DyE+Fantasy\u0026length_seconds=600,id=1gg1P090DDc\u0026author=TheFineBros\u0026view_count=1%2C705%2C991\u0026title=Elders+React+to+Brain+Surgery+Vlog+%28CTFxC%29\u0026length_seconds=705,id=era8q_hswns\u0026author=TheFineBros\u0026view_count=1%2C742%2C558\u0026title=TEENS+REACT+TO+CRYING+BABY\u0026length_seconds=465,id=RDlmJfLz1fg\u0026author=TheFineBros\u0026view_count=338%2C317\u0026title=2013%3A+Year+In+Review\u0026length_seconds=411,id=R2LsyxsueeY\u0026author=TheFineBros\u0026view_count=443%2C194\u0026title=YouTubers+React+To+Short+Viral+Videos+%28BONUS+%2326%29\u0026length_seconds=350,id=6NmGOQr-PYA\u0026author=TheFineBros\u0026view_count=2%2C384%2C819\u0026title=TEENS+REACT+TO+CAPTAINSPARKLEZ\u0026length_seconds=521,id=i0uuBoDcSC8\u0026author=TheFineBros\u0026view_count=1%2C389%2C816\u0026title=Elders+React+to+Hunger+Games%3A+Catching+Fire\u0026length_seconds=530,id=BJxRGvtSW74\u0026author=TheFineBros\u0026view_count=558%2C540\u0026title=SOMEONE+QUITS%21+%28MyMusic+Season+2+Episode+16%29\u0026length_seconds=636",
+        "watermark": ",http:\/\/s.ytimg.com\/yts\/img\/watermark\/youtube_watermark-vflHX6b6E.png,http:\/\/s.ytimg.com\/yts\/img\/watermark\/youtube_hd_watermark-vflAzLcD6.png",
+        "t": "vjVQa1PpcFOKPIkURH-7YnJSjOQv-PP-0F2TPIqxyKU=",
+        "allowed_ads": [0, 1, 2, 4, 8, 9, 10],
+        "ad_tag": "http:\/\/ad.doubleclick.net\/N4061\/pfadx\/com.ytpwatch.entertainment\/main_563326;sz=WIDTHxHEIGHT;kvid=JgZHEfDkUkk;kpu=TheFineBros;kpeid=0v-tlzsn0QZwJnkiaUSJVQ;kpid=563326;mpvid=AATusdjArkr0Na3s;afv=1;dc_yt=1;dt_yt=1;k5=3_36_182_211_613;kclg=1;kclt=1;kga=-1;kgg=-1;klg=en;kmsrd=1;ko=p;kr=H;kvz=203;longads=1;nlfb=1;yt_vrallowed=1;ytcat=24;ytdevice=1;ytexp=938627,914072,916625;!c=563326;k2=3;k2=36;k2=182;k2=211;k2=613;kvlg=en;",
+        "referrer": null,
+        "sendtmp": "1",
+        "show_content_thumbnail": true,
+        "mpu": true,
+        "ptchn": "0v-tlzsn0QZwJnkiaUSJVQ",
+        "pyv_ad_channels": "afv_user_thefinebros+afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ+yt_mpvid_AATusdjArkr0Na3s+yt_cid_563326+ytdevice_1",
+        "ad_slots": "0",
+        "ad_channel_code_overlay": "invideo_overlay_480x70_cat24,afv_overlay,Vertical_3,Vertical_36,Vertical_182,Vertical_211,Vertical_613,afv_user_thefinebros,afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ,yt_mpvid_AATusdjArkr0Na3s,yt_cid_563326,ytdevice_1,ytps_default,ytel_detailpage",
+        "as_launched_in_country": "1",
+        "plid": "AATusdjAPZogtcft",
+        "ptk": "FullScreen",
+        "midroll_freqcap": 270.0,
+        "ad_logging_flag": 1,
+        "hl": "en_US",
+        "tag_for_child_directed": false,
+        "no_get_video_log": "1",
+        "focEnabled": "1",
+        "host_language": "en",
+        "afv_ad_tag_restricted_to_instream": "http:\/\/googleads.g.doubleclick.net\/pagead\/ads?ht_id=5012008\u0026url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026video_cpm=6000000\u0026ad_type=video\u0026loeid=938627%2C914072%2C916625\u0026description_url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026max_ad_duration=15000\u0026channel=afv_instream%2BVertical_3%2BVertical_36%2BVertical_182%2BVertical_211%2BVertical_613%2Bafv_instream_us%2Bafv_user_thefinebros%2Bafv_user_id_0v-tlzsn0QZwJnkiaUSJVQ%2Byt_mpvid_AATusdjArkr0Na3s%2Byt_cid_563326%2Bytdevice_1%2Bytps_default%2Bytel_detailpage\u0026ytdevice=1\u0026client=ca-pub-6219811747049371\u0026host=ca-host-pub-0161219093041726\u0026hl=en",
+        "sffb": true,
+        "rmktPingThreshold": 0,
+        "aftv": true,
+        "yt_pt": "APb3F2-UzROhTG2DrogSjnsEmBefBe1fuul3896zfZAoOhRcIuLroRNca3Y8dY2PyOv-CRBajvy3F-XEi3qhzRFk8NuvzAgd9Na36osfzgZe46OQ9XqtPJlS406l8BQ839Ai7EpOBNDzgbDhDA70",
+        "length_seconds": 577,
+        "tmi": "1",
+        "dash": "0",
+        "uid": "0v-tlzsn0QZwJnkiaUSJVQ",
+        "ad_host_tier": "5012008",
+        "cbrver": "4.0b11",
+        "fexp": "938627,914072,916625,909717,932295,936912,936910,923305,936913,907231,907240,921090",
+        "ad_flags": 0,
+        "mpvid": "AATusdjArkr0Na3s",
+        "baseUrl": "http:\/\/googleads.g.doubleclick.net\/pagead\/viewthroughconversion\/962985656\/",
+        "tk": "1",
+		"cver": "html5",
+		"adaptive_fmts": "{{adaptive_fmts}}",
+    },
+    "url": "http:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/watch_as3.swf"
+};
+</script>
 {% endblock %}

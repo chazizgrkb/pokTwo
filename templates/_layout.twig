@@ -64,7 +64,7 @@
       {% block script %}
       {% endblock %}
       <div id="body-container">
-	     <form name="logoutForm" method="POST" action="/logout"><input type="hidden" name="action_logout" value="1"><input name="session_token" type="hidden" value="zP6Q9UqbN8W4RTZmZbCNY5gw36h8MTM4MDQ5MDMzOUAxMzgwNDAzOTM5"></form>
+	     <form name="logoutForm" method="POST" action="/logout"><input type="hidden" name="action_logout" value="1"><input name="session_token" type="hidden" value="{{ token }}"></form>
          <div id="yt-masthead-container" class="yt-grid-box yt-base-gutter">
             <div id="yt-masthead" class="">
                <a id="logo-container" href="/" title="PokTwo home" class=" "><img id="logo" src="/yts/img/pixel.gif" alt="PokTwo home"></a>
@@ -641,12 +641,10 @@ ytplayer.config = {
             </div>
             <div id="footer-links">
                <ul id="footer-links-primary">
-                  <li><a href="//www.youtube.com/yt/about/">About</a></li>
-                  <li><a href="//www.youtube.com/yt/press/">Press &amp; Blogs</a></li>
-                  <li><a href="//www.youtube.com/yt/copyright/">Copyright</a></li>
-                  <li><a href="//www.youtube.com/yt/creators/">Creators &amp; Partners</a></li>
-                  <li><a href="//www.youtube.com/yt/advertise/">Advertising</a></li>
-                  <li><a href="//www.youtube.com/yt/dev/">Developers</a></li>
+                  <li><a href="/pt/about.php/">About</a></li>
+				  <li><a href="/pt/help">Help</a></li>
+				  <li><a href="/pt/contact">Contact</a></li>
+				  <li><a href="/pt/whats_new">What's new?</a></li>
                </ul>
                <ul id="footer-links-secondary">
                   <li><a href="/t/terms">Terms</a></li>

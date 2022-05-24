@@ -20,8 +20,12 @@ if (isset($_GET['v']))
 }
 if ($type == 1)
 {
+$commentData = VideoComments::getComments($_GET['v']);
+$commentCount = $sql->fetch("SELECT COUNT(id) FROM comments WHERE id=?", [$_GET['v']]) ['COUNT(id)'];
+$output = $twig->render('components/comments.twig', [ 'comments' => $commentData, 'commentCount' => $commentCount, 'videoid' => $_GET['v'],]);
+$output = json_encode($output);
 ?>
-{"js":"","html":{"watch-discussion":"<?php echo preg_quote($twig->render('components/comments.twig')); ?>","watch7-sidebar-discussion":""}}
+{"js":"","html":{"watch-discussion":<?php echo $output; ?>,"watch7-sidebar-discussion":""}}
 <?php
 }
 ?>

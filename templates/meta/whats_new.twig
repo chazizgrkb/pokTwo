@@ -4,7 +4,7 @@
 
 	{% block content %}
         {% for news in news %}
-            <div class="tableSubTitle">{{ news.time | date("F jS Y") }}</div>
+            <h2>{{ news.title }} <span style="color:gray;">{{ news.time | date("F jS Y") }}</span></h2>
             {{ news.text | markdown }}
             <br><br><br>
         {% endfor %}
