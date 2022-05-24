@@ -48,6 +48,7 @@ $commentData = VideoComments::getComments($id);
 $pageName = "watch";
 $jsPageName = "watch";
 $cssGarbage = "watch clearfix";
+$guideCollapsed = true;
 
 $allVideos = $sql->result("SELECT COUNT(id) FROM videos WHERE author=?", [$videoData['u_id']]);
 

@@ -223,10 +223,9 @@
          </div>
          <div id="page-container">
             <div id="page" class="{{ cssGarbage }}">
-               {% if log %}
                <div id="guide">
-                  <div id="guide-container" class=" vve-check" data-sessionlink="ei=40pHUq2MNuH2iAbs84CYDw&amp;ved=CCoQ_h4">
-                     <div id="guide-main" class="    guide-module     spf-nolink     yt-uix-tdl ">
+                  <div id="guide-container" class="{% if guideCollapsed %}collapsible-guide{% endif %} vve-check" data-sessionlink="ei=40pHUq2MNuH2iAbs84CYDw&amp;ved=CCoQ_h4">
+                     <div id="guide-main" class="guide-module spf-nolink yt-uix-tdl {% if guideCollapsed %}collapsed{% endif %}">
                         <div class="guide-module-toggle">
                            <span class="guide-module-toggle-icon">
                            <span class="guide-module-toggle-arrow"></span>
@@ -241,6 +240,7 @@
                               </h3>
                            </div>
                         </div>
+					{% if log %}
                         <div class="guide-module-content yt-scrollbar">
                            <ul class="guide-toplevel">
                               <li class="guide-section vve-check" data-sessionlink="ei=40pHUq2MNuH2iAbs84CYDw&amp;ved=CCsQ5isoAA">
@@ -413,23 +413,6 @@
                   </div>
                </div>
                {% else %}
-               <div id="guide">
-                  <div id="guide-container" class=" vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CAEQ_h4">
-                     <div id="guide-main" class="    guide-module     spf-nolink   yt-uix-tdl ">
-                        <div class="guide-module-toggle">
-                           <span class="guide-module-toggle-icon">
-                           <span class="guide-module-toggle-arrow"></span>
-                           <img src="/yts/img/pixel.gif" alt="">
-                           <img src="/yts/img/pixel.gif" alt="" id="collapsed-notification-icon">
-                           </span>
-                           <div class="guide-module-toggle-label">
-                              <h3>
-                                 <span>
-                                 Guide
-                                 </span>
-                              </h3>
-                           </div>
-                        </div>
                         <div class="guide-module-content yt-scrollbar">
                            <ul class="guide-toplevel">
                               <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CAIQ5isoAA" data-visibility-tracking="CAAQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
