@@ -1,7 +1,7 @@
 {% extends "_layout.twig" %}
 {% block loadCSS %}
 {% if videoOwnershipFuckery == true %}
-<link id="css-484918549" class="www-home-c4" rel="stylesheet" href="/yts/cssbin/www-watch-inlineedit.css" data-loaded="true">
+<link id="css-484918549" class="www-watch-inlineedit" rel="stylesheet" href="/yts/cssbin/www-watch-inlineedit.css" data-loaded="true">
 {% endif %}
 {% endblock %}
 {% block javascriptSettings %}
@@ -16,7 +16,6 @@
 
       'JS_PAGE_MODULES': {
         "\/yts\/jsbin\/www\/www_watch_mod.js": [
-            "\/yts\/jsbin\/www\/www_watch_transcript_mod.js",
             "\/yts\/jsbin\/www\/www_watch_missilecommand_mod.js",
 			{% if videoOwnershipFuckery == true %}
 			"\/yts\/jsbin\/www\/www_watch_edit_mod.js",
@@ -57,6 +56,7 @@
 
     yt.setConfig({
       'TIMING_WFF': true,
+	  'WATCH_EXTRA_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-watch-extra-vflmh6M8X.js",
       'WATCH_GUIDE_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-guide-vfl_xeAjK.css",
       'YPC_CAN_RATE_VIDEO': true,
 
@@ -473,10 +473,6 @@ Loading...
                             </span>
 
                             <span>
-    <button class="action-panel-trigger   yt-uix-button yt-uix-button-text yt-uix-button-size-default yt-uix-button-has-icon yt-uix-tooltip yt-uix-button-empty" type="button" title="Transcript" onclick=";return false;" data-trigger-for="action-panel-transcript" data-button-toggle="true" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-action-panel-transcript" src="/yts/img/pixel.gif" alt="Transcript" title=""></span></button>
-                            </span>
-
-                            <span>
     <button class="action-panel-trigger   yt-uix-button yt-uix-button-text yt-uix-button-size-default yt-uix-button-has-icon yt-uix-tooltip yt-uix-button-empty" type="button" title="Statistics" onclick=";return false;" data-trigger-for="action-panel-stats" data-button-toggle="true" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-action-panel-stats" src="/yts/img/pixel.gif" alt="Statistics" title=""></span></button>
                             </span>
 
@@ -489,7 +485,8 @@ Loading...
                     </div>
 
                     <div id="watch7-action-panels" class="yt-uix-button-panel">
-                        <div id="action-panel-details" class="action-panel-content" data-panel-loaded="true">
+                        <div id="action-panel-details" class="action-panel-content {% if videoOwnershipFuckery == true %}watch-editable{% endif %}" data-panel-loaded="true">
+							{% if videoOwnershipFuckery == true %}<button type="button" class="watch-pencil-icon yt-uix-button yt-uix-button-default yt-uix-button-empty" onclick=";return false;" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-pencil" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""><span class="yt-uix-button-valign"></span></span></button>{% endif %}
                             <div id="watch-description"
                                 class="yt-uix-expander yt-uix-expander-collapsed yt-uix-button-panel">
                                 <div id="watch-description-content">
@@ -500,67 +497,7 @@ Loading...
                                         </p>
 
                                         <div id="watch-description-text">
-                                            <p id="eow-description">YouTube Rewind Bonus Reactions: <a
-                                                    href="http://goo.gl/fKjcs7" target="_blank"
-                                                    title="http://goo.gl/fKjcs7" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://goo.gl/fKjcs7</a><br>NEW Vids Sun, Tues &amp; Thurs! Subscribe:
-                                                <a href="http://bit.ly/TheFineBros" target="_blank"
-                                                    title="http://bit.ly/TheFineBros" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://bit.ly/TheFineBros</a><br>FREE NETFLIX FOR A MONTH!
-                                                <a href="http://netflix.com/Fine" target="_blank"
-                                                    title="http://netflix.com/Fine" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://netflix.com/Fine</a><br>Watch all episodes of REACT
-                                                <a href="http://goo.gl/4iDVa" target="_blank"
-                                                    title="http://goo.gl/4iDVa" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://goo.gl/4iDVa</a><br>Watch our sitcom MyMusic -
-                                                <a href="http://goo.gl/jKYDDA" target="_blank"
-                                                    title="http://goo.gl/jKYDDA" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://goo.gl/jKYDDA</a><br>Follow us on Instagram!
-                                                <a href="http://www.instagram.com/finebros" target="_blank"
-                                                    title="http://www.instagram.com/finebros" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.instagram.com/finebros</a><br><br>Look back with the Teens as they watch some of YouTube's most famous celebrities re-create the most viral video trends of 2013!
-                                                <br><br>Created and Directed by Benny &amp; Rafi Fine (The Fine Brothers)<br>MAIN CHANNEL:
-                                                <a href="http://www.youtube.com/thefinebros" target="_blank"
-                                                    title="http://www.youtube.com/thefinebros" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.youtube.com/thefinebros</a><br>SECOND CHANNEL:
-                                                <a href="http://www.youtube.com/thefinebros2" target="_blank"
-                                                    title="http://www.youtube.com/thefinebros2" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.youtube.com/thefinebros2</a><br>FACEBOOK:
-                                                <a href="http://www.facebook.com/FineBros" target="_blank"
-                                                    title="http://www.facebook.com/FineBros" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.facebook.com/FineBros</a><br>TWITTER:
-                                                <a href="http://www.twitter.com/thefinebros" target="_blank"
-                                                    title="http://www.twitter.com/thefinebros" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.twitter.com/thefinebros</a><br>GOOGLE+:
-                                                <a href="http://www.google.com/+thefinebros" target="_blank"
-                                                    title="http://www.google.com/+thefinebros" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.google.com/+thefinebros</a><br>INSTAGRAM:
-                                                <a href="http://www.instagram.com/finebros" target="_blank"
-                                                    title="http://www.instagram.com/finebros" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.instagram.com/finebros</a><br>VINE (Link only works on a phone)
-                                                <br><a href="http://www.tinyurl.com/TheFineBrosVine" target="_blank"
-                                                    title="http://www.tinyurl.com/TheFineBrosVine" rel="nofollow"
-                                                    dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.tinyurl.com/TheFineBrosVine</a><br>T-SHIRTS:
-                                                <a href="http://www.thefinebros.spreadshirt.com" target="_blank"
-                                                    title="http://www.thefinebros.spreadshirt.com" rel="nofollow"
-                                                    dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.thefinebros.spreadshirt.com</a><br>IPHONE APP:
-                                                <a href="http://itunes.apple.com/us/app/the-fine-brothers/id398889334?mt=8"
-                                                    target="_blank"
-                                                    title="http://itunes.apple.com/us/app/the-fine-brothers/id398889334?mt=8"
-                                                    rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://itunes.apple.com/us/app/the-fi...</a><br>NEWS PODCAST:
-                                                <a href="http://www.awkpodcast.tumblr.com" target="_blank"
-                                                    title="http://www.awkpodcast.tumblr.com" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.awkpodcast.tumblr.com</a><br>SEND US STUFF:<br>TheFineBros<br>P.O. BOX 4324<br>Valley Village, CA 91617-4324<br>----------------------------<br>Video Featured in this Episode:<br>Youtube Rewind: What Does 2013 Say?<br><a
-                                                    href="http://www.youtube.com/watch?v=H7jtC8vjXw8" target="_blank"
-                                                    title="http://www.youtube.com/watch?v=H7jtC8vjXw8" rel="nofollow"
-                                                    dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.youtube.com/watch?v=H7jtC8...</a><br><br>Subscribe to YouTube Spotlight!<br><a
-                                                    href="http://www.youtube.com/user/YouTube" target="_blank"
-                                                    title="http://www.youtube.com/user/YouTube" rel="nofollow" dir="ltr"
-                                                    class="yt-uix-redirect-link">http://www.youtube.com/user/YouTube</a><br>--------------------------<br>This episode featured the following teenagers.<br>Mikaela, age 14<br>Seth, age 15<br>Tori, age 15<br>Eric, age 16<br>Kaelyn, age 16<br>Sabrina, age 16<br>Adam, age 17<br>Labib, age 17<br>Rachel, age 17<br>Jeannie, age 18<br>Tom, age 18<br>-------------------------------------<br>Teens React #57 - Teens React to YouTube Rewind: What Does 2013 Say?<br>Teens React to Teens React to YouTube Rewind: What Does 2013 Say?<br><br>© Fine Brothers Properties 2013<br>This format and title of this program is protected under Copyright and Trademark Law and may not be emulated or re-created in any way without express consent in any territory worldwide.
+                                            <p id="eow-description">{{ video.description }}
                                             </p>
                                         </div>
                                         <div id="watch-description-extras">
@@ -608,7 +545,39 @@ Loading...
                                 </div>
                             </div>
                         </div>
-
+<form action="/watch_inlineedit_ajax?action_save_video=1" method="POST" id="watch-video-info-form" class="hid">
+    <input type="hidden" name="session_token" value="{{ token }}">
+    <input name="video_id" value="{{ video.video_id }}" type="hidden">
+    <input name="ignore_broadcast_settings" value="0" type="hidden">
+    <p class="yt">
+      <label class="yt-uix-form-label">
+Description:
+        <span class="yt-uix-form-input-container yt-uix-form-input-textarea-container  yt-uix-form-input-non-empty">    <textarea class="yt-uix-form-input-textarea " name="field_myvideo_descr" rows="6">{{ video.description }}</textarea>
+</span>
+      </label>
+    </p>
+    <p class="yt">
+      <label class="yt-uix-form-label">
+Privacy:<br>
+        <span class="yt-uix-form-input-select "><span class="yt-uix-form-input-select-content"><img src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" class="yt-uix-form-input-select-arrow"><span class="yt-uix-form-input-select-value">
+Public
+  </span></span><select class="yt-uix-form-input-select-element " name="privacy">  <option value="public" selected="">
+Public
+  </option>
+  <option value="private">
+Private
+  </option>
+    <option value="unlisted">
+Unlisted
+    </option>
+</select></span>
+      </label>
+    </p>
+   <p class="yt">
+      <button type="submit" id="watch-video-info-submit" onclick=";return true;" class=" yt-uix-button yt-uix-button-primary" role="button"><span class="yt-uix-button-content">Save </span></button>
+      <button type="button" id="watch-video-info-reset" onclick=";return false;" class=" yt-uix-button yt-uix-button-default" role="button"><span class="yt-uix-button-content">Cancel </span></button>
+    </p>
+  </form>
                         <div id="action-panel-share" class="action-panel-content hid">
                             <div id="watch-actions-share-loading">
                                 <div class="action-panel-loading">
@@ -637,46 +606,6 @@ Loading...
                                 </p>
 
                             </div>
-                        </div>
-
-                        <div id="action-panel-transcript" class="action-panel-content hid">
-                            <div id="watch-actions-transcript-loading">
-                                <div class="action-panel-loading">
-                                    <p class="yt-spinner">
-                                        <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
-
-                                        <span class="yt-spinner-message">
-Loading...
-    </span>
-                                    </p>
-
-                                </div>
-                            </div>
-                            <div id="watch-actions-transcript" class="watch-actions-panel hid">
-                                <div id="caption-line-template" class="hid">
-                                    <!--
-    <div class="caption-line-time">
-      <div class="caption-line-start">__start__</div>
-    </div>
-    <div class="editable-line-text">
-      <span class="editable-line-text-original">__original__</span>
-      <label class="editable-line-text-current hid">__current__</label>
-      <textarea class="editable-line-text-input hid">__input__</textarea>
-    </div>
-    -->
-                                </div>
-
-
-
-                                <div id="watch-transcript-container">
-                                    <div id="watch-transcript-not-found" class="hid">
-                                        The interactive transcript could not be loaded.
-                                    </div>
-
-
-                                </div>
-                            </div>
-
                         </div>
 
                         <div id="action-panel-stats" class="action-panel-content hid">

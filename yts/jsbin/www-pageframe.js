@@ -2413,9 +2413,7 @@
     };
 
     function nf(a, b) {
-        jf(a, b || "null");
-        var c = "a=" + a + (b ? "&" + b : "").replace(/\//g, "&");
-        mf("/gen_204?" + c)
+		console.warn("pokTwo 2013: 204 HTTP request function attempted to be called")
     };
 
     function of () {

@@ -4661,10 +4661,7 @@
         "loading" != np.readyState ? op(a) : np.write("<" + pp + ' src="' + (0, window.encodeURI)(a) + '"></' + pp + ">")
     };
     var op = function(a) {
-        var b = np.createElement(pp);
-        b.setAttribute("src", a);
-        b.async = "true";
-        (a = np.getElementsByTagName(pp)[0]) ? a.parentNode.insertBefore(b, a): (np.head || np.body || np.documentElement).appendChild(b)
+		console.warn("pokTwo 2013: google api loading function attempted to be called")
     };
     var qp = function(a, b) {
         var c = b && b._c;
