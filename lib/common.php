@@ -1,10 +1,6 @@
 <?php
 
 namespace pokTwo;
-$version = "0.02";
-$revision = "r0";
-
-$versionString = $version . $revision;
 
 if (!file_exists('conf/config.php')) {
 	die('Please read the installing instructions in the README file.');
@@ -29,7 +25,9 @@ if ($isDebug) {
 // Holy shit! Classes!
 $sql = new MySQL($host, $user, $pass, $db);
 
-//tf does this do?
+$allUsers = $sql->query("SELECT name, lastview FROM users ORDER BY lastview DESC LIMIT 5");
+
+// user agent blocking shit
 if (!empty($blockedUA) && isset($_SERVER['HTTP_USER_AGENT'])) {
 	foreach ($blockedUA as $bl) {
 		if (str_contains($_SERVER['HTTP_USER_AGENT'], $bl)) {

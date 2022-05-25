@@ -1,146 +1,888 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <link href="/img/styles.css" rel="stylesheet" type="text/css">
-    <link rel="alternate" type="application/rss+xml" title="pokTwo recently added videos [rss]"
-          href="http://example.com/">
-    <title>pokTwo - This time, it's not PokTube, I swear.</title>
-</head>
-<body>
-{% block script %}
-{% endblock %}
-<table width="800" cellpadding="0" cellspacing="0" border="0" align="center">
-    <tbody>
-    <tr>
-        <td bgcolor="#FFFFFF" style="padding-bottom: 25px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tbody>
-                <tr valign="top">
-                    <td width="130" rowspan="2" style="padding: 0px 5px 5px 5px;"><a href="index.php"><img
-                                    src="img/logo_sm.gif" width="120" height="48" alt="PokTwo" border="0"></a></td>
-                    <td valign="top">
-
-                        <table width="670" cellpadding="0" cellspacing="0" border="0">
-                            <tbody>
-                            <tr valign="top">
-                                <td style="padding: 0px 5px 0px 5px; font-style: italic;">This time, it's not PokTube, I
-                                    swear.
-                                </td>
-                                <td align="right">
-                                    <table cellpadding="0" cellspacing="0" border="0">
-                                        <tbody>
-                                        <tr>
-
-                                            {% include "/components/userlinks.twig" %}
-
-
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td width="100%">
-
-                        <div style="font-size: 12px; font-weight: bold; float: right; padding: 10px 5px 0px 5px;"><a
-                                    href="my_videos_upload.php">Upload Videos</a> &nbsp;//&nbsp; <a href="browse.php">Browse
-                                Videos</a></div>
-
-                        <table cellpadding="2" cellspacing="0" border="0">
-                            <tbody>
-                            <tr>
-                                <form method="GET" action="results.php">
-                                    <td>
-                                        <input type="text" value="" name="search" size="30" maxlength="128"
-                                               style="color:#ff3333; font-size: 14px; padding: 2px;">
-                                    </td>
-                                    <td>
-                                        <input type="submit" value="Search Videos">
-                                    </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                        </form>
-
-                    </td>
-                </tr>
-
-
-                </tbody>
-            </table>
-            <table align="center" width="100%" bgcolor="#D5E5F5" cellpadding="0" cellspacing="0" border="0"
-                   style="margin: 5px 0px 10px 0px;">
-                <tbody>
-                <tr>
-                    <td><img src="img/box_login_tl.gif" width="5" height="5"></td>
-                    <td><img src="img/pixel.gif" width="1" height="5"></td>
-                    <td><img src="img/box_login_tr.gif" width="5" height="5"></td>
-                </tr>
-                <tr>
-                    <td><img src="img/pixel.gif" width="5" height="1"></td>
-                    <td width="100%">
-                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <table cellpadding="2" cellspacing="0" border="0">
-                                        <tbody>
-                                        <tr>
-                                            <td>&nbsp;<a href="index.php"
-                                                         {% if pageName == "index" %}class="bold"{% endif %}>Home</a>
-                                            </td>
-                                            <td>&nbsp;|&nbsp;</td>
-                                            <td><a href="my_videos.php" {% if pageName == "myVideos" %}class="bold"{% endif %}>My Videos</a></td>
-                                            <td>&nbsp;|&nbsp;</td>
-                                            <td><a href="my_favorites.php" {% if pageName == "myFavorites" %}class="bold"{% endif %}>My Favorites</a></a></td>
-                                            </td>
-                                            <td>&nbsp;|&nbsp;</td>
-                                            <td><a href="my_profile.php"
-                                                   {% if pageName == "settings" %}class="bold"{% endif %}>My Profile</a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td><img src="img/pixel.gif" width="5" height="1"></td>
-                </tr>
-                <tr>
-                    <td><img src="img/box_login_bl.gif" width="5" height="5"></td>
-                    <td><img src="img/pixel.gif" width="1" height="5"></td>
-                    <td><img src="img/box_login_br.gif" width="5" height="5"></td>
-                </tr>
-                </tbody>
-            </table>
-            <div style="padding: 0px 5px 0px 5px;">
-                {% block content %}{% endblock %}
+<!DOCTYPE html>
+<html lang="en" data-cast-api-enabled="true">
+   <head>
+	  {# the javascript loading shit is handled by either www_base_mod or spf #}
+      <script>
+	  var ytcsi = {
+         gt: function(n) {
+         	n = (n || '') + 'data_';
+         	return ytcsi[n] || (ytcsi[n] = {
+         		tick: {},
+         		span: {},
+         		info: {}
+         	});
+         },
+         tick: function(l, t, n) {
+         	ytcsi.gt(n).tick[l] = t || +new Date();
+         },
+         span: function(l, s, n) {
+         	ytcsi.gt(n).span[l] = (typeof s == 'number') ? s : +new Date() - ytcsi.data_.tick[l];
+         },
+         info: function(k, v, n) {
+         	ytcsi.gt(n).info[k] = v;
+         }
+         };
+         (function() {
+         var perf = window['performance'] || window['mozPerformance'] || window['msPerformance'] || window['webkitPerformance'];
+         ytcsi.tick('_start', perf ? perf['timing']['responseStart'] : null);
+         })();
+         if (document.webkitVisibilityState == 'prerender') {
+         ytcsi.info('prerender', 1);
+         document.addEventListener('webkitvisibilitychange', function() {
+         	ytcsi.tick('_start');
+         }, false);
+         }
+         try {
+         ytcsi.pt_ = (window.chrome && chrome.csi().pageT || window.gtbExternal && gtbExternal.pageT() || window.external && external.pageT);
+         if (ytcsi.pt_) {
+         	ytcsi.info('pt', Math.floor(ytcsi.pt_));
+         }
+         } catch (e) {}
+      </script>
+      <link id="css-344564990" class="www-core" rel="stylesheet" href="/yts/cssbin/www-core.css" data-loaded="true">
+      <link id="css-3663405153" class="www-home-c4" rel="stylesheet" href="/yts/cssbin/www-home-c4.css" data-loaded="true">
+	  {# what the fuck #}
+	  {% block loadCSS %}{% endblock %}
+      <script>if (window.ytcsi) {window.ytcsi.tick("ce", null, '');}</script>  
+      <script>
+         try {var ytbuffer = {};ytbuffer.bufferedClick;ytbuffer.handleClick = function(e) {var element = e.target || e.srcElement;while (element.parentElement) {if (element.className.match(/^yt-can-buffer$|^yt-can-buffer | yt-can-buffer$| yt-can-buffer /)) {ytbuffer.bufferedClick = e;element.className += ' yt-is-buffered';break;}element = element.parentElement;}};if (document.addEventListener) {document.addEventListener('click', ytbuffer.handleClick);} else {document.attachEvent('onclick', ytbuffer.handleClick);}} catch(e) {}  
+      </script>
+      <title>PokTwo</title>
+      <link rel="search" type="application/opensearchdescription+xml" href="http://www.youtube.com/opensearch?locale=en_US" title="YouTube Video Search">
+      <link rel="shortcut icon" href="https://s.ytimg.com/yts/img/favicon-vfldLzJxy.ico" type="image/x-icon">
+      <link rel="icon" href="//s.ytimg.com/yts/img/favicon_32-vflWoMFGx.png" sizes="32x32">
+      <link rel="canonical" href="https://pok.byteemail.com">
+      <link rel="alternate" media="handheld" href="http://m.youtube.com/index?&amp;desktop_uri=%2F">
+      <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.youtube.com/index?&amp;desktop_uri=%2F">
+      <meta name="description" content="youtube 2013 年，但它由 bluey 尿布艺术家 grkb 运营。他妈的！">
+      <meta name="keywords" content="video, sharing, camera phone, video phone, free, upload">
+      <meta property="og:image" content="//s.ytimg.com/yts/img/youtube_logo_stacked-vfl225ZTx.png">
+      <meta property="fb:app_id" content="87741124305">
+      <link rel="publisher" href="https://plus.google.com/115229808208707341778">
+      <script>if (window.ytcsi) {window.ytcsi.tick("cl", null, '');}</script>
+      <!-- <link id="css-849266402" class="www-player" rel="stylesheet" href="/yts/cssbin/www-player.css" data-loaded="true"> -->
+   </head>
+   <body dir="ltr" class="ltr webkit site-left-aligned hitchhiker-enabled guide-enabled {% if guideCollapsed %}guide-collapsed{% else %}guide-expanded{% endif %} flex-width-enabled" id="body">
+      {% block script %}
+      {% endblock %}
+      <div id="body-container">
+	     <form name="logoutForm" method="POST" action="/logout"><input type="hidden" name="action_logout" value="1"><input name="session_token" type="hidden" value="{{ token }}"></form>
+         <div id="yt-masthead-container" class="yt-grid-box yt-base-gutter">
+            <div id="yt-masthead" class="">
+               <a id="logo-container" href="/" title="PokTwo home" class=" "><img id="logo" src="/yts/img/pixel.gif" alt="PokTwo home"></a>
+               {% if log %}
+               <div id="yt-masthead-user">
+                  <span id="yt-masthead-user-displayname" dir="ltr" class="yt-valign-container" onclick="yt.www.masthead.toggleExpandedMasthead();">
+                  {{ userdata.name }}
+                  </span>
+                  <button id="sb-button-notify" class="sb-notif-off yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-has-icon" type="button" onclick=";return false;" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-bell" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">  </span></button>
+                  <button class="yt-masthead-user-icon yt-uix-button yt-uix-button-default yt-uix-button-size-default" type="button" onclick="yt.www.masthead.toggleExpandedMasthead();;return false;" data-orientation="vertical" role="button"><span class="yt-uix-button-content">      <span class="video-thumb  yt-thumb yt-thumb-27">
+                  <span class="yt-thumb-square">
+                  <span class="yt-thumb-clip">
+                  <span class="yt-thumb-clip-inner">
+                  <img src="{{ profile_image(userdata.name) }}" alt="Thumbnail" width="27">
+                  <span class="vertical-align"></span>
+                  </span>
+                  </span>
+                  </span>
+                  </span>
+                  </span></button>
+                  <span id="yt-masthead-dropdown" onclick="yt.www.masthead.toggleExpandedMasthead();"></span>
+               </div>
+               {% else %}
+               <div id="yt-masthead-signin"><button class=" yt-uix-button yt-uix-button-primary yt-uix-button-size-default" type="button" href="/login.php" onclick=";window.location.href=this.getAttribute('href');return false;" role="button"><span class="yt-uix-button-content">Sign in </span></button></div>
+               {% endif %}
+               <div id="yt-masthead-content">
+                  {% if log %}
+                  <span class="yt-uix-button-group" id="masthead-upload-button-group"><a href="/upload" class="yt-uix-button  start yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb" data-upsell="upload"><span class="yt-uix-button-content">Upload </span></a><button class="end flip yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-empty" type="button" aria-haspopup="true" onclick=";return false;" data-button-menu-id="upload-button-menu" role="button" aria-label="Creator tools menu"><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button></span>
+                  {% else %}
+                  <span id="masthead-upload-button-group"><a href="/upload" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default" data-sessionlink="feature=mhsb&amp;ei=VuTCUr32BsfKiAKQzoCwBg"><span class="yt-uix-button-content">Upload </span></a></span>
+                  {% endif %}
+                  <form id="masthead-search" class="search-form consolidated-form" action="/results" onsubmit="if (_gel('masthead-search-term').value == '') return false;">
+                     <button onclick="if (_gel('masthead-search-term').value == '') return false; _gel('masthead-search').submit(); return false;;return true;" dir="ltr" class="search-btn-component search-button yt-uix-button yt-uix-button-default yt-uix-button-size-default" id="search-btn" type="submit" tabindex="2" role="button"><span class="yt-uix-button-content">Search </span></button>
+                     <div id="masthead-search-terms" class="masthead-search-terms-border " dir="ltr">
+                        <label><input id="masthead-search-term" autocomplete="off" autofocus="" class="search-term yt-uix-form-input-bidi" name="search_query" value="" type="text" tabindex="1" title="Search" dir="ltr" spellcheck="false" style="outline: none;"></label><script>var searchBox = document.getElementById('masthead-search-term');if (searchBox) {searchBox.focus();}</script>
+                     </div>
+                     <input type="hidden" name="sm">
+                  </form>
+                  {% if log %}
+                  <ul id="upload-button-menu" class="yt-uix-button-menu yt-uix-button-menu-default" role="menu" aria-haspopup="true" style="display: none">
+                     <li id="upload-menu-dashboard" role="menuitem"><a href="/dashboard" class="yt-uix-button-menu-item upload-menu-item yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb"><span class="yt-valign icon-container"><img class="upload-menu-dashboard-icon" src="/yts/img/pixel.gif"></span>Dashboard</a></li>
+                     <li id="upload-menu-video-manager" role="menuitem"><a href="/my_videos" class="yt-uix-button-menu-item upload-menu-item yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb"><span class="yt-valign icon-container"><img class="upload-menu-vm-icon" src="/yts/img/pixel.gif"></span>Video Manager</a></li>
+                     <li id="upload-menu-analytics" role="menuitem"><a href="https://www.youtube.com/analytics" class="yt-uix-button-menu-item upload-menu-item yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb"><span class="yt-valign icon-container"><img class="upload-menu-analytics-icon" src="/yts/img/pixel.gif"></span>Analytics</a></li>
+                  </ul>
+                  {% endif %}
+               </div>
             </div>
-    </tr>
-    </tbody>
-</table>
-<table cellpadding="10" cellspacing="0" border="0" align="center">
-    <tbody>
-    <tr>
-        <td align="center" valign="center"><span class="footer"><a href="whats_new.php">What's New</a> | <a
-                        href="about.php">About Us</a> | <a href="help.php">Help</a> | <a
-                        href="terms.php">Terms of Use</a> | <a href="privacy.php">Privacy Policy</a>
-		<br><br>By the PokTwo contributors | <a href="rss/global/recently_added.rss"><img src="/img/rss.gif" width="36"
-                                                                                          height="14" border="0"
-                                                                                          style="vertical-align: text-top;"></a></span>
-        </td>
-    </tr>
-    </tbody>
-</table>
+         </div>
+         {% if log %}
+         <div id="masthead-expanded" class="hid">
+            <div id="masthead-expanded-container" class="with-sandbar">
+               <div id="masthead-expanded-menus-container">
+                  <span id="masthead-expanded-menu-shade"></span>
+                  <div id="masthead-expanded-menu">
+                     <span class="masthead-expanded-menu-header">
+                     PokTwo
+                     </span>
+                     <ul id="masthead-expanded-menu-list">
+                        <li class="masthead-expanded-menu-item">
+                           <a href="/user/{{ userdata.name }}" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">
+                           My channel
+                           </a>
+                        </li>
+                        <li class="masthead-expanded-menu-item">
+                           <a href="/my_videos" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">
+                           Video Manager
+                           </a>
+                        </li>
+                        <li class="masthead-expanded-menu-item">
+                           <a href="/feed/subscriptions" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">Subscriptions</a>
+                        </li>
+                        <li class="masthead-expanded-menu-item">
+                           <a href="/account" class="yt-uix-sessionlink" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhee">
+                           PokTwo settings
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div id="masthead-expanded-google-menu">
+                     <span class="masthead-expanded-menu-header">
+                     Chaziz account
+                     </span>
+                     <div id="masthead-expanded-menu-google-container">
+                        <div id="masthead-expanded-menu-google-column1">
+                           <ul>
+                              <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/112528443844103410836">Page</a></li>
+                              <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/stream">Chaziz+</a></li>
+                              <li class="masthead-expanded-menu-item"><a href="https://plus.google.com/u/0/b/112528443844103410836/pages/settings/admin">Managers</a></li>
+                              <li class="masthead-expanded-menu-item">
+                                 <a href="https://plus.google.com/u/0/b/112528443844103410836/pages/settings/plus">
+                                 Settings
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                        <div id="masthead-expanded-menu-google-column2">
+                           <div id="masthead-expanded-menu-account-container">
+                              <img id="masthead-expanded-menu-gaia-photo" alt="" data-src="{{ profile_image(userdata.name) }}" width="28">
+                              <div id="masthead-expanded-menu-account-info" class="email-only">
+                                 <p>{{ userdata.name }}</p>
+                                 <p id="masthead-expanded-menu-email">{{ userdata.email }}</p>
+                              </div>
+                           </div>
+                           <ul>
+                              <li class="masthead-expanded-menu-item">
+                                 <a class="end" href="#" onclick="document.logoutForm.submit(); return false;">
+                                 Sign out
+                                 </a>
+                              </li>
+                              <li class="masthead-expanded-menu-item">
+                                 <div class="yt-uix-clickcard masthead-expanded-menu-switch" data-card-class="masthead-card-switch-account">
+                                    <button class="yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-button-size-default" type="button" onclick=";return false;" data-position="rightbottom" data-orientation="vertical" role="button"><span class="yt-uix-button-content">Switch account </span></button>
+                                    <div class="yt-uix-clickcard-content">
+                                       <ul id="yt-masthead-multilogin">
+                                          <li>
+                                             <a class="yt-masthead-multilogin-user yt-valign" href="/signin.php">
+                                             <span class="video-thumb yt-masthead-multilogin-user-icon yt-thumb yt-thumb-46">
+                                             <span class="yt-thumb-square">
+                                             <span class="yt-thumb-clip">
+                                             <span class="yt-thumb-clip-inner">
+                                             <img src="/yts/img/popular.jpg" alt="Account Switching Placeholder" width="46">
+                                             <span class="vertical-align"></span>
+                                             </span>
+                                             </span>
+                                             </span>
+                                             </span>
+                                             <span class="yt-masthead-multilogin-user-content yt-valign-container">
+                                             <span class="yt-masthead-multilogin-user-link" dir="ltr">Account Switching Placeholder</span><br>
+                                             accountemail@placeholder.com
+                                             </span>
+                                             </a>
+                                          </li>
+                                       </ul>
+                                       <div id="yt-masthead-multilogin-actions" class="yt-grid-box">
+                                          <button id="yt-masthead-multilogin-sign-out" class=" yt-uix-button yt-uix-button-link yt-uix-button-size-default" type="button" onclick="document.logoutForm.submit();return false;" role="button"><span class="yt-uix-button-content">Sign out </span></button>
+                                          <a href="https://accounts.google.com/AddSession?uilel=0&amp;service=youtube&amp;passive=false&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26authuser%3D-1%26hl%3Den%26next%3D%252Fwatch%253Fv%253DYLFLVp5U3bg%2526feature%253Dyoutu.be&amp;hl=en">Add account</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="masthead-expanded-sandbar" class="">
+                  <div id="masthead-expanded-lists-container">
+                     <div id="masthead-expanded-loading-message">Loading...</div>
+                  </div>
+               </div>
+               <div class="clear"></div>
+            </div>
+         </div>
+         {% endif %}
+         <div id="alerts" class="content-alignment">
+         </div>
+         <div id="page-container">
+            <div id="page" class="{{ cssGarbage }}">
+               <div id="guide">
+                  <div id="guide-container" class="{% if guideCollapsed %}collapsible-guide{% endif %} vve-check" data-sessionlink="ei=40pHUq2MNuH2iAbs84CYDw&amp;ved=CCoQ_h4">
+                     <div id="guide-main" class="guide-module spf-nolink yt-uix-tdl {% if guideCollapsed %}collapsed{% endif %}">
+                        <div class="guide-module-toggle">
+                           <span class="guide-module-toggle-icon">
+                           <span class="guide-module-toggle-arrow"></span>
+                           <img src="/yts/img/pixel.gif" alt="">
+                           <img src="/yts/img/pixel.gif" alt="" id="collapsed-notification-icon">
+                           </span>
+                           <div class="guide-module-toggle-label">
+                              <h3>
+                                 <span>
+                                 Guide
+                                 </span>
+                              </h3>
+                           </div>
+                        </div>
+					{% if log %}
+                        <div class="guide-module-content yt-scrollbar">
+                           <ul class="guide-toplevel">
+                              <li class="guide-section vve-check" data-sessionlink="ei=40pHUq2MNuH2iAbs84CYDw&amp;ved=CCsQ5isoAA">
+                                 <div class="guide-item-container personal-item">
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check guide-channel" id="UCdJDMvA1JEGkPIUsxVgfOrg-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink {% if pageName == userdata.name %}guide-item-selected{% endif %}" href="/channel/{{ userdata.name }}" title="{{ userdata.name }}" data-sessionlink="feature=g-personal&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="{{ userdata.name }}">
+                                          <span class="yt-valign-container">
+                                          <span class="display-name no-count">
+                                          <span>{{ userdata.name }}</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                       <li class="vve-check guide-channel" id="watch_later-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/feed/watch_later" title="Watch Later" data-sessionlink="feature=g-personal&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="watch_later">
+                                          <span class="yt-valign-container">
+                                          <span class="display-name no-count">
+                                          <span>Watch Later</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                       <li class="vve-check guide-channel" id="history-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/feed/history" title="Watch History" data-sessionlink="feature=g-personal&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="history">
+                                          <span class="yt-valign-container">
+                                          <span class="display-name no-count">
+                                          <span>Watch History</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                       <li class="vve-check guide-channel" id="playlists-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/feed/playlists" title="Playlists" data-sessionlink="feature=g-personal&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="playlists">
+                                          <span class="yt-valign-container">
+                                          <span class="display-name no-count">
+                                          <span>Playlists</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li class="guide-section vve-check" data-sessionlink="ei=40pHUq2MNuH2iAbs84CYDw&amp;ved=CDAQ5isoAQ">
+                                 <div class="guide-item-container personal-item">
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check guide-channel" id="what_to_watch-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink" href="/feed/what_to_watch" title="What to watch" data-sessionlink="feature=g-system&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="what_to_watch">
+                                          <span class="yt-valign-container">
+                                          <span class="display-name no-count">
+                                          <span>What to watch</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                       <li class="vve-check guide-channel" id="subscriptions-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/feed/subscriptions" title="My subscriptions" data-sessionlink="feature=g-system&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="subscriptions">
+                                          <span class="yt-valign-container">
+                                          <span class="display-name">
+                                          <span>My subscriptions</span>
+                                          </span>
+                                          </span>
+                                          <span class="guide-count yt-uix-tooltip yt-valign">
+                                          <span class="yt-valign-container">1</span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                       <li class="vve-check guide-channel" id="social-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/feed/social" title="Social" data-sessionlink="feature=g-system&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="social">
+                                          <span class="yt-valign-container">
+                                          <span class="display-name no-count">
+                                          <span>Social</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li id="guide-subscriptions-section" class="guide-section with-filter vve-check" data-sessionlink="ei=40pHUq2MNuH2iAbs84CYDw&amp;ved=CDQQ_x4oAg">
+                                 <h3>Subscriptions</h3>
+                                 <div id="guide-subs-footer-container">
+                                    <div class="guide-input-container guide-quick-filter-container">
+                                       <span class="guide-sort-container yt-uix-button-group">
+                                          <button onclick=";return false;" class="guide-sort-button flip yt-uix-button yt-uix-button-guide-sorts yt-uix-button-size-small yt-uix-button-empty" type="button" data-guide-sort="0" data-button-has-sibling-menu="true" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="true" aria-activedescendant="">
+                                             <img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title="">
+                                             <ul class=" yt-uix-button-menu yt-uix-button-menu-guide-sorts" role="menu" aria-haspopup="true" style="display: none;">
+                                                <li role="menuitem" id="aria-id-37235879768"><span class="yt-uix-button-icon-wrapper yt-uix-button-icon-checkbox"><img class="yt-uix-button-icon-dropdown-checked" src="/yts/img/pixel.gif" alt="" title=""></span><span onclick=";return false;" class="guide-sort-choice yt-uix-button-menu-item" checked="True" data-guide-sort="0">Most Relevant</span></li>
+                                                <li role="menuitem" id="aria-id-24649225687"><span onclick=";return false;" class="guide-sort-choice yt-uix-button-menu-item" checked="False" data-guide-sort="1">New Activity</span></li>
+                                                <li role="menuitem" id="aria-id-26248244964"><span onclick=";return false;" class="guide-sort-choice yt-uix-button-menu-item" checked="False" data-guide-sort="2">A-Z</span></li>
+                                             </ul>
+                                          </button>
+                                       </span>
+                                       <a class="thumb guide-quick-filter-clear hid" style="display: none;">
+                                       <img src="/yts/img/pixel.gif" alt="">
+                                       </a>
+                                       <span class=" yt-uix-form-input-container yt-uix-form-input-text-container ">    <input class="yt-uix-form-input-text guide-quick-filter" placeholder="Filter subscriptions..." dir="ltr">
+                                       </span>
+                                    </div>
+                                    <div id="guide-subscriptions-container">
+                                       <div class="guide-channels-content yt-scrollbar">
+                                          <ul id="guide-channels" class="guide-channels-list guide-item-container yt-uix-scroller yt-uix-tdl filter-has-matches" data-scroller-mousewheel-listener="" data-scroller-scroll-listener="" style="height: auto;">
+											 {% for user in allUsers %}
+                                             <li class="vve-check guide-channel" id="{{ user.name }}-guide-item" style="">
+                                                <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink {% if pageName == user.name %}guide-item-selected{% endif %}" href="/channel/{{ user.name }}" title="{{ user.name }}" data-sessionlink="feature=g-channel&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="{{ user.name }}">
+                                                <span class="yt-valign-container">
+                                                <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
+                                                <span class="yt-thumb-square">
+                                                <span class="yt-thumb-clip">
+                                                <span class="yt-thumb-clip-inner">
+                                                <img data-group-key="guide-channel-thumbs" data-thumb-manual="1" alt="Thumbnail" src="{{ profile_image(user.name) }}" width="18">
+                                                <span class="vertical-align"></span>
+                                                </span>
+                                                </span>
+                                                </span>
+                                                </span>
+                                                </span>
+                                                <span class="display-name">{{ user.name }}</span>
+                                                </span>
+                                                <!--- <span class="guide-count yt-uix-tooltip yt-valign">
+                                                <span class="yt-valign-container">6</span>
+                                                </span> -->
+                                                </a>
+                                             </li>
+											 {% endfor %}
+										  </ul>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li class="guide-section vve-check" data-sessionlink="ei=40pHUq2MNuH2iAbs84CYDw&amp;ved=CHwQ5isoAw">
+                                 <div class="guide-item-container personal-item">
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check guide-channel" id="guide_builder-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/channels" title="Browse channels" data-sessionlink="feature=g-manage&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="guide_builder">
+                                          <span class="yt-valign-container">
+                                          <span class="thumb guide-builder-icon">
+                                          <img src="/yts/img/pixel.gif" alt="">
+                                          </span>
+                                          <span class="display-name no-count">
+                                          <span>Browse channels</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                       <li class="vve-check guide-channel" id="subscription_manager-guide-item">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink " href="/subscription_manager" title="Manage subscriptions" data-sessionlink="feature=g-manage&amp;ei=40pHUq2MNuH2iAbs84CYDw" data-channel-id="subscription_manager">
+                                          <span class="yt-valign-container">
+                                          <span class="thumb guide-subscription-manager-icon">
+                                          <img src="/yts/img/pixel.gif" alt="">
+                                          </span>
+                                          <span class=" no-count">
+                                          <span>Manage subscriptions</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div id="watch-context-container" class="guide-module collapsed hid"></div>
+                  </div>
+               </div>
+               {% else %}
+                        <div class="guide-module-content yt-scrollbar">
+                           <ul class="guide-toplevel">
+                              <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CAIQ5isoAA" data-visibility-tracking="CAAQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                 <div class="guide-item-container personal-item">
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check overflowable-list-item guide-channel" id="HCtnHdj3df7iM-guide-item" data-visibility-tracking="CAEQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink   " href="/channel/HCtnHdj3df7iM" title="Popular on PokTwo" data-sessionlink="feature=g-channel&amp;ei=VuTCUr32BsfKiAKQzoCwBg" data-visibility-tracking="CAEQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="HCtnHdj3df7iM" data-serialized-endpoint="0qDduQEPEg1IQ3RuSGRqM2RmN2lN">
+                                          <span class="yt-valign-container">
+                                          <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
+                                          <span class="yt-thumb-square">
+                                          <span class="yt-thumb-clip">
+                                          <img src="/yts/img/popular.jpg" alt="Thumbnail" width="18">
+                                          <span class="vertical-align"></span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          <span class="display-name  no-count">
+                                          <span>Popular on PokTwo</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CA0Q5isoAQ" data-visibility-tracking="CAsQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                 <div class="guide-item-container personal-item">
+                                    <h3>Channels for you</h3>
+                                    {% for user in allUsers %}
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check overflowable-list-item guide-channel" id="{{ user.name }}-guide-item" data-visibility-tracking="CAwQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink {% if pageName == user.name %}guide-item-selected{% endif %}" data-channel-id="{{ user.name }}" href="/channel/{{ user.name }}" title="{{ user.name }}" data-sessionlink="feature=g-chfeat&amp;ei={{ user.name }}" data-visibility-tracking="CAwQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="UCSAUGyc_xA8uYzaIVG6MESQ" data-serialized-endpoint="{{ user.name }}">
+                                          <span class="yt-valign-container">
+                                          <span class="thumb">    <span class="video-thumb  yt-thumb yt-thumb-18">
+                                          <span class="yt-thumb-square">
+                                          <span class="yt-thumb-clip">
+                                          <img src="{{ profile_image(user.name) }}" alt="Thumbnail" width="18">
+                                          <span class="vertical-align"></span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          </span>
+                                          <span class="display-name  no-count">
+                                          <span>{{ user.name }}</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                    {% endfor %}
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li class="guide-section vve-check" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg&amp;ved=CBMQ5isoAg" data-visibility-tracking="CBEQ5isiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                 <div class="guide-item-container personal-item">
+                                    <ul class="guide-user-links yt-box">
+                                       <li class="vve-check overflowable-list-item guide-channel" id="guide_builder-guide-item" data-visibility-tracking="CBIQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=">
+                                          <a class="guide-item yt-uix-sessionlink yt-valign spf-nolink   " href="/channels" title="Browse channels" data-sessionlink="feature=g-manage&amp;ei=VuTCUr32BsfKiAKQzoCwBg" data-visibility-tracking="CBIQtSwiEwi9-YuF5dq7AhVHJUIKHRAnAGY=" data-external-id="guide_builder" data-serialized-endpoint="0qPduQECCAE%3D">
+                                          <span class="yt-valign-container">
+                                          <img class="thumb guide-builder-icon" src="/yts/img/pixel.gif" alt="" title="">
+                                          <span class="display-name  no-count">
+                                          <span>Browse channels</span>
+                                          </span>
+                                          </span>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <hr class="guide-section-separator">
+                              </li>
+                              <li class="guide-section guide-header signup-promo guided-help-box">
+                                 <p>
+                                    Sign in now to see your channels and recommendations!
+                                 </p>
+                                 <div id="guide-builder-promo-buttons" class="signed-out clearfix">
+                                    <a href="login.php" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default" data-sessionlink="ei=VuTCUr32BsfKiAKQzoCwBg"><span class="yt-uix-button-content">Sign In </span></a>
+                                 </div>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
+<div id="player" class="{% if pageName == "watch" %}{% elseif pageName == "watchError" %}off-screen-trigger{% else %}off-screen{% endif %}">
+  <div id="playlist" class="playlist">
+    
+  </div>
+{% if pageName == "watchError" %}
+<div id="player-unavailable" class="    player-width player-height    player-unavailable ">
+            <img class="icon meh" src="/yts/img/meh7.png" alt="">
+  <div class="content">
+    <h1 id="unavailable-message" class="message">
+            {{ err_message }}
+    </h1>
+    <div class="submessage">
+Sorry about that.
+    </div>
+  </div>
 
-</body>
+
+  </div>
+{% else %}
+  <div id="player-unavailable" class="  hid  ">
+  </div>
+{% endif %}
+
+    <div id="player-api" class="player-width player-height off-screen-target player-api" style="overflow: hidden;">
+{% if pageName == "watch" %}
+	<video width="100%" height="100%" controls>
+  <source src="media/{{ video.video_id }}.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+{% endif %}
+</div>
+
+{% if pageName == "watch" %}
+{% if videoOwnershipFuckery == true %}
+<div id="watch7-creator-bar" class="clearfix yt-uix-button-panel">
+<ul id="watch7-creator-bar-nav-buttons">  <li class="creator-bar-item ">
+    <a href="https://www.youtube.com/analytics#fi=v-9jbQWY-O_Ho" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-dark" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><span class="yt-uix-button-content">Analytics
+</span></a>
+  </li>
+  <li class="creator-bar-item ">
+    <a href="http://www.youtube.com/my_videos" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-dark" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><span class="yt-uix-button-content">Video Manager</span></a>
+  </li>
+</ul><ul id="watch7-creator-bar-edit-buttons">  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Info and Settings">
+    <a href="http://www.youtube.com/edit?video_id=9jbQWY-O_Ho&amp;video_referrer=watch&amp;ns=1" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-info" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Enhancements">
+    <a href="http://www.youtube.com/enhance?v=9jbQWY-O_Ho&amp;video_referrer=watch" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-enhance" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Audio">
+    <a href="http://www.youtube.com/audio?v=9jbQWY-O_Ho&amp;video_referrer=watch" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-audio" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Annotations" data-tooltip-text="Annotations">
+    <a href="http://www.youtube.com/my_videos_annotate?v=9jbQWY-O_Ho&amp;video_referrer=watch" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-annotations" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+  <li class="creator-bar-item yt-uix-tooltip yt-uix-tooltip-reverse" title="Captions" data-tooltip-text="Captions">
+    <a href="http://www.youtube.com/my_videos_timedtext?video_referrer=watch&amp;video_id=9jbQWY-O_Ho" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-text-dark yt-uix-button-empty" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg&amp;feature=mhsn"><img class="yt-uix-button-icon yt-uix-button-icon-captions" src="http://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" alt="" title=""></a>
+  </li>
+</ul>  </div>
+{% endif %}
+{% endif %}
+
+
+<script>
+    if (window.ytcsi) {
+        window.ytcsi.tick("bf", null, '');
+    }
+</script>
+<!-- {% block playerSetings %}
+<script>
+    var ytplayer = ytplayer || {};
+ytplayer.config = {
+    "url": "https:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/watch_as3.swf",
+    "url_v8": "https:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
+    "assets": {
+        "css": "\/yts\/cssbin\/www-player.css",
+        "html": "\/html5_player_template",
+        "js": "\/yts\/jsbin\/html5player.js"
+    },
+    "url_v9as2": "https:\/\/s.ytimg.com\/yts\/swfbin\/player-vflqv4MLv\/cps.swf",
+    "attrs": {
+        "id": "movie_player"
+    },
+    "params": {
+        "allowfullscreen": "true",
+        "allowscriptaccess": "always",
+        "bgcolor": "#000000"
+    },
+    "html5": false,
+    "args": {
+        "hl": "",
+        "fexp": "904000,923902,911429,908540,916615,909717,932295,936912,936910,923305,936913,907231,907240,921090",
+        "ssl": "1",
+        "enablejsapi": 1,
+        "autoplay": "0",
+        "cr": ""
+    },
+    "sts": 16057,
+    "min_version": "8.0.0"
+};
+</script>
+{% endblock %} -->
+  <div id="playlist-tray" class="playlist-tray">
+    
+  </div>
+
+  <div class="clear"></div>
+</div>
+               <div id="content" class="  content-alignment">
+                  {% block content %}{% endblock %}
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="footer-container" class="yt-base-gutter">
+         <div id="footer">
+            <div id="footer-main">
+               <div id="footer-logo"><a href="/" title="YouTube home"><img src="/yts/img/pixel.gif" alt="YouTube home"></a></div>
+               <ul class="pickers yt-uix-button-group" data-button-toggle-group="optional">
+                  <li>
+                     <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-has-icon" type="button" id="yt-picker-language-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="language" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-footer-language" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
+                     Language:
+                     </span>
+                     English
+                     </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
+                  </li>
+                  <li>
+                     <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default" type="button" id="yt-picker-country-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="country" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
+                     Country:
+                     </span>
+                     Worldwide
+                     </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
+                  </li>
+                  <li>
+                     <button class=" yt-uix-button yt-uix-button-default yt-uix-button-size-default" type="button" id="yt-picker-safetymode-button" onclick=";return false;" data-button-toggle="true" data-button-menu-id="arrow-display" data-picker-key="safetymode" data-picker-position="footer" data-button-action="yt.www.picker.load" role="button"><span class="yt-uix-button-content">  <span class="yt-picker-button-label">
+                     Safety:
+                     </span>
+                     Off
+                     </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
+                  </li>
+               </ul>
+               <button type="button" onclick=";return false;" class="yt-uix-button-reverse yt-google-help-link yt-uix-button yt-uix-button-default yt-uix-button-size-default" id="google-help" data-ghelp-anchor="google-help" role="button"><span class="yt-uix-button-content">  <img class="questionmark" src="/yts/img/pixel.gif">
+               <span>Help</span>
+               <img class="yt-uix-button-arrow" src="/yts/img/pixel.gif">
+               </span></button>
+               <div id="yt-picker-language-footer" class="yt-picker" style="display: none">
+                  <p class="yt-spinner">
+                     <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
+                     <span class="yt-spinner-message">
+                     Loading...
+                     </span>
+                  </p>
+               </div>
+               <div id="yt-picker-country-footer" class="yt-picker" style="display: none">
+                  <p class="yt-spinner">
+                     <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
+                     <span class="yt-spinner-message">
+                     Loading...
+                     </span>
+                  </p>
+               </div>
+               <div id="yt-picker-safetymode-footer" class="yt-picker" style="display: none">
+                  <p class="yt-spinner">
+                     <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
+                     <span class="yt-spinner-message">
+                     Loading...
+                     </span>
+                  </p>
+               </div>
+            </div>
+            <div id="footer-links">
+               <ul id="footer-links-primary">
+                  <li><a href="/pt/about.php/">About</a></li>
+				  <li><a href="/pt/help">Help</a></li>
+				  <li><a href="/pt/contact">Contact</a></li>
+				  <li><a href="/pt/whats_new">What's new?</a></li>
+               </ul>
+               <ul id="footer-links-secondary">
+                  <li><a href="/t/terms">Terms</a></li>
+                  <li><a href="http://www.google.com/intl/en/policies/privacy/">Privacy</a></li>
+                  <li><a href="//www.youtube.com/yt/policyandsafety/">
+                     Policy &amp; Safety
+                     </a>
+                  </li>
+                  <li><a href="//www.google.com/tools/feedback/intl/en/error.html" onclick="return yt.www.feedback.start(59);" class="reportbug">Send feedback</a></li>
+                  <li><a href="/testtube">Try something new!</a></li>
+                  <li>  <span class="copyright" dir="ltr">© {{ fuckingYear | date("Y") }} pokTwo, not affiliated with Google LLC and YouTube, LLC.</span></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="yt-dialog hid" id="feed-privacy-lb">
+         <div class="yt-dialog-base">
+            <span class="yt-dialog-align"></span>
+            <div class="yt-dialog-fg">
+               <div class="yt-dialog-fg-content">
+                  <div class="yt-dialog-loading">
+                     <div class="yt-dialog-waiting-content">
+                        <div class="yt-spinner-img"></div>
+                        <div class="yt-dialog-waiting-text">Loading...</div>
+                     </div>
+                  </div>
+                  <div class="yt-dialog-content">
+                     <div id="feed-privacy-dialog">
+                     </div>
+                  </div>
+                  <div class="yt-dialog-working">
+                     <div id="yt-dialog-working-overlay">
+                     </div>
+                     <div id="yt-dialog-working-bubble">
+                        <div class="yt-dialog-waiting-content">
+                           <div class="yt-spinner-img"></div>
+                           <div class="yt-dialog-waiting-text">Working...</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="shared-addto-watch-later-login" class="hid">
+         <a href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dplaylist%26hl%3Den%26next%3D%252F" class="sign-in-link">Sign in</a> to add this to Watch Later
+      </div>
+      <div id="shared-addto-menu" style="display: none;" class="hid sign-in">
+         <div class="addto-menu">
+            <div id="addto-list-panel" class="menu-panel active-panel">
+               <span class="addto-playlist-item yt-uix-button-menu-item yt-uix-tooltip sign-in" data-possible-tooltip="" data-tooltip-show-delay="750">
+               <img class="playlist-status" src="/yts/img/pixel.gif" alt="" title=""><a href="https://accounts.google.com/ServiceLogin?hl=en&amp;uilel=3&amp;service=youtube&amp;passive=true&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3Dplaylist%26hl%3Den%26next%3D%252F" class="sign-in-link">Sign in</a> to add this to Watch Later
+               </span>
+            </div>
+            <div id="addto-list-saving-panel" class="menu-panel">
+               <div class="addto-loading loading-content">
+                  <p class="yt-spinner">
+                     <img class="yt-spinner-img" src="/yts/img/pixel.gif" alt="Loading icon" title="">
+                     <span class="yt-spinner-message">
+                     Loading playlists...
+                     </span>
+                  </p>
+               </div>
+            </div>
+            <div id="addto-list-error-panel" class="menu-panel">
+               <div class="panel-content">
+                  <img src="/yts/img/pixel.gif">
+                  <span class="error-details"></span>
+                  <a class="show-menu-link">Back</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script>if (window.ytcsi) {window.ytcsi.tick("hr", null, '');}</script>
+      <script>var ytspf = ytspf || {};ytspf.enabled = false;</script>
+      <script id="js-3395904476" class="spf" src="/yts/jsbin/spf.js" data-loaded="true"></script>   
+      <script id="js-3698437330" class="www_base_mod" src="/yts/jsbin/www/www_base_mod.js" data-loaded="true"></script>
+      <script>if (window.ytcsi) {window.ytcsi.tick("je", null, '');}</script>
+
+	{% block javascriptSettings %}
+      <script>
+         yt.setAjaxToken('feed_change_ajax', "Qvn84m14fyxRlfC1OkPqo_nWVIl8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
+         
+         yt.setConfig({
+         'MASTHEAD_ENCRYPTED_ID': "nbVtlg3BbA8",
+         'MASTHEAD_IS_BRANDED': true
+         });
+         
+         yt.setConfig('JS_PAGE_MODULES', {
+         "\/yts\/jsbin\/www\/www_feed_mod.js": []
+         });
+         yt.setConfig('DISMISS_THROUGH_IT', true);
+      </script>
+	{% endblock %}
+      <script>
+         yt.setConfig({
+         'GUIDE_SELECTED_ITEM': "{{ pageName }}"
+         });
+         
+         yt.setConfig({
+         'GUIDED_HELP_LOCALE': "en_US",
+         'GUIDED_HELP_ENVIRONMENT': "prod"
+         });
+         
+      </script>
+      <script>yt.setConfig({
+         'EVENT_ID': "VuTCUr32BsfKiAKQzoCwBg",
+         'PAGE_NAME': "{{ jsPageName }}",
+         'LOGGED_IN': {% if log %}true{% else %}false{% endif %},
+         'SESSION_INDEX': null,
+         'DELEGATED_SESSION_ID': null,
+         'GAPI_HOST': "https:\/\/apis.google.com",
+         'GAPI_HINT_PARAMS': "m;\/_\/scs\/abc-static\/_\/js\/k=gapi.gapi.en.5GL3tg_C6Nc.O\/m=__features__\/rt=j\/d=1\/rs=AItRSTPfsfz-ifAZeiHMk7mKfiGQJuhVFw",
+         'GAPI_LOCALE': "en_US",
+         'GOOGLEPLUS_HOST': "https:\/\/plus.google.com",
+         'PAGEFRAME_JS': "\/yts\/jsbin\/www-pageframe.js",
+         'JS_COMMON_MODULE': "\/yts\/jsbin\/www\/www_common_mod.js",
+         'PAGE_FRAME_DELAYLOADED_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-pageframedelayloaded-vfl6BqFHU.css",
+         'PREFETCH_CSS_RESOURCES': ["\/\/s.ytimg.com\/yts\/cssbin\/www-player-vflBjKccE.css", ''],
+         'PREFETCH_JS_RESOURCES': ["\/\/s.ytimg.com\/yts\/jsbin\/html5player-vflG49soT.js", ''],
+         'SAFETY_MODE_PENDING': false,
+         'LOCAL_DATE_TIME_CONFIG': {
+             "shortWeekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+             "amPms": ["AM", "PM"],
+             "shortMonths": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+             "formatLongDateOnly": "MMMM d, yyyy",
+             "formatShortDate": "MMM d, yyyy",
+             "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+             "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+             "formatWeekdayShortTime": "EE h:mm a",
+             "formatLongDate": "MMMM d, yyyy h:mm a"
+         },
+         'PAGE_CL': 58452362,
+         'PAGE_BUILD_TIMESTAMP': "{{ date().format('D M j h:i:s Y') }} ({{ date().format('U') }})",
+         'UNIVERSAL_HOVERCARDS': true,
+         'FEEDBACK_BUCKET_ID': "Home",
+         'FEEDBACK_LOCALE_LANGUAGE': "en",
+         'FEEDBACK_LOCALE_EXTRAS': {
+             "is_branded": "",
+             "accept_language": null,
+             "logged_in": {% if log %}true{% else %}false{% endif %},
+             "is_partner": "",
+             "guide_subs": "NA",
+             "experiments": "904000,923902,911429,908540,916615,927303,909717,929150,925728,936327,906945,906948,927704,920605,912715,919811,935704,931943,921410,920607,936702,911427,922804,931207,929505,901812,932276,932295,919389,934003,934004,938614,938617,938626,936912,936910,923305,936913,936914,924203,935006,939201,941241,934507,907231,907240,939918,921090,906001"
+         }
+         });
+         yt.setMsg({
+         'ADDTO_WATCH_LATER': "Watch Later",
+         'ADDTO_WATCH_LATER_ADDED': "Added",
+         'ADDTO_WATCH_LATER_ERROR': "Error"
+         });
+         yt.setAjaxToken('addto_ajax_logged_out', "TJfj3lIaIE0zhBNz9qnTobFRfPl8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
+         yt.setAjaxToken('watch_fragments_ajax', "yxRxkum9o4exNOHGVpeGh3ZDRv98MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
+         yt.setConfig('FEED_PRIVACY_CSS_URL', "\/\/s.ytimg.com\/yts\/cssbin\/www-feedprivacydialog-vflIiktxn.css");
+         yt.setAjaxToken('feed_privacy_ajax', "rlUeh7QSpN0f9A7gDN3gcGLvcdt8MTM4ODU5MDU1MEAxMzg4NTA0MTUw");
+         if (yt.www && yt.www.account) {
+         yt.pubsub.subscribe('init', yt.www.account.FeedPrivacyDialog.init);
+         } else {
+         yt.setConfig('FEED_PRIVACY_LIGHTBOX_ENABLED', true);
+         }
+         yt.setConfig({
+         'SBOX_JS_URL': "\/yts\/jsbin\/www-searchbox.js",
+         'SBOX_SETTINGS': {
+             "USE_HTTPS": true,
+             "PSUGGEST_TOKEN": null,
+             "HAS_ON_SCREEN_KEYBOARD": false,
+             "SESSION_INDEX": null,
+             "REQUEST_LANGUAGE": "en",
+             "EXPERIMENT_ID": -1,
+             "REQUEST_DOMAIN": "us"
+         },
+         'SBOX_LABELS': {
+             "VIEW_CHANNEL_LABEL": "View channel",
+             "WATCH_NOW_LABEL": "Watch now",
+             "SUGGESTION_DISMISS_LABEL": "Dismiss",
+             "SUGGESTION_DISMISSED_LABEL": "Suggestion dismissed"
+         }
+         });
+         yt.setConfig({
+         'YPC_LOADER_ENABLED': true,
+         'YPC_LOADER_CONFIGS': "\/ypc_config_ajax",
+         'YPC_LOADER_JS': "\/\/s.ytimg.com\/yts\/jsbin\/www-ypc-vfl2d1W-e.js",
+         'YPC_LOADER_CSS': "\/\/s.ytimg.com\/yts\/cssbin\/www-ypc-vfldrpIdw.css",
+         'YPC_LOADER_CALLBACKS': ['yt.www.ypc.checkout.init', 'yt.www.ypc.subscription.init']
+         });
+         yt.setConfig('GOOGLE_HELP_CONTEXT', "homepage");
+      </script>
+      <script>
+         ytcsi.span('st', 148);
+         yt.setConfig({
+             'TIMING_ACTION': "glo",
+             'TIMING_INFO': {
+                 "e": "904000,923902,911429,908540,916615",
+                 "ei": "VuTCUr32BsfKiAKQzoCwBg",
+                 "yt_lt": "warm",
+                 "yt_li": 0,
+                 "yt_spf": 0
+             }
+         });
+      </script>
+      <script> yt.setConfig({
+         'XSRF_TOKEN': "ymrXkmSluD-qY71xtxQLUViovXd8MTM4ODU5MDU1MEAxMzg4NTA0MTUw",
+         'XSRF_REDIRECT_TOKEN': "q2j2usJlAWJi54py9YBRf5XanhV8MTM4ODU5MDU1MEAxMzg4NTA0MTUw",
+         'XSRF_FIELD_NAME': "session_token"
+         });
+      </script>
+      <script>yt.setConfig('THUMB_DELAY_LOAD_BUFFER', 300);</script>
+      <script>if (window.ytcsi) {window.ytcsi.tick("jl", null, '');}</script>
+   </body>
 </html>

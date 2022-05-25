@@ -14,7 +14,7 @@ use Twig\Loader\FilesystemLoader;
  * @return Environment Twig object.
  */
 function twigloader($subfolder = '', $customloader = null, $customenv = null) {
-    global $tplCache, $tplNoCache, $userdata, $notificationCount, $isDebug, $messages, $log, $lpp, $https, $pageName, $searchShit, $versionString, $domain;
+    global $tplCache, $tplNoCache, $userdata, $notificationCount, $isDebug, $messages, $log, $lpp, $https, $pageName, $searchShit, $domain, $cssGarbage, $allUsers, $jsPageName, $guideCollapsed;
 
     $doCache = ($tplNoCache ? false : $tplCache);
 
@@ -45,9 +45,13 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
     // START OF CODE PORTED FROM SQUAREBRACKET
 	$twig->addGlobal("page_url", sprintf("%s%s", $domain, $_SERVER['REQUEST_URI']));
 	$twig->addGlobal("domain", $domain);
+	$twig->addGlobal('allUsers', $allUsers);
     // END OF PORTED CODE
     $twig->addGlobal('glob_lpp', $lpp);
-    $twig->addGlobal('version', $versionString);
+	$twig->addGlobal('jsPageName', $jsPageName);
+	$twig->addGlobal('cssGarbage', $cssGarbage);
+	$twig->addGlobal('guideCollapsed', $guideCollapsed);
+	$twig->addGlobal('token', Users::getCurrentToken());
 
     return $twig;
 }
@@ -58,17 +62,39 @@ function comments($cmnts, $type, $id): string
     return $twig->render('comment.twig', ['cmnts' => $cmnts, 'type' => $type, 'id' => $id]);
 }
 
+function profileImage($username) {
+	$file_exists = file_exists('pfps/'.$username.'.png');
+	$twig = twigloader('components');
+	return $twig->render('profileimage.twig', ['data' => $username, 'file_exists' => $file_exists]);
+}
+
 function pagination($levels, $lpp, $url, $current): string
 {
     $twig = twigloader('components');
     return $twig->render('pagination.twig', ['levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current]);
 }
 
+// generic error
 function error($title, $message)
 {
     $twig = twigloader();
 
     echo $twig->render('_error.twig', ['err_title' => $title, 'err_message' => $message]);
+    die();
+}
+
+// error for watch
+function playerError($message)
+{
+	global $pageName, $jsPageName, $cssGarbage, $guideCollapsed;
+	$pageName = "watchError";
+	$jsPageName = "watch";
+	$cssGarbage = "watch clearfix";
+	$guideCollapsed = true; // https://web.archive.org/web/20131113075554/youtube.com/watch?v=1
+	
+    $twig = twigloader();
+
+    echo $twig->render('_error_player.twig', ['err_message' => $message]);
     die();
 }
 

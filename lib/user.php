@@ -176,4 +176,32 @@ class Users
 
         return $token;
     }
+	
+	/**
+	 * Returns the token of the current user, I think.
+	 */
+	static function getCurrentToken()
+	{
+		global $sql, $log, $userdata;
+		if ($log) {
+			$token = $userdata['token'];
+		} else {
+			$token = "fuckingtokenpieceofshit";
+		}
+		return $token;
+	}
+	
+	/**
+	 * Returns the user ID specified of the current token, I think.
+	 */
+	static function getUserIDFromToken($token)
+	{
+		global $sql, $log;
+		if ($log) {
+			$data = $sql->result("SELECT id FROM users WHERE token = ?", [$token]);
+		} else {
+			$data = "0";
+		}
+		return $data;
+	}
 }

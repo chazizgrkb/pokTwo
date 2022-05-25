@@ -6,7 +6,7 @@ use Parsedown;
 
 require('lib/common.php');
 
-$pageName = "profile";
+$cssGarbage = "channel branded-page-base-bold-titles clearfix";
 
 if (isset($_GET['id'])) {
     $userpagedata = $sql->fetch("SELECT * FROM users WHERE id = ?", [$_GET['id']]);
@@ -17,6 +17,9 @@ if (isset($_GET['id'])) {
 if (!isset($userpagedata) || !$userpagedata) {
     error('404', "No user specified.");
 }
+
+$pageName = $userpagedata['name'];
+$jsPageName = "channel";
 
 $forceuser = isset($_GET['forceuser']);
 
