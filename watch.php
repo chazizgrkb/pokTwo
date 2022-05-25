@@ -97,10 +97,9 @@ echo $twig->render('watch.twig', [
     'recentView' => $previousRecentView,
     'allVideos' => $allVideos,
     'isFlash' => $isFlash,
-    'tags' => VideoTags::getVideoTags($videoData['id']),
+    'recommended' => Videos::getRecommended($videoData['video_id']),
     'isFavorited' => $isFavorited,
 /* 	'url_encoded_fmt_stream_map' => $url_encoded_fmt_stream_map,
 	'adaptive_fmts' => $adaptive_fmts, */
-    'recommendedNumber' => Videos::countRecommended($videoData['video_id']),
 	'videoOwnershipFuckery' => $isVideoOwnedByCurrentUser,
 ]);

@@ -45,7 +45,7 @@
 
       yt.setConfig({
     'EMBED_HTML_TEMPLATE': "\u003ciframe width=\"__width__\" height=\"__height__\" src=\"__url__\" frameborder=\"0\" allowfullscreen\u003e\u003c\/iframe\u003e",
-    'EMBED_HTML_URL': "\/\/www.youtube.com\/embed\/__videoid__"
+    'EMBED_HTML_URL': "\/\/pok.bytemail.com\/embed\/__videoid__"
   });
     yt.setMsg('FLASH_UPGRADE', "\u003cdiv class=\"yt-alert yt-alert-default yt-alert-error  yt-alert-player\"\u003e  \u003cdiv class=\"yt-alert-icon\"\u003e\n    \u003cimg s\u0072c=\"http:\/\/s.ytimg.com\/yts\/img\/pixel-vfl3z5WfW.gif\" class=\"icon master-sprite\" alt=\"Alert icon\"\u003e\n  \u003c\/div\u003e\n\u003cdiv class=\"yt-alert-buttons\"\u003e\u003c\/div\u003e\u003cdiv class=\"yt-alert-content\" role=\"alert\"\u003e    \u003cspan class=\"yt-alert-vertical-trick\"\u003e\u003c\/span\u003e\n    \u003cdiv class=\"yt-alert-message\"\u003e\n            You need to upgrade your Adobe Flash Player to watch this video. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eDownload it from Adobe.\u003c\/a\u003e\n    \u003c\/div\u003e\n\u003c\/div\u003e\u003c\/div\u003e");
   yt.setMsg('PLAYER_FALLBACK', "The Adobe Flash Player or an HTML5 supported browser is required for video playback. \u003cbr\u003e \u003ca href=\"http:\/\/get.adobe.com\/flashplayer\/\"\u003eGet the latest Flash Player\u003c\/a\u003e \u003cbr\u003e \u003ca href=\"\/html5\"\u003eLearn more about upgrading to an HTML5 browser\u003c\/a\u003e");
@@ -180,17 +180,17 @@
     <link itemprop="url" href="http://www.youtube.com/watch?v=JgZHEfDkUkk">
     <meta itemprop="name" content="{{ video.title }}" {{ video.title }}">
     <meta itemprop="description"
-        content="YouTube Rewind Bonus Reactions: http://goo.gl/fKjcs7 NEW Vids Sun, Tues &amp; Thurs! Subscribe: http://bit.ly/TheFineBros FREE NETFLIX FOR A MONTH! http://netfli...">
+        content="{{ video.description }}">
     <meta itemprop="paid" content="False">
 
-    <meta itemprop="channelId" content="UC0v-tlzsn0QZwJnkiaUSJVQ">
-    <meta itemprop="videoId" content="JgZHEfDkUkk">
+    <meta itemprop="channelId" content="{{ video.u_name }}">
+    <meta itemprop="videoId" content="{{ video.video_id }}">
 
     <meta itemprop="duration" content="PT9M37S">
     <meta itemprop="unlisted" content="False">
 
     <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <link itemprop="url" href="http://www.youtube.com/user/TheFineBros">
+          <link itemprop="url" href="http://pok.byteemail.com/user/{{ video.u_name }}">
         </span>
     <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <link itemprop="url" href="https://plus.google.com/100459443269104397247">
@@ -203,7 +203,7 @@
       <meta itemprop="height" content="360">
     </span>
 
-    <link itemprop="embedURL" href="http://www.youtube.com/v/JgZHEfDkUkk?version=3&amp;autohide=1">
+    <link itemprop="embedURL" href="http://pok.byteemail.com/v/{{ video.video_id }}?version=3&amp;autohide=1">
     <meta itemprop="playerType" content="Flash">
     <meta itemprop="width" content="1280">
     <meta itemprop="height" content="720">
@@ -241,7 +241,7 @@
                     </div>
 
                     <div id="watch7-user-header" class="spf-nolink"><a href="/user/{{ video.u_name }}?feature=watch"
-                            class="yt-user-photo "> <span class="video-thumb  yt-thumb yt-thumb-48 g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">
+                            class="yt-user-photo "> <span class="video-thumb  yt-thumb yt-thumb-48 g-hovercard" data-ytid="{{ video.u_name }}">
       <span class="yt-thumb-square">
         <span class="yt-thumb-clip">
           <img src="{{ profile_image(video.u_name) }}" alt="{{ video.u_name }}" width="48">
@@ -252,18 +252,18 @@
                         </a><a href="/user/{{ video.u_name }}?feature=watch"
                             class="g-hovercard yt-uix-sessionlink yt-user-name "
                             data-sessionlink="feature=watch&amp;ei=f4DAUq3_OImVkgLEuICgAw" dir="ltr"
-                            data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch">{{ video.u_name }}</a> <span class="yt-user-name-icon-verified">
+                            data-ytid="{{ video.u_name }}" data-name="watch">{{ video.u_name }}</a> <span class="yt-user-name-icon-verified">
     <img src="/yts/img/pixel.gif" class="yt-uix-tooltip yt-channel-title-icon-verified" alt="" title="Verified name">
   </span>
                         <span class="yt-user-separator">·</span><a class="yt-uix-sessionlink yt-user-videos"
-                            href="/user/TheFineBros/videos"
+                            href="/user/{{ video.u_name }}/videos"
                             data-sessionlink="feature=watch&amp;ei=f4DAUq3_OImVkgLEuICgAw">{{ allVideos }}
                             videos</a><br><span id="watch7-subscription-container">
 							{% if videoOwnershipFuckery == true %}
-							<a href="http://www.youtube.com/channel/UC5dBpTGB-7TZ6SztiBLBl9Q?edit_channel_settings=1" class="yt-uix-button channel-settings-link yt-uix-sessionlink yt-uix-button-default" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-settings" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">Channel settings</span></a>
+							<a href="http://www.youtube.com/channel/{{ video.u_name }}?edit_channel_settings=1" class="yt-uix-button channel-settings-link yt-uix-sessionlink yt-uix-button-default" data-sessionlink="ei=4b9_UcWTBcrpgALt9IDgBg"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-settings" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">Channel settings</span></a>
 							{% else %}
-							<span class="yt-uix-button-subscription-container with-preferences"><button class="yt-uix-subscription-button yt-uix-button yt-uix-button-subscribe-branded yt-uix-button-size-default yt-uix-button-has-icon" aria-role="button" aria-live="polite" aria-busy="false" type="button" onclick=";return false;" data-style-type="branded" data-sessionlink="feature=watch&amp;ved=CAEQmys&amp;ei=f4DAUq3_OImVkgLEuICgAw" data-href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26continue_action%3DQUFFLUhqbTVBSnZxYUNoZTNwVnJCenI5TkJEd2IzaFFzd3xBQ3Jtc0trSWljeGhpa003WnhjZHJlcjRBYWViYWhXLS1qZ29pV1lUbUREaWxGVi0wekU0SjExRG9kWmN2MXhoa2pBaERsUE1rYnQ2cjVuZGpkUDQwZHN3T3ZoUldqc0k1c19tcDdleUFIRHVpaFBHcHJBbERValZiM2hvR05mOFdXRGxteUE1QkQ2X2hrZUFGMENIejhnZjNiLTZUcFFzaVpxLWs5dTJmbzBuUk1mM3lhZm5nTWlTcGcya2N5V0VUVm9NQ0hmb0FZcEY%253D%26feature%3Dsubscribe%26hl%3Den%26next%3D%252Fchannel%252FUC0v-tlzsn0QZwJnkiaUSJVQ&amp;passive=true&amp;hl=en" data-channel-external-id="UC0v-tlzsn0QZwJnkiaUSJVQ" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-subscribe" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content"><span class="subscribe-label" aria-label="Subscribe">Subscribe</span><span class="subscribed-label" aria-label="Unsubscribe">Subscribed</span><span class="unsubscribe-label" aria-label="Unsubscribe">Unsubscribe</span>
-                        </span></button><button class="yt-uix-subscription-preferences-button yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-has-icon yt-uix-button-empty" type="button" onclick=";return false;" data-channel-external-id="UC0v-tlzsn0QZwJnkiaUSJVQ" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-subscription-preferences" src="/yts/img/pixel.gif" alt="" title=""></span></button><span class="yt-subscription-button-subscriber-count-branded-horizontal">6,799,197</span>
+							<span class="yt-uix-button-subscription-container with-preferences"><button class="yt-uix-subscription-button yt-uix-button yt-uix-button-subscribe-branded yt-uix-button-size-default yt-uix-button-has-icon" aria-role="button" aria-live="polite" aria-busy="false" type="button" onclick=";return false;" data-style-type="branded" data-sessionlink="feature=watch&amp;ved=CAEQmys&amp;ei=f4DAUq3_OImVkgLEuICgAw" data-href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26continue_action%3DQUFFLUhqbTVBSnZxYUNoZTNwVnJCenI5TkJEd2IzaFFzd3xBQ3Jtc0trSWljeGhpa003WnhjZHJlcjRBYWViYWhXLS1qZ29pV1lUbUREaWxGVi0wekU0SjExRG9kWmN2MXhoa2pBaERsUE1rYnQ2cjVuZGpkUDQwZHN3T3ZoUldqc0k1c19tcDdleUFIRHVpaFBHcHJBbERValZiM2hvR05mOFdXRGxteUE1QkQ2X2hrZUFGMENIejhnZjNiLTZUcFFzaVpxLWs5dTJmbzBuUk1mM3lhZm5nTWlTcGcya2N5V0VUVm9NQ0hmb0FZcEY%253D%26feature%3Dsubscribe%26hl%3Den%26next%3D%252Fchannel%252FUC0v-tlzsn0QZwJnkiaUSJVQ&amp;passive=true&amp;hl=en" data-channel-external-id="{{ video.u_name }}" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-subscribe" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content"><span class="subscribe-label" aria-label="Subscribe">Subscribe</span><span class="subscribed-label" aria-label="Unsubscribe">Subscribed</span><span class="unsubscribe-label" aria-label="Unsubscribe">Unsubscribe</span>
+                        </span></button><button class="yt-uix-subscription-preferences-button yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-has-icon yt-uix-button-empty" type="button" onclick=";return false;" data-channel-external-id="{{ video.u_name }}" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-subscription-preferences" src="/yts/img/pixel.gif" alt="" title=""></span></button><span class="yt-subscription-button-subscriber-count-branded-horizontal">6,799,197</span>
                         <span class="yt-subscription-button-disabled-mask" title=""></span>
 
                         <div class="yt-uix-overlay " data-overlay-style="primary" data-overlay-shape="tiny">
@@ -327,19 +327,9 @@ Loading...
 							{% endif %}
 						</span>
                         <div id="watch7-views-info">
-                            <div class="yt-uix-hovercard" data-card-class="watch-view-count-hovercard">
-                                <span class="watch-view-count yt-uix-hovercard-target" data-orientation="vertical" data-position="bottomleft">
-301+ views
-  </span>
-
-                                <div class="watch-view-count-hovercard-content yt-uix-hovercard-content">
-                                    Views are being verified and will be updated soon.
-                                    <a href="//support.google.com/youtube/?p=viewcount&amp;hl=en-US"
-                                        target="_blank">Learn more</a>
-                                </div>
-                            </div>
-
-
+							<span class="watch-view-count">
+							  {{ viewCount }}
+							</span>
                             <div class="video-extras-sparkbars">
                                 <div class="video-extras-sparkbar-likes" style="width: 100.0%"></div>
                                 <div class="video-extras-sparkbar-dislikes" style="width: 0.0%"></div>
@@ -359,29 +349,17 @@ Loading...
                         <div id="watch7-sentiment-actions">
                             <span id="watch-like-dislike-buttons" class="yt-uix-button-group " data-button-toggle-group="optional"><span class="yt-uix-clickcard"><button class="yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-button-size-default yt-uix-button-has-icon yt-uix-tooltip" id="watch-like" title="" onclick=";return false;" type="button" data-like-tooltip="I like this" data-position="bottomright" data-orientation="vertical" data-unlike-tooltip="Unlike" data-button-toggle="true" data-force-position="true" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-like" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">Like </span></button>
                             <div class="watch7-hovercard yt-uix-clickcard-content">
-                                <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+                                <h3 class="watch7-hovercard-header">Sign in to pokTwo</h3>
                                 <div class="watch7-hovercard-message">
-                                    Sign in with your Google Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome)
+                                    Sign in with your Chaziz Account
                                     to like
-                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span>'s
+                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="{{ video.u_name }}">{{ video.u_name }}</span>'s
                                     video.
 
                                 </div>
                                 <ul class="watch7-hovercard-icon-strip clearfix">
                                     <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-youtube-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-gplus-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-gmail-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-picasa-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-chrome-icon"></div>
+                                        <div class="watch7-hovercard-chaziz-icon"></div>
                                     </li>
                                 </ul>
                                 <div class="watch7-hovercard-account-line">
@@ -392,29 +370,17 @@ Loading...
                             </div>
                             </span><span class="yt-uix-clickcard"><button class="yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-button-size-default yt-uix-button-has-icon yt-uix-tooltip yt-uix-button-empty" id="watch-dislike" title="I dislike this" onclick=";return false;" type="button" data-orientation="vertical" data-position="bottomright" data-force-position="true" data-button-toggle="true" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-dislike" src="/yts/img/pixel.gif" alt="I dislike this" title=""></span></button>
                             <div class="watch7-hovercard yt-uix-clickcard-content">
-                                <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+                                <h3 class="watch7-hovercard-header">Sign in to pokTwo</h3>
                                 <div class="watch7-hovercard-message">
-                                    Sign in with your Google Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome)
+                                    Sign in with your Chaziz Account
                                     to dislike
-                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span>'s
+                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="{{ video.u_name }}">{{ video.u_name }}</span>'s
                                     video.
 
                                 </div>
                                 <ul class="watch7-hovercard-icon-strip clearfix">
                                     <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-youtube-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-gplus-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-gmail-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-picasa-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-chrome-icon"></div>
+                                        <div class="watch7-hovercard-chaziz-icon"></div>
                                     </li>
                                 </ul>
                                 <div class="watch7-hovercard-account-line">
@@ -438,29 +404,17 @@ Loading...
                             <span class="yt-uix-clickcard">
     <button class="action-panel-trigger   yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-button-size-default yt-uix-tooltip" type="button" title="" onclick=";return false;" data-trigger-for="action-panel-none" data-orientation="vertical" data-upsell="playlist" data-button-toggle="true" data-position="bottomleft" role="button"><span class="yt-uix-button-content">Add to </span></button>
                             <div class="watch7-hovercard yt-uix-clickcard-content">
-                                <h3 class="watch7-hovercard-header">Sign in to YouTube</h3>
+                                <h3 class="watch7-hovercard-header">Sign in to pokTwo</h3>
                                 <div class="watch7-hovercard-message">
-                                    Sign in with your Google Account (YouTube, Google+, Gmail, Orkut, Picasa, or Chrome)
+                                    Sign in with your Chaziz Account
                                     to add
-                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span>'s
+                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="{{ video.u_name }}">{{ video.u_name }}</span>'s
                                     video to your playlist.
 
                                 </div>
                                 <ul class="watch7-hovercard-icon-strip clearfix">
                                     <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-youtube-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-gplus-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-gmail-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-picasa-icon"></div>
-                                    </li>
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-chrome-icon"></div>
+                                        <div class="watch7-hovercard-chaziz-icon"></div>
                                     </li>
                                 </ul>
                                 <div class="watch7-hovercard-account-line">
@@ -707,327 +661,25 @@ Loading...
 
                         <div class="watch-sidebar-body">
                             <ul id="watch-related" class="video-list">
-                                <li class="video-list-item related-list-item"><a href="/watch?v=Ua4K5OyA7cQ"
+							{% for video in recommended %}
+                                <li class="video-list-item related-list-item"><a href="/watch?v={{ video.video_id }}"
                                         class="related-video  yt-uix-sessionlink"
                                         data-sessionlink="feature=relmfu&amp;ved=CAcQzRooAA&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
       <span class="yt-thumb-default">
         <span class="yt-thumb-clip">
-          <img src="//i1.ytimg.com/vi/Ua4K5OyA7cQ/default.jpg" data-thumb="//i1.ytimg.com/vi/Ua4K5OyA7cQ/default.jpg" alt="" width="120" data-group-key="thumb-group-0">
+          <img src="/get_still.php?still_id=2&amp;video_id={{ video.video_id }}" data-thumb="/get_still.php?still_id=2&amp;video_id={{ video.video_id }}" alt="" width="120" data-group-key="thumb-group-0">
           <span class="vertical-align"></span>
                                         </span>
                                         </span>
                                         </span>
                                         <span class="video-time">10:00</span>
 
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="Ua4K5OyA7cQ" role="button" data-tooltip-text="Watch Later"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
+                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="{{ video.video_id }}" role="button" data-tooltip-text="Watch Later"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
  </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="YouTubers React To Short Viral Videos">YouTubers React To Short Viral Videos</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">2,617,235 views</span></a>
+                                        </span><span dir="ltr" class="title" title="{{ video.title }}">{{ video.title }}</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="{ video.u_name }}">{{ video.u_name }}</span></b></span></span><span class="stat view-count">{{ video.views }} views</span></a>
                                 </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=VfFU9u3XXww"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CAgQzRooAQ&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="//i1.ytimg.com/vi/VfFU9u3XXww/default.jpg" data-thumb="//i1.ytimg.com/vi/VfFU9u3XXww/default.jpg" alt="" width="120" data-group-key="thumb-group-0">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">9:00</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="VfFU9u3XXww" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="Kids React To XBOX ONE vs. PlayStation 4!">Kids React To XBOX ONE vs. PlayStation 4!</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">1,501,673 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=i4i72gAmziw"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CAkQzRooAg&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="//i1.ytimg.com/vi/i4i72gAmziw/default.jpg" data-thumb="//i1.ytimg.com/vi/i4i72gAmziw/default.jpg" alt="" width="120" data-group-key="thumb-group-0">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">7:39</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="i4i72gAmziw" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="YouTubers React to 1D Deleted?!, 2013 Recap, and more! (Fine Time #14)">YouTubers React to 1D Deleted?!, 2013 Recap, and more! (Fine Time #14)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">243,378 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=6KXqYZnJGVE"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CAoQzRooAw&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="//i1.ytimg.com/vi/6KXqYZnJGVE/default.jpg" data-thumb="//i1.ytimg.com/vi/6KXqYZnJGVE/default.jpg" alt="" width="120" data-group-key="thumb-group-0">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">7:00</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="6KXqYZnJGVE" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="Kids React To going to the store!">Kids React To going to the store!</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">1,794,420 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=TM9-K95B5b4"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CAsQzRooBA&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="//i1.ytimg.com/vi/TM9-K95B5b4/default.jpg" data-thumb="//i1.ytimg.com/vi/TM9-K95B5b4/default.jpg" alt="" width="120" data-group-key="thumb-group-0">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">10:00</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="TM9-K95B5b4" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="YouTubers React To DyE Fantasy">YouTubers React To DyE Fantasy</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">2,829,894 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=1gg1P090DDc"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CAwQzRooBQ&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="//i1.ytimg.com/vi/1gg1P090DDc/default.jpg" data-thumb="//i1.ytimg.com/vi/1gg1P090DDc/default.jpg" alt="" width="120" data-group-key="thumb-group-0">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">11:45</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="1gg1P090DDc" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="Elders React to Brain Surgery Vlog (CTFxC)">Elders React to Brain Surgery Vlog (CTFxC)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">1,705,991 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=era8q_hswns"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CA0QzRooBg&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="//i1.ytimg.com/vi/era8q_hswns/default.jpg" data-thumb="//i1.ytimg.com/vi/era8q_hswns/default.jpg" alt="" width="120" data-group-key="thumb-group-0">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">7:45</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="era8q_hswns" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="TEENS REACT TO CRYING BABY">TEENS REACT TO CRYING BABY</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">1,742,558 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=RDlmJfLz1fg"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CA4QzRooBw&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="//i1.ytimg.com/vi/RDlmJfLz1fg/default.jpg" data-thumb="//i1.ytimg.com/vi/RDlmJfLz1fg/default.jpg" alt="" width="120" data-group-key="thumb-group-0">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">6:51</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="RDlmJfLz1fg" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="2013: Year In Review">2013: Year In Review</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">338,317 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=R2LsyxsueeY"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CA8QzRooCA&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/R2LsyxsueeY/default.jpg" alt="" width="120" data-group-key="thumb-group-1">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">5:50</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="R2LsyxsueeY" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="YouTubers React To Short Viral Videos (BONUS #26)">YouTubers React To Short Viral Videos (BONUS #26)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">443,194 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=6NmGOQr-PYA"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBAQzRooCQ&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/6NmGOQr-PYA/default.jpg" alt="" width="120" data-group-key="thumb-group-1">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">8:41</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="6NmGOQr-PYA" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="TEENS REACT TO CAPTAINSPARKLEZ">TEENS REACT TO CAPTAINSPARKLEZ</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">2,384,819 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=i0uuBoDcSC8"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBEQzRooCg&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/i0uuBoDcSC8/default.jpg" alt="" width="120" data-group-key="thumb-group-1">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">8:50</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="i0uuBoDcSC8" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="Elders React to Hunger Games: Catching Fire">Elders React to Hunger Games: Catching Fire</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">1,389,816 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=BJxRGvtSW74"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBIQzRooCw&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/BJxRGvtSW74/default.jpg" alt="" width="120" data-group-key="thumb-group-1">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">10:36</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="BJxRGvtSW74" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="SOMEONE QUITS! (MyMusic Season 2 Episode 16)">SOMEONE QUITS! (MyMusic Season 2 Episode 16)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">558,540 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=CJV5C6JlPdM"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBMQzRooDA&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/CJV5C6JlPdM/default.jpg" alt="" width="120" data-group-key="thumb-group-1">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">6:18</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="CJV5C6JlPdM" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="INSANE WIFE! (MyMusic Season 2 Episode 17)">INSANE WIFE! (MyMusic Season 2 Episode 17)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">464,648 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=wCGcoVoZ5no"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBQQzRooDQ&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/wCGcoVoZ5no/default.jpg" alt="" width="120" data-group-key="thumb-group-2">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">5:17</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="wCGcoVoZ5no" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="YouTubers React To DyE Fantasy (BONUS #25)">YouTubers React To DyE Fantasy (BONUS #25)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">585,942 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=9sWH3YrHzPM"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBUQzRooDg&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/9sWH3YrHzPM/default.jpg" alt="" width="120" data-group-key="thumb-group-2">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">7:34</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="9sWH3YrHzPM" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="YouTubers React, Hotter Brother, Holidays and more! (Fine Time #13)">YouTubers React, Hotter Brother, Holidays and more! (Fine Time #13)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">450,321 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=Eot5lwDO4Vc"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBYQzRooDw&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/Eot5lwDO4Vc/default.jpg" alt="" width="120" data-group-key="thumb-group-2">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">8:37</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="Eot5lwDO4Vc" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="FAMILY BREAKDOWN!">FAMILY BREAKDOWN!</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">244,101 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=s194pIT0WAc"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBcQzRooEA&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/s194pIT0WAc/default.jpg" alt="" width="120" data-group-key="thumb-group-2">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">6:19</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="s194pIT0WAc" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="KISS &amp; TELL! (MyMusic Season 2 Episode 18)">KISS &amp; TELL! (MyMusic Season 2 Episode 18)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">426,544 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=1cBcLuWRu6A"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBgQzRooEQ&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/1cBcLuWRu6A/default.jpg" alt="" width="120" data-group-key="thumb-group-2">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">8:39</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="1cBcLuWRu6A" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="GHOSTS!!! (MyMusic Season 2 Episode 6)">GHOSTS!!! (MyMusic Season 2 Episode 6)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">406,489 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=AgxEgjG8OQM"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBkQzRooEg&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/AgxEgjG8OQM/default.jpg" alt="" width="120" data-group-key="thumb-group-3">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">8:51</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="AgxEgjG8OQM" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="HOT AND COLD! (MyMusic Season 2 Episode 3)">HOT AND COLD! (MyMusic Season 2 Episode 3)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">633,427 views</span></a>
-                                </li>
-                                <li class="video-list-item related-list-item"><a href="/watch?v=noK-bChsqVM"
-                                        class="related-video  yt-uix-sessionlink"
-                                        data-sessionlink="feature=relmfu&amp;ved=CBoQzRooEw&amp;ei=f4DAUq3_OImVkgLEuICgAw"><span class="ux-thumb-wrap contains-addto ">    <span class="video-thumb  yt-thumb yt-thumb-120">
-      <span class="yt-thumb-default">
-        <span class="yt-thumb-clip">
-          <img src="/yts/img/pixel.gif" data-thumb="//i1.ytimg.com/vi/noK-bChsqVM/default.jpg" alt="" width="120" data-group-key="thumb-group-3">
-          <span class="vertical-align"></span>
-                                        </span>
-                                        </span>
-                                        </span>
-                                        <span class="video-time">6:29</span>
-
-                                        <button class="addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-button yt-uix-button-default yt-uix-button-size-small yt-uix-tooltip" title="Watch Later" onclick=";return false;" type="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="noK-bChsqVM" role="button"><span class="yt-uix-button-content">  <img src="/yts/img/pixel.gif" alt="Watch Later">
- </span><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
-                                        </span><span dir="ltr" class="title" title="NERDOPHOBIA? (MyMusic Season 2 Episode 2)">NERDOPHOBIA? (MyMusic Season 2 Episode 2)</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ" data-name="watch-vrec">by <b><span class="g-hovercard" data-ytid="UC0v-tlzsn0QZwJnkiaUSJVQ">TheFineBros</span></b></span></span><span class="stat view-count">522,814 views</span></a>
-                                </li>
-                                <div id="watch-more-related" class="hid">
+							{% endfor %}
+								<div id="watch-more-related" class="hid">
                                     <li id="watch-more-related-loading">
                                         Loading more suggestions...
                                     </li>
@@ -1106,7 +758,7 @@ ytplayer.config = {
         "afv_video_min_cpm": 6000000,
         "ad_video_pub_id": "ca-pub-6219811747049371",
         "csi_page_type": "watch,watch7ad",
-        "vid": "JgZHEfDkUkk",
+        "vid": "{{ video.video_id }}",
         "ad3_module": "1",
         "cbr": "Firefox",
         "shortform": true,
@@ -1122,9 +774,8 @@ ytplayer.config = {
         "afv": true,
         "url_encoded_fmt_stream_map": "{{url_encoded_fmt_stream_map}}",
 		"afv_invideo_ad_tag": "http:\/\/googleads.g.doubleclick.net\/pagead\/ads?ht_id=5012008\u0026url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026ad_type=text_image_flash\u0026loeid=938627%2C914072%2C916625\u0026description_url=http%3A%2F%2Fwww.youtube.com%2Fvideo%2FJgZHEfDkUkk\u0026max_ad_duration=15000\u0026channel=invideo_overlay_480x70_cat24%2Bafv_overlay%2BVertical_3%2BVertical_36%2BVertical_182%2BVertical_211%2BVertical_613%2Bafv_user_thefinebros%2Bafv_user_id_0v-tlzsn0QZwJnkiaUSJVQ%2Byt_mpvid_AATusdjArkr0Na3s%2Byt_cid_563326%2Bytdevice_1%2Bytps_default%2Bytel_detailpage\u0026ytdevice=1\u0026client=ca-pub-6219811747049371\u0026host=ca-host-pub-0161219093041726\u0026hl=en",
-        "loaderUrl": "http:\/\/www.youtube.com\/watch?v=JgZHEfDkUkk\u0026gl=US\u0026hl=en",
+        "loaderUrl": "http:\/\/www.youtube.com\/watch?v={{ video.video_id }}\u0026gl=US\u0026hl=en",
         "ad_channel_code_instream": "afv_instream,Vertical_3,Vertical_36,Vertical_182,Vertical_211,Vertical_613,afv_instream_us,afv_user_thefinebros,afv_user_id_0v-tlzsn0QZwJnkiaUSJVQ,yt_mpvid_AATusdjArkr0Na3s,yt_cid_563326,ytdevice_1,ytps_default,ytel_detailpage",
-        "ad_eurl": "http:\/\/www.youtube.com\/video\/JgZHEfDkUkk",
         "dynamic_allocation_ad_tag": "http:\/\/ad.doubleclick.net\/N4061\/pfadx\/com.ytpwatch.entertainment\/main_563326;sz=WIDTHxHEIGHT;kvid=JgZHEfDkUkk;kpu=TheFineBros;kpeid=0v-tlzsn0QZwJnkiaUSJVQ;kpid=563326;mpvid=AATusdjArkr0Na3s;afv=1;afvbase=eJxdkV1vmzAUhn9NuKPyR2LgggvIx7ZoS5qkrdrcWA4YcGMwNTZJ-PVz2SalsywdP-8557V1XBkq8ngGIAIg9KyWcWVMO8HJBK3cvlwuDzdljT3xh0zVTulFzpWL6_L4fVkszs_nszdqNGvrmIBxeSyn5tbyeMx4UnF3SYRDgoIJmkdwCgI0HghBM8_Q9tbH_JpJm3OvZlfq2nOrmRGqiSGZOcOsYk3DZfxLNPO2nobgGoAn3hk4QSkreiqazmjO3AvTF66NyJik-AuQe4IhukcE4T0SiP-zpbb7q9iOa2oqXoiGn7T6Ioucgt43cugasDte1s1ZsOfD-mXnim6G1q0bB02SJ9vl74k-a7BhuPuTy1xmRjBGZOSc9yLjFI7QdjTnBbPSjMilQ8OEbFnJvX-1MfQq1Zk4Y_5n9Ft78gEkEMEIRBhMYYCI9_kNXmNrN-DONWRKay6ZUTqGOAzxNJjBKAqck4x546xpa-Lk8YRXyH8e9tvq6RtaaFUe3ptuWae8SDksrJU4jMhQHBO1rfbZD_tTq_0mY_gtzN_Q423b-_N9yt77G175r0uBP6phvzqHG9sPSZlHbghEdcVQHvmUbHfR64d5XMvDFBAZprsQR4kIlu023SyG8rSoFkkAfgPeKudB;dc_backfill=1;dc_yt=1;dt_yt=1;k5=3_36_182_211_613;kclg=1;kclt=1;kga=-1;kgg=-1;klg=en;kmsrd=1;ko=p;kr=H;kvz=203;longads=1;nlfb=1;yt_vrallowed=1;ytcat=24;ytdevice=1;ytexp=938627,914072,916625;!c=563326;k2=3;k2=36;k2=182;k2=211;k2=613;kvlg=en;",
         "cr": "US",
         "keywords": "YouTube Rewind: What Does 2013 Say?,YouTube Rewind 2013,YouTube Rewind,What Does 2013 Say?,thefinebros,finebros,fine bros,fine brothers,kids react,elders react,youtubers react,teens react,mymusic,my music,mymusicshow",

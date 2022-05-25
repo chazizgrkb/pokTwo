@@ -23,12 +23,6 @@ $jsPageName = "channel";
 
 $forceuser = isset($_GET['forceuser']);
 
-if (isset($userpagedata['birthday'])) {
-    $age = Users::getAge($userpagedata['birthday']);
-} else {
-    $age = false;
-}
-
 // Personal user page stuff
 if ($userpagedata['about']) {
     $markdown = new Parsedown();
@@ -40,14 +34,12 @@ $twig = twigloader();
 echo $twig->render('profile.twig', [
     'id' => $userpagedata['id'],
     'name' => $userpagedata['name'],
-    'latestVideo' => Videos::getLatestVideo($userpagedata['id']),
+    'latestVideos' => Videos::getVideos('v.time DESC', 12, 'v.author', $userpagedata['id']),
+	'popularVideos' => Videos::getVideos('views DESC', 12, 'v.author', $userpagedata['id']),
     'allVideos' => Users::getUserVideoCount($userpagedata['id']),
     'allFavorites' => Users::getUserFavoriteCount($userpagedata['id']),
     'userpagedata' => $userpagedata,
     'forceuser' => $forceuser,
     'edited' => (isset($_GET['edited']) ? true : false), // TODO: merge these three stuffs into one variable
     'justbanned' => ($_GET['justbanned'] ?? null),
-    'age' => $age,
-    'relationship' => Users::relationship_to_type($userpagedata['relationshipStatus']),
-    'gender' => Users::gender_to_type($userpagedata['gender']),
 ]);

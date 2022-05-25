@@ -11388,6 +11388,13 @@ body.yt-dialog-active {
 	height: 20px
 }
 
+.watch7-hovercard-chaziz-icon {
+	background: no-repeat url(/yts/imgbin/www-hitchhiker.png) -124px -270px;
+	background-size: auto;
+	width: 37px;
+	height: 20px
+}
+
 .watch7-hovercard-account-line {
 	color: #999
 }
