@@ -1,5 +1,7 @@
 # pokTwo
 
+![the website](https://user-images.githubusercontent.com/45898787/170794090-c8135703-23ee-49df-9eea-70872d0d9ea0.png)
+
 Another sequel to PokTube. We plan on being accurate to the original YouTube website from near the end of 2013, by using HTML dumps accidentally uploaded to GitHub and archives from the Internet Archive.
 
 This is based on the internals of squareBracket, with a few bits of code originating from SuxCox.
