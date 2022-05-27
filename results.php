@@ -3,7 +3,7 @@
 namespace pokTwo;
 require('lib/common.php');
 
-$query = $_GET['search'] ?? null;
+$query = $_GET['search_query'] ?? null;
 $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
 $limit = sprintf("LIMIT %s,%s", (($page - 1) * $lpp), $lpp);
 
