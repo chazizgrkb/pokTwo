@@ -348,47 +348,9 @@ Loading...
                     <div id="watch7-action-buttons" class="clearfix">
                         <div id="watch7-sentiment-actions">
                             <span id="watch-like-dislike-buttons" class="yt-uix-button-group " data-button-toggle-group="optional"><span class="yt-uix-clickcard"><button class="yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-button-size-default yt-uix-button-has-icon yt-uix-tooltip" id="watch-like" title="" onclick=";return false;" type="button" data-like-tooltip="I like this" data-position="bottomright" data-orientation="vertical" data-unlike-tooltip="Unlike" data-button-toggle="true" data-force-position="true" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-like" src="/yts/img/pixel.gif" alt="" title=""></span><span class="yt-uix-button-content">Like </span></button>
-                            <div class="watch7-hovercard yt-uix-clickcard-content">
-                                <h3 class="watch7-hovercard-header">Sign in to pokTwo</h3>
-                                <div class="watch7-hovercard-message">
-                                    Sign in with your Chaziz Account
-                                    to like
-                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="{{ video.u_name }}">{{ video.u_name }}</span>'s
-                                    video.
-
-                                </div>
-                                <ul class="watch7-hovercard-icon-strip clearfix">
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-chaziz-icon"></div>
-                                    </li>
-                                </ul>
-                                <div class="watch7-hovercard-account-line">
-                                    <a href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3D__FEATURE__%26hl%3Den%26next%3D%252Fwatch%253Fv%253DJgZHEfDkUkk%2526gl%253DUS%2526hl%253Den&amp;passive=true&amp;hl=en"
-                                        class="yt-uix-button   yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default"
-                                        data-sessionlink="ei=f4DAUq3_OImVkgLEuICgAw"><span class="yt-uix-button-content">Sign in </span></a>
-                                </div>
-                            </div>
+                            {{ login_hovercard("like", video.u_name, "video") }}
                             </span><span class="yt-uix-clickcard"><button class="yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-button-size-default yt-uix-button-has-icon yt-uix-tooltip yt-uix-button-empty" id="watch-dislike" title="I dislike this" onclick=";return false;" type="button" data-orientation="vertical" data-position="bottomright" data-force-position="true" data-button-toggle="true" role="button"><span class="yt-uix-button-icon-wrapper"><img class="yt-uix-button-icon yt-uix-button-icon-watch-dislike" src="/yts/img/pixel.gif" alt="I dislike this" title=""></span></button>
-                            <div class="watch7-hovercard yt-uix-clickcard-content">
-                                <h3 class="watch7-hovercard-header">Sign in to pokTwo</h3>
-                                <div class="watch7-hovercard-message">
-                                    Sign in with your Chaziz Account
-                                    to dislike
-                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="{{ video.u_name }}">{{ video.u_name }}</span>'s
-                                    video.
-
-                                </div>
-                                <ul class="watch7-hovercard-icon-strip clearfix">
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-chaziz-icon"></div>
-                                    </li>
-                                </ul>
-                                <div class="watch7-hovercard-account-line">
-                                    <a href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3D__FEATURE__%26hl%3Den%26next%3D%252Fwatch%253Fv%253DJgZHEfDkUkk%2526gl%253DUS%2526hl%253Den&amp;passive=true&amp;hl=en"
-                                        class="yt-uix-button   yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default"
-                                        data-sessionlink="ei=f4DAUq3_OImVkgLEuICgAw"><span class="yt-uix-button-content">Sign in </span></a>
-                                </div>
-                            </div>
+                            {{ login_hovercard("dislike", video.u_name, "video") }}
                             </span></span>
                         </div>
                         <div id="watch7-secondary-actions" class="yt-uix-button-group"
@@ -403,26 +365,7 @@ Loading...
 
                             <span class="yt-uix-clickcard">
     <button class="action-panel-trigger   yt-uix-clickcard-target yt-uix-button yt-uix-button-text yt-uix-button-size-default yt-uix-tooltip" type="button" title="" onclick=";return false;" data-trigger-for="action-panel-none" data-orientation="vertical" data-upsell="playlist" data-button-toggle="true" data-position="bottomleft" role="button"><span class="yt-uix-button-content">Add to </span></button>
-                            <div class="watch7-hovercard yt-uix-clickcard-content">
-                                <h3 class="watch7-hovercard-header">Sign in to pokTwo</h3>
-                                <div class="watch7-hovercard-message">
-                                    Sign in with your Chaziz Account
-                                    to add
-                                    <span class="yt-user-name  g-hovercard" dir="ltr" data-ytid="{{ video.u_name }}">{{ video.u_name }}</span>'s
-                                    video to your playlist.
-
-                                </div>
-                                <ul class="watch7-hovercard-icon-strip clearfix">
-                                    <li class="watch7-hovercard-icon">
-                                        <div class="watch7-hovercard-chaziz-icon"></div>
-                                    </li>
-                                </ul>
-                                <div class="watch7-hovercard-account-line">
-                                    <a href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26feature%3D__FEATURE__%26hl%3Den%26next%3D%252Fwatch%253Fv%253DJgZHEfDkUkk%2526gl%253DUS%2526hl%253Den&amp;passive=true&amp;hl=en"
-                                        class="yt-uix-button   yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default"
-                                        data-sessionlink="ei=f4DAUq3_OImVkgLEuICgAw"><span class="yt-uix-button-content">Sign in </span></a>
-                                </div>
-                            </div>
+                            {{ login_hovercard("add", video.u_name, "video to your playlist") }}
 
                             </span>
 

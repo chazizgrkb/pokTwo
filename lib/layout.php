@@ -51,7 +51,7 @@ function twigloader($subfolder = '', $customloader = null, $customenv = null) {
 	$twig->addGlobal('jsPageName', $jsPageName);
 	$twig->addGlobal('cssGarbage', $cssGarbage);
 	$twig->addGlobal('guideCollapsed', $guideCollapsed);
-	$twig->addGlobal('token', Users::getCurrentToken());
+	$twig->addGlobal('token', Users::getCurrentToken()); // insecure as fuck
 
     return $twig;
 }
@@ -96,6 +96,12 @@ function playerError($message)
 
     echo $twig->render('_error_player.twig', ['err_message' => $message]);
     die();
+}
+
+// a hovercard for logged out users.
+function pleaseLogin($action, $user, $type) {
+	$twig = twigloader('components');
+	return $twig->render('pleaselogin.twig', ['action' => $action, 'user' => $user, 'type' => $type]);
 }
 
 function relativeTime($time): string

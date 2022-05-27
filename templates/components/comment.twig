@@ -53,20 +53,7 @@
                   <span class="yt-uix-button-valign"></span>
                   </span>
                   </button>  
-                  <div class="watch7-hovercard yt-uix-clickcard-content">
-                     <h3 class="watch7-hovercard-header">Sign in to pokTwo</h3>
-                     <div class="watch7-hovercard-message">
-                        Sign in with your Chaziz Account to rate <span class="yt-user-name " dir="ltr">{{ comment.u_name }}</span>'s comment.
-                     </div>
-                     <ul class="watch7-hovercard-icon-strip clearfix">
-                        <li class="watch7-hovercard-icon">
-                           <div class="watch7-hovercard-chaziz-icon"></div>
-                        </li>
-                     </ul>
-                     <div class="watch7-hovercard-account-line">
-                        <a href="login.php" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default" data-sessionlink="ei=FsjxUaC6IOTJyQGUuIGIAQ"><span class="yt-uix-button-content">Sign in</span></a>
-                     </div>
-                  </div>
+                  {{ login_hovercard("rate", comment.u_name, "comment") }}
                </span>
                <span class="yt-uix-clickcard">
                   <button onclick=";return false;" title="" type="button" class="end comment-action-vote-down comment-action yt-uix-clickcard-target yt-uix-button yt-uix-button-link yt-uix-button-size-default yt-uix-tooltip yt-uix-button-empty" data-action="" data-tooltip-show-delay="300" role="button">    <span class="yt-uix-button-icon-wrapper">
@@ -74,20 +61,7 @@
                   <span class="yt-uix-button-valign"></span>
                   </span>
                   </button>  
-                  <div class="watch7-hovercard yt-uix-clickcard-content">
-                     <h3 class="watch7-hovercard-header">Sign in to pokTwo</h3>
-                     <div class="watch7-hovercard-message">
-                        Sign in with your Chaziz Account to rate <span class="yt-user-name " dir="ltr">{{ comment.u_name }}</span>'s comment.
-                     </div>
-                     <ul class="watch7-hovercard-icon-strip clearfix">
-                        <li class="watch7-hovercard-icon">
-                           <div class="watch7-hovercard-chaziz-icon"></div>
-                        </li>
-                     </ul>
-                     <div class="watch7-hovercard-account-line">
-                        <a href="login.php" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-primary yt-uix-button-size-default" data-sessionlink="ei=FsjxUaC6IOTJyQGUuIGIAQ"><span class="yt-uix-button-content">Sign in</span></a>
-                     </div>
-                  </div>
+                  {{ login_hovercard("rate", comment.u_name, "comment") }}
                </span>
             </div>
          </div>
