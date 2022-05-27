@@ -94,7 +94,11 @@
                {% endif %}
                <div id="yt-masthead-content">
                   {% if log %}
-                  <span class="yt-uix-button-group" id="masthead-upload-button-group"><a href="/upload" class="yt-uix-button  start yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb" data-upsell="upload"><span class="yt-uix-button-content">Upload </span></a><button class="end flip yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-empty" type="button" aria-haspopup="true" onclick=";return false;" data-button-menu-id="upload-button-menu" role="button" aria-label="Creator tools menu"><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button></span>
+                  <span class="yt-uix-button-group" id="masthead-upload-button-group"><a href="/upload" class="yt-uix-button  start yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default" data-sessionlink="ei=Hn9jUrjEE8aR0AXXs4EI&amp;feature=mhsb" data-upsell="upload"><span class="yt-uix-button-content">Upload </span></a><button class="end flip yt-uix-button yt-uix-button-default yt-uix-button-size-default yt-uix-button-empty" type="button" aria-haspopup="true" onclick=";return false;" data-button-menu-id="upload-button-menu" role="button" aria-label="Creator tools menu"><img class="yt-uix-button-arrow" src="/yts/img/pixel.gif" alt="" title=""></button>
+				  {% if userdata.powerlevel > 3 %}
+				  <a href="/admin" class="end yt-uix-button  yt-uix-sessionlink yt-uix-button-destructive yt-uix-button-size-default" data-sessionlink="feature=mhsb&amp;ei=VuTCUr32BsfKiAKQzoCwBg"><span class="yt-uix-button-content">Admin</span></a>
+				  {% endif %}
+				  </span>
                   {% else %}
                   <span id="masthead-upload-button-group"><a href="/upload" class="yt-uix-button   yt-uix-sessionlink yt-uix-button-default yt-uix-button-size-default" data-sessionlink="feature=mhsb&amp;ei=VuTCUr32BsfKiAKQzoCwBg"><span class="yt-uix-button-content">Upload </span></a></span>
                   {% endif %}
