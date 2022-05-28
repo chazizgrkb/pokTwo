@@ -1,7 +1,6 @@
 <?php
-
-namespace pokTwo;
+namespace pokTwo\oldMeta;
 require('lib/common.php');
 
-$twig = twigloader();
+$twig = _twigloader();
 echo $twig->render('terms.twig');

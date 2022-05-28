@@ -4,7 +4,7 @@ namespace pokTwo\Meta;
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$acmlm = true;
+$isMeta = true;
 
 // Change directory to pokTwo and include core pokTwo code.
 chdir('../');

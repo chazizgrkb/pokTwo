@@ -62,9 +62,9 @@ function die_dump($thingy)
  */
 function gitCommit($trim = true)
 {
-    global $acmlm;
+    global $isMeta;
 
-    $prefix = ($acmlm ? '../' : '');
+    $prefix = ($isMeta ? '../' : '');
 
     $commit = file_get_contents($prefix . '.git/refs/heads/main');
 
