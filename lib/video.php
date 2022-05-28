@@ -152,21 +152,6 @@ class Videos
     }
 
     /**
-     * Return a list of videos that are simillar to the video the user is watching.
-     *
-     * @param string $videoID The ID of the currently watched video.
-     * @return int Number of every single recommended video, goes further than 20 if there are more than 20 recommended videos.
-     */
-    static function countRecommended($videoID): int
-    {
-        global $userfields, $videofields, $recommendedfields, $sql;
-        $recommendfields = self::$recommendedfields; //the fuck? -grkb 4/4/2022
-        $intID = self::getVideoIntID($videoID);
-        $recommendedList = $sql->fetch("SELECT COUNT(jaccard.video_id), $recommendfields", [$intID]) ['COUNT(jaccard.video_id)']; // FIXME: don't do the ordering shit, also does it count all uploaded videos or just the relevant ones -grkb 3/31/2022.
-        return $recommendedList;
-    }
-
-    /**
      * Return the link to the FLV version of the video.
      *
      * @param string $videoID The ID of the currently watched video.
@@ -197,7 +182,9 @@ class Videos
     static function getVideoData($userfields, $id)
     {
         global $sql;
-        return $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
+        $videoData = $sql->fetch("SELECT $userfields v.* FROM videos v JOIN users u ON v.author = u.id WHERE v.video_id = ?", [$id]);
+		$videoData['views'] = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
+		return $videoData;
     }
 
     static function getFavoritedVideosFromUser(string $limit, $id): array

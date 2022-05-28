@@ -82,9 +82,6 @@ if (isset($_COOKIE['useFlashPlayer'])) {
     $isFlash = false;
 }
 
-$favoritesCount = $sql->fetch("SELECT COUNT(user_id) FROM favorites WHERE user_id=?", [$videoData['u_id']]) ['COUNT(user_id)'];
-$viewCount = $sql->fetch("SELECT COUNT(video_id) FROM views WHERE video_id=?", [$videoData['video_id']]) ['COUNT(video_id)'];
-
 $previousRecentView = $sql->result("SELECT most_recent_view from videos WHERE video_id = ?", [$id]);
 
 Videos::bumpVideo(time(), $id);
@@ -92,8 +89,6 @@ Videos::bumpVideo(time(), $id);
 $twig = twigloader();
 echo $twig->render('watch.twig', [
     'video' => $videoData,
-    'favorites' => $favoritesCount,
-    'viewCount' => $viewCount,
     'recentView' => $previousRecentView,
     'allVideos' => $allVideos,
     'isFlash' => $isFlash,
