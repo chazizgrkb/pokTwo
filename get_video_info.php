@@ -55,7 +55,7 @@ $fmt_stream_map = [
 	],
 	[
 	"itag" => "43",
-    "url" => "./videos/".$vid."",
+    "url" => "./media/".$vid.".mp4",
     "sig" => "21EDBD12A97AC6CFE5B49224A5AD622895FFADEB.913D0D8ADC3EB8203CA6E08F616AC4B63156EC64",
     "fallback_host" => "tc.v14.cache3.c.youtube.com",
     "quality" => "small",
@@ -63,7 +63,7 @@ $fmt_stream_map = [
 	],
 	[
 	"itag" => "43",
-    "url" => "./videos/".$vid."",
+    "url" => "./media/".$vid.".mp4",
     "sig" => "21EDBD12A97AC6CFE5B49224A5AD622895FFADEB.913D0D8ADC3EB8203CA6E08F616AC4B63156EC64",
     "fallback_host" => "tc.v14.cache3.c.youtube.com",
     "quality" => "medium",
@@ -71,7 +71,7 @@ $fmt_stream_map = [
 	],
 	[
 	"itag" => "43",
-    "url" => "./videos/".$vid."",
+    "url" => "./media/".$vid.".mp4",
     "sig" => "21EDBD12A97AC6CFE5B49224A5AD622895FFADEB.913D0D8ADC3EB8203CA6E08F616AC4B63156EC64",
     "fallback_host" => "tc.v14.cache3.c.youtube.com",
     "quality" => "large",
@@ -79,7 +79,7 @@ $fmt_stream_map = [
 	],
 	[
 	"itag" => "43",
-    "url" => "./videos/".$vid."",
+    "url" => "./media/".$vid.".mp4",
     "sig" => "21EDBD12A97AC6CFE5B49224A5AD622895FFADEB.913D0D8ADC3EB8203CA6E08F616AC4B63156EC64",
     "fallback_host" => "tc.v14.cache3.c.youtube.com",
     "quality" => "hd720",
@@ -87,7 +87,7 @@ $fmt_stream_map = [
 	],
 	[
 	"itag" => "43",
-    "url" => "./videos/".$vid."",
+    "url" => "./media/".$vid.".mp4",
     "sig" => "21EDBD12A97AC6CFE5B49224A5AD622895FFADEB.913D0D8ADC3EB8203CA6E08F616AC4B63156EC64",
     "fallback_host" => "tc.v14.cache3.c.youtube.com",
     "quality" => "hd1080",
@@ -95,7 +95,7 @@ $fmt_stream_map = [
 	],
 	[
 	"itag" => "43",
-    "url" => "./videos/".$vid."",
+    "url" => "./media/".$vid.".mp4",
     "sig" => "21EDBD12A97AC6CFE5B49224A5AD622895FFADEB.913D0D8ADC3EB8203CA6E08F616AC4B63156EC64",
     "fallback_host" => "tc.v14.cache3.c.youtube.com",
     "quality" => "hd1440",
@@ -103,7 +103,7 @@ $fmt_stream_map = [
 	],
 	[
 	"itag" => "43",
-    "url" => "./videos/".$vid."",
+    "url" => "./media/".$vid.".mp4",
     "sig" => "21EDBD12A97AC6CFE5B49224A5AD622895FFADEB.913D0D8ADC3EB8203CA6E08F616AC4B63156EC64",
     "fallback_host" => "tc.v14.cache3.c.youtube.com",
     "quality" => "highres",

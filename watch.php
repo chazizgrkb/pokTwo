@@ -11,7 +11,7 @@ $videoData = Videos::getVideoData($userfields, $id);
 
 if (!$videoData) playerError("This video does not exist.");
 
-/* $fmt_stream_map = [
+$fmt_stream_map = [
 	[
     "sig" => "44AA40D8A104309AE6E672CB78343D5F99ADA807.9ACF6ABD0873E6AA01C34B5489E53C0EF139D534",
 	"fallback_host" => "fuckyou.google.com",
@@ -40,9 +40,8 @@ foreach($fmt_stream_map as $stream) {
     $count++;
 }
 
-$adaptive_fmts = 'type%3Dvideo%252Fmp4%2Bcodecs%3D%2522avc1.4d401e%2522%26index%3D708-1471%26itag%3D133%26bitrate%3D2208158%26size%3D320x240%26url%3Dmedia%252F' . $_GET['v'] . '.mp4';
 
-$url_encoded_fmt_stream_map = str_replace("&","\u0026",$url_encoded_fmt_stream_map); */
+$url_encoded_fmt_stream_map = str_replace("&","\u0026",$url_encoded_fmt_stream_map);
 
 $commentData = VideoComments::getComments($id);
 
@@ -94,7 +93,6 @@ echo $twig->render('watch.twig', [
     'isFlash' => $isFlash,
     'recommended' => Videos::getRecommended($videoData['video_id']),
     'isFavorited' => $isFavorited,
-/* 	'url_encoded_fmt_stream_map' => $url_encoded_fmt_stream_map,
-	'adaptive_fmts' => $adaptive_fmts, */
+    'url_encoded_fmt_stream_map' => $url_encoded_fmt_stream_map,
 	'videoOwnershipFuckery' => $isVideoOwnedByCurrentUser,
 ]);
