@@ -6,6 +6,12 @@ if ($log) redirect('./');
 
 $error = '';
 
+if (isset($disableRegister)) {
+	$twig = twigloader();
+	echo $twig->render('register_apology_halfass.twig', ['error' => $error]);
+	die();
+}
+
 if (isset($_POST['field_command'])) {
 	$name = ($_POST['field_signup_username'] ?? null);
 	$mail = ($_POST['field_signup_email'] ?? null);

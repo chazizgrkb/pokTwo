@@ -14,7 +14,7 @@ $memcachedServers = [];
 
 $basepath = '/';
 
-$forumEnabled = true;
+$disableRegister = false;
 
 // Should dark mode be default?
 $darkModeDefault = false;
