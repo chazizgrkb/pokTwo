@@ -19,7 +19,7 @@ $twig = twigloader();
 $theComment = $twig->render('components/comment.twig', ['comment' => $comment]);
 
 echo '<root>
-  <str_code>subscription-subscribe-success</str_code>
+  <str_code>OK</str_code>
   <html_content><![CDATA[
 		' . $theComment . '
      ]]></html_content>
