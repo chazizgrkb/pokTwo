@@ -15,6 +15,7 @@ $memcachedServers = [];
 $basepath = '/';
 
 $disableRegister = false;
+$isMaintenance = false;
 
 // Should dark mode be default?
 $darkModeDefault = false;
