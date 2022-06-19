@@ -17,7 +17,8 @@ foreach (glob("lib/*.php") as $file) {
 }
 
 if ($isMaintenance) {
-	die('<center><b>This instance of pokTwo is currently offline.</b></center>');
+	include ("down.html");
+	die();
 }
 
 if ($isDebug) {
